@@ -9,7 +9,7 @@
 #import "JSVistorTableViewController.h"
 #import "JSVistorView.h"
 #import "JSNavigationController.h"
-#import "JSOAthenViewController.h"
+#import "JSOAuthenViewController.h"
 
 @interface JSVistorTableViewController ()
 
@@ -56,7 +56,7 @@
 
 - (void)buttonClick:(UIBarButtonItem *)sender{
     
-    JSOAthenViewController *webVC = [[JSOAthenViewController alloc]init];
+    JSOAuthenViewController *webVC = [[JSOAuthenViewController alloc]init];
     JSNavigationController *naVc = [[JSNavigationController alloc]initWithRootViewController:webVC];
     
     [self presentViewController:naVc animated:YES completion:^{

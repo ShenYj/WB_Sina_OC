@@ -23,6 +23,8 @@
 #endif
 
 
+
+
 #pragma mark - 头文件
 #import "JSUIkitExtension.h"
 #import "Masonry.h"
@@ -33,6 +35,9 @@
 #define SCREEN_WIDTH [UIScreen MainScreen].bounds.size.width
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 #define THEME_COLOR [UIColor purpleColor]
+
+//App Key：3071143364
+//App Secret：dc2478f9204b2551d8ff7dba427d576e
 
 #endif /* Common_pch */
 

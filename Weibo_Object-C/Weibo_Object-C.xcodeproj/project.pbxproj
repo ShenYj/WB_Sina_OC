@@ -30,7 +30,7 @@
 		F79927CF1D1C14E300E9BA8C /* JSHomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F79927CE1D1C14E300E9BA8C /* JSHomeTableViewController.m */; };
 		F79927D21D1C14F200E9BA8C /* JSMessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F79927D11D1C14F200E9BA8C /* JSMessageTableViewController.m */; };
 		F79927D51D1C150100E9BA8C /* JSProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F79927D41D1C150100E9BA8C /* JSProfileTableViewController.m */; };
-		F7F9DB121D24979D0029235B /* JSOAthenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F9DB111D24979D0029235B /* JSOAthenViewController.m */; };
+		F7F9DB121D24979D0029235B /* JSOAuthenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F9DB111D24979D0029235B /* JSOAuthenViewController.m */; };
 		F7F9DB151D2499BA0029235B /* JSNetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F9DB141D2499BA0029235B /* JSNetworkTool.m */; };
 /* End PBXBuildFile section */
 
@@ -83,8 +83,8 @@
 		F79927D11D1C14F200E9BA8C /* JSMessageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSMessageTableViewController.m; sourceTree = "<group>"; };
 		F79927D31D1C150100E9BA8C /* JSProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSProfileTableViewController.h; sourceTree = "<group>"; };
 		F79927D41D1C150100E9BA8C /* JSProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSProfileTableViewController.m; sourceTree = "<group>"; };
-		F7F9DB101D24979D0029235B /* JSOAthenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSOAthenViewController.h; sourceTree = "<group>"; };
-		F7F9DB111D24979D0029235B /* JSOAthenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSOAthenViewController.m; sourceTree = "<group>"; };
+		F7F9DB101D24979D0029235B /* JSOAuthenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSOAuthenViewController.h; sourceTree = "<group>"; };
+		F7F9DB111D24979D0029235B /* JSOAuthenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSOAuthenViewController.m; sourceTree = "<group>"; };
 		F7F9DB131D2499BA0029235B /* JSNetworkTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSNetworkTool.h; sourceTree = "<group>"; };
 		F7F9DB141D2499BA0029235B /* JSNetworkTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSNetworkTool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -153,8 +153,8 @@
 				F77886431D1EC97E00BE4518 /* JSTabBarController.m */,
 				F778864B1D1F51EE00BE4518 /* JSVistorTableViewController.h */,
 				F778864C1D1F51EE00BE4518 /* JSVistorTableViewController.m */,
-				F7F9DB101D24979D0029235B /* JSOAthenViewController.h */,
-				F7F9DB111D24979D0029235B /* JSOAthenViewController.m */,
+				F7F9DB101D24979D0029235B /* JSOAuthenViewController.h */,
+				F7F9DB111D24979D0029235B /* JSOAuthenViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -524,7 +524,7 @@
 				F747F79D1D843748000A0C8D /* UIImage+JSExtension.m in Sources */,
 				F79927D51D1C150100E9BA8C /* JSProfileTableViewController.m in Sources */,
 				F77886561D201CBD00BE4518 /* JSVistorView.m in Sources */,
-				F7F9DB121D24979D0029235B /* JSOAthenViewController.m in Sources */,
+				F7F9DB121D24979D0029235B /* JSOAuthenViewController.m in Sources */,
 				F79927D21D1C14F200E9BA8C /* JSMessageTableViewController.m in Sources */,
 				F747F79C1D843748000A0C8D /* UIColor+JSExtension.m in Sources */,
 			);
