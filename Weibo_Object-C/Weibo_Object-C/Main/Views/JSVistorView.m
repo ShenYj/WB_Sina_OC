@@ -22,8 +22,10 @@
 @implementation JSVistorView
 
 - (instancetype)init{
+    
     self = [super init];
     if (self) {
+        
         self.backgroundColor = [UIColor whiteColor];
         [self setupUI];
         
@@ -66,6 +68,7 @@
         make.top.mas_equalTo(self.loginButton);
     }];
 }
+
 - (void)setupUI{
     
     [self addSubview:self.circleImageView];
@@ -76,6 +79,7 @@
     [self addSubview:self.registerButton];
     
 }
+
 - (void)setupVistorViewInfoWithTitle:(NSString *)title withImageName:(NSString *)imageName{
     
     if (title == nil && imageName == nil) {
@@ -91,6 +95,7 @@
     }
     
 }
+
 /**
  *  设置主页控制器动画
  */
@@ -103,6 +108,7 @@
     basicAnimation.removedOnCompletion = NO;
     [self.circleImageView.layer addAnimation:basicAnimation forKey:nil];
 }
+
 //按钮点击事件
 - (void)buttonClick:(UIButton *)sender{
     
@@ -110,26 +116,34 @@
     
 }
 
-- (UIImageView *)circleImageView{
+
+- (UIImageView *)circleImageView {
     
     if (_circleImageView == nil) {
+        
         _circleImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"visitordiscover_feed_image_smallicon"]];
     }
     return _circleImageView;
 }
-- (UIImageView *)maskImageView{
+
+- (UIImageView *)maskImageView {
+    
     if (_maskImageView == nil) {
         _maskImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"visitordiscover_feed_mask_smallicon"]];
     }
     return _maskImageView;
 }
-- (UIImageView *)iconImageView{
+
+- (UIImageView *)iconImageView {
+    
     if (_iconImageView == nil) {
         _iconImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"visitordiscover_feed_image_house"]];
     }
     return _iconImageView;
 }
-- (UILabel *)messageLabel{
+
+- (UILabel *)messageLabel {
+    
     if (_messageLabel == nil) {
         _messageLabel = [[UILabel alloc]init];
         _messageLabel.text = @"关注一些人，回这里看看有什么惊喜关注一些人";
@@ -140,7 +154,9 @@
     }
     return _messageLabel;
 }
-- (UIButton *)loginButton{
+
+- (UIButton *)loginButton {
+    
     if (_loginButton == nil) {
         _loginButton = [[UIButton alloc]init];
         [_loginButton setTitleColor:THEME_COLOR forState:UIControlStateNormal];
@@ -150,7 +166,9 @@
     }
     return _loginButton;
 }
-- (UIButton *)registerButton{
+
+- (UIButton *)registerButton {
+    
     if (_registerButton == nil) {
         _registerButton = [[UIButton alloc]init];
         [_registerButton setTitleColor:THEME_COLOR forState:UIControlStateNormal];

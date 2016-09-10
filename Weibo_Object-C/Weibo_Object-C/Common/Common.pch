@@ -32,7 +32,7 @@
 
 #define SCREEN_WIDTH [UIScreen MainScreen].bounds.size.width
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
-#define THEME_COLOR [UIColor orangeColor]
+#define THEME_COLOR [UIColor purpleColor]
 
 #endif /* Common_pch */
 

@@ -30,11 +30,11 @@
 - (void)loadView{
     
     if (self.isLogin) {
-        //已登录
+        // 已登录
         [super loadView];
         
     }else{
-        //未登录
+        // 未登录
         __weak typeof(self) weakSelf = self;
         self.vistorView = [[JSVistorView alloc]init];
         [self.vistorView setFinishedBlock:^{

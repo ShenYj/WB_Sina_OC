@@ -37,18 +37,18 @@
     [self loadNavigationControllerWithViewController:descoveryTvc withTitle:@"发现" withTabBarImageName:@"tabbar_discover"];
     [self loadNavigationControllerWithViewController:profileTvc withTitle:@"我" withTabBarImageName:@"tabbar_profile"];
 //    self.tabBar.barTintColor = [UIColor orangeColor];
-//    self.tabBar.tintColor = [UIColor orangeColor];//设置图片\文字的颜色(不带渲染)
+    self.tabBar.tintColor = THEME_COLOR;//设置图片\文字的颜色(不带渲染)
 }
 
 - (void)loadNavigationControllerWithViewController:(UIViewController *)viewController withTitle:(NSString *)title withTabBarImageName:(NSString *)imageName{
     
     UIImage *img_Normal = [[UIImage imageNamed:imageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    UIImage *img_Select = [[UIImage imageNamed:[NSString stringWithFormat:@"%@_selected",imageName]]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    //UIImage *img_Select = [[UIImage imageNamed:[NSString stringWithFormat:@"%@_selected",imageName]]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
 //    UIImage *img_Normal = [UIImage imageNamed:imageName];
-//    UIImage *img_Select = [UIImage imageNamed:[NSString stringWithFormat:@"%@_selected",imageName]];
+    UIImage *img_Select = [UIImage imageNamed:[NSString stringWithFormat:@"%@_selected",imageName]];
     [viewController.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]} forState:UIControlStateNormal];
-    [viewController.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor orangeColor]} forState:UIControlStateSelected];
+    //[viewController.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName: THEME_COLOR} forState:UIControlStateSelected];
     
     JSNavigationController *navigationController = [[JSNavigationController alloc]initWithRootViewController:viewController];
     viewController.tabBarItem.title = title;
