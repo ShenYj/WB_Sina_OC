@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JSOAthenViewController : UIViewController
+@interface JSOAuthenViewController : UIViewController
 
 
 //是否登录的标识

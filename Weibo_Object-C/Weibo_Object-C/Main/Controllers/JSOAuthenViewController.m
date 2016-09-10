@@ -6,16 +6,23 @@
 //  Copyright © 2016年 ___ShenYJ___. All rights reserved.
 //
 
-#import "JSOAthenViewController.h"
+
+#pragma mark - 常量
+static NSString * const kAppKey = @"3071143364";
+static NSString * const kAppSecret = @"Secret：dc2478f9204b2551d8ff7dba427d576e";
+static NSString * const kRedirect_URI = @"http://www.jianshu.com/users/5ec5747435a2/latest_articles";
+
+
+#import "JSOAuthenViewController.h"
 #import <WebKit/WebKit.h>
 
-@interface JSOAthenViewController () <UIWebViewDelegate>
+@interface JSOAuthenViewController () <UIWebViewDelegate>
 
 @property (nonatomic,strong) UIWebView *webView;
 
 @end
 
-@implementation JSOAthenViewController
+@implementation JSOAuthenViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -63,7 +70,8 @@
     if (_webView == nil) {
         _webView = [[UIWebView alloc] init];
         _webView.delegate = self;
-        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://api.weibo.com/oauth2/authorize?client_id=\(APPKEY)&redirect_uri=\(REDIRECT_URI)"]];
+        //[NSString stringWithFormat:@"https://api.weibo.com/oauth2/authorize?client_id=%@&redirect_uri=%@)",kAppKey,kRedirect_URI]
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.weibo.com/oauth2/authorize?client_id=%@&redirect_uri=%@)",kAppKey,kRedirect_URI]]];
         [_webView loadRequest:request];
     }
     return _webView;
