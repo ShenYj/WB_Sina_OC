@@ -1,0 +1,687 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E6D542BB8EA798826F2569E1 /* libPods-Weibo_Object-C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA89379BD5C259B8114A7F9F /* libPods-Weibo_Object-C.a */; };
+		F747F7971D843748000A0C8D /* NSArray+JSLog.m in Sources */ = {isa = PBXBuildFile; fileRef = F747F7861D843748000A0C8D /* NSArray+JSLog.m */; };
+		F747F7981D843748000A0C8D /* NSObject+JSObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = F747F7881D843748000A0C8D /* NSObject+JSObjc.m */; };
+		F747F7991D843748000A0C8D /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = F747F78A1D843748000A0C8D /* NSString+Emoji.m */; };
+		F747F79A1D843748000A0C8D /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = F747F78C1D843748000A0C8D /* NSString+Hash.m */; };
+		F747F79B1D843748000A0C8D /* NSString+JSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F747F78E1D843748000A0C8D /* NSString+JSExtension.m */; };
+		F747F79C1D843748000A0C8D /* UIColor+JSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F747F7901D843748000A0C8D /* UIColor+JSExtension.m */; };
+		F747F79D1D843748000A0C8D /* UIImage+JSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F747F7921D843748000A0C8D /* UIImage+JSExtension.m */; };
+		F747F79E1D843748000A0C8D /* UINavigationController+JSFullScreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = F747F7941D843748000A0C8D /* UINavigationController+JSFullScreenPopGesture.m */; };
+		F747F79F1D843748000A0C8D /* UIView+JSFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = F747F7961D843748000A0C8D /* UIView+JSFrame.m */; };
+		F77886461D1EC97E00BE4518 /* JSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F77886411D1EC97E00BE4518 /* JSNavigationController.m */; };
+		F77886471D1EC97E00BE4518 /* JSTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F77886431D1EC97E00BE4518 /* JSTabBarController.m */; };
+		F778864A1D1EC9BC00BE4518 /* JSTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F77886491D1EC9BC00BE4518 /* JSTabBar.m */; };
+		F778864D1D1F51EE00BE4518 /* JSVistorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F778864C1D1F51EE00BE4518 /* JSVistorTableViewController.m */; };
+		F77886561D201CBD00BE4518 /* JSVistorView.m in Sources */ = {isa = PBXBuildFile; fileRef = F77886551D201CBD00BE4518 /* JSVistorView.m */; };
+		F79927BE1D1C13D500E9BA8C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F79927B91D1C13D500E9BA8C /* AppDelegate.m */; };
+		F79927BF1D1C13D500E9BA8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F79927BA1D1C13D500E9BA8C /* Assets.xcassets */; };
+		F79927C01D1C13D500E9BA8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F79927BB1D1C13D500E9BA8C /* LaunchScreen.storyboard */; };
+		F79927C11D1C13D500E9BA8C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F79927BD1D1C13D500E9BA8C /* main.m */; };
+		F79927CC1D1C14D700E9BA8C /* JSDescoveryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F79927CB1D1C14D700E9BA8C /* JSDescoveryTableViewController.m */; };
+		F79927CF1D1C14E300E9BA8C /* JSHomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F79927CE1D1C14E300E9BA8C /* JSHomeTableViewController.m */; };
+		F79927D21D1C14F200E9BA8C /* JSMessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F79927D11D1C14F200E9BA8C /* JSMessageTableViewController.m */; };
+		F79927D51D1C150100E9BA8C /* JSProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F79927D41D1C150100E9BA8C /* JSProfileTableViewController.m */; };
+		F7F9DB121D24979D0029235B /* JSOAthenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F9DB111D24979D0029235B /* JSOAthenViewController.m */; };
+		F7F9DB151D2499BA0029235B /* JSNetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F9DB141D2499BA0029235B /* JSNetworkTool.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4447C8443927E8DEA9062D5A /* Pods-Weibo_Object-C.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weibo_Object-C.release.xcconfig"; path = "Pods/Target Support Files/Pods-Weibo_Object-C/Pods-Weibo_Object-C.release.xcconfig"; sourceTree = "<group>"; };
+		CA89379BD5C259B8114A7F9F /* libPods-Weibo_Object-C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Weibo_Object-C.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1EE4FF87B8D01357E3CC107 /* Pods-Weibo_Object-C.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weibo_Object-C.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weibo_Object-C/Pods-Weibo_Object-C.debug.xcconfig"; sourceTree = "<group>"; };
+		F747F7841D843748000A0C8D /* JSUIkitExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSUIkitExtension.h; sourceTree = "<group>"; };
+		F747F7851D843748000A0C8D /* NSArray+JSLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+JSLog.h"; sourceTree = "<group>"; };
+		F747F7861D843748000A0C8D /* NSArray+JSLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+JSLog.m"; sourceTree = "<group>"; };
+		F747F7871D843748000A0C8D /* NSObject+JSObjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JSObjc.h"; sourceTree = "<group>"; };
+		F747F7881D843748000A0C8D /* NSObject+JSObjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JSObjc.m"; sourceTree = "<group>"; };
+		F747F7891D843748000A0C8D /* NSString+Emoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Emoji.h"; sourceTree = "<group>"; };
+		F747F78A1D843748000A0C8D /* NSString+Emoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Emoji.m"; sourceTree = "<group>"; };
+		F747F78B1D843748000A0C8D /* NSString+Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hash.h"; sourceTree = "<group>"; };
+		F747F78C1D843748000A0C8D /* NSString+Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hash.m"; sourceTree = "<group>"; };
+		F747F78D1D843748000A0C8D /* NSString+JSExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JSExtension.h"; sourceTree = "<group>"; };
+		F747F78E1D843748000A0C8D /* NSString+JSExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JSExtension.m"; sourceTree = "<group>"; };
+		F747F78F1D843748000A0C8D /* UIColor+JSExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+JSExtension.h"; sourceTree = "<group>"; };
+		F747F7901D843748000A0C8D /* UIColor+JSExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+JSExtension.m"; sourceTree = "<group>"; };
+		F747F7911D843748000A0C8D /* UIImage+JSExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+JSExtension.h"; sourceTree = "<group>"; };
+		F747F7921D843748000A0C8D /* UIImage+JSExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+JSExtension.m"; sourceTree = "<group>"; };
+		F747F7931D843748000A0C8D /* UINavigationController+JSFullScreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+JSFullScreenPopGesture.h"; sourceTree = "<group>"; };
+		F747F7941D843748000A0C8D /* UINavigationController+JSFullScreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+JSFullScreenPopGesture.m"; sourceTree = "<group>"; };
+		F747F7951D843748000A0C8D /* UIView+JSFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JSFrame.h"; sourceTree = "<group>"; };
+		F747F7961D843748000A0C8D /* UIView+JSFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JSFrame.m"; sourceTree = "<group>"; };
+		F77886401D1EC97E00BE4518 /* JSNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSNavigationController.h; sourceTree = "<group>"; };
+		F77886411D1EC97E00BE4518 /* JSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSNavigationController.m; sourceTree = "<group>"; };
+		F77886421D1EC97E00BE4518 /* JSTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTabBarController.h; sourceTree = "<group>"; };
+		F77886431D1EC97E00BE4518 /* JSTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTabBarController.m; sourceTree = "<group>"; };
+		F77886481D1EC9BC00BE4518 /* JSTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTabBar.h; sourceTree = "<group>"; };
+		F77886491D1EC9BC00BE4518 /* JSTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTabBar.m; sourceTree = "<group>"; };
+		F778864B1D1F51EE00BE4518 /* JSVistorTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSVistorTableViewController.h; sourceTree = "<group>"; };
+		F778864C1D1F51EE00BE4518 /* JSVistorTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSVistorTableViewController.m; sourceTree = "<group>"; };
+		F77886541D201CBD00BE4518 /* JSVistorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSVistorView.h; sourceTree = "<group>"; };
+		F77886551D201CBD00BE4518 /* JSVistorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSVistorView.m; sourceTree = "<group>"; };
+		F778865D1D20A9D000BE4518 /* Common.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.pch; sourceTree = "<group>"; };
+		F799278C1D1C11EA00E9BA8C /* Weibo_Object-C.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weibo_Object-C.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F79927A01D1C11EA00E9BA8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
+		F79927B81D1C13D500E9BA8C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F79927B91D1C13D500E9BA8C /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F79927BA1D1C13D500E9BA8C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F79927BC1D1C13D500E9BA8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F79927BD1D1C13D500E9BA8C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F79927CA1D1C14D700E9BA8C /* JSDescoveryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDescoveryTableViewController.h; sourceTree = "<group>"; };
+		F79927CB1D1C14D700E9BA8C /* JSDescoveryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDescoveryTableViewController.m; sourceTree = "<group>"; };
+		F79927CD1D1C14E300E9BA8C /* JSHomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSHomeTableViewController.h; sourceTree = "<group>"; };
+		F79927CE1D1C14E300E9BA8C /* JSHomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSHomeTableViewController.m; sourceTree = "<group>"; };
+		F79927D01D1C14F200E9BA8C /* JSMessageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSMessageTableViewController.h; sourceTree = "<group>"; };
+		F79927D11D1C14F200E9BA8C /* JSMessageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSMessageTableViewController.m; sourceTree = "<group>"; };
+		F79927D31D1C150100E9BA8C /* JSProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSProfileTableViewController.h; sourceTree = "<group>"; };
+		F79927D41D1C150100E9BA8C /* JSProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSProfileTableViewController.m; sourceTree = "<group>"; };
+		F7F9DB101D24979D0029235B /* JSOAthenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSOAthenViewController.h; sourceTree = "<group>"; };
+		F7F9DB111D24979D0029235B /* JSOAthenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSOAthenViewController.m; sourceTree = "<group>"; };
+		F7F9DB131D2499BA0029235B /* JSNetworkTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSNetworkTool.h; sourceTree = "<group>"; };
+		F7F9DB141D2499BA0029235B /* JSNetworkTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSNetworkTool.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F79927891D1C11EA00E9BA8C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6D542BB8EA798826F2569E1 /* libPods-Weibo_Object-C.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1CFED4CCE944CD3A0A573F87 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CA89379BD5C259B8114A7F9F /* libPods-Weibo_Object-C.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7EDCC857CC7608C3F5E1C281 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E1EE4FF87B8D01357E3CC107 /* Pods-Weibo_Object-C.debug.xcconfig */,
+				4447C8443927E8DEA9062D5A /* Pods-Weibo_Object-C.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F747F7831D843748000A0C8D /* UIKit+JSExtension */ = {
+			isa = PBXGroup;
+			children = (
+				F747F7841D843748000A0C8D /* JSUIkitExtension.h */,
+				F747F7851D843748000A0C8D /* NSArray+JSLog.h */,
+				F747F7861D843748000A0C8D /* NSArray+JSLog.m */,
+				F747F7871D843748000A0C8D /* NSObject+JSObjc.h */,
+				F747F7881D843748000A0C8D /* NSObject+JSObjc.m */,
+				F747F7891D843748000A0C8D /* NSString+Emoji.h */,
+				F747F78A1D843748000A0C8D /* NSString+Emoji.m */,
+				F747F78B1D843748000A0C8D /* NSString+Hash.h */,
+				F747F78C1D843748000A0C8D /* NSString+Hash.m */,
+				F747F78D1D843748000A0C8D /* NSString+JSExtension.h */,
+				F747F78E1D843748000A0C8D /* NSString+JSExtension.m */,
+				F747F78F1D843748000A0C8D /* UIColor+JSExtension.h */,
+				F747F7901D843748000A0C8D /* UIColor+JSExtension.m */,
+				F747F7911D843748000A0C8D /* UIImage+JSExtension.h */,
+				F747F7921D843748000A0C8D /* UIImage+JSExtension.m */,
+				F747F7931D843748000A0C8D /* UINavigationController+JSFullScreenPopGesture.h */,
+				F747F7941D843748000A0C8D /* UINavigationController+JSFullScreenPopGesture.m */,
+				F747F7951D843748000A0C8D /* UIView+JSFrame.h */,
+				F747F7961D843748000A0C8D /* UIView+JSFrame.m */,
+			);
+			path = "UIKit+JSExtension";
+			sourceTree = "<group>";
+		};
+		F778863F1D1EC97E00BE4518 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F77886401D1EC97E00BE4518 /* JSNavigationController.h */,
+				F77886411D1EC97E00BE4518 /* JSNavigationController.m */,
+				F77886421D1EC97E00BE4518 /* JSTabBarController.h */,
+				F77886431D1EC97E00BE4518 /* JSTabBarController.m */,
+				F778864B1D1F51EE00BE4518 /* JSVistorTableViewController.h */,
+				F778864C1D1F51EE00BE4518 /* JSVistorTableViewController.m */,
+				F7F9DB101D24979D0029235B /* JSOAthenViewController.h */,
+				F7F9DB111D24979D0029235B /* JSOAthenViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F77886441D1EC97E00BE4518 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F77886451D1EC97E00BE4518 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F77886481D1EC9BC00BE4518 /* JSTabBar.h */,
+				F77886491D1EC9BC00BE4518 /* JSTabBar.m */,
+				F77886541D201CBD00BE4518 /* JSVistorView.h */,
+				F77886551D201CBD00BE4518 /* JSVistorView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F79927831D1C11EA00E9BA8C = {
+			isa = PBXGroup;
+			children = (
+				F799278E1D1C11EA00E9BA8C /* Weibo_Object-C */,
+				F799278D1D1C11EA00E9BA8C /* Products */,
+				7EDCC857CC7608C3F5E1C281 /* Pods */,
+				1CFED4CCE944CD3A0A573F87 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F799278D1D1C11EA00E9BA8C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F799278C1D1C11EA00E9BA8C /* Weibo_Object-C.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F799278E1D1C11EA00E9BA8C /* Weibo_Object-C */ = {
+			isa = PBXGroup;
+			children = (
+				F79927C31D1C141000E9BA8C /* Main */,
+				F79927C21D1C13FE00E9BA8C /* Common */,
+				F79927A61D1C13D500E9BA8C /* Classes */,
+				F79927B71D1C13D500E9BA8C /* SupportingFIles */,
+			);
+			path = "Weibo_Object-C";
+			sourceTree = "<group>";
+		};
+		F79927A61D1C13D500E9BA8C /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				F79927AB1D1C13D500E9BA8C /* Home */,
+				F79927A71D1C13D500E9BA8C /* Descovery */,
+				F79927AF1D1C13D500E9BA8C /* Message */,
+				F79927B31D1C13D500E9BA8C /* Profile */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		F79927A71D1C13D500E9BA8C /* Descovery */ = {
+			isa = PBXGroup;
+			children = (
+				F79927A81D1C13D500E9BA8C /* Controllers */,
+				F79927A91D1C13D500E9BA8C /* Models */,
+				F79927AA1D1C13D500E9BA8C /* Views */,
+			);
+			path = Descovery;
+			sourceTree = "<group>";
+		};
+		F79927A81D1C13D500E9BA8C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F79927CA1D1C14D700E9BA8C /* JSDescoveryTableViewController.h */,
+				F79927CB1D1C14D700E9BA8C /* JSDescoveryTableViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F79927A91D1C13D500E9BA8C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F79927AA1D1C13D500E9BA8C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F79927AB1D1C13D500E9BA8C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				F79927AC1D1C13D500E9BA8C /* Controllers */,
+				F79927AD1D1C13D500E9BA8C /* Models */,
+				F79927AE1D1C13D500E9BA8C /* Views */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		F79927AC1D1C13D500E9BA8C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F79927CD1D1C14E300E9BA8C /* JSHomeTableViewController.h */,
+				F79927CE1D1C14E300E9BA8C /* JSHomeTableViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F79927AD1D1C13D500E9BA8C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F79927AE1D1C13D500E9BA8C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F79927AF1D1C13D500E9BA8C /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				F79927B01D1C13D500E9BA8C /* Controllers */,
+				F79927B11D1C13D500E9BA8C /* Models */,
+				F79927B21D1C13D500E9BA8C /* Views */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		F79927B01D1C13D500E9BA8C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F79927D01D1C14F200E9BA8C /* JSMessageTableViewController.h */,
+				F79927D11D1C14F200E9BA8C /* JSMessageTableViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F79927B11D1C13D500E9BA8C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F79927B21D1C13D500E9BA8C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F79927B31D1C13D500E9BA8C /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				F79927B41D1C13D500E9BA8C /* Controllers */,
+				F79927B51D1C13D500E9BA8C /* Models */,
+				F79927B61D1C13D500E9BA8C /* Views */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		F79927B41D1C13D500E9BA8C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F79927D31D1C150100E9BA8C /* JSProfileTableViewController.h */,
+				F79927D41D1C150100E9BA8C /* JSProfileTableViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F79927B51D1C13D500E9BA8C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F79927B61D1C13D500E9BA8C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F79927B71D1C13D500E9BA8C /* SupportingFIles */ = {
+			isa = PBXGroup;
+			children = (
+				F79927A01D1C11EA00E9BA8C /* Info.plist */,
+				F79927B81D1C13D500E9BA8C /* AppDelegate.h */,
+				F79927B91D1C13D500E9BA8C /* AppDelegate.m */,
+				F79927BA1D1C13D500E9BA8C /* Assets.xcassets */,
+				F79927BB1D1C13D500E9BA8C /* LaunchScreen.storyboard */,
+				F79927BD1D1C13D500E9BA8C /* main.m */,
+			);
+			path = SupportingFIles;
+			sourceTree = "<group>";
+		};
+		F79927C21D1C13FE00E9BA8C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				F747F7831D843748000A0C8D /* UIKit+JSExtension */,
+				F778865D1D20A9D000BE4518 /* Common.pch */,
+				F7F9DB131D2499BA0029235B /* JSNetworkTool.h */,
+				F7F9DB141D2499BA0029235B /* JSNetworkTool.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		F79927C31D1C141000E9BA8C /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				F778863F1D1EC97E00BE4518 /* Controllers */,
+				F77886441D1EC97E00BE4518 /* Models */,
+				F77886451D1EC97E00BE4518 /* Views */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F799278B1D1C11EA00E9BA8C /* Weibo_Object-C */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F79927A31D1C11EA00E9BA8C /* Build configuration list for PBXNativeTarget "Weibo_Object-C" */;
+			buildPhases = (
+				E875500FF96B1D5208AC8B3D /* [CP] Check Pods Manifest.lock */,
+				F79927881D1C11EA00E9BA8C /* Sources */,
+				F79927891D1C11EA00E9BA8C /* Frameworks */,
+				F799278A1D1C11EA00E9BA8C /* Resources */,
+				F730F1EAA255668DC21E8AA9 /* [CP] Embed Pods Frameworks */,
+				663C1673F0AE04A7286C2F29 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Weibo_Object-C";
+			productName = "Weibo_Object-C";
+			productReference = F799278C1D1C11EA00E9BA8C /* Weibo_Object-C.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F79927841D1C11EA00E9BA8C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = JS;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "___ShenYJ___";
+				TargetAttributes = {
+					F799278B1D1C11EA00E9BA8C = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = KS5QTFAS57;
+					};
+				};
+			};
+			buildConfigurationList = F79927871D1C11EA00E9BA8C /* Build configuration list for PBXProject "Weibo_Object-C" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F79927831D1C11EA00E9BA8C;
+			productRefGroup = F799278D1D1C11EA00E9BA8C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F799278B1D1C11EA00E9BA8C /* Weibo_Object-C */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F799278A1D1C11EA00E9BA8C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F79927BF1D1C13D500E9BA8C /* Assets.xcassets in Resources */,
+				F79927C01D1C13D500E9BA8C /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		663C1673F0AE04A7286C2F29 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Weibo_Object-C/Pods-Weibo_Object-C-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E875500FF96B1D5208AC8B3D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F730F1EAA255668DC21E8AA9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Weibo_Object-C/Pods-Weibo_Object-C-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F79927881D1C11EA00E9BA8C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F778864A1D1EC9BC00BE4518 /* JSTabBar.m in Sources */,
+				F7F9DB151D2499BA0029235B /* JSNetworkTool.m in Sources */,
+				F747F7991D843748000A0C8D /* NSString+Emoji.m in Sources */,
+				F77886461D1EC97E00BE4518 /* JSNavigationController.m in Sources */,
+				F79927CC1D1C14D700E9BA8C /* JSDescoveryTableViewController.m in Sources */,
+				F778864D1D1F51EE00BE4518 /* JSVistorTableViewController.m in Sources */,
+				F747F79A1D843748000A0C8D /* NSString+Hash.m in Sources */,
+				F79927CF1D1C14E300E9BA8C /* JSHomeTableViewController.m in Sources */,
+				F747F79E1D843748000A0C8D /* UINavigationController+JSFullScreenPopGesture.m in Sources */,
+				F747F79F1D843748000A0C8D /* UIView+JSFrame.m in Sources */,
+				F747F79B1D843748000A0C8D /* NSString+JSExtension.m in Sources */,
+				F747F7971D843748000A0C8D /* NSArray+JSLog.m in Sources */,
+				F79927C11D1C13D500E9BA8C /* main.m in Sources */,
+				F747F7981D843748000A0C8D /* NSObject+JSObjc.m in Sources */,
+				F77886471D1EC97E00BE4518 /* JSTabBarController.m in Sources */,
+				F79927BE1D1C13D500E9BA8C /* AppDelegate.m in Sources */,
+				F747F79D1D843748000A0C8D /* UIImage+JSExtension.m in Sources */,
+				F79927D51D1C150100E9BA8C /* JSProfileTableViewController.m in Sources */,
+				F77886561D201CBD00BE4518 /* JSVistorView.m in Sources */,
+				F7F9DB121D24979D0029235B /* JSOAthenViewController.m in Sources */,
+				F79927D21D1C14F200E9BA8C /* JSMessageTableViewController.m in Sources */,
+				F747F79C1D843748000A0C8D /* UIColor+JSExtension.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F79927BB1D1C13D500E9BA8C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F79927BC1D1C13D500E9BA8C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F79927A11D1C11EA00E9BA8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F79927A21D1C11EA00E9BA8C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F79927A41D1C11EA00E9BA8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1EE4FF87B8D01357E3CC107 /* Pods-Weibo_Object-C.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				GCC_PREFIX_HEADER = "Weibo_Object-C/Common/Common.pch";
+				INFOPLIST_FILE = "Weibo_Object-C/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "---ShenYJ---.Weibo-Object-C";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		F79927A51D1C11EA00E9BA8C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4447C8443927E8DEA9062D5A /* Pods-Weibo_Object-C.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				GCC_PREFIX_HEADER = "Weibo_Object-C/Common/Common.pch";
+				INFOPLIST_FILE = "Weibo_Object-C/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "---ShenYJ---.Weibo-Object-C";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F79927871D1C11EA00E9BA8C /* Build configuration list for PBXProject "Weibo_Object-C" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F79927A11D1C11EA00E9BA8C /* Debug */,
+				F79927A21D1C11EA00E9BA8C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F79927A31D1C11EA00E9BA8C /* Build configuration list for PBXNativeTarget "Weibo_Object-C" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F79927A41D1C11EA00E9BA8C /* Debug */,
+				F79927A51D1C11EA00E9BA8C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F79927841D1C11EA00E9BA8C /* Project object */;
+}

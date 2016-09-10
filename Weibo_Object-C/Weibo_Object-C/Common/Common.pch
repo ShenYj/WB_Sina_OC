@@ -1,0 +1,38 @@
+//
+//  Common.pch
+//  Weibo_Object-C
+//
+//  Created by ShenYj on 16/6/27.
+//  Copyright © 2016年 ___ShenYJ___. All rights reserved.
+//
+
+
+
+#ifndef Common_pch
+#define Common_pch
+
+
+#ifdef __OBJC__
+
+#ifdef DEBUG
+#define NSLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+#else
+#define NSLog(...)
+#endif
+
+#endif
+
+
+#pragma mark - 头文件
+#import "JSUIkitExtension.h"
+#import "Masonry.h"
+
+
+#pragma mark = 宏定义
+
+#define SCREEN_WIDTH [UIScreen MainScreen].bounds.size.width
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+#define THEME_COLOR [UIColor orangeColor]
+
+#endif /* Common_pch */
+
