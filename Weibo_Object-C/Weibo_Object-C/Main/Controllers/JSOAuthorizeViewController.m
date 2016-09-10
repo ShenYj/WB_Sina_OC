@@ -82,6 +82,7 @@ static NSString * const kRedirect_URI = @"http://www.jianshu.com/users/5ec574743
 #pragma mark - UIWebViewDelegate
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    
     return YES;
 }
 
@@ -91,11 +92,17 @@ static NSString * const kRedirect_URI = @"http://www.jianshu.com/users/5ec574743
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     
+    NSLog(@"%@",webView.request);
+    
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(nullable NSError *)error{
     
-    NSLog(@"%@",error);
+    if (error) {
+        
+        NSLog(@"%@",error);
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
