@@ -100,12 +100,13 @@ static NSString * const kTestPassword = @"qwertyuiop123";
 
 - (void)webViewDidStartLoad:(UIWebView *)webView{
  
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     
-    NSLog(@"%@",webView.request);
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
     
 }
 
