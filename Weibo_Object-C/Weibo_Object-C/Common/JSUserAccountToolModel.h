@@ -15,4 +15,32 @@
  */
 @property (nonatomic,copy) NSString *code;
 
+
+
+
+
+/**
+ *  单例方法
+ *
+ *  @return 单例对象
+ */
++ (instancetype)sharedManager;
+
+/**
+ *  字典转模型实例方法
+ *
+ *  @param dict 需要转换成模型的字典
+ *
+ *  @return 转换后的模型对象
+ */
+- (instancetype)initWithDict:(NSDictionary *)dict;
+/**
+ *  类方法
+ *
+ *  @param dict 需要转换成模型的字典
+ *
+ *  @return 转换后的模型对象
+ */
++ (instancetype)userAccountToolModelWithDict:(NSDictionary *)dict;
+
 @end

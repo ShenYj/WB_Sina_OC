@@ -6,7 +6,6 @@
 //  Copyright © 2016年 ___ShenYJ___. All rights reserved.
 //
 
-
 #pragma mark - 常量
 static NSString * const kAppKey = @"3071143364";
 static NSString * const kAppSecret = @"dc2478f9204b2551d8ff7dba427d576e";
@@ -14,7 +13,9 @@ static NSString * const kRedirect_URI = @"http://www.jianshu.com/users/5ec574743
 static NSString * const kTestAccount = @"18519153799";
 static NSString * const kTestPassword = @"qwertyuiop123";
 
+
 #import "JSOAuthorizeViewController.h"
+#import "JSUserAccountToolModel.h"
 #import <WebKit/WebKit.h>
 
 @interface JSOAuthorizeViewController () <UIWebViewDelegate>
@@ -102,8 +103,8 @@ static NSString * const kTestPassword = @"qwertyuiop123";
         
         NSString *code = [request.URL.absoluteString substringFromIndex:range.location + range.length];
         
-        NSLog(@"%@",code);
-        
+        // 保存Code信息
+        [JSUserAccountToolModel sharedManager].code = code;
     }
     
     return YES;
@@ -138,3 +139,5 @@ static NSString * const kTestPassword = @"qwertyuiop123";
 
 
 @end
+
+
