@@ -95,6 +95,17 @@ static NSString * const kTestPassword = @"qwertyuiop123";
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     
+    
+    if ([request.URL.absoluteString hasPrefix:kRedirect_URI]) {
+        
+        NSRange range = [request.URL.absoluteString rangeOfString:@"code="];
+        
+        NSString *code = [request.URL.absoluteString substringFromIndex:range.location + range.length];
+        
+        NSLog(@"%@",code);
+        
+    }
+    
     return YES;
 }
 

@@ -17,6 +17,7 @@
 		F747F79D1D843748000A0C8D /* UIImage+JSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F747F7921D843748000A0C8D /* UIImage+JSExtension.m */; };
 		F747F79E1D843748000A0C8D /* UINavigationController+JSFullScreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = F747F7941D843748000A0C8D /* UINavigationController+JSFullScreenPopGesture.m */; };
 		F747F79F1D843748000A0C8D /* UIView+JSFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = F747F7961D843748000A0C8D /* UIView+JSFrame.m */; };
+		F74F57381D84F3DA00E3CC61 /* JSUserAccountToolModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F74F57371D84F3DA00E3CC61 /* JSUserAccountToolModel.m */; };
 		F77886461D1EC97E00BE4518 /* JSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F77886411D1EC97E00BE4518 /* JSNavigationController.m */; };
 		F77886471D1EC97E00BE4518 /* JSTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F77886431D1EC97E00BE4518 /* JSTabBarController.m */; };
 		F778864A1D1EC9BC00BE4518 /* JSTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F77886491D1EC9BC00BE4518 /* JSTabBar.m */; };
@@ -57,6 +58,8 @@
 		F747F7941D843748000A0C8D /* UINavigationController+JSFullScreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+JSFullScreenPopGesture.m"; sourceTree = "<group>"; };
 		F747F7951D843748000A0C8D /* UIView+JSFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JSFrame.h"; sourceTree = "<group>"; };
 		F747F7961D843748000A0C8D /* UIView+JSFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JSFrame.m"; sourceTree = "<group>"; };
+		F74F57361D84F3DA00E3CC61 /* JSUserAccountToolModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSUserAccountToolModel.h; sourceTree = "<group>"; };
+		F74F57371D84F3DA00E3CC61 /* JSUserAccountToolModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSUserAccountToolModel.m; sourceTree = "<group>"; };
 		F77886401D1EC97E00BE4518 /* JSNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSNavigationController.h; sourceTree = "<group>"; };
 		F77886411D1EC97E00BE4518 /* JSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSNavigationController.m; sourceTree = "<group>"; };
 		F77886421D1EC97E00BE4518 /* JSTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTabBarController.h; sourceTree = "<group>"; };
@@ -367,6 +370,8 @@
 			children = (
 				F747F7831D843748000A0C8D /* UIKit+JSExtension */,
 				F778865D1D20A9D000BE4518 /* Common.pch */,
+				F74F57361D84F3DA00E3CC61 /* JSUserAccountToolModel.h */,
+				F74F57371D84F3DA00E3CC61 /* JSUserAccountToolModel.m */,
 				F7F9DB131D2499BA0029235B /* JSNetworkTool.h */,
 				F7F9DB141D2499BA0029235B /* JSNetworkTool.m */,
 			);
@@ -505,6 +510,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F74F57381D84F3DA00E3CC61 /* JSUserAccountToolModel.m in Sources */,
 				F778864A1D1EC9BC00BE4518 /* JSTabBar.m in Sources */,
 				F7F9DB151D2499BA0029235B /* JSNetworkTool.m in Sources */,
 				F747F7991D843748000A0C8D /* NSString+Emoji.m in Sources */,
