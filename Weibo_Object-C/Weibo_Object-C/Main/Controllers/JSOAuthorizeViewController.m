@@ -11,7 +11,8 @@
 static NSString * const kAppKey = @"3071143364";
 static NSString * const kAppSecret = @"dc2478f9204b2551d8ff7dba427d576e";
 static NSString * const kRedirect_URI = @"http://www.jianshu.com/users/5ec5747435a2/latest_articles";
-
+static NSString * const kTestAccount = @"18519153799";
+static NSString * const kTestPassword = @"qwertyuiop123";
 
 #import "JSOAuthorizeViewController.h"
 #import <WebKit/WebKit.h>
@@ -52,14 +53,25 @@ static NSString * const kRedirect_URI = @"http://www.jianshu.com/users/5ec574743
 - (void)preapareNavigationBar{
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(clickLeftBarButtonItem:)];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"自动填充" style:UIBarButtonItemStylePlain target:self action:@selector(clickRightBarButtonItem:)];
 }
 
 #pragma mark - target
 
+// 左侧导航栏按钮点击事件(登录)
 - (void)clickLeftBarButtonItem:(UIBarButtonItem *)sender{
     
     [self dismissViewControllerAnimated:YES completion:nil];
     
+}
+
+// 右侧导航栏按钮点击事件(自动填充)
+- (void)clickRightBarButtonItem:(UIBarButtonItem *)sender{
+    
+    NSString *autoFill = [NSString stringWithFormat:@"document.getElementById('userId').value='%@',document.getElementById('passwd').value='%@'",kTestAccount,kTestPassword];
+    
+    [self.webView stringByEvaluatingJavaScriptFromString:autoFill];
 }
 
 
@@ -87,6 +99,7 @@ static NSString * const kRedirect_URI = @"http://www.jianshu.com/users/5ec574743
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView{
+ 
     
 }
 
