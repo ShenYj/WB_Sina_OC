@@ -25,8 +25,6 @@
     
     [self.window makeKeyAndVisible];
     
-    //NSLog(@"%s",__FUNCTION__);
-    
     return YES;
 }
 

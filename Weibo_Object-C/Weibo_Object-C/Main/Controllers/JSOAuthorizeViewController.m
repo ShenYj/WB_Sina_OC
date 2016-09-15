@@ -122,7 +122,7 @@ static NSString * const kTestPassword = @"qwertyuiop123";
     
 }
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(nullable NSError *)error{
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
     
     if (error) {
         
