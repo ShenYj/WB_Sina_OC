@@ -27,7 +27,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeRootViewController:) name:[JSUserAccountTool sharedManager].kChangeRootViewControllerNotification object:nil];
     
     // 设置根控制器
-    self.window.rootViewController = [[JSWelComeViewController alloc] init];
+    [self setupRootViewController];
     
     [self.window makeKeyAndVisible];
     
@@ -48,9 +48,15 @@
 
 - (void)changeRootViewController:(NSNotification *)notification {
     
-    self.window.rootViewController = [[JSWelComeViewController alloc] init];
+    if (notification.object) {
+        
+        self.window.rootViewController = [[JSWelComeViewController alloc] init];
+        
+    } else {
+        
+        self.window.rootViewController = [[JSTabBarController alloc] init];
+    }
     
-    [self.window makeKeyAndVisible];
     
 }
 

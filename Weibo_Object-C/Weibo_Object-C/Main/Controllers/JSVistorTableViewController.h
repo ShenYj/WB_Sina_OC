@@ -12,5 +12,7 @@
 
 // 访客视图View
 @property (nonatomic,strong) JSVistorView *vistorView;
+// 是否登录的标识
+@property (nonatomic,assign,getter=isLogin) BOOL login;
 
 @end

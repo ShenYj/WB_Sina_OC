@@ -19,9 +19,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if ([JSUserAccountTool sharedManager].isLogin) {
+    if (self.isLogin) {
     
-        
+        [self prepareView];
         
     } else {
         
@@ -29,7 +29,12 @@
         
     }
     
+}
+
+
+- (void)prepareView {
     
+    self.view.backgroundColor = [UIColor js_randomColor];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,12 +45,12 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
+
     return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
+
     return 0;
 }
 

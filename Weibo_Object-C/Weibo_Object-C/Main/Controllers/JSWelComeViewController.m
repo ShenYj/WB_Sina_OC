@@ -65,7 +65,7 @@ static CGFloat const kMargin = 10;                         // 用户头像与欢
     [UIView animateWithDuration:1.2 delay:0.3 usingSpringWithDamping:0.7 initialSpringVelocity:0 options:UIViewAnimationOptionLayoutSubviews animations:^{
         
         [self.headIconImageView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(self.view).mas_offset(-SCREEN_HEIGHT * 0.7);
+            make.bottom.mas_equalTo(self.view).mas_offset( -SCREEN_HEIGHT * 0.7);
         }];
         
         self.messageLabel.alpha = 1;
@@ -74,6 +74,8 @@ static CGFloat const kMargin = 10;                         // 用户头像与欢
         
     } completion:^(BOOL finished) {
         
+        // 发布通知: 切换控制器
+        [[NSNotificationCenter defaultCenter] postNotificationName:[JSUserAccountTool sharedManager].kChangeRootViewControllerNotification object:nil userInfo:nil];
         
     }];
     

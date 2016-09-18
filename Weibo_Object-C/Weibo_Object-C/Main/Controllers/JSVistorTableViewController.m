@@ -18,19 +18,9 @@
 
 @implementation JSVistorTableViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    //设置导航按钮
-    [self setNavButton];
-    
-}
-
-
-
 - (void)loadView{
     
-    if ( [JSUserAccountTool sharedManager].isLogin ) {
+    if ( self.isLogin ) {
         // 已登录
         [super loadView];
         
@@ -39,13 +29,21 @@
         __weak typeof(self) weakSelf = self;
         self.vistorView = [[JSVistorView alloc]init];
         [self.vistorView setFinishedBlock:^{
-           
+            
             [weakSelf buttonClick:nil];
             
         }];
         self.view = self.vistorView;
         
     }
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    //设置导航按钮
+    [self setNavButton];
+    
 }
 
 
@@ -66,6 +64,9 @@
     
 }
 
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -84,5 +85,11 @@
 }
 
 
+#pragma mark - lazy
+
+- (BOOL)isLogin {
+    
+    return [JSUserAccountTool sharedManager].isLogin;
+}
 
 @end

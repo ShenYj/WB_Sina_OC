@@ -19,14 +19,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if ([JSUserAccountTool sharedManager].isLogin) {
+    if (self.isLogin) {
         
+        [self prepareView];
         
     } else {
         
         [self.vistorView setupVistorViewInfoWithTitle:@"登录后，最新、最热微博尽在掌握，不再会与实事潮流擦肩而过" withImageName:@"visitordiscover_image_message"];
     }
     
+}
+
+- (void)prepareView {
+    
+    self.view.backgroundColor = [UIColor js_randomColor];
 }
 
 - (void)didReceiveMemoryWarning {
