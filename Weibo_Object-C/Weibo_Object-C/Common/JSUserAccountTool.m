@@ -23,10 +23,19 @@ static JSUserAccountTool *_instanceType = nil;
     
 }
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.userAccountModel = [self getUerAccount];
+    }
+    return self;
+}
+
 - (void)saveUserAccount:(JSUserAccountModel *)userAccountModel {
     
     self.userAccountModel = userAccountModel;
     
+    // 归档
     [NSKeyedArchiver archiveRootObject:userAccountModel toFile:[self getDocumentDirectoryPath]];
 }
 

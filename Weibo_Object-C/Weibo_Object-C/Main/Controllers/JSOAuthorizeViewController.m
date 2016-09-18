@@ -78,25 +78,13 @@ static NSString * const kTestPassword = @"qwertyuiop123";
     
 }
 
-#pragma mark - lazy
 
-- (UIWebView *)webView{
-    
-    if (_webView == nil) {
-        _webView = [[UIWebView alloc] init];
-        _webView.delegate = self;
-        //https://api.weibo.com/oauth2/authorize?client_id=%@&redirect_uri=%@
-        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.weibo.com/oauth2/authorize?client_id=%@&redirect_uri=%@",kAppKey,kRedirect_URI]]];
-        [_webView loadRequest:request];
-    }
-    return _webView;
-}
 
 
 
 #pragma mark - UIWebViewDelegate
-
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    
     
     
     if ([request.URL.absoluteString hasPrefix:kRedirect_URI]) {
@@ -105,6 +93,9 @@ static NSString * const kTestPassword = @"qwertyuiop123";
         
         NSString *code = [request.URL.absoluteString substringFromIndex:range.location + range.length];
         
+        
+        __weak typeof(self) weakSelf = self;
+        // 获取Token
         [[JSNetworkTool sharedNetworkTool] loadAccessTokenWithCode:code withFinishedBlock:^(id obj, NSError *error) {
            
             if (error || obj == nil) {
@@ -112,14 +103,10 @@ static NSString * const kTestPassword = @"qwertyuiop123";
                 return ;
             }
             
-            JSUserAccountModel *model = [JSUserAccountModel ];
-
-            [JSNetworkTool sharedNetworkTool] loadUserAccountInfo:<#(JSUserAccountModel *)#> withFinishedBlock:<#^(id obj, NSError *error)finishedBlock#>
-//            [[JSUserAccountTool sharedManager] setValue:obj[@"access_token"] forKey:@"access_token"];
-//            [[JSUserAccountTool sharedManager] setValue:obj[@"uid"] forKey:@"uid"];
-//            [[JSUserAccountTool sharedManager] setValue:obj[@"expires_in"] forKey:@"expires_in"];
-//            [[JSUserAccountTool sharedManager] setValue:obj[@"remind_in"] forKey:@"remind_in"];
+            // 将用户信息转模型
+            JSUserAccountModel *model = [JSUserAccountModel yy_modelWithDictionary:obj];
             
+            [weakSelf loadUserInfoWithUserAccount:model];
             
         }];
         
@@ -148,6 +135,56 @@ static NSString * const kTestPassword = @"qwertyuiop123";
         NSLog(@"%@",error);
     }
     
+}
+
+
+/**
+ 获取用户信息
+
+ @param userAccount 用户模型
+ */
+- (void)loadUserInfoWithUserAccount:(JSUserAccountModel *)userAccount {
+    
+    // 获取用户信息
+    [[JSNetworkTool sharedNetworkTool] loadUserAccountInfo:userAccount withFinishedBlock:^(id obj, NSError *error) {
+        
+        if (error || obj == nil) {
+            NSLog(@"请求失败:%@",error);
+            return ;
+        }
+        
+        NSLog(@"%@",obj);
+        
+        [userAccount setValue:obj[@"avatar_large"] forKey:@"avatar_large"];
+        [userAccount setValue:obj[@"screen_name"] forKey:@"screen_name"];
+        
+        // 存入UserAccountTool中并本地化存储
+        [[JSUserAccountTool sharedManager] saveUserAccount:userAccount];
+        
+        [self dismissViewControllerAnimated:YES completion:^{
+            
+            // 关闭遮罩
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        }];
+        
+    }];
+    
+
+}
+
+
+#pragma mark - lazy
+
+- (UIWebView *)webView{
+    
+    if (_webView == nil) {
+        _webView = [[UIWebView alloc] init];
+        _webView.delegate = self;
+        //https://api.weibo.com/oauth2/authorize?client_id=%@&redirect_uri=%@
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.weibo.com/oauth2/authorize?client_id=%@&redirect_uri=%@",kAppKey,kRedirect_URI]]];
+        [_webView loadRequest:request];
+    }
+    return _webView;
 }
 
 - (void)didReceiveMemoryWarning {

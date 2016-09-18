@@ -18,6 +18,17 @@ typedef NS_ENUM(NSUInteger, RequestMethod) {
 @interface JSNetworkTool : AFHTTPSessionManager
 
 + (instancetype)sharedNetworkTool;
+
+
+/**
+ 公共方法
+
+ @param requestMethod 请求方法
+ @param parametes     参数
+ @param urlString     URL连接
+ @param success       成功回调
+ @param failure       失败回调
+ */
 - (void)requestWithMethod:(RequestMethod)requestMethod withParameters:(NSDictionary *)parametes withUrlString:(NSString *)urlString withSuccess:(void (^)(id obj))success withError:(void (^)(NSError *error))failure;
 
 

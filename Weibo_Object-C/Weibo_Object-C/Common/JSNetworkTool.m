@@ -15,8 +15,10 @@
     static JSNetworkTool *_instanceType = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
+        
         _instanceType = [[JSNetworkTool alloc]init];
-        _instanceType.responseSerializer.acceptableContentTypes = [_instanceType.responseSerializer.acceptableContentTypes setByAddingObject:@"text/plain"];
+        _instanceType.responseSerializer.acceptableContentTypes = [_instanceType.responseSerializer.acceptableContentTypes setByAddingObjectsFromArray:@[@"text/plain",@"text/html",@"application/json"]];
+        //_instanceType.requestSerializer = [AFJSONRequestSerializer serializer];
     });
     return _instanceType;
 }
