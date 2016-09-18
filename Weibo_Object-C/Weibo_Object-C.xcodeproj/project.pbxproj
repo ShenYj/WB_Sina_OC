@@ -666,7 +666,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Weibo_Object-C/SupportingFIles/Libs",
 				);
-				GCC_PREFIX_HEADER = "Weibo_Object-C/Common/Common.pch";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/Common/Common.pch";
 				INFOPLIST_FILE = "Weibo_Object-C/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -686,7 +686,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Weibo_Object-C/SupportingFIles/Libs",
 				);
-				GCC_PREFIX_HEADER = "Weibo_Object-C/Common/Common.pch";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/Common/Common.pch";
 				INFOPLIST_FILE = "Weibo_Object-C/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

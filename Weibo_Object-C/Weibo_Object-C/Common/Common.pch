@@ -30,6 +30,7 @@
 #import "Masonry.h"
 #import "MBProgressHUD.h"
 #import "YYModel.h"
+#import "YYWebImage.h"
 
 
 #pragma mark = 宏定义

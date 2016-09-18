@@ -26,18 +26,31 @@
     // 监听kChangeRootViewControllerNotification通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeRootViewController:) name:[JSUserAccountTool sharedManager].kChangeRootViewControllerNotification object:nil];
     
-    self.window.rootViewController = [[JSTabBarController alloc]init];
+    // 设置根控制器
+    self.window.rootViewController = [[JSWelComeViewController alloc] init];
     
     [self.window makeKeyAndVisible];
     
     return YES;
 }
 
+- (void)setupRootViewController{
+    
+    if ( [JSUserAccountTool sharedManager].isLogin ) {
+        
+        self.window.rootViewController = [[JSWelComeViewController alloc] init];
+        
+    } else {
+        
+        self.window.rootViewController = [[JSTabBarController alloc]init];
+    }
+}
+
 - (void)changeRootViewController:(NSNotification *)notification {
     
-    
-    
     self.window.rootViewController = [[JSWelComeViewController alloc] init];
+    
+    [self.window makeKeyAndVisible];
     
 }
 
