@@ -62,20 +62,27 @@ static CGFloat const kMargin = 10;                         // 用户头像与欢
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
-    [UIView animateWithDuration:1.2 delay:0.3 usingSpringWithDamping:0.7 initialSpringVelocity:0 options:UIViewAnimationOptionLayoutSubviews animations:^{
+    [UIView animateWithDuration:2 delay:0.8 usingSpringWithDamping:0.7 initialSpringVelocity:0 options:UIViewAnimationOptionLayoutSubviews animations:^{
         
         [self.headIconImageView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.bottom.mas_equalTo(self.view).mas_offset( -SCREEN_HEIGHT * 0.7);
         }];
         
-        self.messageLabel.alpha = 1;
-        
         [self.view layoutIfNeeded];
         
     } completion:^(BOOL finished) {
         
-        // 发布通知: 切换控制器
-        [[NSNotificationCenter defaultCenter] postNotificationName:[JSUserAccountTool sharedManager].kChangeRootViewControllerNotification object:nil userInfo:nil];
+        
+        [UIView animateWithDuration:0.25 animations:^{
+            
+            self.messageLabel.alpha = 1;
+            
+        } completion:^(BOOL finished) {
+            
+            // 发布通知: 切换控制器
+            [[NSNotificationCenter defaultCenter] postNotificationName:[JSUserAccountTool sharedManager].kChangeRootViewControllerNotification object:nil userInfo:nil];
+        }];
+        
         
     }];
     
