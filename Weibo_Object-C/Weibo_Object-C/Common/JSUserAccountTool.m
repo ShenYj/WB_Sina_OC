@@ -44,6 +44,7 @@ static JSUserAccountTool *_instanceType = nil;
 - (JSUserAccountModel *)getUerAccount {
     
     // 解档
+    //JSUserAccountModel *userAccountModel = [NSKeyedUnarchiver unarchiveObjectWithFile:[self getDocumentDirectoryPath]];
     return [NSKeyedUnarchiver unarchiveObjectWithFile:[self getDocumentDirectoryPath]];
 }
 
@@ -61,16 +62,17 @@ static JSUserAccountTool *_instanceType = nil;
 
 - (NSString *)access_token {
     
-    if (_access_token == nil) {
+    if (self.userAccountModel.access_token == nil) {
         
         return nil;
         
     }else {
         
         // 已登录
-        if ( [_userAccountModel.expires_Date compare:[NSDate date]] == NSOrderedDescending ) {
+        if ( [self.userAccountModel.expires_Date compare:[NSDate date]] == NSOrderedDescending ) {
             
-            return _access_token;
+            return self.userAccountModel.access_token;
+            
         }else {
             
             return nil;
@@ -87,7 +89,7 @@ static JSUserAccountTool *_instanceType = nil;
 
 - (BOOL)isLogin {
     
-    return _access_token != nil;
+    return self.access_token != nil;
 }
 
 @end

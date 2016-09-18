@@ -12,22 +12,22 @@
 
 - (void)encodeWithCoder:(NSCoder *)aCoder{
     
-    [aCoder encodeObject:_uid forKey:@"uid"];
-    [aCoder encodeObject:_screen_name forKey:@"screen_name"];
-    [aCoder encodeObject:_avatar_large forKey:@"avatar_large"];
-    [aCoder encodeObject:_expires_Date forKey:@"expires_date"];
-    [aCoder encodeObject:_access_token forKey:@"access_token"];
+    [aCoder encodeObject:self.uid forKey:@"uid"];
+    [aCoder encodeObject:self.screen_name forKey:@"screen_name"];
+    [aCoder encodeObject:self.access_token forKey:@"access_token"];
+    [aCoder encodeObject:self.expires_Date forKey:@"expires_date"];
+    [aCoder encodeObject:self.avatar_large forKey:@"avatar_large"];
     
 }
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder{
     
     self = [super init];
     if (self) {
-        _uid = [aDecoder decodeObjectForKey:@"uid"];
-        _screen_name = [aDecoder decodeObjectForKey:@"uiscreen_named"];
-        _access_token = [aDecoder decodeObjectForKey:@"access_token"];
-        _expires_Date = [aDecoder decodeObjectForKey:@"expires_Date"];
-        _avatar_large = [aDecoder decodeObjectForKey:@"avatar_large"];
+        self.uid = [aDecoder decodeObjectForKey:@"uid"];
+        self.screen_name = [aDecoder decodeObjectForKey:@"uiscreen_named"];
+        self.access_token = [aDecoder decodeObjectForKey:@"access_token"];
+        self.expires_Date = [aDecoder decodeObjectForKey:@"expires_date"];
+        self.avatar_large = [aDecoder decodeObjectForKey:@"avatar_large"];
     }
     return self;
 }
