@@ -73,8 +73,9 @@ static NSString * const kTestPassword = @"qwertyuiop123";
     NSString *autoFill = [NSString stringWithFormat:@"document.getElementById('userId').value='%@',document.getElementById('passwd').value='%@'",kTestAccount,kTestPassword];
     
     [self.webView stringByEvaluatingJavaScriptFromString:autoFill];
+    
+    
 }
-
 
 #pragma mark - lazy
 
@@ -92,6 +93,7 @@ static NSString * const kTestPassword = @"qwertyuiop123";
 }
 
 
+
 #pragma mark - UIWebViewDelegate
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
@@ -105,6 +107,8 @@ static NSString * const kTestPassword = @"qwertyuiop123";
         
         // 保存Code信息
         [JSUserAccountToolModel sharedManager].code = code;
+        
+        return NO;
     }
     
     return YES;
