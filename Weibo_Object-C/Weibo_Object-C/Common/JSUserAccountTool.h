@@ -25,8 +25,6 @@
  用户信息对象
  */
 @property (nonatomic,strong) JSUserAccountModel *userAccountModel;
-
-
 /**
  *  单例方法
  *

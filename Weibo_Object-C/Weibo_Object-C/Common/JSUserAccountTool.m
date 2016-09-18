@@ -26,6 +26,7 @@ static JSUserAccountTool *_instanceType = nil;
 - (instancetype)init {
     self = [super init];
     if (self) {
+        // 实例化的时候就从本地获取数据
         self.userAccountModel = [self getUerAccount];
     }
     return self;
@@ -33,6 +34,7 @@ static JSUserAccountTool *_instanceType = nil;
 
 - (void)saveUserAccount:(JSUserAccountModel *)userAccountModel {
     
+    // 首次启动创建单例对象,在未重启的情况下,单例对象已经存在,当一请求获取到信息的时候,手动给自己的userAccountModel属性进行赋值
     self.userAccountModel = userAccountModel;
     
     // 归档
@@ -41,6 +43,7 @@ static JSUserAccountTool *_instanceType = nil;
 
 - (JSUserAccountModel *)getUerAccount {
     
+    // 解档
     return [NSKeyedUnarchiver unarchiveObjectWithFile:[self getDocumentDirectoryPath]];
 }
 
@@ -53,6 +56,34 @@ static JSUserAccountTool *_instanceType = nil;
     
     NSArray *keys = [JSUserAccountTool js_objProperties];
     return [[self dictionaryWithValuesForKeys:keys] description];
+    
+}
+
+- (NSString *)access_token {
+    
+    if (_access_token == nil) {
+        
+        return nil;
+        
+    }else {
+        
+        // 已登录
+        if ( [_userAccountModel.expires_Date compare:[NSDate date]] == NSOrderedDescending ) {
+            
+            return _access_token;
+        }else {
+            
+            return nil;
+        }
+        
+    }
+    
+}
+
+
+- (BOOL)isLogin {
+    
+    return _access_token != nil;
 }
 
 @end

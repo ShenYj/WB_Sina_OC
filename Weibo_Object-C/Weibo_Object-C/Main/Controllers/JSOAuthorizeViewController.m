@@ -13,7 +13,6 @@ static NSString * const kRedirect_URI = @"http://www.jianshu.com/users/5ec574743
 static NSString * const kTestAccount = @"18519153799";
 static NSString * const kTestPassword = @"qwertyuiop123";
 
-
 #import "JSOAuthorizeViewController.h"
 #import "JSUserAccountTool.h"
 #import <WebKit/WebKit.h>
@@ -188,11 +187,8 @@ static NSString * const kTestPassword = @"qwertyuiop123";
 //}
 
 
-/**
- 获取用户信息
 
- @param userAccount 用户模型
- */
+#pragma mark - 获取用户信息
 - (void)loadUserInfoWithUserAccount:(JSUserAccountModel *)userAccount {
     
     // 获取用户信息
@@ -202,8 +198,6 @@ static NSString * const kTestPassword = @"qwertyuiop123";
             NSLog(@"请求失败:%@",error);
             return ;
         }
-        
-        NSLog(@"%@",obj);
         
         [userAccount setValue:obj[@"avatar_large"] forKey:@"avatar_large"];
         [userAccount setValue:obj[@"screen_name"] forKey:@"screen_name"];
