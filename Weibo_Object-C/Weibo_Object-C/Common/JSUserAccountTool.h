@@ -25,6 +25,9 @@
  用户信息对象
  */
 @property (nonatomic,strong) JSUserAccountModel *userAccountModel;
+
+
+@property (nonatomic,strong) NSString *kChangeRootViewControllerNotification;
 /**
  *  单例方法
  *

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E6D542BB8EA798826F2569E1 /* libPods-Weibo_Object-C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA89379BD5C259B8114A7F9F /* libPods-Weibo_Object-C.a */; };
 		F7079FA41D8E5FC60018FDA4 /* JSUserAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7079FA31D8E5FC60018FDA4 /* JSUserAccountModel.m */; };
+		F7079FA71D8ECE260018FDA4 /* JSWelComeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7079FA61D8ECE260018FDA4 /* JSWelComeViewController.m */; };
 		F747F7971D843748000A0C8D /* NSArray+JSLog.m in Sources */ = {isa = PBXBuildFile; fileRef = F747F7861D843748000A0C8D /* NSArray+JSLog.m */; };
 		F747F7981D843748000A0C8D /* NSObject+JSObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = F747F7881D843748000A0C8D /* NSObject+JSObjc.m */; };
 		F747F7991D843748000A0C8D /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = F747F78A1D843748000A0C8D /* NSString+Emoji.m */; };
@@ -42,6 +43,8 @@
 		E1EE4FF87B8D01357E3CC107 /* Pods-Weibo_Object-C.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weibo_Object-C.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weibo_Object-C/Pods-Weibo_Object-C.debug.xcconfig"; sourceTree = "<group>"; };
 		F7079FA21D8E5FC60018FDA4 /* JSUserAccountModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSUserAccountModel.h; sourceTree = "<group>"; };
 		F7079FA31D8E5FC60018FDA4 /* JSUserAccountModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSUserAccountModel.m; sourceTree = "<group>"; };
+		F7079FA51D8ECE260018FDA4 /* JSWelComeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSWelComeViewController.h; sourceTree = "<group>"; };
+		F7079FA61D8ECE260018FDA4 /* JSWelComeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSWelComeViewController.m; sourceTree = "<group>"; };
 		F747F7841D843748000A0C8D /* JSUIkitExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSUIkitExtension.h; sourceTree = "<group>"; };
 		F747F7851D843748000A0C8D /* NSArray+JSLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+JSLog.h"; sourceTree = "<group>"; };
 		F747F7861D843748000A0C8D /* NSArray+JSLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+JSLog.m"; sourceTree = "<group>"; };
@@ -168,6 +171,8 @@
 				F77886431D1EC97E00BE4518 /* JSTabBarController.m */,
 				F778864B1D1F51EE00BE4518 /* JSVistorTableViewController.h */,
 				F778864C1D1F51EE00BE4518 /* JSVistorTableViewController.m */,
+				F7079FA51D8ECE260018FDA4 /* JSWelComeViewController.h */,
+				F7079FA61D8ECE260018FDA4 /* JSWelComeViewController.m */,
 				F7F9DB101D24979D0029235B /* JSOAuthorizeViewController.h */,
 				F7F9DB111D24979D0029235B /* JSOAuthorizeViewController.m */,
 			);
@@ -541,6 +546,7 @@
 				F747F7971D843748000A0C8D /* NSArray+JSLog.m in Sources */,
 				F79927C11D1C13D500E9BA8C /* main.m in Sources */,
 				F747F7981D843748000A0C8D /* NSObject+JSObjc.m in Sources */,
+				F7079FA71D8ECE260018FDA4 /* JSWelComeViewController.m in Sources */,
 				F77886471D1EC97E00BE4518 /* JSTabBarController.m in Sources */,
 				F79927BE1D1C13D500E9BA8C /* AppDelegate.m in Sources */,
 				F747F79D1D843748000A0C8D /* UIImage+JSExtension.m in Sources */,

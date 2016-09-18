@@ -10,9 +10,6 @@
 @class JSVistorView;
 @interface JSVistorTableViewController : UITableViewController
 
-// 是否登录的判断标识
-@property (nonatomic,assign) BOOL isLogin;
-
 // 访客视图View
 @property (nonatomic,strong) JSVistorView *vistorView;
 

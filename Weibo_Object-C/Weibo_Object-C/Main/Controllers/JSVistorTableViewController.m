@@ -10,6 +10,7 @@
 #import "JSVistorView.h"
 #import "JSNavigationController.h"
 #import "JSOAuthorizeViewController.h"
+#import "JSUserAccountTool.h"
 
 @interface JSVistorTableViewController ()
 
@@ -29,7 +30,7 @@
 
 - (void)loadView{
     
-    if (self.isLogin) {
+    if ( [JSUserAccountTool sharedManager].isLogin ) {
         // 已登录
         [super loadView];
         

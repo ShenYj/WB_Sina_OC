@@ -209,6 +209,9 @@ static NSString * const kTestPassword = @"qwertyuiop123";
             
             // 关闭遮罩
             [MBProgressHUD hideHUDForView:self.view animated:YES];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:[JSUserAccountTool sharedManager].kChangeRootViewControllerNotification object:@"OAuth" userInfo:nil];
+            
         }];
         
     }];

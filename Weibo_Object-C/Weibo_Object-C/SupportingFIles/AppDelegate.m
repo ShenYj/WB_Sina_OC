@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "JSTabBarController.h"
+#import "JSWelComeViewController.h"
+#import "JSUserAccountTool.h"
 
 @interface AppDelegate ()
 
@@ -20,12 +22,28 @@
     // Override point for customization after application launch.
     
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+
+    // 监听kChangeRootViewControllerNotification通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeRootViewController:) name:[JSUserAccountTool sharedManager].kChangeRootViewControllerNotification object:nil];
     
     self.window.rootViewController = [[JSTabBarController alloc]init];
     
     [self.window makeKeyAndVisible];
     
     return YES;
+}
+
+- (void)changeRootViewController:(NSNotification *)notification {
+    
+    
+    
+    self.window.rootViewController = [[JSWelComeViewController alloc] init];
+    
+}
+
+- (void)dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

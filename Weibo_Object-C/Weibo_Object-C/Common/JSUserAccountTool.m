@@ -80,6 +80,10 @@ static JSUserAccountTool *_instanceType = nil;
     
 }
 
+- (NSString *)kChangeRootViewControllerNotification {
+    
+    return @"changeRootViewControllerNotification";
+}
 
 - (BOOL)isLogin {
     

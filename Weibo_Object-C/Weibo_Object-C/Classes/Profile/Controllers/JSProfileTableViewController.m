@@ -8,6 +8,7 @@
 
 #import "JSProfileTableViewController.h"
 #import "JSVistorView.h"
+#import "JSUserAccountTool.h"
 
 @interface JSProfileTableViewController ()
 
@@ -18,8 +19,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (!self.isLogin) {
+    if ([JSUserAccountTool sharedManager].isLogin) {
+    
+        
+        
+    } else {
+        
         [self.vistorView setupVistorViewInfoWithTitle:@"登录后，你的微博、相册、个人资料会显示在这里，展示给别人" withImageName:@"visitordiscover_image_profile"];
+        
     }
     
     

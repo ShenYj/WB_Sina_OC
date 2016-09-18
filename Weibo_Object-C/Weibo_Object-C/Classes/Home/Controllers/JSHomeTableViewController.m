@@ -8,6 +8,8 @@
 
 #import "JSHomeTableViewController.h"
 #import "JSVistorView.h"
+#import "JSUserAccountTool.h"
+
 
 @interface JSHomeTableViewController ()
 
@@ -18,7 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (!self.isLogin) {
+    if ([JSUserAccountTool sharedManager].isLogin) {
+        
+    } else {
         
         [self.vistorView setupVistorViewInfoWithTitle:nil withImageName:nil];
     }
