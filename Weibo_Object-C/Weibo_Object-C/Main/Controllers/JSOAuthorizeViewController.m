@@ -19,36 +19,27 @@ static NSString * const kTestPassword = @"qwertyuiop123";
 #import <WebKit/WebKit.h>
 #import "JSNetworkTool.h"
 
-@interface JSOAuthorizeViewController () <UIWebViewDelegate>
+@interface JSOAuthorizeViewController () <WKNavigationDelegate>
 
-@property (nonatomic,strong) UIWebView *webView;
+@property (nonatomic,strong) WKWebView *webView;
 
 @end
 
 @implementation JSOAuthorizeViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    [self preapareNavigationBar];
-    
-    [self getCode];
-    
-}
-
-- (void)loadView{
+- (void)loadView {
     
     self.view = self.webView;
 }
 
-#pragma mark - 获取Code码
-- (void)getCode{
+- (void)viewDidLoad {
+    [super viewDidLoad];
     
-//    https://api.weibo.com/oauth2/authorize?client_id=\(APPKEY)&redirect_uri=\(REDIRECT_URI)
-//    NSURLRequest *request = [NSURLRequest requestWithURL:(nonnull NSURL *)]
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    [self preapareNavigationBar];
     
 }
-
 
 #pragma mark - navigationBar
 
@@ -73,69 +64,128 @@ static NSString * const kTestPassword = @"qwertyuiop123";
     
     NSString *autoFill = [NSString stringWithFormat:@"document.getElementById('userId').value='%@',document.getElementById('passwd').value='%@'",kTestAccount,kTestPassword];
     
-    [self.webView stringByEvaluatingJavaScriptFromString:autoFill];
-    
+    //[self.webView stringByEvaluatingJavaScriptFromString:autoFill];
+    [self.webView evaluateJavaScript:autoFill completionHandler:^(id _Nullable obj, NSError * _Nullable error) {
+        
+    }];
     
 }
 
-
-
-
-
-#pragma mark - UIWebViewDelegate
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+#pragma mark - WKNavigationDelegate
+// 在发送请求之前，决定是否跳转
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler{
     
-    
-    
-    if ([request.URL.absoluteString hasPrefix:kRedirect_URI]) {
-        
-        NSRange range = [request.URL.absoluteString rangeOfString:@"code="];
-        
-        NSString *code = [request.URL.absoluteString substringFromIndex:range.location + range.length];
-        
-        
+    if ([navigationAction.request.URL.absoluteString hasPrefix:kRedirect_URI]) {
+
+        NSRange range = [navigationAction.request.URL.absoluteString rangeOfString:@"code="];
+
+        NSString *code = [navigationAction.request.URL.absoluteString substringFromIndex:range.location + range.length];
+
+
         __weak typeof(self) weakSelf = self;
         // 获取Token
         [[JSNetworkTool sharedNetworkTool] loadAccessTokenWithCode:code withFinishedBlock:^(id obj, NSError *error) {
-           
+
             if (error || obj == nil) {
                 NSLog(@"请求失败:%@",error);
                 return ;
             }
-            
+
             // 将用户信息转模型
             JSUserAccountModel *model = [JSUserAccountModel yy_modelWithDictionary:obj];
-            
+
             [weakSelf loadUserInfoWithUserAccount:model];
-            
+
         }];
         
-        return NO;
+        decisionHandler(WKNavigationActionPolicyCancel);
     }
+
+    decisionHandler(WKNavigationActionPolicyAllow);
     
-    return YES;
 }
 
-- (void)webViewDidStartLoad:(UIWebView *)webView{
+// 页面开始加载时调用
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation{
  
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+}
+
+// 当内容开始返回时调用
+- (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation{
     
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView{
+// 页面加载完成之后调用
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
-    
 }
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+// 页面加载失败时调用
+- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(nonnull NSError *)error{
     
     if (error) {
-        
-        NSLog(@"%@",error);
+        NSLog(@"请求失败:%@",error);
     }
     
 }
+
+
+#pragma mark - UIWebViewDelegate
+//- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+//    
+//    
+//    
+//    if ([request.URL.absoluteString hasPrefix:kRedirect_URI]) {
+//        
+//        NSRange range = [request.URL.absoluteString rangeOfString:@"code="];
+//        
+//        NSString *code = [request.URL.absoluteString substringFromIndex:range.location + range.length];
+//        
+//        
+//        __weak typeof(self) weakSelf = self;
+//        // 获取Token
+//        [[JSNetworkTool sharedNetworkTool] loadAccessTokenWithCode:code withFinishedBlock:^(id obj, NSError *error) {
+//           
+//            if (error || obj == nil) {
+//                NSLog(@"请求失败:%@",error);
+//                return ;
+//            }
+//            
+//            // 将用户信息转模型
+//            JSUserAccountModel *model = [JSUserAccountModel yy_modelWithDictionary:obj];
+//            
+//            [weakSelf loadUserInfoWithUserAccount:model];
+//            
+//        }];
+//        
+//        return NO;
+//    }
+//    
+//    return YES;
+//}
+//
+//- (void)webViewDidStartLoad:(UIWebView *)webView{
+// 
+//    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//    
+//}
+//
+//- (void)webViewDidFinishLoad:(UIWebView *)webView{
+//    
+//    [MBProgressHUD hideHUDForView:self.view animated:YES];
+//    
+//}
+//
+//- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+//    
+//    if (error) {
+//        
+//        NSLog(@"%@",error);
+//    }
+//    
+//}
 
 
 /**
@@ -175,11 +225,12 @@ static NSString * const kTestPassword = @"qwertyuiop123";
 
 #pragma mark - lazy
 
-- (UIWebView *)webView{
+- (WKWebView *)webView{
     
     if (_webView == nil) {
-        _webView = [[UIWebView alloc] init];
-        _webView.delegate = self;
+        _webView = [[WKWebView alloc] init];
+        _webView.navigationDelegate = self;
+        //_webView.delegate = self;
         //https://api.weibo.com/oauth2/authorize?client_id=%@&redirect_uri=%@
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.weibo.com/oauth2/authorize?client_id=%@&redirect_uri=%@",kAppKey,kRedirect_URI]]];
         [_webView loadRequest:request];
