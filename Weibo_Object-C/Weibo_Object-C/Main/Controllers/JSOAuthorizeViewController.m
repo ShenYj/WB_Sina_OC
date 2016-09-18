@@ -15,7 +15,7 @@ static NSString * const kTestPassword = @"qwertyuiop123";
 
 
 #import "JSOAuthorizeViewController.h"
-#import "JSUserAccountToolModel.h"
+#import "JSUserAccountTool.h"
 #import <WebKit/WebKit.h>
 #import "JSNetworkTool.h"
 
@@ -87,7 +87,6 @@ static NSString * const kTestPassword = @"qwertyuiop123";
         _webView.delegate = self;
         //https://api.weibo.com/oauth2/authorize?client_id=%@&redirect_uri=%@
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.weibo.com/oauth2/authorize?client_id=%@&redirect_uri=%@",kAppKey,kRedirect_URI]]];
-        
         [_webView loadRequest:request];
     }
     return _webView;
@@ -106,9 +105,6 @@ static NSString * const kTestPassword = @"qwertyuiop123";
         
         NSString *code = [request.URL.absoluteString substringFromIndex:range.location + range.length];
         
-        // 保存Code信息
-        //[JSUserAccountToolModel sharedManager].code = code;
-        
         [[JSNetworkTool sharedNetworkTool] loadAccessTokenWithCode:code withFinishedBlock:^(id obj, NSError *error) {
            
             if (error || obj == nil) {
@@ -116,7 +112,14 @@ static NSString * const kTestPassword = @"qwertyuiop123";
                 return ;
             }
             
-            NSLog(@"%@",[obj class]);
+            JSUserAccountModel *model = [JSUserAccountModel ];
+
+            [JSNetworkTool sharedNetworkTool] loadUserAccountInfo:<#(JSUserAccountModel *)#> withFinishedBlock:<#^(id obj, NSError *error)finishedBlock#>
+//            [[JSUserAccountTool sharedManager] setValue:obj[@"access_token"] forKey:@"access_token"];
+//            [[JSUserAccountTool sharedManager] setValue:obj[@"uid"] forKey:@"uid"];
+//            [[JSUserAccountTool sharedManager] setValue:obj[@"expires_in"] forKey:@"expires_in"];
+//            [[JSUserAccountTool sharedManager] setValue:obj[@"remind_in"] forKey:@"remind_in"];
+            
             
         }];
         

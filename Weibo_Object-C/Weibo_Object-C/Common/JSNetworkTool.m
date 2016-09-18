@@ -79,8 +79,23 @@
 }
 
 
-
-
+#pragma mark - Load User Info
+- (void)loadUserAccountInfo:(JSUserAccountModel *)userAccountModel withFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock {
+    
+    NSDictionary *para = @{
+                           @"access_token":userAccountModel.access_token,
+                           @"uid":userAccountModel.uid
+                           };
+    
+    NSString *urlString = @"https://api.weibo.com/2/users/show.json";
+    
+    [self requestWithMethod:RequestMethodGet withParameters:para withUrlString:urlString withSuccess:^(id obj) {
+        finishedBlock(obj,nil);
+    } withError:^(NSError *error) {
+        finishedBlock(nil,error);
+    }];
+    
+}
 
 
 @end

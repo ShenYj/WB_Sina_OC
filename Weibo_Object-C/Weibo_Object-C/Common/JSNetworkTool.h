@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AFHTTPSessionManager.h"
+#import "JSUserAccountModel.h"
 
 typedef NS_ENUM(NSUInteger, RequestMethod) {
     RequestMethodGet,
@@ -27,4 +28,13 @@ typedef NS_ENUM(NSUInteger, RequestMethod) {
  @param finishedBlock 完成回调
  */
 - (void)loadAccessTokenWithCode:(NSString *)code withFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock;
+
+
+/**
+ 获取用户信息
+
+ @param userAccountModel 用户信息对象
+ */
+- (void)loadUserAccountInfo:(JSUserAccountModel *)userAccountModel withFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock;
+
 @end

@@ -8,6 +8,7 @@ pod 'Masonry'
 pod 'FMDB'
 pod 'MJRefresh'
 pod 'MBProgressHUD'
+pod 'YYModel'
 pod 'Reveal-iOS-SDK', :configurations => ['Debug']
 
 
