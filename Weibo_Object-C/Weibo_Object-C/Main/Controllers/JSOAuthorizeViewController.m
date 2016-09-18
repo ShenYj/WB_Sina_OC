@@ -17,6 +17,7 @@ static NSString * const kTestPassword = @"qwertyuiop123";
 #import "JSOAuthorizeViewController.h"
 #import "JSUserAccountToolModel.h"
 #import <WebKit/WebKit.h>
+#import "JSNetworkTool.h"
 
 @interface JSOAuthorizeViewController () <UIWebViewDelegate>
 
@@ -106,7 +107,18 @@ static NSString * const kTestPassword = @"qwertyuiop123";
         NSString *code = [request.URL.absoluteString substringFromIndex:range.location + range.length];
         
         // 保存Code信息
-        [JSUserAccountToolModel sharedManager].code = code;
+        //[JSUserAccountToolModel sharedManager].code = code;
+        
+        [[JSNetworkTool sharedNetworkTool] loadAccessTokenWithCode:code withFinishedBlock:^(id obj, NSError *error) {
+           
+            if (error || obj == nil) {
+                NSLog(@"请求失败:%@",error);
+                return ;
+            }
+            
+            NSLog(@"%@",[obj class]);
+            
+        }];
         
         return NO;
     }

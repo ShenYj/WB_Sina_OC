@@ -16,13 +16,16 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _instanceType = [[JSNetworkTool alloc]init];
+        _instanceType.responseSerializer.acceptableContentTypes = [_instanceType.responseSerializer.acceptableContentTypes setByAddingObject:@"text/plain"];
     });
     return _instanceType;
 }
 
-- (void)requestWithMethod:(NSString *)requestMethod withParameters:(NSDictionary *)parametes withUrlString:(NSString *)urlString withSuccess:(void (^)(id obj))success withError:(void (^)(NSError *error))failure{
+#pragma mark - Public
+
+- (void)requestWithMethod:(RequestMethod)requestMethod withParameters:(NSDictionary *)parametes withUrlString:(NSString *)urlString withSuccess:(void (^)(id obj))success withError:(void (^)(NSError *error))failure{
     
-    if ([requestMethod isEqualToString:@"GET"]) {
+    if (requestMethod == RequestMethodGet) {
         
         [[JSNetworkTool sharedNetworkTool] GET:urlString parameters:parametes progress:^(NSProgress * _Nonnull downloadProgress) {
             
@@ -55,8 +58,25 @@
 
 
 
-
-
+#pragma mark - Load access_token
+- (void)loadAccessTokenWithCode:(NSString *)code withFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock {
+    
+    NSDictionary *para = @{
+                           @"client_id":@"3071143364",
+                           @"client_secret":@"dc2478f9204b2551d8ff7dba427d576e",
+                           @"grant_type":@"authorization_code",
+                           @"code":code,
+                           @"redirect_uri":@"http://www.jianshu.com/users/5ec5747435a2/latest_articles"
+                           };
+    
+    NSString *urlString = @"https://api.weibo.com/oauth2/access_token";
+    
+    [self requestWithMethod:RequestMethodPost withParameters:para withUrlString:urlString withSuccess:^(id obj) {
+        finishedBlock(obj,nil);
+    } withError:^(NSError *error) {
+        finishedBlock(nil,error);
+    }];
+}
 
 
 
