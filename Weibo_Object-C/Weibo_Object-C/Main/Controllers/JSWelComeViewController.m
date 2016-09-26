@@ -11,8 +11,9 @@
 
 
 static CGFloat const kHeadIconImageViewBottomMargin = 100; // 用户头像距离底边的距离
-static CGFloat const kHeadIconImageViewSize = 90;          // 用户头像尺寸
+static CGFloat const kHeadIconImageViewSize = 100;         // 用户头像尺寸
 static CGFloat const kMargin = 10;                         // 用户头像与欢迎信息间距
+
 
 @interface JSWelComeViewController ()
 
@@ -70,6 +71,7 @@ static CGFloat const kMargin = 10;                         // 用户头像与欢
         
         [self.view layoutIfNeeded];
         
+        
     } completion:^(BOOL finished) {
         
         
@@ -102,7 +104,29 @@ static CGFloat const kMargin = 10;                         // 用户头像与欢
     
     if (_headIconImageView == nil) {
         _headIconImageView = [[UIImageView alloc] init];
-        [_headIconImageView yy_setImageWithURL:[NSURL URLWithString:[JSUserAccountTool sharedManager].userAccountModel.avatar_large] options:YYWebImageOptionShowNetworkActivity];
+        //[_headIconImageView yy_setImageWithURL:[NSURL URLWithString:[JSUserAccountTool sharedManager].userAccountModel.avatar_large] options:YYWebImageOptionShowNetworkActivity];
+        
+        // 设置圆角
+        [_headIconImageView yy_setImageWithURL:[NSURL URLWithString:[JSUserAccountTool sharedManager].userAccountModel.avatar_large]
+         
+            placeholder:nil
+            options:YYWebImageOptionSetImageWithFadeAnimation
+            progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                
+                NSLog(@"%f", (float)receivedSize / expectedSize);
+            
+        } transform:^UIImage * _Nullable(UIImage * _Nonnull image, NSURL * _Nonnull url) {
+            
+            image = [image yy_imageByResizeToSize:CGSizeMake(100, 100) contentMode:UIViewContentModeCenter];
+            return [image yy_imageByRoundCornerRadius:50];
+            
+        } completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
+            
+            if (from == YYWebImageFromDiskCache) {
+                NSLog(@"load from disk cache");
+            }
+        }];
+        
     }
     return _headIconImageView;
 }
