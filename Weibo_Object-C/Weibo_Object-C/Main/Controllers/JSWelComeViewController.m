@@ -81,8 +81,13 @@ static CGFloat const kMargin = 10;                         // 用户头像与欢
             
         } completion:^(BOOL finished) {
             
-            // 发布通知: 切换控制器
-            [[NSNotificationCenter defaultCenter] postNotificationName:[JSUserAccountTool sharedManager].kChangeRootViewControllerNotification object:nil userInfo:nil];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                
+                
+                // 发布通知: 切换控制器
+                [[NSNotificationCenter defaultCenter] postNotificationName:[JSUserAccountTool sharedManager].kChangeRootViewControllerNotification object:nil userInfo:nil];
+            });
+            
         }];
         
         
