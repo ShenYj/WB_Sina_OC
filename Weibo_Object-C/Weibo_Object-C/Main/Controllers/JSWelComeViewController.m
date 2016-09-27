@@ -106,26 +106,52 @@ static CGFloat const kMargin = 10;                         // 用户头像与欢
         _headIconImageView = [[UIImageView alloc] init];
         //[_headIconImageView yy_setImageWithURL:[NSURL URLWithString:[JSUserAccountTool sharedManager].userAccountModel.avatar_large] options:YYWebImageOptionShowNetworkActivity];
         
-        // 设置圆角
-        [_headIconImageView yy_setImageWithURL:[NSURL URLWithString:[JSUserAccountTool sharedManager].userAccountModel.avatar_large]
-         
-            placeholder:nil
-            options:YYWebImageOptionSetImageWithFadeAnimation
-            progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-                
-                NSLog(@"%f", (float)receivedSize / expectedSize);
+        
+        
+        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[JSUserAccountTool sharedManager].userAccountModel.avatar_large]];
+        [[UIImage imageWithData:imageData] js_cornerImageWithSize:CGSizeMake(100, 100) fillClolor:[UIColor whiteColor] completion:^(UIImage *img) {
             
-        } transform:^UIImage * _Nullable(UIImage * _Nonnull image, NSURL * _Nonnull url) {
             
-            image = [image yy_imageByResizeToSize:CGSizeMake(100, 100) contentMode:UIViewContentModeCenter];
-            return [image yy_imageByRoundCornerRadius:50];
             
-        } completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
-            
-            if (from == YYWebImageFromDiskCache) {
-                NSLog(@"load from disk cache");
-            }
         }];
+        
+        
+        [_headIconImageView yy_setImageWithURL:[NSURL URLWithString:[JSUserAccountTool sharedManager].userAccountModel.avatar_large]
+                          placeholder:nil
+                              options:YYWebImageOptionSetImageWithFadeAnimation
+                             progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                 NSLog(@"加载进度:%f", (float)receivedSize / expectedSize);
+                             }
+                            transform:^UIImage *(UIImage *image, NSURL *url) {
+                                image = [image yy_imageByResizeToSize:CGSizeMake(100, 100) contentMode:UIViewContentModeCenter];
+                                return [image yy_imageByRoundCornerRadius:10];
+                            }
+                           completion:^(UIImage *image, NSURL *url, YYWebImageFromType from, YYWebImageStage stage, NSError *error) {
+                               if (from == YYWebImageFromDiskCache) {
+                                   NSLog(@"load from disk cache");
+                               }
+                           }];
+        
+        // 设置圆角
+//        [_headIconImageView yy_setImageWithURL:[NSURL URLWithString:[JSUserAccountTool sharedManager].userAccountModel.avatar_large]
+//         
+//            placeholder:nil
+//            options:YYWebImageOptionSetImageWithFadeAnimation
+//            progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+//                
+//                NSLog(@"%f", (float)receivedSize / expectedSize);
+//            
+//        } transform:^UIImage * _Nullable(UIImage * _Nonnull image, NSURL * _Nonnull url) {
+//            
+//            image = [image yy_imageByResizeToSize:CGSizeMake(100, 100) contentMode:UIViewContentModeCenter];
+//            return [image yy_imageByRoundCornerRadius:50];
+//            
+//        } completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
+//            
+//            if (from == YYWebImageFromDiskCache) {
+//                NSLog(@"load from disk cache");
+//            }
+//        }];
         
     }
     return _headIconImageView;

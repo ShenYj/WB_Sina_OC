@@ -10,6 +10,10 @@
 		E6D542BB8EA798826F2569E1 /* libPods-Weibo_Object-C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA89379BD5C259B8114A7F9F /* libPods-Weibo_Object-C.a */; };
 		F7079FA41D8E5FC60018FDA4 /* JSUserAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7079FA31D8E5FC60018FDA4 /* JSUserAccountModel.m */; };
 		F7079FA71D8ECE260018FDA4 /* JSWelComeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7079FA61D8ECE260018FDA4 /* JSWelComeViewController.m */; };
+		F731D1E51D9AACD9001C7B72 /* JSDownLoadImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F731D1DE1D9AACD9001C7B72 /* JSDownLoadImageOperation.m */; };
+		F731D1E61D9AACD9001C7B72 /* JSDownLoadOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F731D1E01D9AACD9001C7B72 /* JSDownLoadOperationManager.m */; };
+		F731D1E71D9AACD9001C7B72 /* NSString+JSAppendPath.m in Sources */ = {isa = PBXBuildFile; fileRef = F731D1E21D9AACD9001C7B72 /* NSString+JSAppendPath.m */; };
+		F731D1E81D9AACD9001C7B72 /* UIImageView+JSWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F731D1E41D9AACD9001C7B72 /* UIImageView+JSWebCache.m */; };
 		F747F7971D843748000A0C8D /* NSArray+JSLog.m in Sources */ = {isa = PBXBuildFile; fileRef = F747F7861D843748000A0C8D /* NSArray+JSLog.m */; };
 		F747F7981D843748000A0C8D /* NSObject+JSObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = F747F7881D843748000A0C8D /* NSObject+JSObjc.m */; };
 		F747F7991D843748000A0C8D /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = F747F78A1D843748000A0C8D /* NSString+Emoji.m */; };
@@ -45,6 +49,14 @@
 		F7079FA31D8E5FC60018FDA4 /* JSUserAccountModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSUserAccountModel.m; sourceTree = "<group>"; };
 		F7079FA51D8ECE260018FDA4 /* JSWelComeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSWelComeViewController.h; sourceTree = "<group>"; };
 		F7079FA61D8ECE260018FDA4 /* JSWelComeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSWelComeViewController.m; sourceTree = "<group>"; };
+		F731D1DD1D9AACD9001C7B72 /* JSDownLoadImageOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDownLoadImageOperation.h; sourceTree = "<group>"; };
+		F731D1DE1D9AACD9001C7B72 /* JSDownLoadImageOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDownLoadImageOperation.m; sourceTree = "<group>"; };
+		F731D1DF1D9AACD9001C7B72 /* JSDownLoadOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDownLoadOperationManager.h; sourceTree = "<group>"; };
+		F731D1E01D9AACD9001C7B72 /* JSDownLoadOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDownLoadOperationManager.m; sourceTree = "<group>"; };
+		F731D1E11D9AACD9001C7B72 /* NSString+JSAppendPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JSAppendPath.h"; sourceTree = "<group>"; };
+		F731D1E21D9AACD9001C7B72 /* NSString+JSAppendPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JSAppendPath.m"; sourceTree = "<group>"; };
+		F731D1E31D9AACD9001C7B72 /* UIImageView+JSWebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+JSWebCache.h"; sourceTree = "<group>"; };
+		F731D1E41D9AACD9001C7B72 /* UIImageView+JSWebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+JSWebCache.m"; sourceTree = "<group>"; };
 		F747F7841D843748000A0C8D /* JSUIkitExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSUIkitExtension.h; sourceTree = "<group>"; };
 		F747F7851D843748000A0C8D /* NSArray+JSLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+JSLog.h"; sourceTree = "<group>"; };
 		F747F7861D843748000A0C8D /* NSArray+JSLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+JSLog.m"; sourceTree = "<group>"; };
@@ -126,6 +138,21 @@
 				4447C8443927E8DEA9062D5A /* Pods-Weibo_Object-C.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		F731D1DC1D9AACD9001C7B72 /* JSOperation */ = {
+			isa = PBXGroup;
+			children = (
+				F731D1DD1D9AACD9001C7B72 /* JSDownLoadImageOperation.h */,
+				F731D1DE1D9AACD9001C7B72 /* JSDownLoadImageOperation.m */,
+				F731D1DF1D9AACD9001C7B72 /* JSDownLoadOperationManager.h */,
+				F731D1E01D9AACD9001C7B72 /* JSDownLoadOperationManager.m */,
+				F731D1E11D9AACD9001C7B72 /* NSString+JSAppendPath.h */,
+				F731D1E21D9AACD9001C7B72 /* NSString+JSAppendPath.m */,
+				F731D1E31D9AACD9001C7B72 /* UIImageView+JSWebCache.h */,
+				F731D1E41D9AACD9001C7B72 /* UIImageView+JSWebCache.m */,
+			);
+			path = JSOperation;
 			sourceTree = "<group>";
 		};
 		F747F7831D843748000A0C8D /* UIKit+JSExtension */ = {
@@ -388,6 +415,7 @@
 		F79927C21D1C13FE00E9BA8C /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				F731D1DC1D9AACD9001C7B72 /* JSOperation */,
 				F747F7831D843748000A0C8D /* UIKit+JSExtension */,
 				F778865D1D20A9D000BE4518 /* Common.pch */,
 				F74F57361D84F3DA00E3CC61 /* JSUserAccountTool.h */,
@@ -530,9 +558,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F731D1E61D9AACD9001C7B72 /* JSDownLoadOperationManager.m in Sources */,
 				F74F57381D84F3DA00E3CC61 /* JSUserAccountTool.m in Sources */,
 				F778864A1D1EC9BC00BE4518 /* JSTabBar.m in Sources */,
 				F7F9DB151D2499BA0029235B /* JSNetworkTool.m in Sources */,
+				F731D1E81D9AACD9001C7B72 /* UIImageView+JSWebCache.m in Sources */,
 				F747F7991D843748000A0C8D /* NSString+Emoji.m in Sources */,
 				F77886461D1EC97E00BE4518 /* JSNavigationController.m in Sources */,
 				F79927CC1D1C14D700E9BA8C /* JSDescoveryTableViewController.m in Sources */,
@@ -542,11 +572,13 @@
 				F7079FA41D8E5FC60018FDA4 /* JSUserAccountModel.m in Sources */,
 				F747F79E1D843748000A0C8D /* UINavigationController+JSFullScreenPopGesture.m in Sources */,
 				F747F79F1D843748000A0C8D /* UIView+JSFrame.m in Sources */,
+				F731D1E51D9AACD9001C7B72 /* JSDownLoadImageOperation.m in Sources */,
 				F747F79B1D843748000A0C8D /* NSString+JSExtension.m in Sources */,
 				F747F7971D843748000A0C8D /* NSArray+JSLog.m in Sources */,
 				F79927C11D1C13D500E9BA8C /* main.m in Sources */,
 				F747F7981D843748000A0C8D /* NSObject+JSObjc.m in Sources */,
 				F7079FA71D8ECE260018FDA4 /* JSWelComeViewController.m in Sources */,
+				F731D1E71D9AACD9001C7B72 /* NSString+JSAppendPath.m in Sources */,
 				F77886471D1EC97E00BE4518 /* JSTabBarController.m in Sources */,
 				F79927BE1D1C13D500E9BA8C /* AppDelegate.m in Sources */,
 				F747F79D1D843748000A0C8D /* UIImage+JSExtension.m in Sources */,
