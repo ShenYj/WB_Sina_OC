@@ -107,30 +107,17 @@ static CGFloat const kMargin = 10;                         // 用户头像与欢
         //[_headIconImageView yy_setImageWithURL:[NSURL URLWithString:[JSUserAccountTool sharedManager].userAccountModel.avatar_large] options:YYWebImageOptionShowNetworkActivity];
         
         
-        
-        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[JSUserAccountTool sharedManager].userAccountModel.avatar_large]];
-        [[UIImage imageWithData:imageData] js_cornerImageWithSize:CGSizeMake(100, 100) fillClolor:[UIColor whiteColor] completion:^(UIImage *img) {
-            
-            
-            
-        }];
+        [_headIconImageView js_imageUrlString:[JSUserAccountTool sharedManager].userAccountModel.avatar_large withPlaceHolderImage:nil WithSize:CGSizeMake(100, 100) fillClolor:[UIColor whiteColor] completion:nil];
         
         
-        [_headIconImageView yy_setImageWithURL:[NSURL URLWithString:[JSUserAccountTool sharedManager].userAccountModel.avatar_large]
-                          placeholder:nil
-                              options:YYWebImageOptionSetImageWithFadeAnimation
-                             progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-                                 NSLog(@"加载进度:%f", (float)receivedSize / expectedSize);
-                             }
-                            transform:^UIImage *(UIImage *image, NSURL *url) {
-                                image = [image yy_imageByResizeToSize:CGSizeMake(100, 100) contentMode:UIViewContentModeCenter];
-                                return [image yy_imageByRoundCornerRadius:10];
-                            }
-                           completion:^(UIImage *image, NSURL *url, YYWebImageFromType from, YYWebImageStage stage, NSError *error) {
-                               if (from == YYWebImageFromDiskCache) {
-                                   NSLog(@"load from disk cache");
-                               }
-                           }];
+        
+//        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[JSUserAccountTool sharedManager].userAccountModel.avatar_large]];
+//        [[UIImage imageWithData:imageData] js_cornerImageWithSize:CGSizeMake(100, 100) fillClolor:[UIColor whiteColor] completion:^(UIImage *img) {
+//            
+//            
+//            
+//        }];
+
         
         // 设置圆角
 //        [_headIconImageView yy_setImageWithURL:[NSURL URLWithString:[JSUserAccountTool sharedManager].userAccountModel.avatar_large]

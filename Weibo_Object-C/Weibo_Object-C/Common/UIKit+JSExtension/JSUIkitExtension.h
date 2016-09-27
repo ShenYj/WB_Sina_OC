@@ -18,6 +18,6 @@
 #import "UINavigationController+JSFullScreenPopGesture.h"
 #import "UIView+JSFrame.h"
 #import "NSObject+JSObjc.h"
-
+#import "UIImageView+JSWebCache.h"
 
 #endif /* JSUIkitExtension_h */
