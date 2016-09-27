@@ -20,6 +20,7 @@
     self.navigationBar.translucent = NO;// 设置bar不透明
     self.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationBar.barTintColor = THEME_COLOR;
+    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     
 }
 

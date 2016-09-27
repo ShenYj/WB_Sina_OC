@@ -51,7 +51,7 @@
     //[viewController.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName: THEME_COLOR} forState:UIControlStateSelected];
     
     JSNavigationController *navigationController = [[JSNavigationController alloc]initWithRootViewController:viewController];
-    viewController.tabBarItem.title = title;
+    viewController.title = title;
     viewController.tabBarItem.image = img_Normal;
     viewController.tabBarItem.selectedImage = img_Select;
     [self addChildViewController:navigationController];
