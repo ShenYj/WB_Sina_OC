@@ -6,13 +6,16 @@
 //  Copyright © 2016年 ___ShenYJ___. All rights reserved.
 //
 
+#import "JSTabBar.h"
 #import "JSTabBarController.h"
 #import "JSNavigationController.h"
-#import "JSDescoveryTableViewController.h"
 #import "JSHomeTableViewController.h"
+#import "JSComposeRootViewController.h"
 #import "JSMessageTableViewController.h"
 #import "JSProfileTableViewController.h"
-#import "JSTabBar.h"
+#import "JSDescoveryTableViewController.h"
+
+
 
 @interface JSTabBarController () <JSTabBarDelegate>
 
@@ -66,6 +69,16 @@
 - (void)tabBar:(JSTabBar *)tabBarwithButtonClick{
     
     NSLog(@"%s",__func__);
+}
+
+- (void)tabBarDelegateWithTabBar:(JSTabBar *)tabBar {
+    NSLog(@"%s",__func__);
+    
+    JSComposeRootViewController *composeVC = [[JSComposeRootViewController alloc] init];
+    JSNavigationController *navigationController = [[JSNavigationController alloc]initWithRootViewController:composeVC];
+    
+    [self presentViewController:navigationController animated:YES completion:nil];
+    
 }
 
 
