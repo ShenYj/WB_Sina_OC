@@ -26,14 +26,13 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (self.isLogin) {
-        
-        [self prepareView];
-        
-    } else {
+    if (!self.isLogin) {
         
         [self.vistorView setupVistorViewInfoWithTitle:nil withImageName:nil];
     }
+    
+    [self prepareView];
+
 }
 
 - (void)prepareView {
@@ -68,7 +67,7 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
         for (NSDictionary *dict in statusDataArr) {
             
             JSHomeStatusModel *model = [JSHomeStatusModel statuWithDict:dict];
-            NSLog(@"%@",model.description);
+            
             [mArr addObject:model];
         }
         

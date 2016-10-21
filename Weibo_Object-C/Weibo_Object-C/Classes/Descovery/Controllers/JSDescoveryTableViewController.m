@@ -19,14 +19,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (self.isLogin) {
-        
-        [self prepareView];
-        
-    } else {
+    
+    if (!self.isLogin) {
         
         [self.vistorView setupVistorViewInfoWithTitle:@"登录后，最新、最热微博尽在掌握，不再会与实事潮流擦肩而过" withImageName:@"visitordiscover_image_message"];
     }
+    
+    [self prepareView];
+
+    
     
 }
 
