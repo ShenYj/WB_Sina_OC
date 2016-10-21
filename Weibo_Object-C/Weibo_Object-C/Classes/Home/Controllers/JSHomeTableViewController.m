@@ -40,9 +40,11 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
     
     self.view.backgroundColor = [UIColor js_randomColor];
     
-    [self loadHomeStatusData];
-    
-    
+    [self loadHomeStatusData:^(NSArray<JSHomeStatusModel *> *datas) {
+       
+        self.homeStatusDatas = datas;
+        [self.tableView reloadData];
+    }];
 
 }
 
@@ -51,26 +53,26 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - loadHomeStatusData 
 
-- (void)loadHomeStatusData {
+#pragma mark - loadHomeStatusData
+
+- (void)loadHomeStatusData:(void (^)(NSArray <JSHomeStatusModel *>*datas))completionHandler {
     
 
     [[JSNetworkTool sharedNetworkTool] loadHomePublicDatawithFinishedBlock:^(id obj, NSError *error) {
         
+        NSArray *statusDataArr = (NSArray *)obj;
+        
         NSMutableArray *mArr = [NSMutableArray array];
         
-        for (NSDictionary *dict in obj) {
+        for (NSDictionary *dict in statusDataArr) {
             
             JSHomeStatusModel *model = [JSHomeStatusModel statuWithDict:dict];
-            
+            NSLog(@"%@",model.description);
             [mArr addObject:model];
         }
         
-        self.homeStatusDatas = mArr.copy;
-        
-        [self.tableView reloadData];
-        
+        completionHandler(mArr.copy);
     }];
 }
 
