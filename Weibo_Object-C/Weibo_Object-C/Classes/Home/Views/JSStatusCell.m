@@ -43,7 +43,7 @@ static CGFloat const kStatusOriginalViewHeight = 50.f;
     
     [self.originalView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.right.mas_equalTo(self.contentView);
-        make.height.mas_equalTo(kStatusOriginalViewHeight);
+        //make.height.mas_equalTo(kStatusOriginalViewHeight); 在JSStatusOriginalView中设置自身底边约束
     }];
     
 }

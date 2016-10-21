@@ -26,6 +26,9 @@ static CGFloat const kMargin = 10.f;
 @property (nonatomic) UILabel *sourceLabel;
 // 认证图片
 @property (nonatomic) UIImageView *avatarImageView;
+// 微博内容
+@property (nonatomic) UILabel *contentLabel;
+
 
 @end
 
@@ -41,6 +44,8 @@ static CGFloat const kMargin = 10.f;
     return self;
 }
 
+#pragma mark
+#pragma mark - set up UI
 - (void)prepareView {
     
     self.backgroundColor = [UIColor js_randomColor];
@@ -51,6 +56,7 @@ static CGFloat const kMargin = 10.f;
     [self addSubview:self.timeLabel];
     [self addSubview:self.sourceLabel];
     [self addSubview:self.avatarImageView];
+    [self addSubview:self.contentLabel];
     
     [self.headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.mas_equalTo(self).mas_offset(kMargin);
@@ -80,6 +86,17 @@ static CGFloat const kMargin = 10.f;
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.headImageView.mas_right);
         make.centerY.mas_equalTo(self.headImageView.mas_bottom);
+    }];
+    
+    [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.headImageView);
+        make.top.mas_equalTo(self.headImageView.mas_bottom).mas_offset(kMargin);
+        // 通过Label的preferredMaxLayoutWidth属性限制宽度
+        //make.right.mas_equalTo(self).mas_offset(-kMargin);
+    }];
+    
+    [self mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(self.contentLabel).mas_offset(5);
     }];
     
 }
@@ -145,6 +162,18 @@ static CGFloat const kMargin = 10.f;
         _avatarImageView.image = [UIImage imageNamed:@"avatar_vip"];
     }
     return _avatarImageView;
+}
+
+- (UILabel *)contentLabel {
+    
+    if (_contentLabel == nil) {
+        _contentLabel = [[UILabel alloc] init];
+        _contentLabel.preferredMaxLayoutWidth = [UIScreen mainScreen].bounds.size.width - 2 * kMargin;
+        _contentLabel.numberOfLines = 0;
+        _contentLabel.font = [UIFont systemFontOfSize:15];
+        _contentLabel.text = @"1231231231234154kljalsdfjoipashdadfhpsalskdfdfjs;asdhjfio";
+    }
+    return _contentLabel;
 }
 
 @end
