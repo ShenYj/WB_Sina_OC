@@ -9,7 +9,8 @@
 #import "JSHomeTableViewController.h"
 #import "JSVistorView.h"
 #import "JSUserAccountTool.h"
-
+#import "JSNetworkTool.h"
+#import "JSHomeStatusModel.h"
 
 @interface JSHomeTableViewController ()
 
@@ -33,6 +34,12 @@
 - (void)prepareView {
     
     self.view.backgroundColor = [UIColor js_randomColor];
+    
+    
+    [[JSNetworkTool sharedNetworkTool] loadHomePublicDatawithFinishedBlock:^(id obj, NSError *error) {
+       
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

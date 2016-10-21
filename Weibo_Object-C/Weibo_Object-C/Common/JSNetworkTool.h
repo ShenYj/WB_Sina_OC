@@ -48,4 +48,11 @@ typedef NS_ENUM(NSUInteger, RequestMethod) {
  */
 - (void)loadUserAccountInfo:(JSUserAccountModel *)userAccountModel withFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock;
 
+/**
+ 获取当前登录用户及其所关注（授权）用户的最新微博
+ @param code          
+ @param finishedBlock 完成回调
+ */
+- (void)loadHomePublicDatawithFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock;
+
 @end

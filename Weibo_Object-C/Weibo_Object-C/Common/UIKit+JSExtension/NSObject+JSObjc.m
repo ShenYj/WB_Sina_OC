@@ -11,9 +11,6 @@
 
 @implementation NSObject (JSObjc)
 
-
-
-
 + (NSArray *)js_objProperties{
     
     /*

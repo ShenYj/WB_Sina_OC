@@ -102,7 +102,7 @@
 }
 
 #pragma mark - public content
-- (void)loadHomePublicDatawithFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock{
+- (void)loadHomePublicDatawithFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock {
     
     /*
      
@@ -116,14 +116,17 @@
      trim_user	false	int	返回值中user字段开关，0：返回完整user字段、1：user字段仅返回user_id，默认为0。
      
      */
-    NSString *urlString = @"http://open.weibo.com/wiki/2/statuses/home_timeline";
+    NSString *urlString = @"https://api.weibo.com/2/statuses/home_timeline.json";
     NSDictionary *para = @{
-                           @"ccess_token": [JSUserAccountTool sharedManager].access_token,
+                           @"access_token": [JSUserAccountTool sharedManager].access_token
                            //@"since_id": @0,
                            //@"max_id": @0,
                            };
     
     [self requestWithMethod:RequestMethodGet withParameters:para withUrlString:urlString withSuccess:^(id obj) {
+        
+        NSArray *statuses = [obj objectForKey:@"statuses"];
+        NSLog(@"%@",statuses);
         
         finishedBlock(obj,nil);
         

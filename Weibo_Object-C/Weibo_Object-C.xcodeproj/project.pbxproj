@@ -10,6 +10,7 @@
 		E6D542BB8EA798826F2569E1 /* libPods-Weibo_Object-C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA89379BD5C259B8114A7F9F /* libPods-Weibo_Object-C.a */; };
 		F7079FA41D8E5FC60018FDA4 /* JSUserAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7079FA31D8E5FC60018FDA4 /* JSUserAccountModel.m */; };
 		F7079FA71D8ECE260018FDA4 /* JSWelComeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7079FA61D8ECE260018FDA4 /* JSWelComeViewController.m */; };
+		F7271A991DB9C3D900CF96A0 /* JSHomeStatusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7271A981DB9C3D900CF96A0 /* JSHomeStatusModel.m */; };
 		F731D1E51D9AACD9001C7B72 /* JSDownLoadImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F731D1DE1D9AACD9001C7B72 /* JSDownLoadImageOperation.m */; };
 		F731D1E61D9AACD9001C7B72 /* JSDownLoadOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F731D1E01D9AACD9001C7B72 /* JSDownLoadOperationManager.m */; };
 		F731D1E71D9AACD9001C7B72 /* NSString+JSAppendPath.m in Sources */ = {isa = PBXBuildFile; fileRef = F731D1E21D9AACD9001C7B72 /* NSString+JSAppendPath.m */; };
@@ -50,6 +51,8 @@
 		F7079FA31D8E5FC60018FDA4 /* JSUserAccountModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSUserAccountModel.m; sourceTree = "<group>"; };
 		F7079FA51D8ECE260018FDA4 /* JSWelComeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSWelComeViewController.h; sourceTree = "<group>"; };
 		F7079FA61D8ECE260018FDA4 /* JSWelComeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSWelComeViewController.m; sourceTree = "<group>"; };
+		F7271A971DB9C3D900CF96A0 /* JSHomeStatusModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSHomeStatusModel.h; sourceTree = "<group>"; };
+		F7271A981DB9C3D900CF96A0 /* JSHomeStatusModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSHomeStatusModel.m; sourceTree = "<group>"; };
 		F731D1DD1D9AACD9001C7B72 /* JSDownLoadImageOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDownLoadImageOperation.h; sourceTree = "<group>"; };
 		F731D1DE1D9AACD9001C7B72 /* JSDownLoadImageOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDownLoadImageOperation.m; sourceTree = "<group>"; };
 		F731D1DF1D9AACD9001C7B72 /* JSDownLoadOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDownLoadOperationManager.h; sourceTree = "<group>"; };
@@ -358,6 +361,8 @@
 		F79927AD1D1C13D500E9BA8C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F7271A971DB9C3D900CF96A0 /* JSHomeStatusModel.h */,
+				F7271A981DB9C3D900CF96A0 /* JSHomeStatusModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -602,6 +607,7 @@
 				F7F9DB151D2499BA0029235B /* JSNetworkTool.m in Sources */,
 				F731D1E81D9AACD9001C7B72 /* UIImageView+JSWebCache.m in Sources */,
 				F747F7991D843748000A0C8D /* NSString+Emoji.m in Sources */,
+				F7271A991DB9C3D900CF96A0 /* JSHomeStatusModel.m in Sources */,
 				F77886461D1EC97E00BE4518 /* JSNavigationController.m in Sources */,
 				F79927CC1D1C14D700E9BA8C /* JSDescoveryTableViewController.m in Sources */,
 				F778864D1D1F51EE00BE4518 /* JSVistorTableViewController.m in Sources */,
