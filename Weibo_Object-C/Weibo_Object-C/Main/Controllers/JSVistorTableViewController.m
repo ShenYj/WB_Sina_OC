@@ -41,8 +41,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //设置导航按钮
-    [self setNavButton];
+    if ( !self.isLogin) {
+        
+        //设置导航按钮
+        [self setNavButton];
+    }
+    
     
 }
 

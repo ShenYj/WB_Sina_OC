@@ -41,6 +41,8 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
     self.view.backgroundColor = [UIColor js_randomColor];
     
     [self loadHomeStatusData];
+    
+    
 
 }
 
@@ -53,7 +55,7 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
 
 - (void)loadHomeStatusData {
     
-    __weak typeof(self) weakSelf = self;
+
     [[JSNetworkTool sharedNetworkTool] loadHomePublicDatawithFinishedBlock:^(id obj, NSError *error) {
         
         NSMutableArray *mArr = [NSMutableArray array];
@@ -65,13 +67,14 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
             [mArr addObject:model];
         }
         
-        weakSelf.homeStatusDatas = mArr.copy;
+        self.homeStatusDatas = mArr.copy;
         
-        [weakSelf.tableView reloadData];
+        [self.tableView reloadData];
         
     }];
 }
 
+#pragma mark
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -100,13 +103,6 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
 #pragma mark
 #pragma mark - lazy
 
-- (NSArray<JSHomeStatusModel *> *)homeStatusDatas {
-    
-    if (_homeStatusDatas == nil) {
-        
-    }
-    return _homeStatusDatas;
-    
-}
+
 
 @end
