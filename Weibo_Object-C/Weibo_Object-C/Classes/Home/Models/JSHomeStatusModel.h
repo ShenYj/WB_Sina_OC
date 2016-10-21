@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class JSHomeStatusModel;
+
 @interface JSHomeStatusModel : NSObject
 
 // 微博创建时间
@@ -22,5 +24,6 @@
 - (instancetype)initWithDict:(NSDictionary *)dict;
 
 + (instancetype)statuWithDict:(NSDictionary *)dict;
+
 
 @end

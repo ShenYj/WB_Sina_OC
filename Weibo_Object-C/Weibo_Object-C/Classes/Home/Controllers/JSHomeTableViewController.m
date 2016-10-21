@@ -12,7 +12,12 @@
 #import "JSNetworkTool.h"
 #import "JSHomeStatusModel.h"
 
+static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
+
 @interface JSHomeTableViewController ()
+
+// 当前登录用户及其所关注（授权）用户的最新微博数据
+@property (nonatomic) NSArray <JSHomeStatusModel *> *homeStatusDatas;
 
 @end
 
@@ -35,11 +40,8 @@
     
     self.view.backgroundColor = [UIColor js_randomColor];
     
-    
-    [[JSNetworkTool sharedNetworkTool] loadHomePublicDatawithFinishedBlock:^(id obj, NSError *error) {
-       
-        
-    }];
+    [self loadHomeStatusData];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,18 +49,64 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - loadHomeStatusData 
+
+- (void)loadHomeStatusData {
+    
+    __weak typeof(self) weakSelf = self;
+    [[JSNetworkTool sharedNetworkTool] loadHomePublicDatawithFinishedBlock:^(id obj, NSError *error) {
+        
+        NSMutableArray *mArr = [NSMutableArray array];
+        
+        for (NSDictionary *dict in obj) {
+            
+            JSHomeStatusModel *model = [JSHomeStatusModel statuWithDict:dict];
+            
+            [mArr addObject:model];
+        }
+        
+        weakSelf.homeStatusDatas = mArr.copy;
+        
+        [weakSelf.tableView reloadData];
+        
+    }];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return 0;
+    return self.homeStatusDatas.count;
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:homeTableCellReusedId];
+    
+    if ( !cell ) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:homeTableCellReusedId];
+    }
+    
+    cell.textLabel.text = @(indexPath.row).description;
+    
+    return cell;
+}
 
+#pragma mark
+#pragma mark - lazy
+
+- (NSArray<JSHomeStatusModel *> *)homeStatusDatas {
+    
+    if (_homeStatusDatas == nil) {
+        
+    }
+    return _homeStatusDatas;
+    
+}
 
 @end

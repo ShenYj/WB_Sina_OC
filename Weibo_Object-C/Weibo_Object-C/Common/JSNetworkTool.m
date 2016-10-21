@@ -126,9 +126,8 @@
     [self requestWithMethod:RequestMethodGet withParameters:para withUrlString:urlString withSuccess:^(id obj) {
         
         NSArray *statuses = [obj objectForKey:@"statuses"];
-        NSLog(@"%@",statuses);
         
-        finishedBlock(obj,nil);
+        finishedBlock(statuses,nil);
         
     } withError:^(NSError *error) {
         

@@ -8,6 +8,7 @@
 //
 
 #import "JSHomeStatusModel.h"
+#import "JSNetworkTool.h"
 
 @implementation JSHomeStatusModel
 
@@ -29,7 +30,7 @@
     
     if ([key isEqualToString:@"id"]) {
         
-        NSLog(@"%@",[value class]);
+        self.wb_id = value;
         
     } else {
         
@@ -40,6 +41,8 @@
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key {
     
 }
+
+
 
 - (NSString *)description {
     
