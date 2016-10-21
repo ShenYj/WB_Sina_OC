@@ -11,6 +11,7 @@
 #import "JSUserAccountTool.h"
 #import "JSNetworkTool.h"
 #import "JSHomeStatusModel.h"
+#import "JSStatusCell.h"
 
 static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
 
@@ -37,7 +38,7 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
 
 - (void)prepareView {
     
-    self.view.backgroundColor = [UIColor js_randomColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     
     [self loadHomeStatusData:^(NSArray<JSHomeStatusModel *> *datas) {
        
@@ -45,6 +46,18 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
         [self.tableView reloadData];
     }];
 
+}
+
+- (void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+    }
+    
+    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [self.tableView setLayoutMargins:UIEdgeInsetsMake(0, 0, 0, 0)];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,7 +70,6 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
 
 - (void)loadHomeStatusData:(void (^)(NSArray <JSHomeStatusModel *>*datas))completionHandler {
     
-
     [[JSNetworkTool sharedNetworkTool] loadHomePublicDatawithFinishedBlock:^(id obj, NSError *error) {
         
         NSArray *statusDataArr = (NSArray *)obj;
@@ -76,7 +88,7 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
 }
 
 #pragma mark
-#pragma mark - Table view data source
+#pragma mark - Table view data source & delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
@@ -90,15 +102,31 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:homeTableCellReusedId];
+    JSHomeStatusModel *dataModel = self.homeStatusDatas[indexPath.row];
+    
+    JSStatusCell *cell = [tableView dequeueReusableCellWithIdentifier:homeTableCellReusedId];
     
     if ( !cell ) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:homeTableCellReusedId];
+        cell = [[JSStatusCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:homeTableCellReusedId];
     }
     
-    cell.textLabel.text = @(indexPath.row).description;
-    
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return 300;
+}
+
+- (void)tableView:(UITableView*)tableView willDisplayCell:(UITableViewCell*)cell forRowAtIndexPath:(NSIndexPath*)indexPath {
+    
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 
 #pragma mark
