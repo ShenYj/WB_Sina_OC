@@ -22,10 +22,10 @@
     if (!self.isLogin) {
         
         [self.vistorView setupVistorViewInfoWithTitle:@"登录后，你的微博、相册、个人资料会显示在这里，展示给别人" withImageName:@"visitordiscover_image_profile"];
+    } else {
+        
+        [self prepareView];
     }
-    
-    [self prepareView];
-    
     
 }
 

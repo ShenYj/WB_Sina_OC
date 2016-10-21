@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class JSHomeStatusModel;
+
 @interface JSStatusCell : UITableViewCell
+
+@property (nonatomic) JSHomeStatusModel *statusData;
 
 @end

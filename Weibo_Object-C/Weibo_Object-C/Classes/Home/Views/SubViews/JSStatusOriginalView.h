@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+
+@class JSHomeStatusModel;
+
 @interface JSStatusOriginalView : UIView
+
+@property (nonatomic) JSHomeStatusModel *statusData;
 
 @end

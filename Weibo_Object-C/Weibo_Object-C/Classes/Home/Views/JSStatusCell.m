@@ -48,6 +48,18 @@ static CGFloat const kStatusOriginalViewHeight = 50.f;
     
 }
 
+#pragma mark
+#pragma mark - set up data
+- (void)setStatusData:(JSHomeStatusModel *)statusData {
+    
+    _statusData = statusData;
+    
+    self.originalView.statusData = statusData;
+    
+    
+}
+
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

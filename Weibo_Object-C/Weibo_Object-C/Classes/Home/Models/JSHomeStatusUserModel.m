@@ -1,20 +1,16 @@
-
 //
-//  JSHomeStatusModel.m
+//  JSHomeStatusUserModel.m
 //  Weibo_Object-C
 //
 //  Created by ShenYj on 2016/10/21.
 //  Copyright © 2016年 ___ShenYJ___. All rights reserved.
 //
 
-#import "JSHomeStatusModel.h"
 #import "JSHomeStatusUserModel.h"
 
-
-@implementation JSHomeStatusModel
+@implementation JSHomeStatusUserModel
 
 - (instancetype)initWithDict:(NSDictionary *)dict {
-    
     self = [super init];
     if (self) {
         [self setValuesForKeysWithDictionary:dict];
@@ -22,26 +18,18 @@
     return self;
 }
 
-+ (instancetype)statuWithDict:(NSDictionary *)dict {
++ (instancetype)modelWithDict:(NSDictionary *)dict {
     
-    return [[self alloc] initWithDict:dict];
+    return [[self alloc]initWithDict:dict];
 }
 
 - (void)setValue:(id)value forKey:(NSString *)key {
     
-    if ([key isEqualToString:@"id"]) {
+    if ([key isEqualToString:@"user_id"]) {
         
-        self.wb_id = value;
+        self.user_id = value;
         
-    } else if ([key isEqualToString:@"user"]) {
-        
-        NSDictionary *dict = (NSDictionary *)value;
-        
-        JSHomeStatusUserModel *userModel = [JSHomeStatusUserModel modelWithDict:dict];
-        
-        self.user = userModel;
-        
-    }else {
+    } else {
         
         [super setValue:value forKey:key];
     }
@@ -53,9 +41,21 @@
 
 - (NSString *)description {
     
-    NSArray *keys = [JSHomeStatusModel js_objProperties];
+    NSArray *keys = [JSHomeStatusUserModel js_objProperties];
     
     return [self dictionaryWithValuesForKeys:keys].description;
+}
+
+- (UserStatus)userstatus {
+    
+    if (self.online_status.intValue == 0) {
+        
+        return UserStatusOffline;
+    } else {
+        
+        return UserStatusOnline;
+    }
+    
 }
 
 @end

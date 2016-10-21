@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class JSHomeStatusModel;
+@class JSHomeStatusUserModel;
 
 @interface JSHomeStatusModel : NSObject
 
@@ -20,9 +21,12 @@
 @property (nonatomic,copy) NSString *text;
 // 微博来源
 @property (nonatomic,copy) NSString *source;
+// 微博作者的用户信息字段
+@property (nonatomic) JSHomeStatusUserModel *user;
 
+// 实例方法
 - (instancetype)initWithDict:(NSDictionary *)dict;
-
+// 静态方法
 + (instancetype)statuWithDict:(NSDictionary *)dict;
 
 

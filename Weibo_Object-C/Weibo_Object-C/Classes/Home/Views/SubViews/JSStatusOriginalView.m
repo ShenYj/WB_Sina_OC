@@ -7,10 +7,15 @@
 //
 
 #import "JSStatusOriginalView.h"
+#import "JSHomeStatusModel.h"
+#import "JSHomeStatusUserModel.h"
+
+#pragma mark
+#pragma mark -- Magic Number
 
 static CGFloat const kHeadImageViewSize = 35.f;
 static CGFloat const kMargin = 10.f;
-
+static CGFloat const kUserStatusImageViewSize = 15.f;
 
 @interface JSStatusOriginalView ()
 
@@ -28,7 +33,8 @@ static CGFloat const kMargin = 10.f;
 @property (nonatomic) UIImageView *avatarImageView;
 // 微博内容
 @property (nonatomic) UILabel *contentLabel;
-
+// 用户在线状态
+@property (nonatomic) UIImageView *userStatusImageView;
 
 @end
 
@@ -48,11 +54,12 @@ static CGFloat const kMargin = 10.f;
 #pragma mark - set up UI
 - (void)prepareView {
     
-    self.backgroundColor = [UIColor js_randomColor];
+    self.backgroundColor = [UIColor whiteColor];
     
     [self addSubview:self.headImageView];
     [self addSubview:self.userNickNameLabel];
     [self addSubview:self.userExpiredImageView];
+    [self addSubview:self.userStatusImageView];
     [self addSubview:self.timeLabel];
     [self addSubview:self.sourceLabel];
     [self addSubview:self.avatarImageView];
@@ -70,6 +77,12 @@ static CGFloat const kMargin = 10.f;
     
     [self.userExpiredImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.userNickNameLabel.mas_right).mas_offset(kMargin);
+        make.centerY.mas_equalTo(self.userNickNameLabel);
+    }];
+    
+    [self.userStatusImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.userExpiredImageView.mas_right).mas_offset(kMargin);
+        make.size.mas_equalTo(CGSizeMake(kUserStatusImageViewSize, kUserStatusImageViewSize));
         make.centerY.mas_equalTo(self.userNickNameLabel);
     }];
     
@@ -96,8 +109,53 @@ static CGFloat const kMargin = 10.f;
     }];
     
     [self mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(self.contentLabel).mas_offset(5);
+        make.bottom.mas_equalTo(self.contentLabel).mas_offset(kMargin);
     }];
+    
+}
+
+#pragma mark
+#pragma mark - set up data
+
+- (void)setStatusData:(JSHomeStatusModel *)statusData {
+    
+    _statusData = statusData;
+    
+    // 用户昵称
+    self.userNickNameLabel.text = statusData.user.name;
+    
+    // 用户头像
+    [self.headImageView yy_setImageWithURL:[NSURL URLWithString:statusData.user.profile_image_url] options:YYWebImageOptionShowNetworkActivity];
+    
+    // 微博来源
+    self.sourceLabel.text = statusData.source;
+    
+    // 时间
+    self.timeLabel.text = statusData.created_at;
+    
+    // 微博内容
+    self.contentLabel.text = statusData.text;
+    
+    // 用户状态(在线/离线)
+    [[UIImage imageNamed:@"v2_selected"] js_cornerImageWithSize:CGSizeMake(kUserStatusImageViewSize, kUserStatusImageViewSize) fillClolor:[UIColor whiteColor] completion:^(UIImage *img) {
+        
+        UserStatus status = statusData.user.userstatus;
+        if (status == UserStatusOnline) {
+            self.userStatusImageView.image = nil;
+        } else {
+            self.userStatusImageView.image = [UIImage imageNamed:@"v2_selected"];
+        }
+    }];
+    
+//    UserStatus status = statusData.user.userstatus;
+//    if (status == UserStatusOnline) {
+//        self.userStatusImageView.image = [UIImage imageNamed:@"v2_selected"];
+//    } else {
+//        self.userStatusImageView.image = nil;
+//    }
+
+    
+    
     
 }
 
@@ -119,7 +177,6 @@ static CGFloat const kMargin = 10.f;
         _userNickNameLabel = [[UILabel alloc] init];
         _userNickNameLabel.font = [UIFont systemFontOfSize:15];
         _userNickNameLabel.textColor = [UIColor purpleColor];
-        _userNickNameLabel.text = @"一只耳";
     }
     return _userNickNameLabel;
 }
@@ -139,7 +196,6 @@ static CGFloat const kMargin = 10.f;
         _timeLabel = [[UILabel alloc] init];
         _timeLabel.font = [UIFont systemFontOfSize:10];
         _timeLabel.textColor = THEME_COLOR;
-        _timeLabel.text = @"时间";
     }
     return _timeLabel;
 }
@@ -150,7 +206,6 @@ static CGFloat const kMargin = 10.f;
         _sourceLabel = [[UILabel alloc] init];
         _sourceLabel.font = [UIFont systemFontOfSize:10];
         _sourceLabel.textColor = [UIColor lightGrayColor];
-        _sourceLabel.text = @"来源";
     }
     return _sourceLabel;
 }
@@ -171,9 +226,16 @@ static CGFloat const kMargin = 10.f;
         _contentLabel.preferredMaxLayoutWidth = [UIScreen mainScreen].bounds.size.width - 2 * kMargin;
         _contentLabel.numberOfLines = 0;
         _contentLabel.font = [UIFont systemFontOfSize:15];
-        _contentLabel.text = @"1231231231234154kljalsdfjoipashdadfhpsalskdfdfjs;asdhjfio";
     }
     return _contentLabel;
+}
+
+- (UIImageView *)userStatusImageView {
+    
+    if (_userStatusImageView == nil) {
+        _userStatusImageView = [[UIImageView alloc] init];
+    }
+    return _userStatusImageView;
 }
 
 @end

@@ -30,9 +30,11 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
     if (!self.isLogin) {
         
         [self.vistorView setupVistorViewInfoWithTitle:nil withImageName:nil];
+    } else {
+        
+        [self prepareView];
     }
     
-    [self prepareView];
 
 }
 
@@ -109,6 +111,8 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
     if ( !cell ) {
         cell = [[JSStatusCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:homeTableCellReusedId];
     }
+    
+    cell.statusData = dataModel;
     
     return cell;
 }
