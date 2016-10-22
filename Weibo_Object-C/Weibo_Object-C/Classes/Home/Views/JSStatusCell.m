@@ -94,14 +94,14 @@ static CGFloat const kBottomMargin = 5.f;
         // 有转发微博数据 (ToolBar顶部为RetweetView的底部)
         [self.toolBarTopConstraint uninstall];
         [self.toolBarView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(self.retweetView.mas_bottom);
+            self.toolBarTopConstraint = make.top.mas_equalTo(self.retweetView.mas_bottom);
         }];
         
     } else {
         // 没有转发微博数据 (ToolBar顶部为Original的底部)
         [self.toolBarTopConstraint uninstall];
         [self.toolBarView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(self.originalView.mas_bottom);
+            self.toolBarTopConstraint = make.top.mas_equalTo(self.originalView.mas_bottom);
         }];
     }
     
