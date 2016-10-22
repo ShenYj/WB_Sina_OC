@@ -1,5 +1,5 @@
 //
-//  JSHomeStatusToolBarView.h
+//  JSStatusRetweetView.h
 //  Weibo_Object-C
 //
 //  Created by ShenYj on 2016/10/22.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JSHomeStatusToolBarView : UIView
+@interface JSStatusRetweetView : UIView
 
 @end

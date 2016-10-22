@@ -6,10 +6,10 @@
 //  Copyright © 2016年 ___ShenYJ___. All rights reserved.
 //
 
-#import "JSHomeStatusToolBarView.h"
+#import "JSStatusToolBarView.h"
 #import "JSToolBarButton.h"
 
-@interface JSHomeStatusToolBarView ()
+@interface JSStatusToolBarView ()
 
 // 转发
 @property (nonatomic) JSToolBarButton *retweetedButton;
@@ -23,7 +23,7 @@
 @property (nonatomic) UIImageView *seperatorImageVIew_2;
 @end
 
-@implementation JSHomeStatusToolBarView
+@implementation JSStatusToolBarView
 
 - (instancetype)init {
     self = [super init];
@@ -59,9 +59,8 @@
     }];
     
     [self.likeButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.bottom.mas_equalTo(self);
+        make.top.right.bottom.mas_equalTo(self);
         make.left.mas_equalTo(self.commentButton.mas_right);
-        make.right.mas_equalTo(self);
     }];
     
     [self.seperatorImageView_1 mas_makeConstraints:^(MASConstraintMaker *make) {
