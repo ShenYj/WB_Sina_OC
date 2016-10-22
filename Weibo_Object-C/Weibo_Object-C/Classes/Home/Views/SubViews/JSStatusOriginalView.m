@@ -136,15 +136,22 @@ static CGFloat const kUserStatusImageViewSize = 15.f;
     self.contentLabel.text = statusData.text;
     
     // 用户状态(在线/离线)
-    [[UIImage imageNamed:@"v2_selected"] js_cornerImageWithSize:CGSizeMake(kUserStatusImageViewSize, kUserStatusImageViewSize) fillClolor:[UIColor whiteColor] completion:^(UIImage *img) {
-        
-        UserStatus status = statusData.user.userstatus;
-        if (status == UserStatusOnline) {
-            self.userStatusImageView.image = nil;
-        } else {
-            self.userStatusImageView.image = [UIImage imageNamed:@"v2_selected"];
-        }
-    }];
+    UserStatus status = statusData.user.userstatus;
+    if (status == UserStatusOnline) {
+        self.userStatusImageView.hidden = NO;
+    } else {
+        self.userStatusImageView.hidden = YES;
+    }
+    
+//    [[UIImage imageNamed:@"v2_selected"] js_cornerImageWithSize:CGSizeMake(kUserStatusImageViewSize, kUserStatusImageViewSize) fillClolor:[UIColor whiteColor] completion:^(UIImage *img) {
+//        
+//        UserStatus status = statusData.user.userstatus;
+//        if (status == UserStatusOnline) {
+//            self.userStatusImageView.image = nil;
+//        } else {
+//            self.userStatusImageView.image = [UIImage imageNamed:@"v2_selected"];
+//        }
+//    }];
     
 //    UserStatus status = statusData.user.userstatus;
 //    if (status == UserStatusOnline) {
@@ -231,6 +238,10 @@ static CGFloat const kUserStatusImageViewSize = 15.f;
     
     if (_userStatusImageView == nil) {
         _userStatusImageView = [[UIImageView alloc] init];
+        [[UIImage imageNamed:@"v2_selected"] js_cornerImageWithSize:CGSizeMake(kUserStatusImageViewSize, kUserStatusImageViewSize) fillClolor:[UIColor whiteColor] completion:^(UIImage *img) {
+            _userStatusImageView.image = img;
+        }];
+
     }
     return _userStatusImageView;
 }

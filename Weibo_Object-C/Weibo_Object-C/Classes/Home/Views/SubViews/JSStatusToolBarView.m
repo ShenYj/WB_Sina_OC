@@ -44,11 +44,46 @@
     
     _statusData = statusData;
     
-    [self.retweetedButton setTitle:[NSString stringWithFormat:@"转发 %@",statusData.reposts_count] forState:UIControlStateNormal];
-    [self.commentButton setTitle:[NSString stringWithFormat:@"评论 %@",statusData.comments_count] forState:UIControlStateNormal];
-    [self.likeButton setTitle:[NSString stringWithFormat:@"赞 %@",statusData.attitudes_count] forState:UIControlStateNormal];
+    [self.retweetedButton setTitle:[self transformDisplayContentByNSNumber:statusData.reposts_count withTitle:@"转发"] forState:UIControlStateNormal];
+    [self.commentButton setTitle:[self transformDisplayContentByNSNumber:statusData.comments_count withTitle:@"评论"] forState:UIControlStateNormal];
+    [self.likeButton setTitle:[self transformDisplayContentByNSNumber:statusData.attitudes_count withTitle:@"赞"] forState:UIControlStateNormal];
 }
 
+
+#pragma mark - 获取转发评论赞的字符串
+
+- (NSString *)transformDisplayContentByNSNumber:(NSNumber *)aNumber withTitle:(NSString *)title {
+    
+    /*
+     - 底部toolbar 显示的转发评论赞 格式----业务需求
+     - 如果 count <= 0
+     - 显示格式： 转发 评论 赞 文字
+     - 如果 count > 0 && count < 10000
+     - 显示格式: 是多少显示多少 例如 8888  显示 8888
+     - 如果 count >= 10000
+     - 显示格式: x.x 万  例如 12000  显示 1.2 万
+     -  例如 10000  显示 1万  20000  显示 2万 x万
+     
+     */
+    if (aNumber.integerValue <= 0) {
+        
+        return title;
+    } else if (aNumber.integerValue > 0 && aNumber.integerValue < 1000) {
+        
+        return [NSString stringWithFormat:@"%@",aNumber];
+    } else {
+        
+        CGFloat displayFloat = aNumber.floatValue / 10000;
+        NSString *displayString = [NSString stringWithFormat:@"%.1f",displayFloat];
+        
+        if ([displayString containsString:@".0"]) {
+            
+            displayString = [displayString stringByReplacingOccurrencesOfString:@".0" withString:@""];
+        }
+        
+        return [NSString stringWithFormat:@"%@万",displayString];
+    }
+}
 
 
 #pragma mark 
@@ -138,7 +173,6 @@
     if (_retweetedButton == nil) {
         _retweetedButton = [[JSToolBarButton alloc] initWithImageNames:@[@"timeline_icon_retweet"]];
         _retweetedButton.toolBarButtonType = JSToolBarButtonTypeRetweeted;
-        //[_retweetedButton setTitle:@"转发" forState:UIControlStateNormal];
     }
     return _retweetedButton;
 }
@@ -148,7 +182,6 @@
     if (_commentButton == nil) {
         _commentButton = [[JSToolBarButton alloc] initWithImageNames:@[@"timeline_icon_comment"]];
         _commentButton.toolBarButtonType = JSToolBarButtonTypeComment;
-        //[_commentButton setTitle:@"评论" forState:UIControlStateNormal];
     }
     return _commentButton;
 }
@@ -158,7 +191,6 @@
     if (_likeButton == nil) {
         _likeButton = [[JSToolBarButton alloc] initWithImageNames:@[@"timeline_icon_unlike"]];
         _likeButton.toolBarButtonType = JSToolBarButtonTypeLike;
-        //[_likeButton setTitle:@"赞" forState:UIControlStateNormal];
     }
     return _likeButton;
 }
