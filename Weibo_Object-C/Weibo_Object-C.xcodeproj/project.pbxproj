@@ -30,6 +30,7 @@
 		F747F79F1D843748000A0C8D /* UIView+JSFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = F747F7961D843748000A0C8D /* UIView+JSFrame.m */; };
 		F74F57381D84F3DA00E3CC61 /* JSUserAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F74F57371D84F3DA00E3CC61 /* JSUserAccountTool.m */; };
 		F775B1651DBB0D6A006DAA79 /* JSHomeStatusToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F775B1641DBB0D6A006DAA79 /* JSHomeStatusToolBarView.m */; };
+		F775B1681DBB1511006DAA79 /* JSToolBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F775B1671DBB1511006DAA79 /* JSToolBarButton.m */; };
 		F77886461D1EC97E00BE4518 /* JSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F77886411D1EC97E00BE4518 /* JSNavigationController.m */; };
 		F77886471D1EC97E00BE4518 /* JSTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F77886431D1EC97E00BE4518 /* JSTabBarController.m */; };
 		F778864A1D1EC9BC00BE4518 /* JSTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F77886491D1EC9BC00BE4518 /* JSTabBar.m */; };
@@ -97,6 +98,8 @@
 		F75F0D521D87027800549EC3 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		F775B1631DBB0D6A006DAA79 /* JSHomeStatusToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSHomeStatusToolBarView.h; sourceTree = "<group>"; };
 		F775B1641DBB0D6A006DAA79 /* JSHomeStatusToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSHomeStatusToolBarView.m; sourceTree = "<group>"; };
+		F775B1661DBB1511006DAA79 /* JSToolBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSToolBarButton.h; sourceTree = "<group>"; };
+		F775B1671DBB1511006DAA79 /* JSToolBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSToolBarButton.m; sourceTree = "<group>"; };
 		F77886401D1EC97E00BE4518 /* JSNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSNavigationController.h; sourceTree = "<group>"; };
 		F77886411D1EC97E00BE4518 /* JSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSNavigationController.m; sourceTree = "<group>"; };
 		F77886421D1EC97E00BE4518 /* JSTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTabBarController.h; sourceTree = "<group>"; };
@@ -165,6 +168,8 @@
 				F7271A9F1DB9F5EF00CF96A0 /* JSStatusOriginalView.m */,
 				F775B1631DBB0D6A006DAA79 /* JSHomeStatusToolBarView.h */,
 				F775B1641DBB0D6A006DAA79 /* JSHomeStatusToolBarView.m */,
+				F775B1661DBB1511006DAA79 /* JSToolBarButton.h */,
+				F775B1671DBB1511006DAA79 /* JSToolBarButton.m */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -652,6 +657,7 @@
 				F747F7981D843748000A0C8D /* NSObject+JSObjc.m in Sources */,
 				F7079FA71D8ECE260018FDA4 /* JSWelComeViewController.m in Sources */,
 				F731D1E71D9AACD9001C7B72 /* NSString+JSAppendPath.m in Sources */,
+				F775B1681DBB1511006DAA79 /* JSToolBarButton.m in Sources */,
 				F77886471D1EC97E00BE4518 /* JSTabBarController.m in Sources */,
 				F79927BE1D1C13D500E9BA8C /* AppDelegate.m in Sources */,
 				F7271AA31DBA26A700CF96A0 /* JSHomeStatusUserModel.m in Sources */,
