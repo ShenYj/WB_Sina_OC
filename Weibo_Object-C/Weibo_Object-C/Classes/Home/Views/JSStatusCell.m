@@ -7,6 +7,7 @@
 //
 
 #import "JSStatusCell.h"
+#import "JSHomeStatusModel.h"
 #import "JSStatusOriginalView.h"
 #import "JSStatusRetweetView.h"
 #import "JSStatusToolBarView.h"
@@ -24,6 +25,8 @@ static CGFloat const kBottomMargin = 5.f;
 @property (nonatomic) JSStatusRetweetView *retweetView;
 // 底部ToolBar视图
 @property (nonatomic) JSStatusToolBarView *toolBarView;
+// 记录ToolBar顶部约束
+@property (nonatomic) MASConstraint *toolBarTopConstraint;
 
 @end
 
@@ -63,7 +66,8 @@ static CGFloat const kBottomMargin = 5.f;
     }];
     
     [self.toolBarView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.retweetView.mas_bottom);
+        // 根据是否有转发微博来设置底部ToolBar的顶部约束,默认先按照都有转发微博来进行设置,并在此记录顶部约束,根据传递数据是否有转发微博来更新约束
+        self.toolBarTopConstraint = make.top.mas_equalTo(self.retweetView.mas_bottom);
         make.left.right.mas_equalTo(self.contentView);
         make.height.mas_equalTo(kStatusToolBarHeight);
     }];
@@ -76,15 +80,32 @@ static CGFloat const kBottomMargin = 5.f;
 }
 
 #pragma mark
-#pragma mark - transport data
+#pragma mark - transport data & update ToolBar top constraint
 - (void)setStatusData:(JSHomeStatusModel *)statusData {
     
     _statusData = statusData;
     
     // 原创微博视图传递数据
     self.originalView.statusData = statusData;
-    // 转发微博传递数据
-    self.retweetView.statusData = statusData;
+    
+    if (statusData.retweeted_status) {
+        // 转发微博传递数据
+        self.retweetView.statusData = statusData;
+        // 有转发微博数据 (ToolBar顶部为RetweetView的底部)
+        [self.toolBarTopConstraint uninstall];
+        [self.toolBarView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(self.retweetView.mas_bottom);
+        }];
+        
+    } else {
+        // 没有转发微博数据 (ToolBar顶部为Original的底部)
+        [self.toolBarTopConstraint uninstall];
+        [self.toolBarView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(self.originalView.mas_bottom);
+        }];
+    }
+    
+    
     // 底部ToolBar传递数据
     self.toolBarView.statusData = statusData;
     

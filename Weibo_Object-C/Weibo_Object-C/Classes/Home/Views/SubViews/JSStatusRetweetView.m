@@ -55,13 +55,7 @@ static CGFloat const kMargin = 10.f;
     
     _statusData = statusData;
     
-    // 如果有转发微博信息
-    if (statusData.retweeted_status) {
-        
-        self.contentLabel.text = statusData.retweeted_status.text;
-        
-    }
-    
+    self.contentLabel.text = statusData.retweeted_status.text;
     
 }
 
