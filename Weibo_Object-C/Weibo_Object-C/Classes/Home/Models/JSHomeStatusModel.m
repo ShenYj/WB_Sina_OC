@@ -38,7 +38,7 @@
         NSDictionary *dict = (NSDictionary *)value;
         
         JSHomeStatusUserModel *userModel = [JSHomeStatusUserModel modelWithDict:dict];
-        
+        // 用户模型赋值
         self.user = userModel;
         
     } else if ([key isEqualToString:@"retweeted_status"]) {
@@ -46,11 +46,11 @@
         NSDictionary *dict = (NSDictionary *)value;
         
         JSHomeStatusModel *retweeted_status = [JSHomeStatusModel statuWithDict:dict];
-        
+        // 转发微博模型赋值
         self.retweeted_status = retweeted_status;
         
     } else {
-        
+        // KVC字典转模型
         [super setValue:value forKey:key];
     }
 }

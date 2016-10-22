@@ -7,6 +7,7 @@
 //
 
 #import "JSStatusRetweetView.h"
+#import "JSHomeStatusModel.h"
 
 static CGFloat const kMargin = 10.f;
 
@@ -48,6 +49,23 @@ static CGFloat const kMargin = 10.f;
 }
 
 #pragma mark
+#pragma mark - set up Data
+
+- (void)setStatusData:(JSHomeStatusModel *)statusData {
+    
+    _statusData = statusData;
+    
+    // 如果有转发微博信息
+    if (statusData.retweeted_status) {
+        
+        self.contentLabel.text = statusData.retweeted_status.text;
+        
+    }
+    
+    
+}
+
+#pragma mark
 #pragma mark - lazy
 
 - (UILabel *)contentLabel {
@@ -57,7 +75,6 @@ static CGFloat const kMargin = 10.f;
         _contentLabel.font = [UIFont systemFontOfSize:15];
         _contentLabel.preferredMaxLayoutWidth = [UIScreen mainScreen].bounds.size.width - 2 * kMargin;
         _contentLabel.numberOfLines = 0;
-        _contentLabel.text = @"asdfjal;sdfjasopieuhraksjdlfl;jaslk;dfjkl;asjdfkajopsieyhrfhaskldhfjashfuipqwheirjasldf;jlk;";
     }
     return _contentLabel;
 }

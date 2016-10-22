@@ -76,13 +76,17 @@ static CGFloat const kBottomMargin = 5.f;
 }
 
 #pragma mark
-#pragma mark - set up data
+#pragma mark - transport data
 - (void)setStatusData:(JSHomeStatusModel *)statusData {
     
     _statusData = statusData;
     
+    // 原创微博视图传递数据
     self.originalView.statusData = statusData;
-    
+    // 转发微博传递数据
+    self.retweetView.statusData = statusData;
+    // 底部ToolBar传递数据
+    self.toolBarView.statusData = statusData;
     
 }
 

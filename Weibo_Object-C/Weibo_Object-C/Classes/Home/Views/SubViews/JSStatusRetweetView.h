@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class JSHomeStatusModel;
+
 @interface JSStatusRetweetView : UIView
+
+@property (nonatomic) JSHomeStatusModel *statusData;
 
 @end
