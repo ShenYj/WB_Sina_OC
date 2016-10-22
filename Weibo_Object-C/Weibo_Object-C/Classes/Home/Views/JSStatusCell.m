@@ -59,7 +59,7 @@ static CGFloat const kBottomMargin = 5.f;
     [self.retweetView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(self.contentView);
         make.top.mas_equalTo(self.originalView.mas_bottom);
-        make.height.mas_equalTo(50);
+        //make.height.mas_equalTo(50); retweetView内部根据文本进行了高度适配
     }];
     
     [self.toolBarView mas_makeConstraints:^(MASConstraintMaker *make) {

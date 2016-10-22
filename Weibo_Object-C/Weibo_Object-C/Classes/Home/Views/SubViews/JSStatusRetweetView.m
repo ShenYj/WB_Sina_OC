@@ -8,6 +8,16 @@
 
 #import "JSStatusRetweetView.h"
 
+static CGFloat const kMargin = 10.f;
+
+
+@interface JSStatusRetweetView ()
+
+// 转发微博中的微博内容
+@property (nonatomic) UILabel *contentLabel;
+
+@end
+
 @implementation JSStatusRetweetView
 
 - (instancetype)init {
@@ -18,10 +28,39 @@
     return self;
 }
 
+#pragma mark
+#pragma mark - set up UI
+
 - (void)prepareView {
     
     self.backgroundColor = [UIColor js_randomColor];
     
+    [self addSubview:self.contentLabel];
+    
+    [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self).mas_offset(kMargin);
+        make.top.mas_equalTo(self).mas_offset(kMargin);
+    }];
+    
+    [self mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(self.contentLabel).mas_offset(kMargin);
+    }];
+    
+}
+
+#pragma mark
+#pragma mark - lazy
+
+- (UILabel *)contentLabel {
+    
+    if (_contentLabel == nil) {
+        _contentLabel = [[UILabel alloc] init];
+        _contentLabel.font = [UIFont systemFontOfSize:15];
+        _contentLabel.preferredMaxLayoutWidth = [UIScreen mainScreen].bounds.size.width - 2 * kMargin;
+        _contentLabel.numberOfLines = 0;
+        _contentLabel.text = @"asdfjal;sdfjasopieuhraksjdlfl;jaslk;dfjkl;asjdfkajopsieyhrfhaskldhfjashfuipqwheirjasldf;jlk;";
+    }
+    return _contentLabel;
 }
 
 @end
