@@ -41,7 +41,6 @@ static CGFloat const kUserStatusImageViewSize = 15.f;
 @implementation JSStatusOriginalView
 
 - (instancetype)init {
-    
     self = [super init];
     if (self) {
     
@@ -153,8 +152,6 @@ static CGFloat const kUserStatusImageViewSize = 15.f;
 //    } else {
 //        self.userStatusImageView.image = nil;
 //    }
-
-    
     
     
 }

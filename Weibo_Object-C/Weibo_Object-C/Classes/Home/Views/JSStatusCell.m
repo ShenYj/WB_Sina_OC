@@ -9,13 +9,18 @@
 #import "JSStatusCell.h"
 #import "JSStatusOriginalView.h"
 
-static CGFloat const kStatusOriginalViewHeight = 50.f;
+#import "JSHomeStatusToolBarView.h"
 
+static CGFloat const kStatusToolBarHeight = 35.f;
+//static CGFloat const kStatusOriginalViewHeight = 50.f;
 
 
 @interface JSStatusCell ()
 
+// 原创微博视图
 @property (nonatomic) JSStatusOriginalView *originalView;
+// 底部ToolBar视图
+@property (nonatomic) JSHomeStatusToolBarView *toolBarView;
 
 @end
 
@@ -40,10 +45,22 @@ static CGFloat const kStatusOriginalViewHeight = 50.f;
     self.backgroundColor = [UIColor whiteColor];
     
     [self.contentView addSubview:self.originalView];
+    [self.contentView addSubview:self.toolBarView];
     
     [self.originalView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.right.mas_equalTo(self.contentView);
         //make.height.mas_equalTo(kStatusOriginalViewHeight); 在JSStatusOriginalView中设置自身底边约束
+    }];
+    
+    [self.toolBarView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.originalView.mas_bottom);
+        make.left.right.mas_equalTo(self.contentView);
+        make.height.mas_equalTo(kStatusToolBarHeight);
+    }];
+    
+    [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.mas_equalTo(self);
+        make.bottom.mas_equalTo(self.toolBarView);
     }];
     
 }
@@ -76,6 +93,14 @@ static CGFloat const kStatusOriginalViewHeight = 50.f;
         _originalView = [[JSStatusOriginalView alloc] init];
     }
     return _originalView;
+}
+
+- (JSHomeStatusToolBarView *)toolBarView {
+    
+    if (_toolBarView == nil) {
+        _toolBarView = [[JSHomeStatusToolBarView alloc] init];
+    }
+    return _toolBarView;
 }
 
 @end
