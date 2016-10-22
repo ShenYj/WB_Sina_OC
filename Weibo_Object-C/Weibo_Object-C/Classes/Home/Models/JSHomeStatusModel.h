@@ -13,6 +13,8 @@
 
 @interface JSHomeStatusModel : NSObject
 
+#pragma mark
+#pragma mark - properties
 // 微博创建时间
 @property (nonatomic,copy) NSString *created_at;
 // 微博ID
@@ -32,7 +34,13 @@
 // 表态数
 @property (nonatomic) NSNumber *attitudes_count;
 
+#pragma mark - 自定义属性
+@property (nonatomic,copy) NSString *reposts_count_string;
+@property (nonatomic,copy) NSString *comments_count_string;
+@property (nonatomic,copy) NSString *attitudes_count_string;
 
+#pragma mark
+#pragma mark - methods
 // 实例方法
 - (instancetype)initWithDict:(NSDictionary *)dict;
 // 静态方法

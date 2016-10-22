@@ -44,14 +44,18 @@
     
     _statusData = statusData;
     
-    [self.retweetedButton setTitle:[self transformDisplayContentByNSNumber:statusData.reposts_count withTitle:@"转发"] forState:UIControlStateNormal];
-    [self.commentButton setTitle:[self transformDisplayContentByNSNumber:statusData.comments_count withTitle:@"评论"] forState:UIControlStateNormal];
-    [self.likeButton setTitle:[self transformDisplayContentByNSNumber:statusData.attitudes_count withTitle:@"赞"] forState:UIControlStateNormal];
+    [self.retweetedButton setTitle:statusData.reposts_count_string forState:UIControlStateNormal];
+    [self.commentButton setTitle:statusData.comments_count_string forState:UIControlStateNormal];
+    [self.likeButton setTitle:statusData.attitudes_count_string forState:UIControlStateNormal];
+    
+    // 将显示内容部分的计算,放在模型中完成并保存
+//    [self.retweetedButton setTitle:[self transformDisplayContentByNSNumber:statusData.reposts_count withTitle:@"转发"] forState:UIControlStateNormal];
+//    [self.commentButton setTitle:[self transformDisplayContentByNSNumber:statusData.comments_count withTitle:@"评论"] forState:UIControlStateNormal];
+//    [self.likeButton setTitle:[self transformDisplayContentByNSNumber:statusData.attitudes_count withTitle:@"赞"] forState:UIControlStateNormal];
 }
 
 
 #pragma mark - 获取转发评论赞的字符串
-
 - (NSString *)transformDisplayContentByNSNumber:(NSNumber *)aNumber withTitle:(NSString *)title {
     
     /*
