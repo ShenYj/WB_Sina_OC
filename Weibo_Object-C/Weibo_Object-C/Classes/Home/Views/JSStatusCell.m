@@ -89,8 +89,13 @@ static CGFloat const kBottomMargin = 5.f;
     self.originalView.statusData = statusData;
     
     if (statusData.retweeted_status) {
+        
         // 转发微博传递数据
         self.retweetView.statusData = statusData;
+        
+        // 显示转发微博
+        self.retweetView.hidden = NO;
+        
         // 有转发微博数据 (ToolBar顶部为RetweetView的底部)
         [self.toolBarTopConstraint uninstall];
         [self.toolBarView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -98,13 +103,15 @@ static CGFloat const kBottomMargin = 5.f;
         }];
         
     } else {
-        // 没有转发微博数据 (ToolBar顶部为Original的底部)
+        // 没有转发微博数据 (ToolBar顶部为Original的底部) 隐藏转发微博
+        self.retweetView.hidden = YES;
+        
+        // 更新约束
         [self.toolBarTopConstraint uninstall];
         [self.toolBarView mas_updateConstraints:^(MASConstraintMaker *make) {
             self.toolBarTopConstraint = make.top.mas_equalTo(self.originalView.mas_bottom);
         }];
     }
-    
     
     // 底部ToolBar传递数据
     self.toolBarView.statusData = statusData;
