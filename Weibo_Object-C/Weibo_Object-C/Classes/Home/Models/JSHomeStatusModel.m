@@ -41,7 +41,15 @@
         
         self.user = userModel;
         
-    }else {
+    } else if ([key isEqualToString:@"retweeted_status"]) {
+        
+        NSDictionary *dict = (NSDictionary *)value;
+        
+        JSHomeStatusModel *retweeted_status = [JSHomeStatusModel statuWithDict:dict];
+        
+        self.retweeted_status = retweeted_status;
+        
+    } else {
         
         [super setValue:value forKey:key];
     }

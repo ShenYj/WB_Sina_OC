@@ -10,7 +10,6 @@
 
 static CGFloat const kMargin = 10.f;
 
-
 @interface JSStatusRetweetView ()
 
 // 转发微博中的微博内容

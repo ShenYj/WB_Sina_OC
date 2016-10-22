@@ -23,6 +23,8 @@
 @property (nonatomic,copy) NSString *source;
 // 微博作者的用户信息字段
 @property (nonatomic) JSHomeStatusUserModel *user;
+// 转发微博
+@property (nonatomic) JSHomeStatusModel *retweeted_status;
 
 // 实例方法
 - (instancetype)initWithDict:(NSDictionary *)dict;
