@@ -25,6 +25,13 @@
 @property (nonatomic) JSHomeStatusUserModel *user;
 // 转发微博
 @property (nonatomic) JSHomeStatusModel *retweeted_status;
+// 转发数
+@property (nonatomic) NSNumber *reposts_count;
+// 评论数
+@property (nonatomic) NSNumber *comments_count;
+// 表态数
+@property (nonatomic) NSNumber *attitudes_count;
+
 
 // 实例方法
 - (instancetype)initWithDict:(NSDictionary *)dict;

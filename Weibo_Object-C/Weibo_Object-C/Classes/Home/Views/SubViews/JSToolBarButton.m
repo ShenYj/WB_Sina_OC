@@ -34,7 +34,6 @@
 
 - (void)clickToolBarButton:(JSToolBarButton *)toolBarButton {
     
-    
     switch (toolBarButton.toolBarButtonType) {
             
         case JSToolBarButtonTypeRetweeted:

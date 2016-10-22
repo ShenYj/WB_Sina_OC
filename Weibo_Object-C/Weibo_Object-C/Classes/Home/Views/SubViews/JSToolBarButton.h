@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+// ToolBar按钮功能
 typedef NS_ENUM(NSUInteger, JSToolBarButtonType) {
     JSToolBarButtonTypeRetweeted,
     JSToolBarButtonTypeComment,

@@ -8,6 +8,7 @@
 
 #import "JSStatusToolBarView.h"
 #import "JSToolBarButton.h"
+#import "jSHomeStatusModel.h"
 
 @interface JSStatusToolBarView ()
 
@@ -21,6 +22,7 @@
 @property (nonatomic) UIImageView *seperatorImageView_1;
 // 分割线2
 @property (nonatomic) UIImageView *seperatorImageVIew_2;
+
 @end
 
 @implementation JSStatusToolBarView
@@ -33,6 +35,21 @@
     }
     return self;
 }
+
+
+#pragma mark 
+#pragma mark - set up Data
+
+- (void)setStatusData:(JSHomeStatusModel *)statusData {
+    
+    _statusData = statusData;
+    
+    [self.retweetedButton setTitle:[NSString stringWithFormat:@"转发 %@",statusData.reposts_count] forState:UIControlStateNormal];
+    [self.commentButton setTitle:[NSString stringWithFormat:@"评论 %@",statusData.comments_count] forState:UIControlStateNormal];
+    [self.likeButton setTitle:[NSString stringWithFormat:@"赞 %@",statusData.attitudes_count] forState:UIControlStateNormal];
+}
+
+
 
 #pragma mark 
 #pragma mark - set up UI
@@ -121,7 +138,7 @@
     if (_retweetedButton == nil) {
         _retweetedButton = [[JSToolBarButton alloc] initWithImageNames:@[@"timeline_icon_retweet"]];
         _retweetedButton.toolBarButtonType = JSToolBarButtonTypeRetweeted;
-        [_retweetedButton setTitle:@"转发" forState:UIControlStateNormal];
+        //[_retweetedButton setTitle:@"转发" forState:UIControlStateNormal];
     }
     return _retweetedButton;
 }
@@ -131,7 +148,7 @@
     if (_commentButton == nil) {
         _commentButton = [[JSToolBarButton alloc] initWithImageNames:@[@"timeline_icon_comment"]];
         _commentButton.toolBarButtonType = JSToolBarButtonTypeComment;
-        [_commentButton setTitle:@"评论" forState:UIControlStateNormal];
+        //[_commentButton setTitle:@"评论" forState:UIControlStateNormal];
     }
     return _commentButton;
 }
@@ -141,7 +158,7 @@
     if (_likeButton == nil) {
         _likeButton = [[JSToolBarButton alloc] initWithImageNames:@[@"timeline_icon_unlike"]];
         _likeButton.toolBarButtonType = JSToolBarButtonTypeLike;
-        [_likeButton setTitle:@"赞" forState:UIControlStateNormal];
+        //[_likeButton setTitle:@"赞" forState:UIControlStateNormal];
     }
     return _likeButton;
 }

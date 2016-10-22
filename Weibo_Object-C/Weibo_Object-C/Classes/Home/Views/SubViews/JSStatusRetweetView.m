@@ -33,7 +33,7 @@ static CGFloat const kMargin = 10.f;
 
 - (void)prepareView {
     
-    self.backgroundColor = [UIColor js_randomColor];
+    self.backgroundColor = [UIColor js_colorWithHex:0xE8E8E8];
     
     [self addSubview:self.contentLabel];
     
