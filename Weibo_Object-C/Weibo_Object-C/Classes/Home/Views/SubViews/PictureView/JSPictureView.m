@@ -54,15 +54,15 @@ static CGFloat const kItemMargin = 5.f;
     
 }
 
-// 根据配图的个数,计算配图视图的宽度和高度
+// 根据配图的个数,计算配图视图的宽度和高度 (转移至模型类<JSStatusModel>中进行计算)
 - (CGSize)getPictureViewSizeWithItemCounts:(NSInteger)itemCount {
     
     // 每张配图(Cell) 的尺寸 (等高等宽)
     CGFloat itemSizeWH = ([UIScreen mainScreen].bounds.size.width - 2 * kMargin - 2 * kItemMargin) / 3;
     
-    // 计算行数和列数
+    // 计算行数和列数  (itemCount == 4) ? 2 : (itemCount >= 3 ? 3 : itemCount);
     NSInteger col = (itemCount >= 3) ? (itemCount == 4 ? 2 : 3) : (itemCount == 2 ? 2 : 1);
-    NSInteger row = (itemCount - 1) / 3 + 1 ;
+    NSInteger row = (itemCount == 4) ? 2 : ((itemCount - 1) / 3 + 1);
     
     // 计算PictureView的宽度和高度
     CGFloat pictureViewSizeW = col * itemSizeWH + (col - 1) * kItemMargin;
@@ -75,33 +75,44 @@ static CGFloat const kItemMargin = 5.f;
 #pragma mark - 
 #pragma mark - set up Data & update PictureView constraint
 
-- (void)setPictures:(NSArray<JSHomeStatusPictureModel *> *)pictures {
+- (void)setStatusData:(JSHomeStatusModel *)statusData {
     
-    _pictures = pictures;
-    
-    // 根据配图的个数,设置自身(PickerView)的Size
-    CGSize size = [self getPictureViewSizeWithItemCounts:pictures.count];
-    
-    // 设置PictureView的Size约束
+    _statusData = statusData;
+    // 根据配图的个数,设置自身(PickerView)的Size  (转移至模型类<JSStatusModel>中进行计算并保存)
     [self mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(size);
+        make.size.mas_equalTo(statusData.pictureItemSize);
     }];
     
-    self.pictureCountsLabel.text = @(pictures.count).description;
-    
+    self.pictureCountsLabel.text = @(statusData.pic_urls.count).description;
 }
+
+//- (void)setPictures:(NSArray<JSHomeStatusPictureModel *> *)pictures {
+//    
+//    _pictures = pictures;
+//    
+//    // 根据配图的个数,设置自身(PickerView)的Size  (转移至模型类<JSStatusModel>中进行计算并保存)
+//    // CGSize size = [self getPictureViewSizeWithItemCounts:pictures.count];
+//    
+//    // 设置PictureView的Size约束
+//    [self mas_updateConstraints:^(MASConstraintMaker *make) {
+//        make.size.mas_equalTo(pictures.);
+//    }];
+//       
+//    self.pictureCountsLabel.text = @(pictures.count).description;
+//    
+//}
 
 #pragma mark
 #pragma mark - UICollectionViewDataSource,UICollectionViewDelegate
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return self.pictures.count;
+    return self.statusData.pic_urls.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    JSHomeStatusPictureModel *pictureModel = self.pictures[indexPath.item];
+    JSHomeStatusPictureModel *pictureModel = self.statusData.pic_urls[indexPath.item];
     
     JSPictureViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:pictureReusedID forIndexPath:indexPath];
     

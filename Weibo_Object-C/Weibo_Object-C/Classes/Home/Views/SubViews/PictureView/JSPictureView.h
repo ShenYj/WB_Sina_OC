@@ -13,8 +13,8 @@
 
 @interface JSPictureView : UICollectionView
 
-//@property (nonatomic) JSHomeStatusModel *statusData;
+@property (nonatomic) JSHomeStatusModel *statusData;
 
-@property (nonatomic) NSArray <JSHomeStatusPictureModel *>*pictures;
+//@property (nonatomic) NSArray <JSHomeStatusPictureModel *>*pictures;
 
 @end

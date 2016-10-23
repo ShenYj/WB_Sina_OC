@@ -8,6 +8,8 @@
 
 #import "JSHomeStatusPictureModel.h"
 
+
+
 @implementation JSHomeStatusPictureModel
 
 - (instancetype)initWithDict:(NSDictionary *)dict {
@@ -33,5 +35,6 @@
     
     return [self dictionaryWithValuesForKeys:keys].description;
 }
+
 
 @end

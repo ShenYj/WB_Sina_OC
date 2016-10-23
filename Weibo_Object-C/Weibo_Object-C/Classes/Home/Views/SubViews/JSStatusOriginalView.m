@@ -166,7 +166,8 @@ static CGFloat const kUserStatusImageViewSize = 15.f;
         self.pictureView.hidden = NO;
         
         //有配图 赋值数据
-        self.pictureView.pictures = statusData.pic_urls;
+        self.pictureView.statusData = statusData;
+        //self.pictureView.pictures = statusData.pic_urls;
         
         // 更新约束
         [self mas_makeConstraints:^(MASConstraintMaker *make) {

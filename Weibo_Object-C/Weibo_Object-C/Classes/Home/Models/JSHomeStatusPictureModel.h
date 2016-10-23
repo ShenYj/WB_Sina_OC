@@ -13,6 +13,8 @@
 // 配图地址
 @property (nonatomic,copy) NSString *thumbnail_pic;
 
+
+
 + (instancetype)picWithDict:(NSDictionary *)dict;
 
 - (instancetype)initWithDict:(NSDictionary *)dict;

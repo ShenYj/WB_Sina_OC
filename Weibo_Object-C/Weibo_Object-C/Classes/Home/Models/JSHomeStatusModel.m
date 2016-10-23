@@ -11,6 +11,9 @@
 #import "JSHomeStatusUserModel.h"
 #import "JSHomeStatusPictureModel.h"
 
+// 配图视图的参数 配图视图距离屏幕两个的间距和配图间的间距
+static CGFloat const kMargin = 10.f;
+static CGFloat const kItemMargin = 5.f;
 
 @implementation JSHomeStatusModel
 
@@ -102,6 +105,30 @@
     
 }
 
+- (void)setPic_urls:(NSArray<JSHomeStatusPictureModel *> *)pic_urls {
+    
+    _pic_urls = pic_urls;
+    
+    self.pictureItemSize = [self getPictureViewSizeWithItemCounts:pic_urls.count];
+    
+}
+
+// 根据配图的个数,计算配图视图的宽度和高度
+- (CGSize)getPictureViewSizeWithItemCounts:(NSInteger)itemCount {
+    
+    // 每张配图(Cell) 的尺寸 (等高等宽)
+    CGFloat itemSizeWH = ([UIScreen mainScreen].bounds.size.width - 2 * kMargin - 2 * kItemMargin) / 3;
+    
+    // 计算行数和列数  (itemCount == 4) ? 2 : (itemCount >= 3 ? 3 : itemCount);
+    NSInteger col = (itemCount >= 3) ? (itemCount == 4 ? 2 : 3) : (itemCount == 2 ? 2 : 1);
+    NSInteger row = (itemCount == 4) ? 2 : ((itemCount - 1) / 3 + 1);
+    
+    // 计算PictureView的宽度和高度
+    CGFloat pictureViewSizeW = col * itemSizeWH + (col - 1) * kItemMargin;
+    CGFloat pictureViewSizeH = row * itemSizeWH + (col - 1) * kItemMargin;
+    
+    return CGSizeMake(pictureViewSizeW, pictureViewSizeH);
+}
 
 #pragma mark - 获取转发评论赞的字符串
 
