@@ -31,7 +31,7 @@
     
     if (requestMethod == RequestMethodGet) {
         
-        [[JSNetworkTool sharedNetworkTool] GET:urlString parameters:parametes progress:^(NSProgress * _Nonnull downloadProgress) {
+        [self GET:urlString parameters:parametes progress:^(NSProgress * _Nonnull downloadProgress) {
             
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             
@@ -45,7 +45,7 @@
         
     }else{
         
-        [[JSNetworkTool sharedNetworkTool] POST:urlString parameters:parametes progress:^(NSProgress * _Nonnull uploadProgress) {
+        [self POST:urlString parameters:parametes progress:^(NSProgress * _Nonnull uploadProgress) {
             
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             

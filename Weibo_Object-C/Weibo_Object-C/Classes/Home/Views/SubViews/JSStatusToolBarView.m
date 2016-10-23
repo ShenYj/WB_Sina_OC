@@ -55,7 +55,7 @@
 }
 
 
-#pragma mark - 获取转发评论赞的字符串
+#pragma mark - 获取转发评论赞的字符串 (将计算转移到模型类JSHomeStatusModel中完成并保存起来)
 - (NSString *)transformDisplayContentByNSNumber:(NSNumber *)aNumber withTitle:(NSString *)title {
     
     /*

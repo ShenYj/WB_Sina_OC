@@ -34,17 +34,17 @@
 // 表态数
 @property (nonatomic) NSNumber *attitudes_count;
 
-#pragma mark - 自定义属性
+#pragma mark - 自定义属性 (底部ToolBar的数据,将数值类型转换成字符串并保存起来)
 @property (nonatomic,copy) NSString *reposts_count_string;
 @property (nonatomic,copy) NSString *comments_count_string;
 @property (nonatomic,copy) NSString *attitudes_count_string;
 
 #pragma mark
 #pragma mark - methods
-// 实例方法
-- (instancetype)initWithDict:(NSDictionary *)dict;
 // 静态方法
 + (instancetype)statuWithDict:(NSDictionary *)dict;
+// 实例方法
+- (instancetype)initWithDict:(NSDictionary *)dict;
 
 
 @end

@@ -59,7 +59,7 @@
     
 }
 
-
+#pragma mark - 重写转发评论在属性的set方法,给自定义属性赋值
 - (void)setReposts_count:(NSNumber *)reposts_count {
     
     _reposts_count = reposts_count;
