@@ -13,9 +13,8 @@
 
 @interface JSPictureView : UICollectionView
 
-@property (nonatomic) JSHomeStatusModel *statusData;
+//@property (nonatomic) JSHomeStatusModel *statusData;
 
-// 配图视图自定义构造函数
-- (instancetype)initWithFrame:(CGRect)frame withPictures:(NSArray <JSHomeStatusPictureModel *>*)pictures;
+@property (nonatomic) NSArray <JSHomeStatusPictureModel *>*pictures;
 
 @end

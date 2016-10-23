@@ -9,6 +9,12 @@
 #import "JSPictureViewCell.h"
 #import "JSHomeStatusModel.h"
 
+@interface JSPictureViewCell ()
+
+@property (nonatomic) UIImageView *pictureImageView;
+
+@end
+
 @implementation JSPictureViewCell
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -26,6 +32,11 @@
     
     self.backgroundColor = [UIColor js_randomColor];
     
+    [self.contentView addSubview:self.pictureImageView];
+    [self.pictureImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.contentView).mas_offset(0);
+    }];
+    
 }
 
 #pragma mark
@@ -34,6 +45,17 @@
 - (void)setPictureModel:(JSHomeStatusPictureModel *)pictureModel {
     
     _pictureModel = pictureModel;
+}
+
+#pragma mark 
+#pragma mark - lazy
+
+- (UIImageView *)pictureImageView {
+    
+    if (_pictureImageView == nil) {
+        _pictureImageView = [[UIImageView alloc] init];
+    }
+    return _pictureImageView;
 }
 
 @end

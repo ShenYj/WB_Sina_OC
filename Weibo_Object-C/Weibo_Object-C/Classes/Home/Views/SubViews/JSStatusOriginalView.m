@@ -166,13 +166,12 @@ static CGFloat const kUserStatusImageViewSize = 15.f;
         self.pictureView.hidden = NO;
         
         //有配图 赋值数据
-        self.pictureView.statusData = statusData;
+        self.pictureView.pictures = statusData.pic_urls;
         
         // 更新约束
         [self mas_makeConstraints:^(MASConstraintMaker *make) {
             self.selfBottomConstraint = make.bottom.mas_equalTo(self.pictureView).mas_offset(kMargin);
         }];
-        
         
     } else {
         
@@ -185,7 +184,6 @@ static CGFloat const kUserStatusImageViewSize = 15.f;
         }];
         
     }
-    
     
 //    [[UIImage imageNamed:@"v2_selected"] js_cornerImageWithSize:CGSizeMake(kUserStatusImageViewSize, kUserStatusImageViewSize) fillClolor:[UIColor whiteColor] completion:^(UIImage *img) {
 //        
@@ -293,7 +291,7 @@ static CGFloat const kUserStatusImageViewSize = 15.f;
 - (JSPictureView *)pictureView {
     
     if (_pictureView == nil) {
-        _pictureView = [[JSPictureView alloc] initWithFrame:CGRectZero withPictures:self.statusData.pic_urls];
+        _pictureView = [[JSPictureView alloc] init];
     }
     return _pictureView;
 }

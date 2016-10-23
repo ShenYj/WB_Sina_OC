@@ -12,7 +12,12 @@
 
 - (void)prepareLayout {
     
+    self.itemSize = CGSizeMake(100, 100);
+    self.minimumLineSpacing = 5;
+    self.minimumInteritemSpacing = 5;
     self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    self.collectionView.showsVerticalScrollIndicator = NO;
+    self.collectionView.showsHorizontalScrollIndicator = NO;
 }
 
 @end
