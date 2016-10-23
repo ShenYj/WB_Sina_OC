@@ -35,7 +35,7 @@
     
     [self.contentView addSubview:self.pictureImageView];
     [self.pictureImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(self.contentView).mas_offset(0);
+        make.edges.mas_equalTo(self.contentView).mas_offset(UIEdgeInsetsZero);
     }];
     
 }

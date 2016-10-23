@@ -94,7 +94,7 @@ static CGFloat const kBottomMargin = 5.f;
     if (statusData.retweeted_status) {
         
         // 转发微博传递数据 (需要先赋值,内部才能计算出正确的约束)
-        self.retweetView.statusData = statusData;
+        self.retweetView.statusData = statusData.retweeted_status;
         
         // 显示转发微博
         self.retweetView.hidden = NO;
