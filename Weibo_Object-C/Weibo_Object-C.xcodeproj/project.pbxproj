@@ -243,10 +243,10 @@
 		F73BE4431DBC7FDB00C31595 /* PictureView */ = {
 			isa = PBXGroup;
 			children = (
-				F73BE4441DBC801100C31595 /* JSFlowLayout.h */,
-				F73BE4451DBC801100C31595 /* JSFlowLayout.m */,
 				F73BE4461DBC801100C31595 /* JSPictureView.h */,
 				F73BE4471DBC801100C31595 /* JSPictureView.m */,
+				F73BE4441DBC801100C31595 /* JSFlowLayout.h */,
+				F73BE4451DBC801100C31595 /* JSFlowLayout.m */,
 				F73BE4481DBC801100C31595 /* JSPictureViewCell.h */,
 				F73BE4491DBC801100C31595 /* JSPictureViewCell.m */,
 			);

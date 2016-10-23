@@ -17,6 +17,7 @@
 static CGFloat const kHeadImageViewSize = 35.f;
 static CGFloat const kMargin = 10.f;
 static CGFloat const kUserStatusImageViewSize = 15.f;
+static CGFloat const kOriginalContentLabelFontSize = 14.f;
 
 @interface JSStatusOriginalView ()
 
@@ -272,7 +273,7 @@ static CGFloat const kUserStatusImageViewSize = 15.f;
         _contentLabel = [[UILabel alloc] init];
         _contentLabel.preferredMaxLayoutWidth = [UIScreen mainScreen].bounds.size.width - 2 * kMargin;
         _contentLabel.numberOfLines = 0;
-        _contentLabel.font = [UIFont systemFontOfSize:15];
+        _contentLabel.font = [UIFont systemFontOfSize:kOriginalContentLabelFontSize];
     }
     return _contentLabel;
 }

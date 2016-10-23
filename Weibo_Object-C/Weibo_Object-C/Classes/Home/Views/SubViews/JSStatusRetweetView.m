@@ -8,6 +8,7 @@
 
 #import "JSStatusRetweetView.h"
 #import "JSHomeStatusModel.h"
+static CGFloat const kRetweetContentLabelFontSize = 13.f;
 
 static CGFloat const kMargin = 10.f;
 
@@ -67,7 +68,7 @@ static CGFloat const kMargin = 10.f;
     
     if (_contentLabel == nil) {
         _contentLabel = [[UILabel alloc] init];
-        _contentLabel.font = [UIFont systemFontOfSize:15];
+        _contentLabel.font = [UIFont systemFontOfSize:kRetweetContentLabelFontSize];
         _contentLabel.preferredMaxLayoutWidth = [UIScreen mainScreen].bounds.size.width - 2 * kMargin;
         _contentLabel.numberOfLines = 0;
     }

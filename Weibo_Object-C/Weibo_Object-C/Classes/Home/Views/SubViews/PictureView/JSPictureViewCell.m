@@ -8,6 +8,7 @@
 
 #import "JSPictureViewCell.h"
 #import "JSHomeStatusModel.h"
+#import "JSHomeStatusPictureModel.h"
 
 @interface JSPictureViewCell ()
 
@@ -30,7 +31,7 @@
 #pragma mark - set up UI
 - (void)prepareView {
     
-    self.backgroundColor = [UIColor js_randomColor];
+    self.backgroundColor = [UIColor whiteColor];
     
     [self.contentView addSubview:self.pictureImageView];
     [self.pictureImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -45,6 +46,9 @@
 - (void)setPictureModel:(JSHomeStatusPictureModel *)pictureModel {
     
     _pictureModel = pictureModel;
+    
+    // 设置配图
+    [self.pictureImageView yy_setImageWithURL:[NSURL URLWithString:pictureModel.thumbnail_pic] options:YYWebImageOptionShowNetworkActivity];
 }
 
 #pragma mark 
@@ -54,6 +58,8 @@
     
     if (_pictureImageView == nil) {
         _pictureImageView = [[UIImageView alloc] init];
+        _pictureImageView.backgroundColor = [UIColor whiteColor];
+        _pictureImageView.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _pictureImageView;
 }

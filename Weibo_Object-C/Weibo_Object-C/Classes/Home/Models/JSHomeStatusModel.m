@@ -12,8 +12,9 @@
 #import "JSHomeStatusPictureModel.h"
 
 // 配图视图的参数 配图视图距离屏幕两个的间距和配图间的间距
-static CGFloat const kMargin = 10.f;
-static CGFloat const kItemMargin = 5.f;
+CGFloat const kMargin = 10.f;
+CGFloat const kItemMargin = 5.f;
+
 
 @implementation JSHomeStatusModel
 
@@ -119,8 +120,8 @@ static CGFloat const kItemMargin = 5.f;
     // 每张配图(Cell) 的尺寸 (等高等宽)
     CGFloat itemSizeWH = ([UIScreen mainScreen].bounds.size.width - 2 * kMargin - 2 * kItemMargin) / 3;
     
-    // 计算行数和列数  (itemCount == 4) ? 2 : (itemCount >= 3 ? 3 : itemCount);
-    NSInteger col = (itemCount >= 3) ? (itemCount == 4 ? 2 : 3) : (itemCount == 2 ? 2 : 1);
+    // 计算行数和列数
+    NSInteger col = (itemCount == 4) ? 2 : ((itemCount >= 3) ? 3 : itemCount);
     NSInteger row = (itemCount == 4) ? 2 : ((itemCount - 1) / 3 + 1);
     
     // 计算PictureView的宽度和高度

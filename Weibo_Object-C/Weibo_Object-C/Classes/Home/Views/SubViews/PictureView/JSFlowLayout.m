@@ -7,17 +7,25 @@
 //
 
 #import "JSFlowLayout.h"
+#import "JSHomeStatusModel.h"
 
-@implementation JSFlowLayout
+// 引用JSHomeStatusModel中的 kItemMargin全局变量
+extern CGFloat kMargin;
+extern CGFloat kItemMargin;
+
+@implementation JSFlowLayout 
 
 - (void)prepareLayout {
     
-    self.itemSize = CGSizeMake(100, 100);
-    self.minimumLineSpacing = 5;
-    self.minimumInteritemSpacing = 5;
+    // 每张配图(Cell) 的尺寸 (等高等宽)
+    CGFloat itemSizeWH = ([UIScreen mainScreen].bounds.size.width - 2 * kMargin - 2 * kItemMargin) / 3;
+    self.itemSize = CGSizeMake(itemSizeWH, itemSizeWH);
+    self.minimumLineSpacing = kItemMargin;
+    self.minimumInteritemSpacing = kItemMargin;
     self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     self.collectionView.showsVerticalScrollIndicator = NO;
     self.collectionView.showsHorizontalScrollIndicator = NO;
+    
 }
 
 @end

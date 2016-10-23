@@ -12,8 +12,10 @@
 #import "JSHomeStatusModel.h"
 
 static NSString * const pictureReusedID = @"pictureReusedID";
-static CGFloat const kMargin = 10.f;
-static CGFloat const kItemMargin = 5.f;
+// 引用JSHomeStatusModel中的 kItemMargin全局变量(这里并未使用,仅仅是为了避免最后不再使用也没有注释的方法中报错)
+extern CGFloat kMargin;
+extern CGFloat kItemMargin;
+
 
 @interface JSPictureView () <UICollectionViewDataSource,UICollectionViewDelegate>
 
@@ -35,13 +37,12 @@ static CGFloat const kItemMargin = 5.f;
     
 }
 
-
 #pragma mark
 #pragma mark - set up UI
 
 - (void)prepareView {
     
-    self.backgroundColor = [UIColor js_randomColor];
+    self.backgroundColor = [UIColor whiteColor];
     
     [self registerClass:[JSPictureViewCell class] forCellWithReuseIdentifier:pictureReusedID];
     self.dataSource = self;
@@ -52,25 +53,8 @@ static CGFloat const kItemMargin = 5.f;
         make.center.mas_equalTo(self);
     }];
     
+    
 }
-
-// 根据配图的个数,计算配图视图的宽度和高度 (转移至模型类<JSStatusModel>中进行计算)
-- (CGSize)getPictureViewSizeWithItemCounts:(NSInteger)itemCount {
-    
-    // 每张配图(Cell) 的尺寸 (等高等宽)
-    CGFloat itemSizeWH = ([UIScreen mainScreen].bounds.size.width - 2 * kMargin - 2 * kItemMargin) / 3;
-    
-    // 计算行数和列数  (itemCount == 4) ? 2 : (itemCount >= 3 ? 3 : itemCount);
-    NSInteger col = (itemCount >= 3) ? (itemCount == 4 ? 2 : 3) : (itemCount == 2 ? 2 : 1);
-    NSInteger row = (itemCount == 4) ? 2 : ((itemCount - 1) / 3 + 1);
-    
-    // 计算PictureView的宽度和高度
-    CGFloat pictureViewSizeW = col * itemSizeWH + (col - 1) * kItemMargin;
-    CGFloat pictureViewSizeH = row * itemSizeWH + (col - 1) * kItemMargin;
-    
-    return CGSizeMake(pictureViewSizeW, pictureViewSizeH);
-}
-
 
 #pragma mark - 
 #pragma mark - set up Data & update PictureView constraint
@@ -79,11 +63,18 @@ static CGFloat const kItemMargin = 5.f;
     
     _statusData = statusData;
     // 根据配图的个数,设置自身(PickerView)的Size  (转移至模型类<JSStatusModel>中进行计算并保存)
+    CGSize pictureItemSize = statusData.pictureItemSize;
+    
     [self mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(statusData.pictureItemSize);
+        make.size.mas_equalTo(pictureItemSize);
     }];
     
+    // 展示Label
     self.pictureCountsLabel.text = @(statusData.pic_urls.count).description;
+    
+    // 获取到数据后,刷新CollectionView
+    [self reloadData];
+    
 }
 
 //- (void)setPictures:(NSArray<JSHomeStatusPictureModel *> *)pictures {
@@ -101,6 +92,7 @@ static CGFloat const kItemMargin = 5.f;
 //    self.pictureCountsLabel.text = @(pictures.count).description;
 //    
 //}
+
 
 #pragma mark
 #pragma mark - UICollectionViewDataSource,UICollectionViewDelegate
@@ -134,6 +126,24 @@ static CGFloat const kItemMargin = 5.f;
         _pictureCountsLabel.textAlignment = NSTextAlignmentCenter;
     }
     return _pictureCountsLabel;
+}
+
+
+// 根据配图的个数,计算配图视图的宽度和高度 (转移至模型类<JSStatusModel>中进行计算)
+- (CGSize)getPictureViewSizeWithItemCounts:(NSInteger)itemCount {
+    
+    // 每张配图(Cell) 的尺寸 (等高等宽)
+    CGFloat itemSizeWH = ([UIScreen mainScreen].bounds.size.width - 2 * kMargin - 2 * kItemMargin) / 3;
+    
+    // 计算行数和列数  (itemCount == 4) ? 2 : (itemCount >= 3 ? 3 : itemCount);
+    NSInteger col = (itemCount >= 3) ? (itemCount == 4 ? 2 : 3) : (itemCount == 2 ? 2 : 1);
+    NSInteger row = (itemCount == 4) ? 2 : ((itemCount - 1) / 3 + 1);
+    
+    // 计算PictureView的宽度和高度
+    CGFloat pictureViewSizeW = col * itemSizeWH + (col - 1) * kItemMargin;
+    CGFloat pictureViewSizeH = row * itemSizeWH + (col - 1) * kItemMargin;
+    
+    return CGSizeMake(pictureViewSizeW, pictureViewSizeH);
 }
 
 @end
