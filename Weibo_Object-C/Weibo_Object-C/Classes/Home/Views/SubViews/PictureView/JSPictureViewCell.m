@@ -59,6 +59,7 @@
     if (_pictureImageView == nil) {
         _pictureImageView = [[UIImageView alloc] init];
         _pictureImageView.backgroundColor = [UIColor whiteColor];
+        _pictureImageView.clipsToBounds = YES;
         _pictureImageView.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _pictureImageView;
