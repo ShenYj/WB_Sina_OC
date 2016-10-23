@@ -156,15 +156,17 @@ CGFloat const kItemMargin = 5.f;
         NSRange sourceStringRange = NSMakeRange(beginRange.location + beginRange.length, endRange.location - (beginRange.location + beginRange.length));
         
         NSString *sourceString = [NSString stringWithFormat:@"来自 %@",[originalInfo substringWithRange:sourceStringRange]];
-        
+        // 将原本截取拼接后的字符串转换成富文本,并将全部字体颜色都设置成紫色
         NSMutableAttributedString *attributedSourceString  = [[NSMutableAttributedString alloc] initWithString:sourceString attributes:@{NSForegroundColorAttributeName: [UIColor purpleColor]}];
         
         NSString *sourceStringBegin = @"来自 ";
         NSRange sourceStringBeginRange = [sourceString rangeOfString:sourceStringBegin];
         
         NSRange neededContentStringRange = NSMakeRange(sourceStringBeginRange.location + sourceStringBeginRange.length, sourceString.length - sourceStringBeginRange.length);
-        
+        // 重新截取,将后面部分设置成橙色
         [attributedSourceString addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:neededContentStringRange];
+        // 字体大小
+        [attributedSourceString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:11] range:neededContentStringRange];
         
         return attributedSourceString;
     }

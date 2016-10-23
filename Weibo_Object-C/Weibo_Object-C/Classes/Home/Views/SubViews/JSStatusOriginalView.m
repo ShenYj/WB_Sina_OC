@@ -187,6 +187,29 @@ static CGFloat const kOriginalContentLabelFontSize = 14.f;
         
     }
     
+    // 设置用户等级标识 认证类型 -1:没有认证,0:认证用户,2.3.5:企业认证, 220:达人
+    
+    switch (statusData.user.verified_type.intValue) {
+        case -1:
+            self.avatarImageView.image = nil;
+            break;
+        case 0:
+            self.avatarImageView.image = [UIImage imageNamed:@"avatar_vip"];
+            break;
+        case 2:
+        case 3:
+        case 5:
+            self.avatarImageView.image = [UIImage imageNamed:@"avatar_enterprise_vip"];
+            break;
+        case 220:
+            self.avatarImageView.image = [UIImage imageNamed:@"avatar_grassroot"];
+            break;
+            
+        default:
+            break;
+    }
+    
+    
 //    [[UIImage imageNamed:@"v2_selected"] js_cornerImageWithSize:CGSizeMake(kUserStatusImageViewSize, kUserStatusImageViewSize) fillClolor:[UIColor whiteColor] completion:^(UIImage *img) {
 //        
 //        UserStatus status = statusData.user.userstatus;
@@ -263,7 +286,7 @@ static CGFloat const kOriginalContentLabelFontSize = 14.f;
     
     if (_avatarImageView == nil) {
         _avatarImageView = [[UIImageView alloc] init];
-        _avatarImageView.image = [UIImage imageNamed:@"avatar_vip"];
+        //_avatarImageView.image = [UIImage imageNamed:@"avatar_vip"];
     }
     return _avatarImageView;
 }
