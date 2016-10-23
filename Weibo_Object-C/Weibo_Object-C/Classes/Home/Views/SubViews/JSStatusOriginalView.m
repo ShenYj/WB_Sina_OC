@@ -140,7 +140,7 @@ static CGFloat const kOriginalContentLabelFontSize = 14.f;
     [self.headImageView yy_setImageWithURL:[NSURL URLWithString:statusData.user.profile_image_url] options:YYWebImageOptionShowNetworkActivity];
     
     // 微博来源
-    self.sourceLabel.text = statusData.source;
+    self.sourceLabel.attributedText = statusData.sourceString;
     
     // 时间
     self.timeLabel.text = statusData.created_at;
@@ -206,6 +206,7 @@ static CGFloat const kOriginalContentLabelFontSize = 14.f;
     
     
 }
+
 
 #pragma mark
 #pragma mark - lazy

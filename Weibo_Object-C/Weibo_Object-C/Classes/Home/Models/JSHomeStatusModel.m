@@ -114,6 +114,14 @@ CGFloat const kItemMargin = 5.f;
     
 }
 
+- (void)setSource:(NSString *)source {
+    
+    _source = source;
+    
+    self.sourceString = [self getStatusScourceStringWithOriginalInfo:source];
+    
+}
+
 // 根据配图的个数,计算配图视图的宽度和高度
 - (CGSize)getPictureViewSizeWithItemCounts:(NSInteger)itemCount {
     
@@ -131,8 +139,42 @@ CGFloat const kItemMargin = 5.f;
     return CGSizeMake(pictureViewSizeW, pictureViewSizeH);
 }
 
-#pragma mark - 获取转发评论赞的字符串
+#pragma mark - 获取微博来源字符串
+- (NSMutableAttributedString *)getStatusScourceStringWithOriginalInfo:(NSString *)originalInfo {
+    
+    // <a href="http://app.weibo.com/t/feed/qsbvs" rel="nofollow">手机微博触屏版</a>
+    
+    NSString *beigin = @"\">";
+    NSString *end = @"</a>";
+    
+    if ([originalInfo containsString:beigin] && [originalInfo containsString:end]) {
+        
+        NSRange beginRange = [originalInfo rangeOfString:beigin];
+        NSRange endRange = [originalInfo rangeOfString:end];
+        
+        // 所需要的内容Range
+        NSRange sourceStringRange = NSMakeRange(beginRange.location + beginRange.length, endRange.location - (beginRange.location + beginRange.length));
+        
+        NSString *sourceString = [NSString stringWithFormat:@"来自 %@",[originalInfo substringWithRange:sourceStringRange]];
+        
+        NSMutableAttributedString *attributedSourceString  = [[NSMutableAttributedString alloc] initWithString:sourceString attributes:@{NSForegroundColorAttributeName: [UIColor purpleColor]}];
+        
+        NSString *sourceStringBegin = @"来自 ";
+        NSRange sourceStringBeginRange = [sourceString rangeOfString:sourceStringBegin];
+        
+        NSRange neededContentStringRange = NSMakeRange(sourceStringBeginRange.location + sourceStringBeginRange.length, sourceString.length - sourceStringBeginRange.length);
+        
+        [attributedSourceString addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:neededContentStringRange];
+        
+        return attributedSourceString;
+    }
+    
+    return nil;
+    
+}
 
+
+#pragma mark - 获取转发评论赞的字符串
 - (NSString *)transformDisplayContentByNSNumber:(NSNumber *)aNumber withTitle:(NSString *)title {
     
     /*
@@ -164,6 +206,7 @@ CGFloat const kItemMargin = 5.f;
         
         return [NSString stringWithFormat:@"%@万",displayString];
     }
+    
 }
 
 

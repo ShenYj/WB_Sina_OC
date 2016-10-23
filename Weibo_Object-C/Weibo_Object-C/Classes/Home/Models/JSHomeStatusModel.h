@@ -37,7 +37,8 @@
 // 配图
 @property (nonatomic) NSArray <JSHomeStatusPictureModel *>*pic_urls;
 
-#pragma mark - 自定义属性 
+
+#pragma mark - extension
 // (底部ToolBar的数据,将数值类型转换成字符串并保存起来)
 @property (nonatomic,copy) NSString *reposts_count_string;
 @property (nonatomic,copy) NSString *comments_count_string;
@@ -46,6 +47,8 @@
 // (配图视图的Size)
 @property (nonatomic,assign) CGSize pictureItemSize;
 
+// (微博来源,处理后)
+@property (nonatomic,copy) NSMutableAttributedString *sourceString;
 
 #pragma mark
 #pragma mark - methods
