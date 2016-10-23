@@ -10,6 +10,8 @@
 
 @class JSHomeStatusModel;
 @class JSHomeStatusUserModel;
+@class JSHomeStatusPictureModel;
+
 
 @interface JSHomeStatusModel : NSObject
 
@@ -33,6 +35,8 @@
 @property (nonatomic) NSNumber *comments_count;
 // 表态数
 @property (nonatomic) NSNumber *attitudes_count;
+// 配图
+@property (nonatomic) NSArray <JSHomeStatusPictureModel *>*pic_urls;
 
 #pragma mark - 自定义属性 (底部ToolBar的数据,将数值类型转换成字符串并保存起来)
 @property (nonatomic,copy) NSString *reposts_count_string;

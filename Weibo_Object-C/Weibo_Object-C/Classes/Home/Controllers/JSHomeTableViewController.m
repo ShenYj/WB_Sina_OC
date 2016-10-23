@@ -79,6 +79,8 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
         
         NSArray *statusDataArr = (NSArray *)obj;
         
+        NSLog(@"%@",statusDataArr);
+        
         NSMutableArray *mArr = [NSMutableArray array];
         
         for (NSDictionary *dict in statusDataArr) {

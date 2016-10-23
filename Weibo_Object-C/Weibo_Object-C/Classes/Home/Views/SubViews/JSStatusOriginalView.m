@@ -9,6 +9,7 @@
 #import "JSStatusOriginalView.h"
 #import "JSHomeStatusModel.h"
 #import "JSHomeStatusUserModel.h"
+#import "JSPictureView.h"
 
 #pragma mark
 #pragma mark -- Magic Number
@@ -35,6 +36,9 @@ static CGFloat const kUserStatusImageViewSize = 15.f;
 @property (nonatomic) UILabel *contentLabel;
 // 用户在线状态
 @property (nonatomic) UIImageView *userStatusImageView;
+// 配图
+@property (nonatomic) JSPictureView *pictureView;
+
 
 @end
 
@@ -63,6 +67,7 @@ static CGFloat const kUserStatusImageViewSize = 15.f;
     [self addSubview:self.sourceLabel];
     [self addSubview:self.avatarImageView];
     [self addSubview:self.contentLabel];
+    [self addSubview:self.pictureView];
     
     [self.headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.mas_equalTo(self).mas_offset(kMargin);
@@ -107,8 +112,14 @@ static CGFloat const kUserStatusImageViewSize = 15.f;
         //make.right.mas_equalTo(self).mas_offset(-kMargin);
     }];
     
+    [self.pictureView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.contentLabel.mas_bottom);
+        make.left.mas_equalTo(self.contentLabel);
+        //make.size.mas_equalTo(CGSizeMake(100, 100));迁移到PictureView内部进行约束
+    }];
+    
     [self mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(self.contentLabel).mas_offset(kMargin);
+        make.bottom.mas_equalTo(self.pictureView).mas_offset(kMargin);
     }];
     
 }
@@ -244,6 +255,14 @@ static CGFloat const kUserStatusImageViewSize = 15.f;
 
     }
     return _userStatusImageView;
+}
+
+- (JSPictureView *)pictureView {
+    
+    if (_pictureView == nil) {
+        _pictureView = [[JSPictureView alloc] initWithFrame:CGRectZero withPictures:self.statusData.pic_urls];
+    }
+    return _pictureView;
 }
 
 @end

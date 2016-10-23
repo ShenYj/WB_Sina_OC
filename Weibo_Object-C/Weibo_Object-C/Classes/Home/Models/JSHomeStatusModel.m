@@ -9,6 +9,7 @@
 
 #import "JSHomeStatusModel.h"
 #import "JSHomeStatusUserModel.h"
+#import "JSHomeStatusPictureModel.h"
 
 
 @implementation JSHomeStatusModel
@@ -49,7 +50,22 @@
         // 转发微博模型赋值
         self.retweeted_status = retweeted_status;
         
-    } else {
+    } else if ([key isEqualToString:@"pic_urls"]) {
+        
+        NSArray *pic_urls = (NSArray *)value;
+        
+        NSMutableArray *mArr = [NSMutableArray array];
+        
+        for (NSDictionary *dict in pic_urls) {
+            
+            JSHomeStatusPictureModel *thumbnail_pic_Model = [JSHomeStatusPictureModel picWithDict:dict];
+            
+            [mArr addObject:thumbnail_pic_Model];
+        }
+        
+        self.pic_urls = mArr.copy;
+        
+    }else {
         // KVC字典转模型
         [super setValue:value forKey:key];
     }

@@ -57,7 +57,6 @@
         self.window.rootViewController = [[JSTabBarController alloc] init];
     }
     
-    
 }
 
 - (void)dealloc {
