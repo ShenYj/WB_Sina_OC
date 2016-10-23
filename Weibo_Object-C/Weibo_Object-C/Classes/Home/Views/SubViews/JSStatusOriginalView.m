@@ -38,7 +38,8 @@ static CGFloat const kUserStatusImageViewSize = 15.f;
 @property (nonatomic) UIImageView *userStatusImageView;
 // 配图
 @property (nonatomic) JSPictureView *pictureView;
-
+// 记录原创微博的底边约束
+@property (nonatomic) MASConstraint *selfBottomConstraint;
 
 @end
 
@@ -119,13 +120,13 @@ static CGFloat const kUserStatusImageViewSize = 15.f;
     }];
     
     [self mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(self.pictureView).mas_offset(kMargin);
+        self.selfBottomConstraint = make.bottom.mas_equalTo(self.pictureView).mas_offset(kMargin);
     }];
     
 }
 
 #pragma mark
-#pragma mark - set up data
+#pragma mark - set up data & update self bottom constraint
 
 - (void)setStatusData:(JSHomeStatusModel *)statusData {
     
@@ -149,10 +150,42 @@ static CGFloat const kUserStatusImageViewSize = 15.f;
     // 用户状态(在线/离线)
     UserStatus status = statusData.user.userstatus;
     if (status == UserStatusOnline) {
+        
         self.userStatusImageView.hidden = NO;
     } else {
+        
         self.userStatusImageView.hidden = YES;
     }
+    
+    // 根据是否有配图,更新原创微博自身底部约束
+    // 卸载约束
+    [self.selfBottomConstraint uninstall];
+    if (statusData.pic_urls.count > 0) {
+        
+        // 显示配图视图
+        self.pictureView.hidden = NO;
+        
+        //有配图 赋值数据
+        self.pictureView.statusData = statusData;
+        
+        // 更新约束
+        [self mas_makeConstraints:^(MASConstraintMaker *make) {
+            self.selfBottomConstraint = make.bottom.mas_equalTo(self.pictureView).mas_offset(kMargin);
+        }];
+        
+        
+    } else {
+        
+        // 隐藏配图视图
+        self.pictureView.hidden = YES;
+        
+        //没有配图
+        [self mas_makeConstraints:^(MASConstraintMaker *make) {
+            self.selfBottomConstraint = make.bottom.mas_equalTo(self.contentLabel).mas_offset(kMargin);
+        }];
+        
+    }
+    
     
 //    [[UIImage imageNamed:@"v2_selected"] js_cornerImageWithSize:CGSizeMake(kUserStatusImageViewSize, kUserStatusImageViewSize) fillClolor:[UIColor whiteColor] completion:^(UIImage *img) {
 //        

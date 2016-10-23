@@ -54,16 +54,20 @@
         
         NSArray *pic_urls = (NSArray *)value;
         
-        NSMutableArray *mArr = [NSMutableArray array];
-        
-        for (NSDictionary *dict in pic_urls) {
+        if (pic_urls.count > 0) {
             
-            JSHomeStatusPictureModel *thumbnail_pic_Model = [JSHomeStatusPictureModel picWithDict:dict];
+            NSMutableArray *mArr = [NSMutableArray array];
             
-            [mArr addObject:thumbnail_pic_Model];
+            for (NSDictionary *dict in pic_urls) {
+                
+                JSHomeStatusPictureModel *thumbnail_pic_Model = [JSHomeStatusPictureModel picWithDict:dict];
+                
+                [mArr addObject:thumbnail_pic_Model];
+            }
+            
+            self.pic_urls = mArr.copy;
+            
         }
-        
-        self.pic_urls = mArr.copy;
         
     }else {
         // KVC字典转模型

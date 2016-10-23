@@ -17,6 +17,9 @@ static NSString * const pictureReusedID = @"pictureReusedID";
 
 @property (nonatomic) NSArray <JSHomeStatusPictureModel *>*pictures;
 
+// 展示当前PictureView的配图个数
+@property (nonatomic) UILabel *pictureCountsLabel;
+
 @end
 
 @implementation JSPictureView
@@ -33,6 +36,7 @@ static NSString * const pictureReusedID = @"pictureReusedID";
     return self;
 }
 
+
 #pragma mark
 #pragma mark - set up UI
 
@@ -48,6 +52,23 @@ static NSString * const pictureReusedID = @"pictureReusedID";
         make.size.mas_equalTo(CGSizeMake(100, 100));
     }];
     
+    [self addSubview:self.pictureCountsLabel];
+    [self.pictureCountsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self);
+    }];
+    
+}
+
+
+#pragma mark - 
+#pragma mark - set up Data
+
+- (void)setStatusData:(JSHomeStatusModel *)statusData {
+    
+    _statusData = statusData;
+    
+    self.pictureCountsLabel.text = @(statusData.pic_urls.count).description;
+    
 }
 
 #pragma mark
@@ -55,7 +76,7 @@ static NSString * const pictureReusedID = @"pictureReusedID";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return 9;
+    return self.statusData.pic_urls.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -65,6 +86,21 @@ static NSString * const pictureReusedID = @"pictureReusedID";
     cell.backgroundColor = [UIColor js_randomColor];
     
     return cell;
+}
+
+
+#pragma mark
+#pragma mark - lazy
+
+- (UILabel *)pictureCountsLabel {
+    
+    if (_pictureCountsLabel == nil) {
+        _pictureCountsLabel = [[UILabel alloc] init];
+        _pictureCountsLabel.font = [UIFont systemFontOfSize:25];
+        _pictureCountsLabel.textColor = [UIColor js_randomColor];
+        _pictureCountsLabel.textAlignment = NSTextAlignmentCenter;
+    }
+    return _pictureCountsLabel;
 }
 
 @end
