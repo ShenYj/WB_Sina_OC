@@ -136,7 +136,14 @@ CGFloat const kItemMargin = 5.f;
     CGFloat pictureViewSizeW = col * itemSizeWH + (col - 1) * kItemMargin;
     CGFloat pictureViewSizeH = row * itemSizeWH + (col - 1) * kItemMargin;
     
-    return CGSizeMake(pictureViewSizeW, pictureViewSizeH);
+    if (itemCount > 0) {
+        
+        return CGSizeMake(pictureViewSizeW, pictureViewSizeH);
+    } else {
+        
+        return CGSizeZero;
+    }
+    
 }
 
 #pragma mark - 获取微博来源字符串

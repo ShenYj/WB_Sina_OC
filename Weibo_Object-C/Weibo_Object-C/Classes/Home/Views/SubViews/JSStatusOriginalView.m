@@ -188,7 +188,6 @@ static CGFloat const kOriginalContentLabelFontSize = 14.f;
     }
     
     // 设置用户等级标识 认证类型 -1:没有认证,0:认证用户,2.3.5:企业认证, 220:达人
-    
     switch (statusData.user.verified_type.intValue) {
         case -1:
             self.avatarImageView.image = nil;
