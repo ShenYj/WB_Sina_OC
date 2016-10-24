@@ -216,26 +216,10 @@ extern CGFloat kOriginalContentLabelFontSize;
     }
     
     
-//    [[UIImage imageNamed:@"v2_selected"] js_cornerImageWithSize:CGSizeMake(kUserStatusImageViewSize, kUserStatusImageViewSize) fillClolor:[UIColor whiteColor] completion:^(UIImage *img) {
-//        
-//        UserStatus status = statusData.user.userstatus;
-//        if (status == UserStatusOnline) {
-//            self.userStatusImageView.image = nil;
-//        } else {
-//            self.userStatusImageView.image = [UIImage imageNamed:@"v2_selected"];
-//        }
-//    }];
-    
-//    UserStatus status = statusData.user.userstatus;
-//    if (status == UserStatusOnline) {
-//        self.userStatusImageView.image = [UIImage imageNamed:@"v2_selected"];
-//    } else {
-//        self.userStatusImageView.image = nil;
-//    }
-    
-    
 }
 
+#pragma mark 
+#pragma mark - 微博时间处理
 
 - (NSString *)getWeiBoFormatterDateString:(NSString *)created_atSourceString {
     
@@ -300,29 +284,6 @@ extern CGFloat kOriginalContentLabelFontSize;
     
     
 }
-
-
-
-// 判断传入的时间是否是今年
-- (BOOL)isThisYear:(NSDate *)date {
- 
-    [JSDateFormatter sharedDateFormatterManager].dateFormat = @"yyyy";
-    NSString *dateYearString = [[JSDateFormatter sharedDateFormatterManager] stringFromDate:date];
-    
-    NSDate *currentDate = [NSDate date];
-    NSString *currentYearString = [[JSDateFormatter sharedDateFormatterManager] stringFromDate:currentDate];
-    
-    if ([dateYearString isEqualToString:currentYearString]) {
-        
-        return YES;
-        
-    } else {
-        
-        return NO;
-    }
-    
-}
-
 
 
 #pragma mark

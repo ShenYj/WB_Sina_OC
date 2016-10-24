@@ -15,11 +15,13 @@
 - (BOOL)isThisYear {
     
     [JSDateFormatter sharedDateFormatterManager].dateFormat = @"yyyy";
+    // 取出日期的年并转成字符串
     NSString *dateYearString = [[JSDateFormatter sharedDateFormatterManager] stringFromDate:self];
-    
+    // 获取当前时间,同样取出年转为字符串
     NSDate *currentDate = [NSDate date];
     NSString *currentYearString = [[JSDateFormatter sharedDateFormatterManager] stringFromDate:currentDate];
     
+    // 对比取出的年是否相同,判断是否属于今年
     if ([dateYearString isEqualToString:currentYearString]) {
         
         return YES;
