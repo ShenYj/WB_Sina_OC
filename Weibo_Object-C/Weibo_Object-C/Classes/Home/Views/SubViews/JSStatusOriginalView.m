@@ -11,13 +11,14 @@
 #import "JSHomeStatusUserModel.h"
 #import "JSPictureView.h"
 
-#pragma mark
-#pragma mark -- Magic Number
 
-static CGFloat const kHeadImageViewSize = 35.f;
-static CGFloat const kMargin = 10.f;
-static CGFloat const kUserStatusImageViewSize = 15.f;
-static CGFloat const kOriginalContentLabelFontSize = 14.f;
+#pragma mark
+#pragma mark -- Magic Number  (引用JSHomeStatusModel中的常量)
+extern CGFloat const kHeadImageViewSize;
+extern CGFloat kMargin;
+extern CGFloat kUserStatusImageViewSize;
+extern CGFloat kOriginalContentLabelFontSize;
+
 
 @interface JSStatusOriginalView ()
 
@@ -70,6 +71,8 @@ static CGFloat const kOriginalContentLabelFontSize = 14.f;
     [self addSubview:self.avatarImageView];
     [self addSubview:self.contentLabel];
     [self addSubview:self.pictureView];
+    
+    
     
     [self.headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.mas_equalTo(self).mas_offset(kMargin);

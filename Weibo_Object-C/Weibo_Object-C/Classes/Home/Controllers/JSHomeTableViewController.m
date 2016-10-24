@@ -35,7 +35,6 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
         [self prepareView];
     }
     
-
 }
 
 - (void)prepareView {
@@ -123,8 +122,6 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     JSHomeStatusModel *statusModel = self.homeStatusDatas[indexPath.row];
-    
-    NSLog(@"%f",statusModel.homeStatusRowHeigh);
     
     return statusModel.homeStatusRowHeigh;
 }

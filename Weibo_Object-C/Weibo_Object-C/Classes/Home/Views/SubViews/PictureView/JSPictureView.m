@@ -10,12 +10,13 @@
 #import "JSFlowLayout.h"
 #import "JSPictureViewCell.h"
 #import "JSHomeStatusModel.h"
+#import "JSHomeStatusLayout.h"
 
 static NSString * const pictureReusedID = @"pictureReusedID";
 // 引用JSHomeStatusModel中的 kItemMargin全局变量(这里并未使用,仅仅是为了避免最后不再使用也没有注释的方法中报错)
 extern CGFloat kMargin;
 extern CGFloat kItemMargin;
-extern CGSize pictureViewMaxSize;
+//extern CGSize pictureViewMaxSize;
 
 
 @interface JSPictureView () <UICollectionViewDataSource,UICollectionViewDelegate>
@@ -63,7 +64,7 @@ extern CGSize pictureViewMaxSize;
     if (!statusData.pic_urls) {
         
         [self mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(pictureViewMaxSize);
+            make.size.mas_equalTo(statusData.homeStatusLayout.HomeStatusLayoutPictureViewMaxSize);
         }];
     } else {
         

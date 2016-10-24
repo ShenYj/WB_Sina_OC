@@ -12,11 +12,19 @@
 #import "JSHomeStatusPictureModel.h"
 #import "JSHomeStatusLayout.h"
 
-// 配图视图的参数 配图视图距离屏幕两个的间距和配图间的间距
-CGFloat const kMargin = 10.f;
-CGFloat const kItemMargin = 5.f;
-CGFloat itemSizeWH;
-CGSize pictureViewMaxSize;
+
+// 原创微博相关
+CGFloat const kMargin = 10.f;                       // 首页视图间距
+CGFloat const kHeadImageViewSize = 35.f;            // 首页视图用户头像尺寸(宽高)
+CGFloat const kUserStatusImageViewSize = 15.f;      // 首页视图用户等级图标尺寸(宽高)
+CGFloat const kOriginalContentLabelFontSize = 14.f; // 首页视图用户原创微博字体大小
+// 配图视图相关
+CGFloat const kItemMargin = 5.f;                    // 首页视图配图视图中每个Item的间距
+CGFloat itemSizeWH;                                 // 首页视图配图视图中每个Item的宽高
+CGSize pictureViewMaxSize;                          // 首页视图配图视图的对重大尺寸
+// 转发微博相关
+CGFloat const kRetweetContentLabelFontSize = 13.f;  // 首页视图转发微博字体大小
+
 
 @implementation JSHomeStatusModel
 
@@ -25,18 +33,46 @@ CGSize pictureViewMaxSize;
     itemSizeWH = ([UIScreen mainScreen].bounds.size.width - 2 * kMargin - 2 * kItemMargin) / 3;
 }
 
-- (instancetype)initWithDict:(NSDictionary *)dict {
+#pragma mark
+#pragma mark - 首页视图的布局参数设置
+- (JSHomeStatusLayout *)homeStatusLayout {
     
-    self = [super init];
-    if (self) {
-        [self setValuesForKeysWithDictionary:dict];
-        // 配图视图最大Size (9张图片)
-        pictureViewMaxSize = [self getPictureViewSizeWithItemCounts:9];
-        
-    }
-    return self;
+    JSHomeStatusLayout *layout = [[JSHomeStatusLayout alloc] init];
+    layout.HomeStatusLayoutMargin = 10.f;
+    layout.HomeStatusLayoutHeadImageViewSize = 35.f;
+    layout.HomeStatusLayoutUserStatusImageViewSize = 15.f;
+    layout.HomeStatusLayoutContentLabelFontSize = 14.f;
+    layout.HomeStatusLayoutRetweetContentLabelFontSize = 13.f;
+    layout.HomeStatusLayoutToolBarHeight = 35.f;
+    layout.HomeStatusLayoutToolBarBottomMargin = 5.f;
+    layout.HomeStatusLayoutPictureViewItemSizeWH = itemSizeWH;
+    layout.HomeStatusLayoutPictureViewItemMargin = 5.f;
+    layout.HomeStatusLayoutPictureViewSize = [self getPictureViewSizeWithItemCounts:self.pic_urls.count];
+    layout.HomeStatusLayoutPictureViewMaxSize = [self getPictureViewSizeWithItemCounts:9];
+    
+    return layout;
+}
+// 方式二
+- (HomeStatusLayout)homeStatusLayoutStruct {
+    
+    HomeStatusLayout layout;
+    
+    layout.HomeStatusLayoutMargin = 10.f;
+    layout.HomeStatusLayoutHeadImageViewSize = 35.f;
+    layout.HomeStatusLayoutUserStatusImageViewSize = 15.f;
+    layout.HomeStatusLayoutContentLabelFontSize = 14.f;
+    layout.HomeStatusLayoutRetweetContentLabelFontSize = 13.f;
+    layout.HomeStatusLayoutToolBarHeight = 35.f;
+    layout.HomeStatusLayoutToolBarBottomMargin = 5.f;
+    layout.HomeStatusLayoutPictureViewItemSize = CGSizeMake(itemSizeWH, itemSizeWH);
+    layout.HomeStatusLayoutPictureViewSize = [self getPictureViewSizeWithItemCounts:self.pic_urls.count];
+    layout.HomeStatusLayoutPictureViewMaxSize = [self getPictureViewSizeWithItemCounts:9];
+    layout.HomeStatusLayoutPictureViewItemMargin = 5.f;
+    
+    return layout;
 }
 
+// 计算首页Cell的行高
 - (CGFloat)homeStatusRowHeigh {
     
     CGFloat rowHeight = 0.f;
@@ -75,29 +111,64 @@ CGSize pictureViewMaxSize;
     
     return rowHeight;
 }
+// 方式二
+- (CGFloat)homeStatusRowHeightStruct {
+    
+    CGFloat rowHeight = 0.f;
+    // 1. 原创微博部分
+    // 图片高度 + 2*间距
+    rowHeight += 2 * self.homeStatusLayoutStruct.HomeStatusLayoutMargin + self.homeStatusLayoutStruct.HomeStatusLayoutHeadImageViewSize;
+    // 原创微博文本
+    CGRect contentLabelBounds = [self.text boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width - 2 * kMargin, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:self.homeStatusLayoutStruct.HomeStatusLayoutContentLabelFontSize]} context:nil];
+    // 文本高度 + 底部 1*间距
+    rowHeight += contentLabelBounds.size.height + self.homeStatusLayoutStruct.HomeStatusLayoutMargin;
+    
+    // 配图
+    if (self.pic_urls) {
+        // 配图高度 + 1*间距
+        rowHeight += self.pictureViewSize.height + self.homeStatusLayoutStruct.HomeStatusLayoutMargin;
+    }
+    
+    // 2.转发微博
+    if (self.retweeted_status) {
+        
+        // 原创微博文本
+        CGRect retweetContentLabelBounds = [self.retweeted_status.text boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width - 2 * kMargin, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:self.homeStatusLayoutStruct.HomeStatusLayoutContentLabelFontSize]} context:nil];
+        // 文本高度 + 底部 1*间距
+        rowHeight += retweetContentLabelBounds.size.height + self.homeStatusLayout.HomeStatusLayoutMargin;
+        
+        // 配图
+        if (self.retweeted_status.pic_urls) {
+            // 配图高度 + 1*间距
+            rowHeight += self.retweeted_status.pictureViewSize.height + self.homeStatusLayoutStruct.HomeStatusLayoutMargin;
+        }
+        
+    }
+    
+    // 3.底部工具条
+    rowHeight += self.homeStatusLayoutStruct.HomeStatusLayoutToolBarHeight + self.homeStatusLayoutStruct.HomeStatusLayoutToolBarBottomMargin;
+    
+    return rowHeight;
+}
 
-- (JSHomeStatusLayout *)homeStatusLayout {
+
+- (instancetype)initWithDict:(NSDictionary *)dict {
     
-    JSHomeStatusLayout *layout = [[JSHomeStatusLayout alloc] init];
-    
-    layout.HomeStatusLayoutMargin = 10.f;
-    layout.HomeStatusLayoutHeadImageViewSize = 35.f;
-    layout.HomeStatusLayoutUserStatusImageViewSize = 15.f;
-    layout.HomeStatusLayoutContentLabelFontSize = 14.f;
-    layout.HomeStatusLayoutRetweetContentLabelFontSize = 13.f;
-    layout.HomeStatusLayoutToolBarHeight = 35.f;
-    layout.HomeStatusLayoutToolBarBottomMargin = 5.f;
-    layout.HomeStatusLayoutPictureViewItemMargin = 5.f;
-    layout.HomeStatusLayoutPictureViewSize = [self getPictureViewSizeWithItemCounts:self.pic_urls.count];
-    layout.HomeStatusLayoutPictureViewMaxSize = [self getPictureViewSizeWithItemCounts:9];
-    
-    return layout;
+    self = [super init];
+    if (self) {
+        [self setValuesForKeysWithDictionary:dict];
+        // 配图视图最大Size (9张图片)
+        pictureViewMaxSize = [self getPictureViewSizeWithItemCounts:9];
+        
+    }
+    return self;
 }
 
 + (instancetype)statuWithDict:(NSDictionary *)dict {
     
     return [[self alloc] initWithDict:dict];
 }
+
 
 - (void)setValue:(id)value forKey:(NSString *)key {
     

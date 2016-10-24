@@ -10,7 +10,7 @@
 #import "JSHomeStatusModel.h"
 #import "JSPictureView.h"
 
-static CGFloat const kRetweetContentLabelFontSize = 13.f;
+extern CGFloat kRetweetContentLabelFontSize;
 extern CGFloat kMargin;
 
 

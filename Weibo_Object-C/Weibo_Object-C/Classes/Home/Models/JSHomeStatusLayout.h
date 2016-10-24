@@ -19,6 +19,7 @@
 @property (nonatomic,assign) CGFloat HomeStatusLayoutToolBarHeight;                  // 底部工具栏高度
 @property (nonatomic,assign) CGFloat HomeStatusLayoutToolBarBottomMargin;            // 底部工具栏距离Cell的contentView底部间距
 @property (nonatomic,assign) CGFloat HomeStatusLayoutPictureViewItemMargin;          // 配图视图中每个Item间的间距
+@property (nonatomic,assign) CGFloat HomeStatusLayoutPictureViewItemSizeWH;          // 配图视图每个Item的Size
 @property (nonatomic,assign) CGSize  HomeStatusLayoutPictureViewSize;                // 配图视图的Size
 @property (nonatomic,assign) CGSize  HomeStatusLayoutPictureViewMaxSize;             // 配图视图的最大Size
 

@@ -14,8 +14,12 @@
 @class JSHomeStatusLayout;
 
 
+
+
+
+
 // 首页布局信息
-struct HomeStatusLayout {
+typedef struct {
     CGFloat HomeStatusLayoutMargin;                         // 间距
     CGFloat HomeStatusLayoutHeadImageViewSize;              // 用户头像Size(宽高)
     CGFloat HomeStatusLayoutUserStatusImageViewSize;        // 用户等级图片Size(宽高)
@@ -25,8 +29,10 @@ struct HomeStatusLayout {
     CGFloat HomeStatusLayoutToolBarBottomMargin;            // 底部工具栏距离Cell的contentView底部间距
     CGFloat HomeStatusLayoutPictureViewItemMargin;          // 配图视图中每个Item间的间距
     CGSize  HomeStatusLayoutPictureViewSize;                // 配图视图的Size
+    CGSize  HomeStatusLayoutPictureViewItemSize;            // 配图视图中每个Item的Size
     CGSize  HomeStatusLayoutPictureViewMaxSize;             // 配图视图的最大Size
-};
+    
+} HomeStatusLayout;
 
 @interface JSHomeStatusModel : NSObject
 
@@ -66,10 +72,14 @@ struct HomeStatusLayout {
 // (微博来源,处理后)
 @property (nonatomic,copy) NSMutableAttributedString *sourceString;
 
-// 记录行高
+// 记录行高1 (模型类)
 @property (nonatomic,assign) CGFloat homeStatusRowHeigh;
-// 首页视图的布局参数
-@property (nonatomic,assign) JSHomeStatusLayout *homeStatusLayout;
+@property (nonatomic,strong) JSHomeStatusLayout *homeStatusLayout;
+
+
+// 记录行高2 (解耦固体)
+@property (nonatomic,assign) CGFloat homeStatusRowHeightStruct;
+@property (nonatomic,assign) HomeStatusLayout homeStatusLayoutStruct;
 
 
 
