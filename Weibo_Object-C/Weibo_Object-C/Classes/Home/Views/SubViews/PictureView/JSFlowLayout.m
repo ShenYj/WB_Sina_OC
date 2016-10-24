@@ -24,7 +24,7 @@ extern CGFloat itemSizeWH;
     self.minimumLineSpacing = kItemMargin;
     self.minimumInteritemSpacing = kItemMargin;
     //self.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
-    self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    self.scrollDirection = UICollectionViewScrollDirectionVertical;
     self.collectionView.showsVerticalScrollIndicator = NO;
     self.collectionView.showsHorizontalScrollIndicator = NO;
     
