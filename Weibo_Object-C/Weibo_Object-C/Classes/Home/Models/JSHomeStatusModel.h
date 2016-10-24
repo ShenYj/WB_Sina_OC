@@ -20,7 +20,9 @@
 
 // 首页布局信息
 typedef struct {
-    CGFloat HomeStatusLayoutMargin;                         // 间距
+    
+    CGFloat HomeStatusLayoutTopMargin;                      // 顶部间距
+    CGFloat HomeStatusLayoutMargin;                         // 间距(子视图)
     CGFloat HomeStatusLayoutHeadImageViewSize;              // 用户头像Size(宽高)
     CGFloat HomeStatusLayoutUserStatusImageViewSize;        // 用户等级图片Size(宽高)
     CGFloat HomeStatusLayoutContentLabelFontSize;           // 原创微博内容字体大小

@@ -15,6 +15,7 @@
 #import "NSDate+JSIsThisYear.h"
 
 // 原创微博相关
+CGFloat const kTopMargin = 8.f;                     // 首页视图顶部间距
 CGFloat const kMargin = 10.f;                       // 首页视图间距
 CGFloat const kHeadImageViewSize = 35.f;            // 首页视图用户头像尺寸(宽高)
 CGFloat const kUserStatusImageViewSize = 15.f;      // 首页视图用户等级图标尺寸(宽高)
@@ -25,6 +26,9 @@ CGFloat itemSizeWH;                                 // 首页视图配图视图�
 CGSize pictureViewMaxSize;                          // 首页视图配图视图的对重大尺寸
 // 转发微博相关
 CGFloat const kRetweetContentLabelFontSize = 13.f;  // 首页视图转发微博字体大小
+// 底部ToolBar相关
+CGFloat const kStatusToolBarHeight = 35.f;          // 底部ToolBar视图高度
+CGFloat const kBottomMargin = 5.f;                  // 底部ToolBar视图底部间距
 
 
 @implementation JSHomeStatusModel
@@ -35,13 +39,13 @@ CGFloat const kRetweetContentLabelFontSize = 13.f;  // 首页视图转发微博�
 }
 
 #pragma mark
-#pragma mark - 首页视图的布局参数设置 (记录杭钢)
+#pragma mark - 首页视图的布局参数设置 (记录行高)
 
 // 方式二
 - (HomeStatusLayout)homeStatusLayoutStruct {
     
     HomeStatusLayout layout;
-    
+    layout.HomeStatusLayoutTopMargin = 8.f;
     layout.HomeStatusLayoutMargin = 10.f;
     layout.HomeStatusLayoutHeadImageViewSize = 35.f;
     layout.HomeStatusLayoutUserStatusImageViewSize = 15.f;
@@ -58,7 +62,8 @@ CGFloat const kRetweetContentLabelFontSize = 13.f;  // 首页视图转发微博�
 }
 - (CGFloat)homeStatusRowHeightStruct {
     
-    CGFloat rowHeight = 0.f;
+    // 顶部的间距
+    CGFloat rowHeight = 0.f + self.homeStatusLayoutStruct.HomeStatusLayoutTopMargin;
     // 1. 原创微博部分
     // 图片高度 + 2*间距
     rowHeight += 2 * self.homeStatusLayoutStruct.HomeStatusLayoutMargin + self.homeStatusLayoutStruct.HomeStatusLayoutHeadImageViewSize;
@@ -76,8 +81,8 @@ CGFloat const kRetweetContentLabelFontSize = 13.f;  // 首页视图转发微博�
     // 2.转发微博
     if (self.retweeted_status) {
         
-        // 原创微博文本
-        CGRect retweetContentLabelBounds = [self.retweeted_status.text boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width - 2 * kMargin, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:self.homeStatusLayoutStruct.HomeStatusLayoutContentLabelFontSize]} context:nil];
+        // 转发微博文本
+        CGRect retweetContentLabelBounds = [self.retweeted_status.text boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width - 2 * kMargin, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:self.homeStatusLayoutStruct.HomeStatusLayoutRetweetContentLabelFontSize]} context:nil];
         // 文本高度 + 底部 1*间距
         rowHeight += retweetContentLabelBounds.size.height + self.homeStatusLayout.HomeStatusLayoutMargin;
         
@@ -93,12 +98,13 @@ CGFloat const kRetweetContentLabelFontSize = 13.f;  // 首页视图转发微博�
     rowHeight += self.homeStatusLayoutStruct.HomeStatusLayoutToolBarHeight + self.homeStatusLayoutStruct.HomeStatusLayoutToolBarBottomMargin;
     
     return rowHeight;
-}
 
+}
 // 记录行高 -> 方式一
 - (JSHomeStatusLayout *)homeStatusLayout {
     
     JSHomeStatusLayout *layout = [[JSHomeStatusLayout alloc] init];
+    layout.HomeStatusLayoutTopMargin = 8.f;
     layout.HomeStatusLayoutMargin = 10.f;
     layout.HomeStatusLayoutHeadImageViewSize = 35.f;
     layout.HomeStatusLayoutUserStatusImageViewSize = 15.f;
@@ -117,7 +123,7 @@ CGFloat const kRetweetContentLabelFontSize = 13.f;  // 首页视图转发微博�
 // 计算首页Cell的行高 方式一
 - (CGFloat)homeStatusRowHeigh {
     
-    CGFloat rowHeight = 0.f;
+    CGFloat rowHeight = 0.f + self.homeStatusLayout.HomeStatusLayoutTopMargin;
     // 1. 原创微博部分
     // 图片高度 + 2*间距
     rowHeight += 2 * self.homeStatusLayout.HomeStatusLayoutMargin + self.homeStatusLayout.HomeStatusLayoutHeadImageViewSize;
@@ -135,10 +141,10 @@ CGFloat const kRetweetContentLabelFontSize = 13.f;  // 首页视图转发微博�
     // 2.转发微博
     if (self.retweeted_status) {
         
-        // 原创微博文本
-        CGRect retweetContentLabelBounds = [self.retweeted_status.text boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width - 2 * kMargin, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:self.homeStatusLayout.HomeStatusLayoutContentLabelFontSize]} context:nil];
-        // 文本高度 + 底部 1*间距
-        rowHeight += retweetContentLabelBounds.size.height + self.homeStatusLayout.HomeStatusLayoutMargin;
+        // 转发微博文本
+        CGRect retweetContentLabelBounds = [self.retweeted_status.text boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width - 2 * kMargin, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:self.homeStatusLayout.HomeStatusLayoutRetweetContentLabelFontSize]} context:nil];
+        // 顶部 1*间距 + 文本高度 + 底部 1*间距 
+        rowHeight += retweetContentLabelBounds.size.height + self.homeStatusLayout.HomeStatusLayoutMargin * 2;
         
         // 配图
         if (self.retweeted_status.pic_urls) {
@@ -153,7 +159,6 @@ CGFloat const kRetweetContentLabelFontSize = 13.f;  // 首页视图转发微博�
     
     return rowHeight;
 }
-
 
 
 - (instancetype)initWithDict:(NSDictionary *)dict {

@@ -12,9 +12,10 @@
 #import "JSStatusRetweetView.h"
 #import "JSStatusToolBarView.h"
 
-static CGFloat const kStatusToolBarHeight = 35.f;
-static CGFloat const kBottomMargin = 5.f;
-//static CGFloat const kStatusOriginalViewHeight = 50.f;
+
+extern CGFloat const kTopMargin;
+extern CGFloat const kStatusToolBarHeight;
+extern CGFloat const kBottomMargin;
 
 
 @interface JSStatusCell ()
@@ -55,7 +56,8 @@ static CGFloat const kBottomMargin = 5.f;
     [self.contentView addSubview:self.toolBarView];
     
     [self.originalView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.right.mas_equalTo(self.contentView);
+        make.top.mas_equalTo(self.contentView).mas_offset(kTopMargin);
+        make.left.right.mas_equalTo(self.contentView);
         //make.height.mas_equalTo(kStatusOriginalViewHeight); 在JSStatusOriginalView中设置自身底边约束
     }];
     

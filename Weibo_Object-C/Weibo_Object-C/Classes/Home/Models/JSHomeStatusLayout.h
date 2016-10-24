@@ -10,8 +10,8 @@
 
 @interface JSHomeStatusLayout : NSObject
 
-
-@property (nonatomic,assign) CGFloat HomeStatusLayoutMargin;                         // 间距
+@property (nonatomic,assign) CGFloat HomeStatusLayoutTopMargin;                      // 顶部间距
+@property (nonatomic,assign) CGFloat HomeStatusLayoutMargin;                         // 子视图间距
 @property (nonatomic,assign) CGFloat HomeStatusLayoutHeadImageViewSize;              // 用户头像Size(宽高)
 @property (nonatomic,assign) CGFloat HomeStatusLayoutUserStatusImageViewSize;        // 用户等级图片Size(宽高)
 @property (nonatomic,assign) CGFloat HomeStatusLayoutContentLabelFontSize;           // 原创微博内容字体大小
