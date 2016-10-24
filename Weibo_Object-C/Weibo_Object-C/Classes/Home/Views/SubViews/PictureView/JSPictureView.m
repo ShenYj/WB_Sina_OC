@@ -15,23 +15,21 @@ static NSString * const pictureReusedID = @"pictureReusedID";
 // 引用JSHomeStatusModel中的 kItemMargin全局变量(这里并未使用,仅仅是为了避免最后不再使用也没有注释的方法中报错)
 extern CGFloat kMargin;
 extern CGFloat kItemMargin;
+extern CGSize pictureViewMaxSize;
 
 
 @interface JSPictureView () <UICollectionViewDataSource,UICollectionViewDelegate>
-
-// 展示当前PictureView的配图个数
-@property (nonatomic) UILabel *pictureCountsLabel;
 
 @end
 
 @implementation JSPictureView
 
-- (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout {
+- (instancetype)init {
     
-    self = [super initWithFrame:frame collectionViewLayout:[[JSFlowLayout alloc] init]];
+    self = [super initWithFrame:CGRectZero collectionViewLayout:[[JSFlowLayout alloc] init]];
     if (self) {
         
-        [self prepareView];
+        [self prepareCollectionView];
     }
     return self;
     
@@ -40,19 +38,15 @@ extern CGFloat kItemMargin;
 #pragma mark
 #pragma mark - set up UI
 
-- (void)prepareView {
+- (void)prepareCollectionView {
     
-    self.backgroundColor = [UIColor whiteColor];
-    
+    // 设置背景色
+    self.backgroundColor = [UIColor js_colorWithHex:0xE8E8E8];
+    // 注册Cell
     [self registerClass:[JSPictureViewCell class] forCellWithReuseIdentifier:pictureReusedID];
+    // 设置代理
     self.dataSource = self;
     self.delegate = self;
-    
-    [self addSubview:self.pictureCountsLabel];
-    [self.pictureCountsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.mas_equalTo(self);
-    }];
-    
     
 }
 
@@ -63,14 +57,22 @@ extern CGFloat kItemMargin;
     
     _statusData = statusData;
     // 根据配图的个数,设置自身(PickerView)的Size  (转移至模型类<JSStatusModel>中进行计算并保存)
-    CGSize pictureItemSize = statusData.pictureItemSize;
+    CGSize pictureViewSize = statusData.pictureViewSize;
     
-    [self mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(pictureItemSize);
-    }];
+    // 如果没有配图,就给配图视图设置一个最大值(9张配图尺寸)
+    if (!statusData.pic_urls) {
+        
+        [self mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(pictureViewMaxSize);
+        }];
+    } else {
+        
+        [self mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(pictureViewSize);
+        }];
+        
+    }
     
-    // 展示Label
-    self.pictureCountsLabel.text = @(statusData.pic_urls.count).description;
     
     // 获取到数据后,刷新CollectionView
     [self reloadData];
@@ -114,19 +116,6 @@ extern CGFloat kItemMargin;
 }
 
 
-#pragma mark
-#pragma mark - lazy
-
-- (UILabel *)pictureCountsLabel {
-    
-    if (_pictureCountsLabel == nil) {
-        _pictureCountsLabel = [[UILabel alloc] init];
-        _pictureCountsLabel.font = [UIFont systemFontOfSize:25];
-        _pictureCountsLabel.textColor = [UIColor js_randomColor];
-        _pictureCountsLabel.textAlignment = NSTextAlignmentCenter;
-    }
-    return _pictureCountsLabel;
-}
 
 
 // 根据配图的个数,计算配图视图的宽度和高度 (转移至模型类<JSStatusModel>中进行计算)

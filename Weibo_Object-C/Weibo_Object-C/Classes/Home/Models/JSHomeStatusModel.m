@@ -14,15 +14,23 @@
 // 配图视图的参数 配图视图距离屏幕两个的间距和配图间的间距
 CGFloat const kMargin = 10.f;
 CGFloat const kItemMargin = 5.f;
-
+CGFloat itemSizeWH;
+CGSize pictureViewMaxSize;
 
 @implementation JSHomeStatusModel
+
++ (void)initialize {
+    // 每张配图(Cell) 的尺寸 (等高等宽)
+    itemSizeWH = ([UIScreen mainScreen].bounds.size.width - 2 * kMargin - 2 * kItemMargin) / 3;
+}
 
 - (instancetype)initWithDict:(NSDictionary *)dict {
     
     self = [super init];
     if (self) {
         [self setValuesForKeysWithDictionary:dict];
+        // 配图视图最大Size (9张图片)
+        pictureViewMaxSize = [self getPictureViewSizeWithItemCounts:9];
     }
     return self;
 }
@@ -110,8 +118,7 @@ CGFloat const kItemMargin = 5.f;
     
     _pic_urls = pic_urls;
     
-    self.pictureItemSize = [self getPictureViewSizeWithItemCounts:pic_urls.count];
-    
+    self.pictureViewSize = [self getPictureViewSizeWithItemCounts:pic_urls.count];
 }
 
 - (void)setSource:(NSString *)source {
@@ -126,23 +133,19 @@ CGFloat const kItemMargin = 5.f;
 - (CGSize)getPictureViewSizeWithItemCounts:(NSInteger)itemCount {
     
     // 每张配图(Cell) 的尺寸 (等高等宽)
-    CGFloat itemSizeWH = ([UIScreen mainScreen].bounds.size.width - 2 * kMargin - 2 * kItemMargin) / 3;
+    //CGFloat itemSizeWH = ([UIScreen mainScreen].bounds.size.width - 2 * kMargin - 2 * kItemMargin) / 3;
     
     // 计算行数和列数
     NSInteger col = (itemCount == 4) ? 2 : ((itemCount >= 3) ? 3 : itemCount);
-    NSInteger row = (itemCount == 4) ? 2 : ((itemCount - 1) / 3 + 1);
+    NSInteger row = (itemCount == 4) ? 2 : (itemCount - 1) / 3 + 1;
+    
     
     // 计算PictureView的宽度和高度
     CGFloat pictureViewSizeW = col * itemSizeWH + (col - 1) * kItemMargin;
-    CGFloat pictureViewSizeH = row * itemSizeWH + (col - 1) * kItemMargin;
+    CGFloat pictureViewSizeH = row * itemSizeWH + (row - 1) * kItemMargin;
     
-    if (itemCount > 0) {
-        
-        return CGSizeMake(pictureViewSizeW, pictureViewSizeH);
-    } else {
-        
-        return CGSizeZero;
-    }
+    
+    return CGSizeMake(pictureViewSizeW, pictureViewSizeH);
     
 }
 

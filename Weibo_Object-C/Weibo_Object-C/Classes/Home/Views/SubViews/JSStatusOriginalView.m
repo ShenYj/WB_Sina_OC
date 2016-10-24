@@ -161,13 +161,14 @@ static CGFloat const kOriginalContentLabelFontSize = 14.f;
     // 根据是否有配图,更新原创微博自身底部约束
     // 卸载约束
     [self.selfBottomConstraint uninstall];
-    if (statusData.pic_urls.count > 0) {
+    //有配图 赋值数据
+    self.pictureView.statusData = statusData;
+    
+    if (statusData.pic_urls) {
         
         // 显示配图视图
         self.pictureView.hidden = NO;
         
-        //有配图 赋值数据
-        self.pictureView.statusData = statusData;
         //self.pictureView.pictures = statusData.pic_urls;
         
         // 更新约束

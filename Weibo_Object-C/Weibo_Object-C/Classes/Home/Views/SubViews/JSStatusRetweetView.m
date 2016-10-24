@@ -11,8 +11,8 @@
 #import "JSPictureView.h"
 
 static CGFloat const kRetweetContentLabelFontSize = 13.f;
+extern CGFloat kMargin;
 
-static CGFloat const kMargin = 10.f;
 
 @interface JSStatusRetweetView ()
 
@@ -70,13 +70,15 @@ static CGFloat const kMargin = 10.f;
     
     // 设置转发微博内容
     self.contentLabel.text = statusData.text;
+    
+    // 传递数据
+    self.pictureView.statusData = statusData;
     // 设置转发微博配图
+    // 写在底边约束
     [self.selfBottomConstraint uninstall];
-    if (statusData.pic_urls.count > 0) {
+    if (statusData.pic_urls) {
         // 转发微博有配图
         self.pictureView.hidden = NO;
-        // 传递数据
-        self.pictureView.statusData = statusData;
         // 更新约束
         [self mas_updateConstraints:^(MASConstraintMaker *make) {
             self.selfBottomConstraint = make.bottom.mas_equalTo(self.pictureView).mas_offset(kMargin);
@@ -85,6 +87,7 @@ static CGFloat const kMargin = 10.f;
     } else {
         // 转发微博没有配图
         self.pictureView.hidden = YES;
+        
         // 更新约束
         [self mas_updateConstraints:^(MASConstraintMaker *make) {
             self.selfBottomConstraint = make.bottom.mas_equalTo(self.contentLabel).mas_offset(kMargin);

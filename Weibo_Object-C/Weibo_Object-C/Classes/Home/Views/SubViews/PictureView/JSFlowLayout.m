@@ -12,16 +12,18 @@
 // 引用JSHomeStatusModel中的 kItemMargin全局变量
 extern CGFloat kMargin;
 extern CGFloat kItemMargin;
+// 引用JSHomeStatusModel中的itemSizeWH (图片Item)的宽高
+extern CGFloat itemSizeWH;
 
-@implementation JSFlowLayout 
+
+@implementation JSFlowLayout
 
 - (void)prepareLayout {
     
-    // 每张配图(Cell) 的尺寸 (等高等宽)
-    CGFloat itemSizeWH = ([UIScreen mainScreen].bounds.size.width - 2 * kMargin - 2 * kItemMargin) / 3;
     self.itemSize = CGSizeMake(itemSizeWH, itemSizeWH);
     self.minimumLineSpacing = kItemMargin;
     self.minimumInteritemSpacing = kItemMargin;
+    //self.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
     self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     self.collectionView.showsVerticalScrollIndicator = NO;
     self.collectionView.showsHorizontalScrollIndicator = NO;

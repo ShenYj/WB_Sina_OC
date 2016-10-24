@@ -579,7 +579,7 @@
 				TargetAttributes = {
 					F799278B1D1C11EA00E9BA8C = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = KS5QTFAS57;
+						DevelopmentTeam = EC2EUS3UQ9;
 					};
 				};
 			};
@@ -814,6 +814,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Weibo_Object-C/SupportingFIles/Libs",
@@ -834,6 +835,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Weibo_Object-C/SupportingFIles/Libs",

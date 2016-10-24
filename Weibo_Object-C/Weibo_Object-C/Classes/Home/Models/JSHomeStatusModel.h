@@ -45,7 +45,7 @@
 @property (nonatomic,copy) NSString *attitudes_count_string;
 
 // (配图视图的Size)
-@property (nonatomic,assign) CGSize pictureItemSize;
+@property (nonatomic,assign) CGSize pictureViewSize;
 
 // (微博来源,处理后)
 @property (nonatomic,copy) NSMutableAttributedString *sourceString;
