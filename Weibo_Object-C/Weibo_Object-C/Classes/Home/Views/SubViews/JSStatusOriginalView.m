@@ -10,7 +10,8 @@
 #import "JSHomeStatusModel.h"
 #import "JSHomeStatusUserModel.h"
 #import "JSPictureView.h"
-
+#import "JSDateFormatter.h"
+#import "NSDate+JSIsThisYear.h"
 
 #pragma mark
 #pragma mark -- Magic Number  (引用JSHomeStatusModel中的常量)
@@ -146,7 +147,9 @@ extern CGFloat kOriginalContentLabelFontSize;
     self.sourceLabel.attributedText = statusData.sourceString;
     
     // 时间
-    self.timeLabel.text = statusData.created_at;
+    self.timeLabel.text = [self getWeiBoFormatterDateString:statusData.created_at];
+#pragma mark - demo
+    
     
     // 微博内容
     self.contentLabel.text = statusData.text;
@@ -232,6 +235,94 @@ extern CGFloat kOriginalContentLabelFontSize;
     
     
 }
+
+
+- (NSString *)getWeiBoFormatterDateString:(NSString *)created_atSourceString {
+    
+    /*
+     - 微博时间业务逻辑需求
+     - 如果是今年
+         - 如果是今天
+             -  如果小于60秒 显示格式: 刚刚
+             -  如果 s>=60 && s < 60 * 60  显示格式:xx分钟前
+             -  如果 s>= 60*60  显示格式: xx小时前
+         - 如果是昨天
+             -  2016-06-29 12:12:12  显示格式: 昨天 12:12
+         - 如果是其他
+             -  2016-06-12 13:13:13  显示格式: 06月12日 13:13
+     - 如果不是今年
+         - 2015-05-05 10:10:10 显示格式: 2015年05月05日 10:10
+     */
+    [JSDateFormatter sharedDateFormatterManager].dateFormat = @"EEE MMM dd HH:mm:ss z yyyy";
+    
+    // 将新浪微博返回时间字符串转回NSDate格式
+    NSDate *weiboSourceDate = [[JSDateFormatter sharedDateFormatterManager] dateFromString:created_atSourceString];
+    
+    // 是否今年的标识
+    BOOL isThisYear = [weiboSourceDate isThisYear];
+    
+    if (isThisYear) {// 是今年
+        
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        
+        if ([calendar isDateInToday:weiboSourceDate]) {// 是今天
+            // 获取当前date
+            NSDate *currentDate = [NSDate date];
+            // 获取微博时间和当前时间的差值
+            NSTimeInterval secondDIF = [currentDate timeIntervalSinceDate:weiboSourceDate];
+            
+            if (secondDIF < 60) { // 刚刚
+                
+                return @"刚刚";
+                
+            } else if (secondDIF >= 60 && secondDIF < 60 * 60) { //xx分钟前
+                
+                return [NSString stringWithFormat:@"%d分钟前",(int)(secondDIF/60)];
+                
+            } else { // XX小时前
+                
+                return [NSString stringWithFormat:@"%d小时前",(int)(secondDIF/(60*60))];
+            }
+            
+        } else if ([calendar isDateInYesterday:weiboSourceDate]){// 昨天
+            
+            return [weiboSourceDate dateformatterString:@"昨天 HH:mm"];
+            
+        } else {
+            
+            return [weiboSourceDate dateformatterString:@"MM月dd日 HH:mm"];
+        }
+        
+    } else {
+        // 不是今年
+        return [weiboSourceDate dateformatterString:@"yyyy年MM月dd日 HH:mm"];
+    }
+    
+    
+}
+
+
+
+// 判断传入的时间是否是今年
+- (BOOL)isThisYear:(NSDate *)date {
+ 
+    [JSDateFormatter sharedDateFormatterManager].dateFormat = @"yyyy";
+    NSString *dateYearString = [[JSDateFormatter sharedDateFormatterManager] stringFromDate:date];
+    
+    NSDate *currentDate = [NSDate date];
+    NSString *currentYearString = [[JSDateFormatter sharedDateFormatterManager] stringFromDate:currentDate];
+    
+    if ([dateYearString isEqualToString:currentYearString]) {
+        
+        return YES;
+        
+    } else {
+        
+        return NO;
+    }
+    
+}
+
 
 
 #pragma mark

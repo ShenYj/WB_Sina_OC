@@ -24,5 +24,4 @@
 @property (nonatomic,assign) CGSize  HomeStatusLayoutPictureViewMaxSize;             // 配图视图的最大Size
 
 
-
 @end

@@ -35,6 +35,8 @@
 		F747F79F1D843748000A0C8D /* UIView+JSFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = F747F7961D843748000A0C8D /* UIView+JSFrame.m */; };
 		F74F57381D84F3DA00E3CC61 /* JSUserAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F74F57371D84F3DA00E3CC61 /* JSUserAccountTool.m */; };
 		F767E2BE1DBDD71800254511 /* JSHomeStatusLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F767E2BD1DBDD71800254511 /* JSHomeStatusLayout.m */; };
+		F767E2C11DBE414600254511 /* JSDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F767E2C01DBE414600254511 /* JSDateFormatter.m */; };
+		F767E2C71DBE4E4E00254511 /* NSDate+JSIsThisYear.m in Sources */ = {isa = PBXBuildFile; fileRef = F767E2C61DBE4E4E00254511 /* NSDate+JSIsThisYear.m */; };
 		F775B1651DBB0D6A006DAA79 /* JSStatusToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F775B1641DBB0D6A006DAA79 /* JSStatusToolBarView.m */; };
 		F775B1681DBB1511006DAA79 /* JSToolBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F775B1671DBB1511006DAA79 /* JSToolBarButton.m */; };
 		F77886461D1EC97E00BE4518 /* JSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F77886411D1EC97E00BE4518 /* JSNavigationController.m */; };
@@ -114,6 +116,10 @@
 		F75F0D521D87027800549EC3 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		F767E2BC1DBDD71800254511 /* JSHomeStatusLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSHomeStatusLayout.h; sourceTree = "<group>"; };
 		F767E2BD1DBDD71800254511 /* JSHomeStatusLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSHomeStatusLayout.m; sourceTree = "<group>"; };
+		F767E2BF1DBE414600254511 /* JSDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDateFormatter.h; sourceTree = "<group>"; };
+		F767E2C01DBE414600254511 /* JSDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDateFormatter.m; sourceTree = "<group>"; };
+		F767E2C51DBE4E4E00254511 /* NSDate+JSIsThisYear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+JSIsThisYear.h"; sourceTree = "<group>"; };
+		F767E2C61DBE4E4E00254511 /* NSDate+JSIsThisYear.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+JSIsThisYear.m"; sourceTree = "<group>"; };
 		F775B1631DBB0D6A006DAA79 /* JSStatusToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSStatusToolBarView.h; sourceTree = "<group>"; };
 		F775B1641DBB0D6A006DAA79 /* JSStatusToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSStatusToolBarView.m; sourceTree = "<group>"; };
 		F775B1661DBB1511006DAA79 /* JSToolBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSToolBarButton.h; sourceTree = "<group>"; };
@@ -535,6 +541,10 @@
 				F74F57371D84F3DA00E3CC61 /* JSUserAccountTool.m */,
 				F7F9DB131D2499BA0029235B /* JSNetworkTool.h */,
 				F7F9DB141D2499BA0029235B /* JSNetworkTool.m */,
+				F767E2BF1DBE414600254511 /* JSDateFormatter.h */,
+				F767E2C01DBE414600254511 /* JSDateFormatter.m */,
+				F767E2C51DBE4E4E00254511 /* NSDate+JSIsThisYear.h */,
+				F767E2C61DBE4E4E00254511 /* NSDate+JSIsThisYear.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -681,11 +691,13 @@
 				F747F7991D843748000A0C8D /* NSString+Emoji.m in Sources */,
 				F7271A991DB9C3D900CF96A0 /* JSHomeStatusModel.m in Sources */,
 				F74737611DBB2DA4003F9C10 /* JSStatusRetweetView.m in Sources */,
+				F767E2C11DBE414600254511 /* JSDateFormatter.m in Sources */,
 				F73BE44A1DBC801100C31595 /* JSFlowLayout.m in Sources */,
 				F77886461D1EC97E00BE4518 /* JSNavigationController.m in Sources */,
 				F79927CC1D1C14D700E9BA8C /* JSDescoveryTableViewController.m in Sources */,
 				F73BE44C1DBC801100C31595 /* JSPictureViewCell.m in Sources */,
 				F7271A9C1DB9EC9900CF96A0 /* JSStatusCell.m in Sources */,
+				F767E2C71DBE4E4E00254511 /* NSDate+JSIsThisYear.m in Sources */,
 				F778864D1D1F51EE00BE4518 /* JSVistorTableViewController.m in Sources */,
 				F747F79A1D843748000A0C8D /* NSString+Hash.m in Sources */,
 				F79927CF1D1C14E300E9BA8C /* JSHomeTableViewController.m in Sources */,

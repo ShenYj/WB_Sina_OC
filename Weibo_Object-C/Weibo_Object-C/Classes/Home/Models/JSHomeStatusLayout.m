@@ -10,4 +10,7 @@
 
 @implementation JSHomeStatusLayout
 
+static JSHomeStatusLayout *_instanceType = nil;
+
+
 @end

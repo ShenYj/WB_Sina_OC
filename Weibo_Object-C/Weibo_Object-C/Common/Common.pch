@@ -32,6 +32,7 @@
 #import "YYWebImage.h"
 
 
+
 #pragma mark = 宏定义
 
 #define SCREEN_WIDTH [UIScreen MainScreen].bounds.size.width

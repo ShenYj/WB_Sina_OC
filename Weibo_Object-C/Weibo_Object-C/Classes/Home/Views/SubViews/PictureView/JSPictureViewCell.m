@@ -23,6 +23,13 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self prepareView];
+        
+        // 栅格化
+        self.layer.shouldRasterize = YES;
+        // 设置缩放比
+        self.layer.rasterizationScale = [UIScreen mainScreen].scale;
+        // 开启异步绘制
+        [self.layer drawsAsynchronously];
     }
     return self;
 }
