@@ -10,6 +10,7 @@
 #import "JSHomeStatusModel.h"
 #import "JSHomeStatusUserModel.h"
 #import "JSHomeStatusPictureModel.h"
+#import "JSHomeStatusLayout.h"
 
 // 配图视图的参数 配图视图距离屏幕两个的间距和配图间的间距
 CGFloat const kMargin = 10.f;
@@ -31,8 +32,66 @@ CGSize pictureViewMaxSize;
         [self setValuesForKeysWithDictionary:dict];
         // 配图视图最大Size (9张图片)
         pictureViewMaxSize = [self getPictureViewSizeWithItemCounts:9];
+        
     }
     return self;
+}
+
+- (CGFloat)homeStatusRowHeigh {
+    
+    CGFloat rowHeight = 0.f;
+    // 1. 原创微博部分
+    // 图片高度 + 2*间距
+    rowHeight += 2 * self.homeStatusLayout.HomeStatusLayoutMargin + self.homeStatusLayout.HomeStatusLayoutHeadImageViewSize;
+    // 原创微博文本
+    CGRect contentLabelBounds = [self.text boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width - 2 * kMargin, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:self.homeStatusLayout.HomeStatusLayoutContentLabelFontSize]} context:nil];
+    // 文本高度 + 底部 1*间距
+    rowHeight += contentLabelBounds.size.height + self.homeStatusLayout.HomeStatusLayoutMargin;
+    
+    // 配图
+    if (self.pic_urls) {
+        // 配图高度 + 1*间距
+        rowHeight += self.pictureViewSize.height + self.homeStatusLayout.HomeStatusLayoutMargin;
+    }
+    
+    // 2.转发微博
+    if (self.retweeted_status) {
+        
+        // 原创微博文本
+        CGRect retweetContentLabelBounds = [self.retweeted_status.text boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width - 2 * kMargin, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:self.homeStatusLayout.HomeStatusLayoutContentLabelFontSize]} context:nil];
+        // 文本高度 + 底部 1*间距
+        rowHeight += retweetContentLabelBounds.size.height + self.homeStatusLayout.HomeStatusLayoutMargin;
+        
+        // 配图
+        if (self.retweeted_status.pic_urls) {
+            // 配图高度 + 1*间距
+            rowHeight += self.retweeted_status.pictureViewSize.height + self.homeStatusLayout.HomeStatusLayoutMargin;
+        }
+        
+    }
+    
+    // 3.底部工具条
+    rowHeight += self.homeStatusLayout.HomeStatusLayoutToolBarHeight + self.homeStatusLayout.HomeStatusLayoutToolBarBottomMargin;
+    
+    return rowHeight;
+}
+
+- (JSHomeStatusLayout *)homeStatusLayout {
+    
+    JSHomeStatusLayout *layout = [[JSHomeStatusLayout alloc] init];
+    
+    layout.HomeStatusLayoutMargin = 10.f;
+    layout.HomeStatusLayoutHeadImageViewSize = 35.f;
+    layout.HomeStatusLayoutUserStatusImageViewSize = 15.f;
+    layout.HomeStatusLayoutContentLabelFontSize = 14.f;
+    layout.HomeStatusLayoutRetweetContentLabelFontSize = 13.f;
+    layout.HomeStatusLayoutToolBarHeight = 35.f;
+    layout.HomeStatusLayoutToolBarBottomMargin = 5.f;
+    layout.HomeStatusLayoutPictureViewItemMargin = 5.f;
+    layout.HomeStatusLayoutPictureViewSize = [self getPictureViewSizeWithItemCounts:self.pic_urls.count];
+    layout.HomeStatusLayoutPictureViewMaxSize = [self getPictureViewSizeWithItemCounts:9];
+    
+    return layout;
 }
 
 + (instancetype)statuWithDict:(NSDictionary *)dict {

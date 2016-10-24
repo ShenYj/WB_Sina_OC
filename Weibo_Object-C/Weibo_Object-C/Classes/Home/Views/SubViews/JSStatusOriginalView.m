@@ -115,7 +115,7 @@ static CGFloat const kOriginalContentLabelFontSize = 14.f;
     }];
     
     [self.pictureView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.contentLabel.mas_bottom);
+        make.top.mas_equalTo(self.contentLabel.mas_bottom).mas_offset(kMargin);
         make.left.mas_equalTo(self.contentLabel);
         //make.size.mas_equalTo(CGSizeMake(100, 100));迁移到PictureView内部进行约束
     }];

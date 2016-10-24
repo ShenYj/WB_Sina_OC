@@ -42,8 +42,8 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 200.f;
+    //self.tableView.rowHeight = UITableViewAutomaticDimension;
+    //self.tableView.estimatedRowHeight = 200.f;
     
     [self loadHomeStatusData:^(NSArray<JSHomeStatusModel *> *datas) {
        
@@ -120,10 +120,14 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
     return cell;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//    return 300;
-//}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    JSHomeStatusModel *statusModel = self.homeStatusDatas[indexPath.row];
+    
+    NSLog(@"%f",statusModel.homeStatusRowHeigh);
+    
+    return statusModel.homeStatusRowHeigh;
+}
 
 - (void)tableView:(UITableView*)tableView willDisplayCell:(UITableViewCell*)cell forRowAtIndexPath:(NSIndexPath*)indexPath {
     
@@ -136,8 +140,6 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
     }
 }
 
-#pragma mark
-#pragma mark - lazy
 
 
 

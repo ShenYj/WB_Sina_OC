@@ -11,6 +11,22 @@
 @class JSHomeStatusModel;
 @class JSHomeStatusUserModel;
 @class JSHomeStatusPictureModel;
+@class JSHomeStatusLayout;
+
+
+// 首页布局信息
+struct HomeStatusLayout {
+    CGFloat HomeStatusLayoutMargin;                         // 间距
+    CGFloat HomeStatusLayoutHeadImageViewSize;              // 用户头像Size(宽高)
+    CGFloat HomeStatusLayoutUserStatusImageViewSize;        // 用户等级图片Size(宽高)
+    CGFloat HomeStatusLayoutContentLabelFontSize;           // 原创微博内容字体大小
+    CGFloat HomeStatusLayoutRetweetContentLabelFontSize;    // 转发微博内容字体大小
+    CGFloat HomeStatusLayoutToolBarHeight;                  // 底部工具栏高度
+    CGFloat HomeStatusLayoutToolBarBottomMargin;            // 底部工具栏距离Cell的contentView底部间距
+    CGFloat HomeStatusLayoutPictureViewItemMargin;          // 配图视图中每个Item间的间距
+    CGSize  HomeStatusLayoutPictureViewSize;                // 配图视图的Size
+    CGSize  HomeStatusLayoutPictureViewMaxSize;             // 配图视图的最大Size
+};
 
 @interface JSHomeStatusModel : NSObject
 
@@ -49,6 +65,13 @@
 
 // (微博来源,处理后)
 @property (nonatomic,copy) NSMutableAttributedString *sourceString;
+
+// 记录行高
+@property (nonatomic,assign) CGFloat homeStatusRowHeigh;
+// 首页视图的布局参数
+@property (nonatomic,assign) JSHomeStatusLayout *homeStatusLayout;
+
+
 
 #pragma mark
 #pragma mark - methods
