@@ -40,7 +40,7 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
 - (void)prepareView {
     
     self.view.backgroundColor = [UIColor whiteColor];
-    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     //self.tableView.rowHeight = UITableViewAutomaticDimension;
     //self.tableView.estimatedRowHeight = 200.f;
     

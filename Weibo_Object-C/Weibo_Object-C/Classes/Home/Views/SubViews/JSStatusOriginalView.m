@@ -72,8 +72,6 @@ extern CGFloat kOriginalContentLabelFontSize;
     [self addSubview:self.contentLabel];
     [self addSubview:self.pictureView];
     
-    
-    
     [self.headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.mas_equalTo(self).mas_offset(kMargin);
         make.size.mas_equalTo(CGSizeMake(kHeadImageViewSize, kHeadImageViewSize));
