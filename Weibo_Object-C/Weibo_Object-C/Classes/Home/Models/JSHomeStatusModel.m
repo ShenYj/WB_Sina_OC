@@ -11,7 +11,8 @@
 #import "JSHomeStatusUserModel.h"
 #import "JSHomeStatusPictureModel.h"
 #import "JSHomeStatusLayout.h"
-
+#import "JSDateFormatter.h"
+#import "NSDate+JSIsThisYear.h"
 
 // 原创微博相关
 CGFloat const kMargin = 10.f;                       // 首页视图间距
@@ -34,24 +35,8 @@ CGFloat const kRetweetContentLabelFontSize = 13.f;  // 首页视图转发微博�
 }
 
 #pragma mark
-#pragma mark - 首页视图的布局参数设置
-- (JSHomeStatusLayout *)homeStatusLayout {
-    
-    JSHomeStatusLayout *layout = [[JSHomeStatusLayout alloc] init];
-    layout.HomeStatusLayoutMargin = 10.f;
-    layout.HomeStatusLayoutHeadImageViewSize = 35.f;
-    layout.HomeStatusLayoutUserStatusImageViewSize = 15.f;
-    layout.HomeStatusLayoutContentLabelFontSize = 14.f;
-    layout.HomeStatusLayoutRetweetContentLabelFontSize = 13.f;
-    layout.HomeStatusLayoutToolBarHeight = 35.f;
-    layout.HomeStatusLayoutToolBarBottomMargin = 5.f;
-    layout.HomeStatusLayoutPictureViewItemSizeWH = itemSizeWH;
-    layout.HomeStatusLayoutPictureViewItemMargin = 5.f;
-    layout.HomeStatusLayoutPictureViewSize = [self getPictureViewSizeWithItemCounts:self.pic_urls.count];
-    layout.HomeStatusLayoutPictureViewMaxSize = [self getPictureViewSizeWithItemCounts:9];
-    
-    return layout;
-}
+#pragma mark - 首页视图的布局参数设置 (记录杭钢)
+
 // 方式二
 - (HomeStatusLayout)homeStatusLayoutStruct {
     
@@ -71,47 +56,6 @@ CGFloat const kRetweetContentLabelFontSize = 13.f;  // 首页视图转发微博�
     
     return layout;
 }
-
-// 计算首页Cell的行高
-- (CGFloat)homeStatusRowHeigh {
-    
-    CGFloat rowHeight = 0.f;
-    // 1. 原创微博部分
-    // 图片高度 + 2*间距
-    rowHeight += 2 * self.homeStatusLayout.HomeStatusLayoutMargin + self.homeStatusLayout.HomeStatusLayoutHeadImageViewSize;
-    // 原创微博文本
-    CGRect contentLabelBounds = [self.text boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width - 2 * kMargin, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:self.homeStatusLayout.HomeStatusLayoutContentLabelFontSize]} context:nil];
-    // 文本高度 + 底部 1*间距
-    rowHeight += contentLabelBounds.size.height + self.homeStatusLayout.HomeStatusLayoutMargin;
-    
-    // 配图
-    if (self.pic_urls) {
-        // 配图高度 + 1*间距
-        rowHeight += self.pictureViewSize.height + self.homeStatusLayout.HomeStatusLayoutMargin;
-    }
-    
-    // 2.转发微博
-    if (self.retweeted_status) {
-        
-        // 原创微博文本
-        CGRect retweetContentLabelBounds = [self.retweeted_status.text boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width - 2 * kMargin, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:self.homeStatusLayout.HomeStatusLayoutContentLabelFontSize]} context:nil];
-        // 文本高度 + 底部 1*间距
-        rowHeight += retweetContentLabelBounds.size.height + self.homeStatusLayout.HomeStatusLayoutMargin;
-        
-        // 配图
-        if (self.retweeted_status.pic_urls) {
-            // 配图高度 + 1*间距
-            rowHeight += self.retweeted_status.pictureViewSize.height + self.homeStatusLayout.HomeStatusLayoutMargin;
-        }
-        
-    }
-    
-    // 3.底部工具条
-    rowHeight += self.homeStatusLayout.HomeStatusLayoutToolBarHeight + self.homeStatusLayout.HomeStatusLayoutToolBarBottomMargin;
-    
-    return rowHeight;
-}
-// 方式二
 - (CGFloat)homeStatusRowHeightStruct {
     
     CGFloat rowHeight = 0.f;
@@ -151,6 +95,66 @@ CGFloat const kRetweetContentLabelFontSize = 13.f;  // 首页视图转发微博�
     return rowHeight;
 }
 
+// 记录行高 -> 方式一
+- (JSHomeStatusLayout *)homeStatusLayout {
+    
+    JSHomeStatusLayout *layout = [[JSHomeStatusLayout alloc] init];
+    layout.HomeStatusLayoutMargin = 10.f;
+    layout.HomeStatusLayoutHeadImageViewSize = 35.f;
+    layout.HomeStatusLayoutUserStatusImageViewSize = 15.f;
+    layout.HomeStatusLayoutContentLabelFontSize = 14.f;
+    layout.HomeStatusLayoutRetweetContentLabelFontSize = 13.f;
+    layout.HomeStatusLayoutToolBarHeight = 35.f;
+    layout.HomeStatusLayoutToolBarBottomMargin = 5.f;
+    layout.HomeStatusLayoutPictureViewItemSizeWH = itemSizeWH;
+    layout.HomeStatusLayoutPictureViewItemMargin = 5.f;
+    layout.HomeStatusLayoutPictureViewSize = [self getPictureViewSizeWithItemCounts:self.pic_urls.count];
+    layout.HomeStatusLayoutPictureViewMaxSize = [self getPictureViewSizeWithItemCounts:9];
+    
+    return layout;
+}
+
+// 计算首页Cell的行高 方式一
+- (CGFloat)homeStatusRowHeigh {
+    
+    CGFloat rowHeight = 0.f;
+    // 1. 原创微博部分
+    // 图片高度 + 2*间距
+    rowHeight += 2 * self.homeStatusLayout.HomeStatusLayoutMargin + self.homeStatusLayout.HomeStatusLayoutHeadImageViewSize;
+    // 原创微博文本
+    CGRect contentLabelBounds = [self.text boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width - 2 * kMargin, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:self.homeStatusLayout.HomeStatusLayoutContentLabelFontSize]} context:nil];
+    // 文本高度 + 底部 1*间距
+    rowHeight += contentLabelBounds.size.height + self.homeStatusLayout.HomeStatusLayoutMargin;
+    
+    // 配图
+    if (self.pic_urls) {
+        // 配图高度 + 1*间距
+        rowHeight += self.pictureViewSize.height + self.homeStatusLayout.HomeStatusLayoutMargin;
+    }
+    
+    // 2.转发微博
+    if (self.retweeted_status) {
+        
+        // 原创微博文本
+        CGRect retweetContentLabelBounds = [self.retweeted_status.text boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width - 2 * kMargin, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:self.homeStatusLayout.HomeStatusLayoutContentLabelFontSize]} context:nil];
+        // 文本高度 + 底部 1*间距
+        rowHeight += retweetContentLabelBounds.size.height + self.homeStatusLayout.HomeStatusLayoutMargin;
+        
+        // 配图
+        if (self.retweeted_status.pic_urls) {
+            // 配图高度 + 1*间距
+            rowHeight += self.retweeted_status.pictureViewSize.height + self.homeStatusLayout.HomeStatusLayoutMargin;
+        }
+        
+    }
+    
+    // 3.底部工具条
+    rowHeight += self.homeStatusLayout.HomeStatusLayoutToolBarHeight + self.homeStatusLayout.HomeStatusLayoutToolBarBottomMargin;
+    
+    return rowHeight;
+}
+
+
 
 - (instancetype)initWithDict:(NSDictionary *)dict {
     
@@ -169,7 +173,7 @@ CGFloat const kRetweetContentLabelFontSize = 13.f;  // 首页视图转发微博�
     return [[self alloc] initWithDict:dict];
 }
 
-
+// KVC
 - (void)setValue:(id)value forKey:(NSString *)key {
     
     if ([key isEqualToString:@"id"]) {
@@ -256,6 +260,13 @@ CGFloat const kRetweetContentLabelFontSize = 13.f;  // 首页视图转发微博�
     _source = source;
     
     self.sourceString = [self getStatusScourceStringWithOriginalInfo:source];
+    
+}
+
+// 微博发布时间 (因为需要实时判断,在SetCreated_at方法中重写,只会记录一次)
+- (NSString *)created_at_formatterString {
+    
+    return [self getWeiBoFormatterDateString:self.created_at];
     
 }
 
@@ -351,6 +362,72 @@ CGFloat const kRetweetContentLabelFontSize = 13.f;  // 首页视图转发微博�
     
 }
 
+#pragma mark
+#pragma mark - 微博时间处理
+
+- (NSString *)getWeiBoFormatterDateString:(NSString *)created_atSourceString {
+    
+    /*
+     - 微博时间业务逻辑需求
+     - 如果是今年
+     - 如果是今天
+     -  如果小于60秒 显示格式: 刚刚
+     -  如果 s>=60 && s < 60 * 60  显示格式:xx分钟前
+     -  如果 s>= 60*60  显示格式: xx小时前
+     - 如果是昨天
+     -  2016-06-29 12:12:12  显示格式: 昨天 12:12
+     - 如果是其他
+     -  2016-06-12 13:13:13  显示格式: 06月12日 13:13
+     - 如果不是今年
+     - 2015-05-05 10:10:10 显示格式: 2015年05月05日 10:10
+     */
+    [JSDateFormatter sharedDateFormatterManager].dateFormat = @"EEE MMM dd HH:mm:ss z yyyy";
+    
+    // 将新浪微博返回时间字符串转回NSDate格式
+    NSDate *weiboSourceDate = [[JSDateFormatter sharedDateFormatterManager] dateFromString:created_atSourceString];
+    
+    // 是否今年的标识
+    BOOL isThisYear = [weiboSourceDate isThisYear];
+    
+    if (isThisYear) {// 是今年
+        
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        
+        if ([calendar isDateInToday:weiboSourceDate]) {// 是今天
+            // 获取当前date
+            NSDate *currentDate = [NSDate date];
+            // 获取微博时间和当前时间的差值
+            NSTimeInterval secondDIF = [currentDate timeIntervalSinceDate:weiboSourceDate];
+            
+            if (secondDIF < 60) { // 刚刚
+                
+                return @"刚刚";
+                
+            } else if (secondDIF >= 60 && secondDIF < 60 * 60) { //xx分钟前
+                
+                return [NSString stringWithFormat:@"%d分钟前",(int)(secondDIF/60)];
+                
+            } else { // XX小时前
+                
+                return [NSString stringWithFormat:@"%d小时前",(int)(secondDIF/(60*60))];
+            }
+            
+        } else if ([calendar isDateInYesterday:weiboSourceDate]){// 昨天
+            
+            return [weiboSourceDate dateformatterString:@"昨天 HH:mm"];
+            
+        } else {
+            
+            return [weiboSourceDate dateformatterString:@"MM月dd日 HH:mm"];
+        }
+        
+    } else {
+        // 不是今年
+        return [weiboSourceDate dateformatterString:@"yyyy年MM月dd日 HH:mm"];
+    }
+    
+    
+}
 
 
 - (NSString *)description {

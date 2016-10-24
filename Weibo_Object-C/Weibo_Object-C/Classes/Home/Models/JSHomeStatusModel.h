@@ -72,11 +72,12 @@ typedef struct {
 // (微博来源,处理后)
 @property (nonatomic,copy) NSMutableAttributedString *sourceString;
 
+// (微博发布时间显示格式)
+@property (nonatomic,copy) NSString *created_at_formatterString;
+
 // 记录行高1 (模型类)
 @property (nonatomic,assign) CGFloat homeStatusRowHeigh;
 @property (nonatomic,strong) JSHomeStatusLayout *homeStatusLayout;
-
-
 // 记录行高2 (解耦固体)
 @property (nonatomic,assign) CGFloat homeStatusRowHeightStruct;
 @property (nonatomic,assign) HomeStatusLayout homeStatusLayoutStruct;
