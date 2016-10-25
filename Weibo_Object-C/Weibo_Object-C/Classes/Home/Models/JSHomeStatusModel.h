@@ -14,10 +14,6 @@
 @class JSHomeStatusLayout;
 
 
-
-
-
-
 // 首页布局信息
 typedef struct {
     

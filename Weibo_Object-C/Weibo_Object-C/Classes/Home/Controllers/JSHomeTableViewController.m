@@ -20,6 +20,9 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
 // 当前登录用户及其所关注（授权）用户的最新微博数据
 @property (nonatomic) NSArray <JSHomeStatusModel *> *homeStatusDatas;
 
+// 上拉刷新指示控件
+@property (nonatomic) UIActivityIndicatorView *activityIndicatorView;
+
 @end
 
 @implementation JSHomeTableViewController
@@ -38,17 +41,17 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
 }
 
 - (void)prepareView {
-    
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    // 使用Status模型类记录行高
     //self.tableView.rowHeight = UITableViewAutomaticDimension;
     //self.tableView.estimatedRowHeight = 200.f;
     
-    [self loadHomeStatusData:^(NSArray<JSHomeStatusModel *> *datas) {
-       
-        self.homeStatusDatas = datas;
-        [self.tableView reloadData];
-    }];
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    self.tableView.tableFooterView = self.activityIndicatorView;
+    
+    // 首次展示首页请求数据
+    [self loadHomeStatusData];
 
 }
 
@@ -72,7 +75,7 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
 
 #pragma mark - loadHomeStatusData
 
-- (void)loadHomeStatusData:(void (^)(NSArray <JSHomeStatusModel *>*datas))completionHandler {
+- (void)loadHomeStatusData {
     
     [[JSNetworkTool sharedNetworkTool] loadHomePublicDatawithFinishedBlock:^(id obj, NSError *error) {
         
@@ -87,8 +90,10 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
             [mArr addObject:model];
         }
         
-        completionHandler(mArr.copy);
+        self.homeStatusDatas = mArr.copy;
+        [self.tableView reloadData];
     }];
+    
 }
 
 #pragma mark
@@ -135,9 +140,28 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
     if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
         [cell setLayoutMargins:UIEdgeInsetsZero];
     }
+    
+    // 最后一个Cell显示 && 动画没有开启
+    if (indexPath.row == self.homeStatusDatas.count - 1 && !self.activityIndicatorView.isAnimating) {
+        
+        [self.activityIndicatorView startAnimating];
+        // 开始请求新数据(较早时间的数据)
+        
+    }
+    
 }
 
 
+#pragma mark 
+#pragma mark - lazy
+- (UIActivityIndicatorView *)activityIndicatorView {
+    
+    if (_activityIndicatorView == nil) {
+        _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+        _activityIndicatorView.color = THEME_COLOR;
+    }
+    return _activityIndicatorView;
+}
 
 
 @end
