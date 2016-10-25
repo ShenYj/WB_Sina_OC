@@ -50,9 +50,10 @@ typedef NS_ENUM(NSUInteger, RequestMethod) {
 
 /**
  获取当前登录用户及其所关注（授权）用户的最新微博
- @param code          
+ @param Since_id      下拉时指定此参数
+ @param max_id        上拉时指定此参数
  @param finishedBlock 完成回调
  */
-- (void)loadHomePublicDatawithFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock;
-
+//- (void)loadHomePublicDatawithFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock;
+- (void)loadHomePublicDatawithFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock Since_id:(NSInteger)since_id max_id:(NSInteger)max_id;
 @end

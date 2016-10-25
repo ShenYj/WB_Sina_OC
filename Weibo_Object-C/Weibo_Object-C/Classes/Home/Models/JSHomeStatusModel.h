@@ -34,6 +34,7 @@ typedef struct {
 
 @interface JSHomeStatusModel : NSObject
 
+
 #pragma mark
 #pragma mark - properties
 // 微博创建时间
@@ -56,6 +57,7 @@ typedef struct {
 @property (nonatomic) NSNumber *attitudes_count;
 // 配图
 @property (nonatomic) NSArray <JSHomeStatusPictureModel *>*pic_urls;
+
 
 
 #pragma mark - extension

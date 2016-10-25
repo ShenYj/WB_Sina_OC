@@ -51,7 +51,7 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
     self.tableView.tableFooterView = self.activityIndicatorView;
     
     // 首次展示首页请求数据
-    [self loadHomeStatusData];
+    [self loadHomeStatusDataByIsPulling:self.activityIndicatorView.isAnimating];
 
 }
 
@@ -74,8 +74,36 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
 
 
 #pragma mark - loadHomeStatusData
-
-- (void)loadHomeStatusData {
+/*
+    since_id  若指定此参数 -->下拉
+     max_id	  若指定此参数 -->上拉
+ */
+- (void)loadHomeStatusDataByIsPulling:(BOOL)isPulling {
+    
+    NSInteger sinceId = 0;
+    NSInteger maxId = 0;
+    
+    if (self.activityIndicatorView.isAnimating) {
+        
+        // 停止动画
+        [self.activityIndicatorView stopAnimating];
+        
+        // 上拉加载更多
+        maxId += self.homeStatusDatas.lastObject.wb_id.integerValue;
+        
+        if (maxId > 0) {
+            // 上拉加载更多,返回ID小于或等于max_id的微博
+            maxId -= 1;
+        }
+        
+        
+    } else {
+        //  下拉刷新
+        sinceId += self.homeStatusDatas.firstObject.wb_id.integerValue;
+        
+    }
+    
+    NSLog(@"sinceId: %zd,maxId:%zd",sinceId,maxId);
     
     [[JSNetworkTool sharedNetworkTool] loadHomePublicDatawithFinishedBlock:^(id obj, NSError *error) {
         
@@ -86,13 +114,16 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
         for (NSDictionary *dict in statusDataArr) {
             
             JSHomeStatusModel *model = [JSHomeStatusModel statuWithDict:dict];
-            
             [mArr addObject:model];
+            
         }
         
-        self.homeStatusDatas = mArr.copy;
+        self.homeStatusDatas = [self.homeStatusDatas arrayByAddingObjectsFromArray:mArr];
+        
         [self.tableView reloadData];
-    }];
+        
+    } Since_id:sinceId max_id:maxId];
+    
     
 }
 
@@ -145,15 +176,27 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
     if (indexPath.row == self.homeStatusDatas.count - 1 && !self.activityIndicatorView.isAnimating) {
         
         [self.activityIndicatorView startAnimating];
-        // 开始请求新数据(较早时间的数据)
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            // 开始请求新数据(较早时间的数据)
+            [self loadHomeStatusDataByIsPulling:self.activityIndicatorView.isAnimating];
+        });
         
     }
     
 }
 
-
 #pragma mark 
 #pragma mark - lazy
+- (NSArray<JSHomeStatusModel *> *)homeStatusDatas {
+    
+    if (_homeStatusDatas == nil) {
+        _homeStatusDatas = [NSArray array];
+    }
+    return _homeStatusDatas;
+}
+
 - (UIActivityIndicatorView *)activityIndicatorView {
     
     if (_activityIndicatorView == nil) {

@@ -102,7 +102,7 @@
 }
 
 #pragma mark - public content
-- (void)loadHomePublicDatawithFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock {
+- (void)loadHomePublicDatawithFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock Since_id:(NSInteger)since_id max_id:(NSInteger)max_id {
     
     /*
      
@@ -118,9 +118,9 @@
      */
     NSString *urlString = @"https://api.weibo.com/2/statuses/home_timeline.json";
     NSDictionary *para = @{
-                           @"access_token": [JSUserAccountTool sharedManager].access_token
-                           //@"since_id": @0,
-                           //@"max_id": @0,
+                           @"access_token": [JSUserAccountTool sharedManager].access_token,
+                           @"since_id": @(since_id),
+                           @"max_id": @(max_id)
                            };
     
     [self requestWithMethod:RequestMethodGet withParameters:para withUrlString:urlString withSuccess:^(id obj) {
