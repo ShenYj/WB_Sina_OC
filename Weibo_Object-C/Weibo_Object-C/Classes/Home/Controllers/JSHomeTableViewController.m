@@ -22,10 +22,16 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
 
 // 上拉刷新指示控件
 @property (nonatomic) UIActivityIndicatorView *activityIndicatorView;
+// 下拉刷新
+@property (nonatomic) UIRefreshControl *refreshControl;
+
+
 
 @end
 
 @implementation JSHomeTableViewController
+
+@synthesize refreshControl = _refreshControl;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,6 +51,11 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
     //self.tableView.rowHeight = UITableViewAutomaticDimension;
     //self.tableView.estimatedRowHeight = 200.f;
     
+    //self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.tableView addSubview:self.refreshControl];
+    
+    [self.refreshControl addTarget:self action:@selector(refreshControlValueChanged:) forControlEvents:UIControlEventValueChanged];
+    
     self.view.backgroundColor = [UIColor whiteColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
@@ -54,6 +65,7 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
     [self loadHomeStatusDataByIsPulling:self.activityIndicatorView.isAnimating];
 
 }
+
 
 - (void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
@@ -80,30 +92,28 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
  */
 - (void)loadHomeStatusDataByIsPulling:(BOOL)isPulling {
     
+    // 停止动画
+    [self.activityIndicatorView stopAnimating];
+    [self.refreshControl endRefreshing];
+    
     NSInteger sinceId = 0;
     NSInteger maxId = 0;
     
-    if (self.activityIndicatorView.isAnimating) {
-        
-        // 停止动画
-        [self.activityIndicatorView stopAnimating];
+    if (isPulling) {
         
         // 上拉加载更多
-        maxId += self.homeStatusDatas.lastObject.wb_id.integerValue;
+        maxId = self.homeStatusDatas.lastObject.wb_id.integerValue;
         
         if (maxId > 0) {
             // 上拉加载更多,返回ID小于或等于max_id的微博
             maxId -= 1;
         }
         
-        
     } else {
         //  下拉刷新
-        sinceId += self.homeStatusDatas.firstObject.wb_id.integerValue;
+        sinceId = self.homeStatusDatas.firstObject.wb_id.integerValue;
         
     }
-    
-    NSLog(@"sinceId: %zd,maxId:%zd",sinceId,maxId);
     
     [[JSNetworkTool sharedNetworkTool] loadHomePublicDatawithFinishedBlock:^(id obj, NSError *error) {
         
@@ -118,12 +128,32 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
             
         }
         
-        self.homeStatusDatas = [self.homeStatusDatas arrayByAddingObjectsFromArray:mArr];
+        if (isPulling) {
+            
+            // 上拉加载更多
+            self.homeStatusDatas = [self.homeStatusDatas arrayByAddingObjectsFromArray:mArr];
+            
+        } else {
+            
+            // 下拉刷新
+            self.homeStatusDatas = [mArr arrayByAddingObjectsFromArray:self.homeStatusDatas];
+            
+        }
         
         [self.tableView reloadData];
         
     } Since_id:sinceId max_id:maxId];
     
+    
+}
+
+// 下拉刷新
+- (void)refreshControlValueChanged:(UIRefreshControl *)refreshControl {
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        [self loadHomeStatusDataByIsPulling:self.activityIndicatorView.isAnimating];
+    });
     
 }
 
@@ -206,5 +236,12 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
     return _activityIndicatorView;
 }
 
+- (UIRefreshControl *)refreshControl {
+    
+    if (_refreshControl == nil) {
+        _refreshControl = [[UIRefreshControl alloc] init];
+    }
+    return _refreshControl;
+}
 
 @end
