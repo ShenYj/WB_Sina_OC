@@ -10,6 +10,7 @@
 		E6D542BB8EA798826F2569E1 /* libPods-Weibo_Object-C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA89379BD5C259B8114A7F9F /* libPods-Weibo_Object-C.a */; };
 		F7079FA41D8E5FC60018FDA4 /* JSUserAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7079FA31D8E5FC60018FDA4 /* JSUserAccountModel.m */; };
 		F7079FA71D8ECE260018FDA4 /* JSWelComeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7079FA61D8ECE260018FDA4 /* JSWelComeViewController.m */; };
+		F72175F91DC087770065D3B8 /* JSRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = F72175F81DC087770065D3B8 /* JSRefresh.m */; };
 		F7271A991DB9C3D900CF96A0 /* JSHomeStatusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7271A981DB9C3D900CF96A0 /* JSHomeStatusModel.m */; };
 		F7271A9C1DB9EC9900CF96A0 /* JSStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7271A9B1DB9EC9900CF96A0 /* JSStatusCell.m */; };
 		F7271AA01DB9F5EF00CF96A0 /* JSStatusOriginalView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7271A9F1DB9F5EF00CF96A0 /* JSStatusOriginalView.m */; };
@@ -64,6 +65,8 @@
 		F7079FA31D8E5FC60018FDA4 /* JSUserAccountModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSUserAccountModel.m; sourceTree = "<group>"; };
 		F7079FA51D8ECE260018FDA4 /* JSWelComeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSWelComeViewController.h; sourceTree = "<group>"; };
 		F7079FA61D8ECE260018FDA4 /* JSWelComeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSWelComeViewController.m; sourceTree = "<group>"; };
+		F72175F71DC087770065D3B8 /* JSRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSRefresh.h; sourceTree = "<group>"; };
+		F72175F81DC087770065D3B8 /* JSRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSRefresh.m; sourceTree = "<group>"; };
 		F7271A971DB9C3D900CF96A0 /* JSHomeStatusModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSHomeStatusModel.h; sourceTree = "<group>"; };
 		F7271A981DB9C3D900CF96A0 /* JSHomeStatusModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSHomeStatusModel.m; sourceTree = "<group>"; };
 		F7271A9A1DB9EC9900CF96A0 /* JSStatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSStatusCell.h; sourceTree = "<group>"; };
@@ -183,6 +186,15 @@
 				4447C8443927E8DEA9062D5A /* Pods-Weibo_Object-C.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		F72175F31DC080580065D3B8 /* JSRefreshTool */ = {
+			isa = PBXGroup;
+			children = (
+				F72175F71DC087770065D3B8 /* JSRefresh.h */,
+				F72175F81DC087770065D3B8 /* JSRefresh.m */,
+			);
+			path = JSRefreshTool;
 			sourceTree = "<group>";
 		};
 		F7271A9D1DB9F5DD00CF96A0 /* SubViews */ = {
@@ -534,6 +546,7 @@
 		F79927C21D1C13FE00E9BA8C /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				F72175F31DC080580065D3B8 /* JSRefreshTool */,
 				F731D1DC1D9AACD9001C7B72 /* JSOperation */,
 				F747F7831D843748000A0C8D /* UIKit+JSExtension */,
 				F778865D1D20A9D000BE4518 /* Common.pch */,
@@ -705,6 +718,7 @@
 				F747F79E1D843748000A0C8D /* UINavigationController+JSFullScreenPopGesture.m in Sources */,
 				F747F79F1D843748000A0C8D /* UIView+JSFrame.m in Sources */,
 				F731D1E51D9AACD9001C7B72 /* JSDownLoadImageOperation.m in Sources */,
+				F72175F91DC087770065D3B8 /* JSRefresh.m in Sources */,
 				F747F79B1D843748000A0C8D /* NSString+JSExtension.m in Sources */,
 				F747F7971D843748000A0C8D /* NSArray+JSLog.m in Sources */,
 				F79927C11D1C13D500E9BA8C /* main.m in Sources */,

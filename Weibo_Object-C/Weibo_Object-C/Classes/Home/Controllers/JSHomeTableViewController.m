@@ -9,6 +9,7 @@
 #import "JSHomeTableViewController.h"
 #import "JSVistorView.h"
 #import "JSUserAccountTool.h"
+#import "JSRefresh.h"
 #import "JSNetworkTool.h"
 #import "JSHomeStatusModel.h"
 #import "JSStatusCell.h"
@@ -23,8 +24,7 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
 // 上拉刷新指示控件
 @property (nonatomic) UIActivityIndicatorView *activityIndicatorView;
 // 下拉刷新
-@property (nonatomic) UIRefreshControl *refreshControl;
-
+@property (nonatomic) JSRefresh *refreshControl;
 
 
 @end
@@ -51,14 +51,14 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
     //self.tableView.rowHeight = UITableViewAutomaticDimension;
     //self.tableView.estimatedRowHeight = 200.f;
     
-    //self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.tableView addSubview:self.refreshControl];
-    
-    [self.refreshControl addTarget:self action:@selector(refreshControlValueChanged:) forControlEvents:UIControlEventValueChanged];
-    
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
+    // 使用系统原生UIRefreshControl实现下拉刷新
+    [self.tableView addSubview:self.refreshControl];
+    [self.refreshControl addTarget:self action:@selector(refreshControlValueChanged:) forControlEvents:UIControlEventValueChanged];
+    
+    // 使用UIActivityIndicatorView实现上拉刷新功能
     self.tableView.tableFooterView = self.activityIndicatorView;
     
     // 首次展示首页请求数据
@@ -94,7 +94,7 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
     
     // 停止动画
     [self.activityIndicatorView stopAnimating];
-    [self.refreshControl endRefreshing];
+    [self.refreshControl endRefresh];
     
     NSInteger sinceId = 0;
     NSInteger maxId = 0;
@@ -236,10 +236,10 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
     return _activityIndicatorView;
 }
 
-- (UIRefreshControl *)refreshControl {
+- (JSRefresh *)refreshControl {
     
     if (_refreshControl == nil) {
-        _refreshControl = [[UIRefreshControl alloc] init];
+        _refreshControl = [[JSRefresh alloc] init];
     }
     return _refreshControl;
 }
