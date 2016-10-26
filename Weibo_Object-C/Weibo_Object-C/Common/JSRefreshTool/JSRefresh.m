@@ -44,7 +44,7 @@ static NSString * const kKeyPath = @"contentOffset";
 // 被观察对象
 @property (weak,nonatomic) UIScrollView *superScrollView;
 
-// 记录状态(上一个状态)
+// 记录状态(上一个状态是否属于正在刷新中)
 @property (assign,nonatomic) BOOL isLastStatusRefreshing;
 
 
@@ -151,6 +151,7 @@ static NSString * const kKeyPath = @"contentOffset";
     
 }
 
+// 重写refreshCurrentStatus setter方法
 - (void)setRefreshCurrentStatus:(JSRefreshCurrentStatus)refreshCurrentStatus {
     
     if (_refreshCurrentStatus == JSRefreshCurrentStatusIsRefreshing) {
@@ -161,48 +162,38 @@ static NSString * const kKeyPath = @"contentOffset";
     
     _refreshCurrentStatus = refreshCurrentStatus;
     
-    
-    // 恢复正常状态后,调整回默认的顶部内边距
-    void(^normalBlock)() = ^() {
-        //NSKeyValueObservingOptions
-        
-        if (self.isLastStatusRefreshing) {
-            
-            [UIView animateWithDuration:0.3 animations:^{
-                [self.superScrollView setContentInset:UIEdgeInsetsMake(self.superScrollView.contentInset.top - kRefreshHeigh, 0, 0, 0)];
-            }];
-        }
-        
-        
-    };
-    
-    // 刷新中状态时,通过手动设置顶部内边距,让自定义刷新控件保留显示
-    void(^refreshingBlock)() = ^() {
-        
-        [UIView animateWithDuration:0.3 animations:^{
-            
-            [self.superScrollView setContentInset:UIEdgeInsetsMake(self.superScrollView.contentInset.top + kRefreshHeigh, 0, 0, 0)];
-            
-        } completion:^(BOOL finished) {
-            
-            [self sendActionsForControlEvents:UIControlEventValueChanged];
-            
-        }];
-    };
-    
-    
     switch (refreshCurrentStatus) {
             
         case JSRefreshCurrentStatusIsNormal:
             self.statusLabel.text = @"正常";
-            normalBlock();
+            {   // 恢复正常状态后,调整回默认的顶部内边距
+                if (self.isLastStatusRefreshing) {
+                    
+                    [UIView animateWithDuration:0.3 animations:^{
+                        [self.superScrollView setContentInset:UIEdgeInsetsMake(self.superScrollView.contentInset.top - kRefreshHeigh, 0, 0, 0)];
+                    }];
+                }
+                
+            };
             break;
+            
         case JSRefreshCurrentStatusIsPulling:
             self.statusLabel.text = @"下拉中";
             break;
+            
         case JSRefreshCurrentStatusIsRefreshing:
             self.statusLabel.text = @"刷新中";
-            refreshingBlock();
+            {   // 刷新中状态时,通过手动设置顶部内边距,让自定义刷新控件保留显示
+                [UIView animateWithDuration:0.3 animations:^{
+                    
+                    [self.superScrollView setContentInset:UIEdgeInsetsMake(self.superScrollView.contentInset.top + kRefreshHeigh, 0, 0, 0)];
+                    
+                } completion:^(BOOL finished) {
+                    
+                    [self sendActionsForControlEvents:UIControlEventValueChanged];
+                    
+                }];
+            };
             break;
             
         default:
