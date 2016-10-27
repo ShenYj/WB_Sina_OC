@@ -10,6 +10,6 @@ pod 'MJRefresh'
 pod 'MBProgressHUD'
 pod 'YYModel'
 pod 'Reveal-iOS-SDK', :configurations => ['Debug']
-
+pod 'Bugly'
 
 end

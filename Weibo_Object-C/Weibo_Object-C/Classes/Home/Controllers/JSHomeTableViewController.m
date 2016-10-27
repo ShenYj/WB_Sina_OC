@@ -41,6 +41,7 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
     } else {
         
         [self prepareView];
+        [self prepareNavigationView];
     }
     
 }
@@ -66,6 +67,13 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
 
 }
 
+
+- (void)prepareNavigationView {
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navigationbar_friendsearch_highlighted"] style:UIBarButtonItemStylePlain target:self action:@selector(clickNavigationBarButton:)];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navigationbar_pop"] style:UIBarButtonItemStylePlain target:self action:@selector(clickNavigationBarButton:)];
+}
 
 - (void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
@@ -155,6 +163,11 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
         [self loadHomeStatusDataByIsPulling:self.activityIndicatorView.isAnimating];
     });
     
+}
+// 导航栏按钮点击事件
+- (void)clickNavigationBarButton:(UIBarButtonItem *)barButtonItem {
+    
+    NSLog(@"%s",__func__);
 }
 
 #pragma mark

@@ -10,6 +10,8 @@
 #import "JSTabBarController.h"
 #import "JSWelComeViewController.h"
 #import "JSUserAccountTool.h"
+#import <Bugly/Bugly.h>
+
 
 @interface AppDelegate ()
 
@@ -21,6 +23,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    // Bugly
+    [Bugly startWithAppId:@"02fe94de4d"];
+    
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
 
     // 监听kChangeRootViewControllerNotification通知
@@ -30,6 +35,7 @@
     [self setupRootViewController];
     
     [self.window makeKeyAndVisible];
+    
     
     return YES;
 }

@@ -28,10 +28,10 @@ typedef NS_ENUM(NSUInteger, JSRefreshCurrentStatus) {
     JSRefreshCurrentStatusIsRefreshing,     // 正在刷新
 };
 
+static NSString * const kKeyPath = @"contentOffset";
 static CGFloat const kRefreshHeigh = 50.f;          // 下拉刷新控件的高度
 static CGFloat const kStatusLabelWidth = 100;       // 下拉刷新状态指示Label的宽度
 static CGFloat const kStatusLabelFontSize = 15.f;   // 下拉刷新控件的状态文字大小
-static NSString * const kKeyPath = @"contentOffset";
 
 
 @interface JSRefresh ()
@@ -66,6 +66,7 @@ static NSString * const kKeyPath = @"contentOffset";
     return self;
 }
 
+// 结束刷新
 - (void)endRefresh {
     
     self.refreshCurrentStatus = JSRefreshCurrentStatusIsNormal;
@@ -77,7 +78,7 @@ static NSString * const kKeyPath = @"contentOffset";
     // 设置初始状态 --> 正常状态
     self.refreshCurrentStatus = JSRefreshCurrentStatusIsNormal;
     // 设置背景色
-    self.backgroundColor = [UIColor js_colorWithHex:0x9F79EE];
+    self.backgroundColor = [UIColor js_colorWithHex:0xFFA500];
     
     // 添加子视图 (状态)
     [self addSubview:self.statusLabel];
