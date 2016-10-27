@@ -20,6 +20,7 @@
 
 #import "JSRefresh.h"
 
+
 // 自定义下拉刷新控件的状态
 typedef NS_ENUM(NSUInteger, JSRefreshCurrentStatus) {
     JSRefreshCurrentStatusIsNormal,         // 正常状态
@@ -27,7 +28,9 @@ typedef NS_ENUM(NSUInteger, JSRefreshCurrentStatus) {
     JSRefreshCurrentStatusIsRefreshing,     // 正在刷新
 };
 
+static CGFloat const kMargin = 100.f;               // 刷新状态指示Label与父视图的间距
 static CGFloat const kRefreshHeigh = 50.f;          // 下拉刷新控件的高度
+static CGFloat const kStatusLabelWidth = 100;       // 下拉刷新状态指示Label的宽度
 static CGFloat const kStatusLabelFontSize = 15.f;   // 下拉刷新控件的状态文字大小
 static NSString * const kKeyPath = @"contentOffset";
 
@@ -40,7 +43,7 @@ static NSString * const kKeyPath = @"contentOffset";
 
 // 状态展示Label
 @property (nonatomic) UILabel *statusLabel;
-
+@property (nonatomic) UIActivityIndicatorView *indicatorView;
 // 被观察对象
 @property (weak,nonatomic) UIScrollView *superScrollView;
 
@@ -74,11 +77,13 @@ static NSString * const kKeyPath = @"contentOffset";
     // 设置初始状态 --> 正常状态
     self.refreshCurrentStatus = JSRefreshCurrentStatusIsNormal;
     // 设置背景色
-    self.backgroundColor = [UIColor purpleColor];
+    self.backgroundColor = [UIColor js_colorWithHex:0x9F79EE];
     
     // 添加子视图 (状态)
     [self addSubview:self.statusLabel];
+    [self addSubview:self.indicatorView];
     self.statusLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.indicatorView.translatesAutoresizingMaskIntoConstraints = NO;
     
 }
 
@@ -86,17 +91,26 @@ static NSString * const kKeyPath = @"contentOffset";
 - (void)layoutSubviews {
     [super layoutSubviews];
     
+    // 状态指示条
     NSLayoutConstraint *statusLabelTop = [NSLayoutConstraint constraintWithItem:self.statusLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1 constant:0];
     [self addConstraint:statusLabelTop];
     
     NSLayoutConstraint *statusLabelBottom = [NSLayoutConstraint constraintWithItem:self.statusLabel attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
     [self addConstraint:statusLabelBottom];
     
-    NSLayoutConstraint *statusLabelRight = [NSLayoutConstraint constraintWithItem:self.statusLabel attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1 constant:0];
-    [self addConstraint:statusLabelRight];
+    NSLayoutConstraint *statusLabelWidth = [NSLayoutConstraint constraintWithItem:self.statusLabel attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1 constant:kStatusLabelWidth];
+    [self addConstraint:statusLabelWidth];
     
-    NSLayoutConstraint *statusLabelLeft = [NSLayoutConstraint constraintWithItem:self.statusLabel attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1 constant:0];
-    [self addConstraint:statusLabelLeft];
+    NSLayoutConstraint *statusLabelCenterX = [NSLayoutConstraint constraintWithItem:self.statusLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
+    [self addConstraint:statusLabelCenterX];
+    
+    // indicatorView
+    NSLayoutConstraint *indicatorViewCenterY = [NSLayoutConstraint constraintWithItem:self.indicatorView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
+    [self addConstraint:indicatorViewCenterY];
+    
+    NSLayoutConstraint *indicatorViewLeft = [NSLayoutConstraint constraintWithItem:self.indicatorView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.statusLabel attribute:NSLayoutAttributeRight multiplier:1 constant:0];
+    [self addConstraint:indicatorViewLeft];
+    
     
 }
 
@@ -123,6 +137,7 @@ static NSString * const kKeyPath = @"contentOffset";
     // 偏移量的临界值 -(父视图顶部内间距 + 自定义下拉刷新控件的高度)
     CGFloat contentOffsetYCriticalValue = -(self.superScrollView.contentInset.top + kRefreshHeigh);
     
+    // 判断父视图是否正在拖动中
     if (self.superScrollView.isDragging) {
         // 拖动状态
         if (contentOffsetY > contentOffsetYCriticalValue && self.refreshCurrentStatus == JSRefreshCurrentStatusIsPulling ) {
@@ -166,6 +181,7 @@ static NSString * const kKeyPath = @"contentOffset";
             
         case JSRefreshCurrentStatusIsNormal:
             self.statusLabel.text = @"正常";
+            [self.indicatorView stopAnimating];
             {   // 恢复正常状态后,调整回默认的顶部内边距
                 if (self.isLastStatusRefreshing) {
                     
@@ -183,6 +199,7 @@ static NSString * const kKeyPath = @"contentOffset";
             
         case JSRefreshCurrentStatusIsRefreshing:
             self.statusLabel.text = @"刷新中";
+            [self.indicatorView startAnimating];
             {   // 刷新中状态时,通过手动设置顶部内边距,让自定义刷新控件保留显示
                 [UIView animateWithDuration:0.3 animations:^{
                     
@@ -223,6 +240,14 @@ static NSString * const kKeyPath = @"contentOffset";
         _statusLabel.text = @"正常";
     }
     return _statusLabel;
+}
+
+- (UIActivityIndicatorView *)indicatorView {
+    
+    if (_indicatorView == nil) {
+        _indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    }
+    return _indicatorView;
 }
 
 @end

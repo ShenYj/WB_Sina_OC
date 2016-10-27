@@ -20,7 +20,6 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
 
 // 当前登录用户及其所关注（授权）用户的最新微博数据
 @property (nonatomic) NSArray <JSHomeStatusModel *> *homeStatusDatas;
-
 // 上拉刷新指示控件
 @property (nonatomic) UIActivityIndicatorView *activityIndicatorView;
 // 下拉刷新
@@ -47,6 +46,7 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
 }
 
 - (void)prepareView {
+    
     // 使用Status模型类记录行高
     //self.tableView.rowHeight = UITableViewAutomaticDimension;
     //self.tableView.estimatedRowHeight = 200.f;
@@ -54,7 +54,7 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
     self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    // 使用系统原生UIRefreshControl实现下拉刷新
+    // 使用自定义JSRefresh实现下拉刷新
     [self.tableView addSubview:self.refreshControl];
     [self.refreshControl addTarget:self action:@selector(refreshControlValueChanged:) forControlEvents:UIControlEventValueChanged];
     
@@ -219,6 +219,8 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
 
 #pragma mark 
 #pragma mark - lazy
+
+// 数据容器
 - (NSArray<JSHomeStatusModel *> *)homeStatusDatas {
     
     if (_homeStatusDatas == nil) {
@@ -227,6 +229,7 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
     return _homeStatusDatas;
 }
 
+// 上拉刷新指示器
 - (UIActivityIndicatorView *)activityIndicatorView {
     
     if (_activityIndicatorView == nil) {
@@ -235,7 +238,7 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
     }
     return _activityIndicatorView;
 }
-
+// 下拉刷新指示条
 - (JSRefresh *)refreshControl {
     
     if (_refreshControl == nil) {
