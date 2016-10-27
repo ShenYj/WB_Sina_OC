@@ -28,7 +28,6 @@ typedef NS_ENUM(NSUInteger, JSRefreshCurrentStatus) {
     JSRefreshCurrentStatusIsRefreshing,     // 正在刷新
 };
 
-static CGFloat const kMargin = 100.f;               // 刷新状态指示Label与父视图的间距
 static CGFloat const kRefreshHeigh = 50.f;          // 下拉刷新控件的高度
 static CGFloat const kStatusLabelWidth = 100;       // 下拉刷新状态指示Label的宽度
 static CGFloat const kStatusLabelFontSize = 15.f;   // 下拉刷新控件的状态文字大小
@@ -43,6 +42,7 @@ static NSString * const kKeyPath = @"contentOffset";
 
 // 状态展示Label
 @property (nonatomic) UILabel *statusLabel;
+// 状态指示器
 @property (nonatomic) UIActivityIndicatorView *indicatorView;
 // 被观察对象
 @property (weak,nonatomic) UIScrollView *superScrollView;
