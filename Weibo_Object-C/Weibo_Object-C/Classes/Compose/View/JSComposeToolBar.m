@@ -31,7 +31,7 @@ static NSInteger const kButtonCounts = 5;       // 子控件Button的个数
  */
 - (void)prepareView {
     
-    self.backgroundColor = THEME_COLOR;
+    self.backgroundColor = [UIColor whiteColor];
     
     // 设置子视图
     JSComposeToolBarButton *pictureBbutton = [self creatToolBarButtonName:@"compose_toolbar_picture"withButtonType:JSComposeToolBarTypePicture];

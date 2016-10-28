@@ -23,6 +23,8 @@
  */
 - (void)prepareView {
     
+    [self setBackgroundImage:[UIImage imageNamed:@"compose_toolbar_background"] forState:UIControlStateNormal];
+    [self setBackgroundImage:[UIImage imageNamed:@"compose_toolbar_background"] forState:UIControlStateHighlighted];
     [self addTarget:self action:@selector(clickToolBarButton:) forControlEvents:UIControlEventTouchUpInside];
 }
 
