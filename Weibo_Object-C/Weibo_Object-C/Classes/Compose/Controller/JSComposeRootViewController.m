@@ -9,6 +9,7 @@
 #import "JSComposeRootViewController.h"
 #import "JSUserAccountTool.h"
 #import "JSComposeTextView.h"
+#import "JSComposeToolBar.h"
 
 @interface JSComposeRootViewController () <UITextViewDelegate>
 
@@ -16,16 +17,18 @@
 @property (nonatomic) UILabel *titleView;
 // TextView
 @property (nonatomic) JSComposeTextView *textView;
+// 底部ToolBar
+@property (nonatomic) JSComposeToolBar *composeToolBar;
 
 @end
 
 @implementation JSComposeRootViewController
 
-- (void)loadView {
-    
-    // 设置TextView
-    self.view = self.textView;
-}
+//- (void)loadView {
+//    
+//    // 设置TextView
+//    self.view = self.textView;
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,7 +48,20 @@
 
 - (void)prepareView {
     
+    // 设置背景色
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    // 设置视图 ComposeTextView & ToolBar
+    [self.view addSubview:self.textView];
+    [self.view addSubview:self.composeToolBar];
+    
+    [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.view);
+    }];
+    [self.composeToolBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.mas_equalTo(self.view);
+    }];
+    
     // 发送通知
     //[[NSNotificationCenter defaultCenter] postNotificationName:UITextViewTextDidChangeNotification object:self.textView userInfo:nil];
     
@@ -130,6 +146,14 @@
         [_titleView sizeToFit];
     }
     return _titleView;
+}
+
+- (JSComposeToolBar *)composeToolBar {
+    
+    if (_composeToolBar == nil) {
+        _composeToolBar = [[JSComposeToolBar alloc] init];
+    }
+    return _composeToolBar;
 }
 
 @end

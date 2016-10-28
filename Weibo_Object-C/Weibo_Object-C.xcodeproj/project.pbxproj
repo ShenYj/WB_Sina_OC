@@ -13,6 +13,7 @@
 		F72175F91DC087770065D3B8 /* JSRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = F72175F81DC087770065D3B8 /* JSRefresh.m */; };
 		F72613A51DC2F1B0004FF7F9 /* JSHomeNavButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F72613A41DC2F1B0004FF7F9 /* JSHomeNavButton.m */; };
 		F72613A81DC31B9A004FF7F9 /* JSComposeTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F72613A71DC31B9A004FF7F9 /* JSComposeTextView.m */; };
+		F72613AB1DC36B54004FF7F9 /* JSComposeToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F72613AA1DC36B54004FF7F9 /* JSComposeToolBar.m */; };
 		F7271A991DB9C3D900CF96A0 /* JSHomeStatusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7271A981DB9C3D900CF96A0 /* JSHomeStatusModel.m */; };
 		F7271A9C1DB9EC9900CF96A0 /* JSStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7271A9B1DB9EC9900CF96A0 /* JSStatusCell.m */; };
 		F7271AA01DB9F5EF00CF96A0 /* JSStatusOriginalView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7271A9F1DB9F5EF00CF96A0 /* JSStatusOriginalView.m */; };
@@ -73,6 +74,8 @@
 		F72613A41DC2F1B0004FF7F9 /* JSHomeNavButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSHomeNavButton.m; path = SubViews/JSHomeNavButton.m; sourceTree = "<group>"; };
 		F72613A61DC31B9A004FF7F9 /* JSComposeTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSComposeTextView.h; sourceTree = "<group>"; };
 		F72613A71DC31B9A004FF7F9 /* JSComposeTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSComposeTextView.m; sourceTree = "<group>"; };
+		F72613A91DC36B54004FF7F9 /* JSComposeToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSComposeToolBar.h; sourceTree = "<group>"; };
+		F72613AA1DC36B54004FF7F9 /* JSComposeToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSComposeToolBar.m; sourceTree = "<group>"; };
 		F7271A971DB9C3D900CF96A0 /* JSHomeStatusModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSHomeStatusModel.h; sourceTree = "<group>"; };
 		F7271A981DB9C3D900CF96A0 /* JSHomeStatusModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSHomeStatusModel.m; sourceTree = "<group>"; };
 		F7271A9A1DB9EC9900CF96A0 /* JSStatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSStatusCell.h; sourceTree = "<group>"; };
@@ -265,6 +268,8 @@
 			children = (
 				F72613A61DC31B9A004FF7F9 /* JSComposeTextView.h */,
 				F72613A71DC31B9A004FF7F9 /* JSComposeTextView.m */,
+				F72613A91DC36B54004FF7F9 /* JSComposeToolBar.h */,
+				F72613AA1DC36B54004FF7F9 /* JSComposeToolBar.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -723,6 +728,7 @@
 				F767E2C71DBE4E4E00254511 /* NSDate+JSIsThisYear.m in Sources */,
 				F778864D1D1F51EE00BE4518 /* JSVistorTableViewController.m in Sources */,
 				F747F79A1D843748000A0C8D /* NSString+Hash.m in Sources */,
+				F72613AB1DC36B54004FF7F9 /* JSComposeToolBar.m in Sources */,
 				F79927CF1D1C14E300E9BA8C /* JSHomeTableViewController.m in Sources */,
 				F7079FA41D8E5FC60018FDA4 /* JSUserAccountModel.m in Sources */,
 				F747F79E1D843748000A0C8D /* UINavigationController+JSFullScreenPopGesture.m in Sources */,
