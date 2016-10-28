@@ -40,6 +40,7 @@ static CGFloat const kMarginLeft = 5.f;// 占位文字左侧间距
         make.top.mas_equalTo(self).mas_offset(kMarginTop);
         make.width.mas_equalTo(SCREEN_WIDTH - 2*kMarginLeft);
     }];
+    
     // 监听通知
     //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(composeTextViewValueChanged:) name:UITextViewTextDidChangeNotification object:nil];
     

@@ -131,10 +131,10 @@
 		F75F0D521D87027800549EC3 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		F767E2BC1DBDD71800254511 /* JSHomeStatusLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSHomeStatusLayout.h; sourceTree = "<group>"; };
 		F767E2BD1DBDD71800254511 /* JSHomeStatusLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSHomeStatusLayout.m; sourceTree = "<group>"; };
-		F767E2BF1DBE414600254511 /* JSDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDateFormatter.h; sourceTree = "<group>"; };
-		F767E2C01DBE414600254511 /* JSDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDateFormatter.m; sourceTree = "<group>"; };
-		F767E2C51DBE4E4E00254511 /* NSDate+JSIsThisYear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+JSIsThisYear.h"; sourceTree = "<group>"; };
-		F767E2C61DBE4E4E00254511 /* NSDate+JSIsThisYear.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+JSIsThisYear.m"; sourceTree = "<group>"; };
+		F767E2BF1DBE414600254511 /* JSDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSDateFormatter.h; path = ../JSDateFormatter.h; sourceTree = "<group>"; };
+		F767E2C01DBE414600254511 /* JSDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSDateFormatter.m; path = ../JSDateFormatter.m; sourceTree = "<group>"; };
+		F767E2C51DBE4E4E00254511 /* NSDate+JSIsThisYear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+JSIsThisYear.h"; path = "../NSDate+JSIsThisYear.h"; sourceTree = "<group>"; };
+		F767E2C61DBE4E4E00254511 /* NSDate+JSIsThisYear.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+JSIsThisYear.m"; path = "../NSDate+JSIsThisYear.m"; sourceTree = "<group>"; };
 		F775B1631DBB0D6A006DAA79 /* JSStatusToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSStatusToolBarView.h; sourceTree = "<group>"; };
 		F775B1641DBB0D6A006DAA79 /* JSStatusToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSStatusToolBarView.m; sourceTree = "<group>"; };
 		F775B1661DBB1511006DAA79 /* JSToolBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSToolBarButton.h; sourceTree = "<group>"; };
@@ -295,6 +295,10 @@
 		F747F7831D843748000A0C8D /* UIKit+JSExtension */ = {
 			isa = PBXGroup;
 			children = (
+				F767E2BF1DBE414600254511 /* JSDateFormatter.h */,
+				F767E2C01DBE414600254511 /* JSDateFormatter.m */,
+				F767E2C51DBE4E4E00254511 /* NSDate+JSIsThisYear.h */,
+				F767E2C61DBE4E4E00254511 /* NSDate+JSIsThisYear.m */,
 				F747F7841D843748000A0C8D /* JSUIkitExtension.h */,
 				F747F7851D843748000A0C8D /* NSArray+JSLog.h */,
 				F747F7861D843748000A0C8D /* NSArray+JSLog.m */,
@@ -574,10 +578,6 @@
 				F74F57371D84F3DA00E3CC61 /* JSUserAccountTool.m */,
 				F7F9DB131D2499BA0029235B /* JSNetworkTool.h */,
 				F7F9DB141D2499BA0029235B /* JSNetworkTool.m */,
-				F767E2BF1DBE414600254511 /* JSDateFormatter.h */,
-				F767E2C01DBE414600254511 /* JSDateFormatter.m */,
-				F767E2C51DBE4E4E00254511 /* NSDate+JSIsThisYear.h */,
-				F767E2C61DBE4E4E00254511 /* NSDate+JSIsThisYear.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";

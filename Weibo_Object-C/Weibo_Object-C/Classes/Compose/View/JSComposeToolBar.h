@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "JSComposeToolBarButton.h"
 
 
 @interface JSComposeToolBar : UIView
+
+// 完成回调
+@property (copy,nonatomic) void(^completionHandler)(JSComposeToolBarType ToolBarButtonType);
 
 @end

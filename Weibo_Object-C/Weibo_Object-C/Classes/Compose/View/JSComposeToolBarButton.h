@@ -18,6 +18,7 @@ typedef NS_ENUM(NSUInteger, JSComposeToolBarType) {
 
 @interface JSComposeToolBarButton : UIButton
 
+// 按钮类型
 @property (assign,nonatomic) JSComposeToolBarType toolBarButtonType;
 
 @end

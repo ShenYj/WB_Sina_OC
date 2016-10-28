@@ -11,6 +11,7 @@
 #import "JSComposeTextView.h"
 #import "JSComposeToolBar.h"
 
+
 @interface JSComposeRootViewController () <UITextViewDelegate>
 
 // TitleView视图
@@ -19,6 +20,7 @@
 @property (nonatomic) JSComposeTextView *textView;
 // 底部ToolBar
 @property (nonatomic) JSComposeToolBar *composeToolBar;
+
 
 @end
 
@@ -152,6 +154,31 @@
     
     if (_composeToolBar == nil) {
         _composeToolBar = [[JSComposeToolBar alloc] init];
+        
+        // ComposeToolBar按钮点击事件回调
+        [_composeToolBar setCompletionHandler:^(JSComposeToolBarType toolBarButtonType) {
+            
+            switch (toolBarButtonType) {
+                case JSComposeToolBarTypePicture:
+                    NSLog(@"JSComposeToolBarTypePicture");
+                    break;
+                case JSComposeToolBarTypeMention:
+                    NSLog(@"JSComposeToolBarTypeMention");
+                    break;
+                case JSComposeToolBarTypeTrend:
+                    NSLog(@"JSComposeToolBarTypeTrend");
+                    break;
+                case JSComposeToolBarTypeEmoticon:
+                    NSLog(@"JSComposeToolBarTypeEmoticon");
+                    break;
+                case JSComposeToolBarTypeAdd:
+                    NSLog(@"JSComposeToolBarTypeAdd");
+                    break;
+                default:
+                    break;
+            }
+            
+        }];
     }
     return _composeToolBar;
 }

@@ -7,10 +7,10 @@
 //
 
 #import "JSComposeToolBar.h"
-#import "JSComposeToolBarButton.h"
+
 
 static CGFloat const kHeight = 44.f;            // 自身控件高度
-static NSInteger const kButtonCounts = 5;       // 子控件Button的个数
+
 
 @interface JSComposeToolBar ()
 
@@ -83,8 +83,10 @@ static NSInteger const kButtonCounts = 5;       // 子控件Button的个数
 
 // 创建Button公共方法
 - (JSComposeToolBarButton *)creatToolBarButtonName:(NSString *)name withButtonType:(JSComposeToolBarType)buttonType{
+    
     JSComposeToolBarButton *button = [[JSComposeToolBarButton alloc] init];
     button.toolBarButtonType = buttonType;
+    [button addTarget:self action:@selector(clickToolBarButton:) forControlEvents:UIControlEventTouchUpInside];
     [button setImage:[UIImage imageNamed:name] forState:UIControlStateNormal];
     [button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_highlighted",name]] forState:UIControlStateHighlighted];
     [self addSubview:button];
@@ -94,6 +96,14 @@ static NSInteger const kButtonCounts = 5;       // 子控件Button的个数
 #pragma mark 
 #pragma mark - 按钮点击事件
 
-
+/**
+ button点击事件
+ */
+- (void)clickToolBarButton:(JSComposeToolBarButton *)sender {
+    
+    if (self.completionHandler) {
+        self.completionHandler(sender.toolBarButtonType);
+    }
+}
 
 @end
