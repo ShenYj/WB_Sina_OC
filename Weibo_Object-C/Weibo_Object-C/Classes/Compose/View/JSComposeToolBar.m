@@ -7,9 +7,14 @@
 //
 
 #import "JSComposeToolBar.h"
+#import "JSComposeToolBarButton.h"
 
 static CGFloat const kHeight = 44.f;            // 自身控件高度
 static NSInteger const kButtonCounts = 5;       // 子控件Button的个数
+
+@interface JSComposeToolBar ()
+
+@end
 
 @implementation JSComposeToolBar
 
@@ -26,14 +31,15 @@ static NSInteger const kButtonCounts = 5;       // 子控件Button的个数
  */
 - (void)prepareView {
     
-    self.backgroundColor = [UIColor js_randomColor];
+    self.backgroundColor = THEME_COLOR;
     
     // 设置子视图
-    UIButton *pictureBbutton = [self creatToolBarButtonName:@"compose_toolbar_picture"];
-    UIButton *mentionButton = [self creatToolBarButtonName:@"compose_mentionbutton_background"];
-    UIButton *trendButton = [self creatToolBarButtonName:@"compose_trendbutton_background"];
-    UIButton *emoticonButton = [self creatToolBarButtonName:@"compose_emoticonbutton_background"];
-    UIButton *addButton = [self creatToolBarButtonName:@"compose_add_background"];
+    JSComposeToolBarButton *pictureBbutton = [self creatToolBarButtonName:@"compose_toolbar_picture"withButtonType:JSComposeToolBarTypePicture];
+    JSComposeToolBarButton *mentionButton = [self creatToolBarButtonName:@"compose_mentionbutton_background"withButtonType:JSComposeToolBarTypeMention];
+    JSComposeToolBarButton *trendButton = [self creatToolBarButtonName:@"compose_trendbutton_background"withButtonType:JSComposeToolBarTypeTrend];
+    JSComposeToolBarButton *emoticonButton = [self creatToolBarButtonName:@"compose_emoticonbutton_background"withButtonType:JSComposeToolBarTypeEmoticon];
+    JSComposeToolBarButton *addButton = [self creatToolBarButtonName:@"compose_add_background"withButtonType:JSComposeToolBarTypeAdd];
+    
 #pragma mark - 约束方式一
 //    [pictureBbutton mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.left.top.bottom.mas_equalTo(self);
@@ -75,13 +81,12 @@ static NSInteger const kButtonCounts = 5;       // 子控件Button的个数
     
 }
 
-// 创建Button
-- (UIButton *)creatToolBarButtonName:(NSString *)name {
-    
-    UIButton *button = [[UIButton alloc] init];
+// 创建Button公共方法
+- (JSComposeToolBarButton *)creatToolBarButtonName:(NSString *)name withButtonType:(JSComposeToolBarType)buttonType{
+    JSComposeToolBarButton *button = [[JSComposeToolBarButton alloc] init];
+    button.toolBarButtonType = buttonType;
     [button setImage:[UIImage imageNamed:name] forState:UIControlStateNormal];
     [button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_highlighted",name]] forState:UIControlStateHighlighted];
-    [button addTarget:self action:@selector(clickToolBarButton:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:button];
     return button;
 }
@@ -89,9 +94,6 @@ static NSInteger const kButtonCounts = 5;       // 子控件Button的个数
 #pragma mark 
 #pragma mark - 按钮点击事件
 
-- (void)clickToolBarButton:(UIButton *)sender {
-    
-    NSLog(@"%s",__func__);
-}
+
 
 @end
