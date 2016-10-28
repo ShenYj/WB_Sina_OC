@@ -11,6 +11,11 @@
 static CGFloat const kMarginTop = 8.f; // 占位文字顶部间距
 static CGFloat const kMarginLeft = 5.f;// 占位文字左侧间距
 
+@interface JSComposeTextView ()
+// 占位文字Label
+@property (nonatomic) UILabel *placeHolder;
+@end
+
 
 @implementation JSComposeTextView
 
@@ -35,13 +40,36 @@ static CGFloat const kMarginLeft = 5.f;// 占位文字左侧间距
         make.top.mas_equalTo(self).mas_offset(kMarginTop);
         make.width.mas_equalTo(SCREEN_WIDTH - 2*kMarginLeft);
     }];
+    // 监听通知
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(composeTextViewValueChanged:) name:UITextViewTextDidChangeNotification object:nil];
+    
 }
 
+// 设置占位文字Label字体大小
 - (void)setFont:(UIFont *)font {
     [super setFont:font];
     self.placeHolder.font = font;
-    
 }
+
+// 设置占位文字Label文字
+- (void)setPlaceholder:(NSString *)placeholder {
+    _placeholder = placeholder;
+    self.placeHolder.text = placeholder;
+}
+
+// 设置占位文字Label显隐
+- (void)setPlaceholderHidden:(BOOL)placeholderHidden {
+    _placeholderHidden = placeholderHidden;
+    self.placeHolder.hidden = placeholderHidden;
+}
+
+/**
+ 监听到JSComposeTextView的值发生变化后执行的方法
+ */
+//- (void)composeTextViewValueChanged:(NSNotification *)notification {
+//    
+//    self.placeHolder.hidden = ((JSComposeTextView *)notification.object).hasText;
+//}
 
 #pragma mark 
 #pragma mark - lazy
@@ -49,8 +77,9 @@ static CGFloat const kMarginLeft = 5.f;// 占位文字左侧间距
     
     if (_placeHolder == nil) {
         _placeHolder = [[UILabel alloc ]init];
+        _placeHolder.numberOfLines = 0;
         _placeHolder.textColor = [UIColor lightGrayColor];
-        _placeHolder.text = @"我的天空今天有点灰...";
+        
     }
     return _placeHolder;
 }

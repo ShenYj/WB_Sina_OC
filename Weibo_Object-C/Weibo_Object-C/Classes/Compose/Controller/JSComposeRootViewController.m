@@ -35,12 +35,20 @@
     [self prepareNavigationView];   // 设置导航栏视图
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 #pragma mark 
 #pragma mark - 设置视图
 
 - (void)prepareView {
     
     self.view.backgroundColor = [UIColor whiteColor];
+    // 发送通知
+    //[[NSNotificationCenter defaultCenter] postNotificationName:UITextViewTextDidChangeNotification object:self.textView userInfo:nil];
+    
 }
 
 #pragma mark
@@ -54,7 +62,11 @@
     // 右侧发布按钮
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发布" style:UIBarButtonItemStylePlain target:self action:@selector(clickRightBarButtonItem:)];
     self.navigationItem.rightBarButtonItem.enabled = NO;
+    
 }
+
+#pragma mark
+#pragma mark - target
 
 - (void)clickLeftBarButtonItem:(UIBarButtonItem *)sender {
     
@@ -66,11 +78,6 @@
     NSLog(@"%s",__func__);
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 #pragma mark
 #pragma mark - UITextViewDelegate
@@ -79,7 +86,7 @@
     // 有内容时发布按钮可以被点击
     self.navigationItem.rightBarButtonItem.enabled = textView.hasText;
     // 设置占位文字的显示和隐藏
-    self.textView.placeHolder.hidden = textView.hasText;
+    self.textView.placeholderHidden = textView.hasText;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -100,6 +107,7 @@
         // 设置TextView垂直方向拖动
         _textView.alwaysBounceVertical = YES;
         _textView.delegate = self;
+        _textView.placeholder = @"我的天空今天有点灰...";
     }
     return _textView;
 }

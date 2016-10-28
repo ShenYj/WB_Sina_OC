@@ -13,6 +13,13 @@
 /**
  占位文字
  */
-@property (nonatomic) UILabel *placeHolder;
+@property (nonatomic,copy) NSString *placeholder;
+
+/**
+ 显示隐藏标识
+ */
+@property (nonatomic,assign) BOOL placeholderHidden;
+
+
 
 @end
