@@ -13,6 +13,7 @@
 #import "JSNetworkTool.h"
 #import "JSHomeStatusModel.h"
 #import "JSStatusCell.h"
+#import "JSHomeNavButton.h"
 
 static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
 
@@ -67,12 +68,16 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
 
 }
 
-
+// 设置导航栏按钮
 - (void)prepareNavigationView {
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navigationbar_friendsearch_highlighted"] style:UIBarButtonItemStylePlain target:self action:@selector(clickNavigationBarButton:)];
+    // 左侧导航栏按钮
+    JSHomeNavButton *navitionLeftButton = [[JSHomeNavButton alloc] initWithName:@"navigationbar_friendsearch"];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:navitionLeftButton];
+    // 右侧导航栏按钮
+    JSHomeNavButton *navigationRightButton = [[JSHomeNavButton alloc] initWithName:@"navigationbar_pop"];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:navigationRightButton];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navigationbar_pop"] style:UIBarButtonItemStylePlain target:self action:@selector(clickNavigationBarButton:)];
 }
 
 - (void)viewDidLayoutSubviews{
@@ -164,11 +169,7 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
     });
     
 }
-// 导航栏按钮点击事件
-- (void)clickNavigationBarButton:(UIBarButtonItem *)barButtonItem {
-    
-    NSLog(@"%s",__func__);
-}
+
 
 #pragma mark
 #pragma mark - Table view data source & delegate
