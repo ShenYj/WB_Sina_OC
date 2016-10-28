@@ -24,7 +24,7 @@
     self = [super init];
     if (self) {
         self.uid = [aDecoder decodeObjectForKey:@"uid"];
-        self.screen_name = [aDecoder decodeObjectForKey:@"uiscreen_named"];
+        self.screen_name = [aDecoder decodeObjectForKey:@"screen_name"];
         self.access_token = [aDecoder decodeObjectForKey:@"access_token"];
         self.expires_Date = [aDecoder decodeObjectForKey:@"expires_date"];
         self.avatar_large = [aDecoder decodeObjectForKey:@"avatar_large"];

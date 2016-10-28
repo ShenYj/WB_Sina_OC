@@ -71,9 +71,12 @@
     NSLog(@"%s",__func__);
 }
 
+#pragma mark 
+#pragma mark JSTabBarDelegate
+
 - (void)tabBarDelegateWithTabBar:(JSTabBar *)tabBar {
-    NSLog(@"%s",__func__);
     
+    // 弹出发布微博界面
     JSComposeRootViewController *composeVC = [[JSComposeRootViewController alloc] init];
     JSNavigationController *navigationController = [[JSNavigationController alloc]initWithRootViewController:composeVC];
     

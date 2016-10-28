@@ -199,6 +199,8 @@ static NSString * const kTestPassword = @"qwertyuiop123";
             return ;
         }
         
+        NSLog(@"%@",obj[@"screen_name"]);
+        
         [userAccount setValue:obj[@"avatar_large"] forKey:@"avatar_large"];
         [userAccount setValue:obj[@"screen_name"] forKey:@"screen_name"];
         
