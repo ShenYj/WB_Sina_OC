@@ -8,7 +8,9 @@
 
 #import "JSComposeTextView.h"
 
-extern CGFloat const kMargin;
+static CGFloat const kMarginTop = 8.f; // 占位文字顶部间距
+static CGFloat const kMarginLeft = 5.f;// 占位文字左侧间距
+
 
 @implementation JSComposeTextView
 
@@ -29,8 +31,16 @@ extern CGFloat const kMargin;
     
     [self addSubview:self.placeHolder];
     [self.placeHolder mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.mas_equalTo(self).mas_offset(kMargin);
+        make.left.mas_equalTo(self).mas_offset(kMarginLeft);
+        make.top.mas_equalTo(self).mas_offset(kMarginTop);
+        make.width.mas_equalTo(SCREEN_WIDTH - 2*kMarginLeft);
     }];
+}
+
+- (void)setFont:(UIFont *)font {
+    [super setFont:font];
+    self.placeHolder.font = font;
+    
 }
 
 #pragma mark 
@@ -40,8 +50,7 @@ extern CGFloat const kMargin;
     if (_placeHolder == nil) {
         _placeHolder = [[UILabel alloc ]init];
         _placeHolder.textColor = [UIColor lightGrayColor];
-        _placeHolder.font = [UIFont systemFontOfSize:13];
-        _placeHolder.text = @"输入内容...";
+        _placeHolder.text = @"我的天空今天有点灰...";
     }
     return _placeHolder;
 }

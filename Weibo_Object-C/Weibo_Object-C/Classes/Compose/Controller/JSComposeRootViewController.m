@@ -78,13 +78,13 @@
 - (void)textViewDidChange:(UITextView *)textView {
     // 有内容时发布按钮可以被点击
     self.navigationItem.rightBarButtonItem.enabled = textView.hasText;
+    // 设置占位文字的显示和隐藏
+    self.textView.placeHolder.hidden = textView.hasText;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    
     // 辞去第一响应者
     [self.textView resignFirstResponder];
-    
 }
 
 
@@ -96,6 +96,7 @@
     
     if (_textView == nil) {
         _textView = [[JSComposeTextView alloc] init];
+        _textView.font = [UIFont systemFontOfSize:14];
         // 设置TextView垂直方向拖动
         _textView.alwaysBounceVertical = YES;
         _textView.delegate = self;
