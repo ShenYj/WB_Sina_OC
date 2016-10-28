@@ -74,13 +74,14 @@
         _titleView = [[UILabel alloc] init];
         NSString *userNickName = [JSUserAccountTool sharedManager].userAccountModel.screen_name;
         NSString *displayString = [NSString stringWithFormat:@"发微博\n%@",userNickName];
-        _titleView.text = displayString;
-//        NSRange range = [displayString rangeOfString:userNickName];
-//        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:displayString];
-//        [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:range];
-//        [attributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:16] range:range];
-//        _titleView.attributedText = attributedString;
-//        _titleView.textAlignment = NSTextAlignmentCenter;
+        NSRange range = [displayString rangeOfString:userNickName];
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:displayString];
+        [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, displayString.length - 1)];
+        [attributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:13] range:NSMakeRange(0, displayString.length - 1)];
+        [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:range];
+        [attributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:range];
+        _titleView.attributedText = attributedString;
+        _titleView.textAlignment = NSTextAlignmentCenter;
         _titleView.numberOfLines = 0;
         [_titleView sizeToFit];
     }
