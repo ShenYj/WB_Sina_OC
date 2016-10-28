@@ -10,4 +10,7 @@
 
 @interface JSComposeTextView : UITextView
 
+// 占位文字
+@property (nonatomic) UILabel *placeHolder;
+
 @end

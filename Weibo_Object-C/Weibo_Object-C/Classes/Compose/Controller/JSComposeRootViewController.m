@@ -10,22 +10,29 @@
 #import "JSUserAccountTool.h"
 #import "JSComposeTextView.h"
 
-@interface JSComposeRootViewController ()
+@interface JSComposeRootViewController () <UITextViewDelegate>
 
 // TitleView视图
 @property (nonatomic) UILabel *titleView;
+// TextView
+@property (nonatomic) JSComposeTextView *textView;
 
 @end
 
 @implementation JSComposeRootViewController
 
+- (void)loadView {
+    
+    // 设置TextView
+    self.view = self.textView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self prepareView];// 设置视图
-    [self prepareNavigationView];// 设置导航栏视图
+    [self prepareView];             // 设置视图
+    [self prepareNavigationView];   // 设置导航栏视图
 }
 
 #pragma mark 
@@ -46,6 +53,7 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(clickLeftBarButtonItem:)];
     // 右侧发布按钮
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发布" style:UIBarButtonItemStylePlain target:self action:@selector(clickRightBarButtonItem:)];
+    self.navigationItem.rightBarButtonItem.enabled = NO;
 }
 
 - (void)clickLeftBarButtonItem:(UIBarButtonItem *)sender {
@@ -64,9 +72,36 @@
 }
 
 
+#pragma mark
+#pragma mark - UITextViewDelegate
+
+- (void)textViewDidChange:(UITextView *)textView {
+    // 有内容时发布按钮可以被点击
+    self.navigationItem.rightBarButtonItem.enabled = textView.hasText;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    // 辞去第一响应者
+    [self.textView resignFirstResponder];
+    
+}
+
+
 
 #pragma mark
 #pragma mark - lazy
+
+- (JSComposeTextView *)textView {
+    
+    if (_textView == nil) {
+        _textView = [[JSComposeTextView alloc] init];
+        // 设置TextView垂直方向拖动
+        _textView.alwaysBounceVertical = YES;
+        _textView.delegate = self;
+    }
+    return _textView;
+}
 
 - (UILabel *)titleView {
     
