@@ -13,7 +13,7 @@
 #import "JSComposeToolBar.h"
 #import "JSComposePictureView.h"
 
-static CGFloat const kPictureMarginHorizontal = 10.f;
+CGFloat const kPictureMarginHorizontal = 10.f; // 配图视图左右的间距
 static CGFloat const kPictureMarginVertical = 100.f;
 
 
@@ -58,7 +58,7 @@ static CGFloat const kPictureMarginVertical = 100.f;
     // 设置背景色
     self.view.backgroundColor = [UIColor whiteColor];
     
-    // 设置视图 ComposeTextView & ToolBar
+    // 设置视图 ComposeTextView & ToolBar & 配图视图
     [self.view addSubview:self.textView];
     [self.view addSubview:self.composeToolBar];
     [self.textView addSubview:self.pictureView];
@@ -190,10 +190,10 @@ static CGFloat const kPictureMarginVertical = 100.f;
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(nullable NSDictionary<NSString *,id> *)editingInfo NS_DEPRECATED_IOS(2_0, 3_0) {
     
-    NSLog(@"%@",image);
-    [self dismissViewControllerAnimated:YES completion:^{
-        
-    }];
+    // 添加图片
+    [self.pictureView insertImage:image];
+    // 释放控制器
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

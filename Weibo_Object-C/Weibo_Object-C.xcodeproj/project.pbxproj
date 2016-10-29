@@ -10,6 +10,8 @@
 		E6D542BB8EA798826F2569E1 /* libPods-Weibo_Object-C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA89379BD5C259B8114A7F9F /* libPods-Weibo_Object-C.a */; };
 		F7079FA41D8E5FC60018FDA4 /* JSUserAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7079FA31D8E5FC60018FDA4 /* JSUserAccountModel.m */; };
 		F7079FA71D8ECE260018FDA4 /* JSWelComeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7079FA61D8ECE260018FDA4 /* JSWelComeViewController.m */; };
+		F7209EF61DC4CD1E00767F40 /* JSPictureViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F7209EF51DC4CD1E00767F40 /* JSPictureViewFlowLayout.m */; };
+		F7209EFC1DC4DF4600767F40 /* JSComposePictureViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7209EFB1DC4DF4600767F40 /* JSComposePictureViewCell.m */; };
 		F72175F91DC087770065D3B8 /* JSRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = F72175F81DC087770065D3B8 /* JSRefresh.m */; };
 		F72613A51DC2F1B0004FF7F9 /* JSHomeNavButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F72613A41DC2F1B0004FF7F9 /* JSHomeNavButton.m */; };
 		F72613A81DC31B9A004FF7F9 /* JSComposeTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F72613A71DC31B9A004FF7F9 /* JSComposeTextView.m */; };
@@ -70,6 +72,10 @@
 		F7079FA31D8E5FC60018FDA4 /* JSUserAccountModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSUserAccountModel.m; sourceTree = "<group>"; };
 		F7079FA51D8ECE260018FDA4 /* JSWelComeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSWelComeViewController.h; sourceTree = "<group>"; };
 		F7079FA61D8ECE260018FDA4 /* JSWelComeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSWelComeViewController.m; sourceTree = "<group>"; };
+		F7209EF41DC4CD1E00767F40 /* JSPictureViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSPictureViewFlowLayout.h; sourceTree = "<group>"; };
+		F7209EF51DC4CD1E00767F40 /* JSPictureViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSPictureViewFlowLayout.m; sourceTree = "<group>"; };
+		F7209EFA1DC4DF4600767F40 /* JSComposePictureViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSComposePictureViewCell.h; sourceTree = "<group>"; };
+		F7209EFB1DC4DF4600767F40 /* JSComposePictureViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSComposePictureViewCell.m; sourceTree = "<group>"; };
 		F72175F71DC087770065D3B8 /* JSRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSRefresh.h; sourceTree = "<group>"; };
 		F72175F81DC087770065D3B8 /* JSRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSRefresh.m; sourceTree = "<group>"; };
 		F72613A31DC2F1B0004FF7F9 /* JSHomeNavButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSHomeNavButton.h; path = SubViews/JSHomeNavButton.h; sourceTree = "<group>"; };
@@ -280,6 +286,10 @@
 				F72613AD1DC37657004FF7F9 /* JSComposeToolBarButton.m */,
 				F78A22DB1DC4B976001B7AB3 /* JSComposePictureView.h */,
 				F78A22DC1DC4B976001B7AB3 /* JSComposePictureView.m */,
+				F7209EFA1DC4DF4600767F40 /* JSComposePictureViewCell.h */,
+				F7209EFB1DC4DF4600767F40 /* JSComposePictureViewCell.m */,
+				F7209EF41DC4CD1E00767F40 /* JSPictureViewFlowLayout.h */,
+				F7209EF51DC4CD1E00767F40 /* JSPictureViewFlowLayout.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -738,8 +748,10 @@
 				F767E2C71DBE4E4E00254511 /* NSDate+JSIsThisYear.m in Sources */,
 				F778864D1D1F51EE00BE4518 /* JSVistorTableViewController.m in Sources */,
 				F747F79A1D843748000A0C8D /* NSString+Hash.m in Sources */,
+				F7209EFC1DC4DF4600767F40 /* JSComposePictureViewCell.m in Sources */,
 				F72613AB1DC36B54004FF7F9 /* JSComposeToolBar.m in Sources */,
 				F79927CF1D1C14E300E9BA8C /* JSHomeTableViewController.m in Sources */,
+				F7209EF61DC4CD1E00767F40 /* JSPictureViewFlowLayout.m in Sources */,
 				F7079FA41D8E5FC60018FDA4 /* JSUserAccountModel.m in Sources */,
 				F747F79E1D843748000A0C8D /* UINavigationController+JSFullScreenPopGesture.m in Sources */,
 				F78A22DD1DC4B976001B7AB3 /* JSComposePictureView.m in Sources */,
