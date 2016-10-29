@@ -40,6 +40,11 @@
     [self prepareNavigationView];   // 设置导航栏视图
 }
 
+- (void)dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -64,10 +69,32 @@
         make.left.right.bottom.mas_equalTo(self.view);
     }];
     
+    // 通过系统通知监听键盘
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    
     // 发送通知
     //[[NSNotificationCenter defaultCenter] postNotificationName:UITextViewTextDidChangeNotification object:self.textView userInfo:nil];
     
 }
+
+// 键盘Frame将要改变时接收到通知调用的方法
+- (void)keyboardWillChangeFrame:(NSNotification *)notification {
+    
+    //NSLog(@"%@",notification.userInfo[UIKeyboardFrameEndUserInfoKey]);
+    // 获取到键盘的Rect
+    CGRect keyboardRect = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    // 更新ToolBar的底边约束
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        [self.composeToolBar mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.bottom.mas_equalTo(self.view.mas_bottom).mas_offset(keyboardRect.origin.y - SCREEN_HEIGHT);
+        }];
+        
+        [self.view layoutIfNeeded];
+    }];
+    
+}
+
 
 #pragma mark
 #pragma mark - 设置导航栏视图
