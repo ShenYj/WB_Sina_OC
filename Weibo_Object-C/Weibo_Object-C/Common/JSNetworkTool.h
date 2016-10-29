@@ -19,7 +19,6 @@ typedef NS_ENUM(NSUInteger, RequestMethod) {
 
 + (instancetype)sharedNetworkTool;
 
-
 /**
  公共方法
 
@@ -54,6 +53,18 @@ typedef NS_ENUM(NSUInteger, RequestMethod) {
  @param max_id        上拉时指定此参数
  @param finishedBlock 完成回调
  */
-//- (void)loadHomePublicDatawithFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock;
 - (void)loadHomePublicDatawithFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock Since_id:(NSInteger)since_id max_id:(NSInteger)max_id;
+//- (void)loadHomePublicDatawithFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock;
+
+
+/**
+ 发布文字文博
+ @param status        文字微博
+ @param finishedBlock 完成回调
+ */
+- (void)composeStatus:(NSString *)status withFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock;
+
+
+
+
 @end

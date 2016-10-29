@@ -137,5 +137,26 @@
     
 }
 
+#pragma mark - 发送文字微博
+- (void)composeStatus:(NSString *)status withFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock {
+    
+    NSString *urlString = @"https://api.weibo.com/2/statuses/update.json";
+    NSDictionary *paras = @{
+                            @"access_token": [JSUserAccountTool sharedManager].access_token,
+                            @"status":status,
+                            };
+    
+    [self requestWithMethod:RequestMethodPost withParameters:paras withUrlString:urlString withSuccess:^(id obj) {
+        
+        finishedBlock(obj,nil);
+        
+    } withError:^(NSError *error) {
+        
+        finishedBlock(nil,error);
+    }];
+    
+}
+
+
 
 @end

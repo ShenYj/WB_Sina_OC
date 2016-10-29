@@ -7,12 +7,17 @@
 //
 
 #import "JSComposeRootViewController.h"
+#import "JSNetworkTool.h"
 #import "JSUserAccountTool.h"
 #import "JSComposeTextView.h"
 #import "JSComposeToolBar.h"
+#import "JSComposePictureView.h"
+
+static CGFloat const kPictureMarginHorizontal = 10.f;
+static CGFloat const kPictureMarginVertical = 100.f;
 
 
-@interface JSComposeRootViewController () <UITextViewDelegate>
+@interface JSComposeRootViewController () <UITextViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 // TitleView视图
 @property (nonatomic) UILabel *titleView;
@@ -20,17 +25,12 @@
 @property (nonatomic) JSComposeTextView *textView;
 // 底部ToolBar
 @property (nonatomic) JSComposeToolBar *composeToolBar;
-
+// 配图视图
+@property (nonatomic) JSComposePictureView *pictureView;
 
 @end
 
 @implementation JSComposeRootViewController
-
-//- (void)loadView {
-//    
-//    // 设置TextView
-//    self.view = self.textView;
-//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -61,10 +61,20 @@
     // 设置视图 ComposeTextView & ToolBar
     [self.view addSubview:self.textView];
     [self.view addSubview:self.composeToolBar];
+    [self.textView addSubview:self.pictureView];
+    
     
     [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(self.view);
     }];
+    
+    [self.pictureView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.textView).mas_offset(kPictureMarginVertical);
+        make.left.mas_equalTo(self.textView).mas_offset(kPictureMarginHorizontal);
+        make.width.mas_equalTo(SCREEN_WIDTH - 2*kPictureMarginHorizontal);
+        make.height.mas_equalTo(SCREEN_WIDTH - 2*kPictureMarginHorizontal);
+    }];
+    
     [self.composeToolBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.mas_equalTo(self.view);
     }];
@@ -95,8 +105,6 @@
     
 }
 
-
-#pragma mark
 #pragma mark - 设置导航栏视图
 - (void)prepareNavigationView {
     
@@ -113,15 +121,81 @@
 #pragma mark
 #pragma mark - target
 
+// dismiss控制器
 - (void)clickLeftBarButtonItem:(UIBarButtonItem *)sender {
+    // 取消第一响应者
+    [self.textView resignFirstResponder];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 
 }
+
+// 发布微博
 - (void)clickRightBarButtonItem:(UIBarButtonItem *)sender {
     
-    NSLog(@"%s",__func__);
+    // 发布微博
+    [[JSNetworkTool sharedNetworkTool] composeStatus:self.textView.text withFinishedBlock:^(id obj, NSError *error) {
+        
+        if (error) {
+            NSLog(@"错误信息:%@",error);
+        }
+    }];
+    
+    // 辞去第一响应者&dismiss控制器
+    [self clickLeftBarButtonItem:nil];
+    
 }
+
+#pragma mark - ToolBar区 按钮点击事件
+- (void)clickComposeToolBarAreaButton:(JSComposeToolBarType)toolBarType {
+    
+    switch (toolBarType) {
+        case JSComposeToolBarTypePicture:       // 选择图片
+            [self selectPicture];
+            break;
+        case JSComposeToolBarTypeMention:       //
+            NSLog(@"JSComposeToolBarTypeMention");
+            break;
+        case JSComposeToolBarTypeTrend:         //
+            NSLog(@"JSComposeToolBarTypeTrend");
+            break;
+        case JSComposeToolBarTypeEmoticon:       // 表情键盘
+            [self Selectemoticon];
+            break;
+        case JSComposeToolBarTypeAdd:            //
+            NSLog(@"JSComposeToolBarTypeAdd");
+            break;
+        default:
+            break;
+    }
+    
+}
+
+// 选择照片
+- (void)selectPicture {
+    
+    UIImagePickerController *pickerController = [[UIImagePickerController alloc] init];
+    pickerController.delegate = self;
+    [self presentViewController:pickerController animated:YES completion:nil];
+}
+
+// 表情键盘
+- (void)Selectemoticon {
+    
+    
+}
+
+#pragma mark
+#pragma mark - UIImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(nullable NSDictionary<NSString *,id> *)editingInfo NS_DEPRECATED_IOS(2_0, 3_0) {
+    
+    NSLog(@"%@",image);
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
+
 
 
 #pragma mark
@@ -181,33 +255,23 @@
     
     if (_composeToolBar == nil) {
         _composeToolBar = [[JSComposeToolBar alloc] init];
-        
+        __weak typeof(self) weakSelf = self;
         // ComposeToolBar按钮点击事件回调
         [_composeToolBar setCompletionHandler:^(JSComposeToolBarType toolBarButtonType) {
-            
-            switch (toolBarButtonType) {
-                case JSComposeToolBarTypePicture:
-                    NSLog(@"JSComposeToolBarTypePicture");
-                    break;
-                case JSComposeToolBarTypeMention:
-                    NSLog(@"JSComposeToolBarTypeMention");
-                    break;
-                case JSComposeToolBarTypeTrend:
-                    NSLog(@"JSComposeToolBarTypeTrend");
-                    break;
-                case JSComposeToolBarTypeEmoticon:
-                    NSLog(@"JSComposeToolBarTypeEmoticon");
-                    break;
-                case JSComposeToolBarTypeAdd:
-                    NSLog(@"JSComposeToolBarTypeAdd");
-                    break;
-                default:
-                    break;
-            }
+            // 调用内部的按钮点击事件方法
+            [weakSelf clickComposeToolBarAreaButton:JSComposeToolBarTypePicture];
             
         }];
     }
     return _composeToolBar;
+}
+
+- (JSComposePictureView *)pictureView {
+    
+    if (_pictureView == nil) {
+        _pictureView = [[JSComposePictureView alloc] init];
+    }
+    return _pictureView;
 }
 
 @end

@@ -49,6 +49,7 @@
 		F778864A1D1EC9BC00BE4518 /* JSTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F77886491D1EC9BC00BE4518 /* JSTabBar.m */; };
 		F778864D1D1F51EE00BE4518 /* JSVistorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F778864C1D1F51EE00BE4518 /* JSVistorTableViewController.m */; };
 		F77886561D201CBD00BE4518 /* JSVistorView.m in Sources */ = {isa = PBXBuildFile; fileRef = F77886551D201CBD00BE4518 /* JSVistorView.m */; };
+		F78A22DD1DC4B976001B7AB3 /* JSComposePictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = F78A22DC1DC4B976001B7AB3 /* JSComposePictureView.m */; };
 		F79927BE1D1C13D500E9BA8C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F79927B91D1C13D500E9BA8C /* AppDelegate.m */; };
 		F79927BF1D1C13D500E9BA8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F79927BA1D1C13D500E9BA8C /* Assets.xcassets */; };
 		F79927C01D1C13D500E9BA8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F79927BB1D1C13D500E9BA8C /* LaunchScreen.storyboard */; };
@@ -150,6 +151,8 @@
 		F77886541D201CBD00BE4518 /* JSVistorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSVistorView.h; sourceTree = "<group>"; };
 		F77886551D201CBD00BE4518 /* JSVistorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSVistorView.m; sourceTree = "<group>"; };
 		F778865D1D20A9D000BE4518 /* Common.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.pch; sourceTree = "<group>"; };
+		F78A22DB1DC4B976001B7AB3 /* JSComposePictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSComposePictureView.h; sourceTree = "<group>"; };
+		F78A22DC1DC4B976001B7AB3 /* JSComposePictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSComposePictureView.m; sourceTree = "<group>"; };
 		F799278C1D1C11EA00E9BA8C /* Weibo_Object-C.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weibo_Object-C.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F79927A01D1C11EA00E9BA8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		F79927B81D1C13D500E9BA8C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -275,6 +278,8 @@
 				F72613AA1DC36B54004FF7F9 /* JSComposeToolBar.m */,
 				F72613AC1DC37656004FF7F9 /* JSComposeToolBarButton.h */,
 				F72613AD1DC37657004FF7F9 /* JSComposeToolBarButton.m */,
+				F78A22DB1DC4B976001B7AB3 /* JSComposePictureView.h */,
+				F78A22DC1DC4B976001B7AB3 /* JSComposePictureView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -737,6 +742,7 @@
 				F79927CF1D1C14E300E9BA8C /* JSHomeTableViewController.m in Sources */,
 				F7079FA41D8E5FC60018FDA4 /* JSUserAccountModel.m in Sources */,
 				F747F79E1D843748000A0C8D /* UINavigationController+JSFullScreenPopGesture.m in Sources */,
+				F78A22DD1DC4B976001B7AB3 /* JSComposePictureView.m in Sources */,
 				F747F79F1D843748000A0C8D /* UIView+JSFrame.m in Sources */,
 				F72613A51DC2F1B0004FF7F9 /* JSHomeNavButton.m in Sources */,
 				F731D1E51D9AACD9001C7B72 /* JSDownLoadImageOperation.m in Sources */,
