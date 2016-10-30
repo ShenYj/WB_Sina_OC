@@ -36,6 +36,8 @@ static NSString * const reusedId = @"pictureViewCell";
 // 设置视图
 - (void)prepareView {
     
+    // 默认隐藏
+    self.hidden = YES;
     [self registerClass:[JSComposePictureViewCell class] forCellWithReuseIdentifier:reusedId];
     self.dataSource = self;
     self.delegate = self;
@@ -52,6 +54,8 @@ static NSString * const reusedId = @"pictureViewCell";
     if (self.images.count > 9) {
         [self.images removeLastObject];
     }
+    // 添加图片后显示视图
+    self.hidden = NO;
     
     [self reloadData];
     
@@ -85,10 +89,15 @@ static NSString * const reusedId = @"pictureViewCell";
         cell.pictureImage = self.images[indexPath.item];
     }
     
+    // 删除按钮Block实现
     __weak typeof(self) weakSelf = self;
     [cell setDeleteImageHandler:^{
         
         [weakSelf.images removeObjectAtIndex:indexPath.item];
+        // 如果配图为0,隐藏视图
+        if (weakSelf.images.count == 0) {
+            weakSelf.hidden = YES;
+        }
         [weakSelf reloadData];
     }];
     
