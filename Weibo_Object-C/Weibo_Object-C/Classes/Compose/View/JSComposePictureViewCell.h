@@ -10,4 +10,7 @@
 
 @interface JSComposePictureViewCell : UICollectionViewCell
 
+@property (nonatomic) UIImage *pictureImage;
+
+
 @end

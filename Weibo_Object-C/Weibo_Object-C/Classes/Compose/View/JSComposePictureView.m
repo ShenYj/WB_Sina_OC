@@ -15,7 +15,7 @@ static NSString * const reusedId = @"pictureViewCell";
 
 @interface JSComposePictureView () <UICollectionViewDataSource>
 
-@property (nonatomic) NSArray <UIImage *> *images;
+@property (nonatomic) NSMutableArray <UIImage *> *images;
 
 @end
 
@@ -36,17 +36,14 @@ static NSString * const reusedId = @"pictureViewCell";
     
     [self registerClass:[JSComposePictureViewCell class] forCellWithReuseIdentifier:reusedId];
     self.dataSource = self;
-    self.backgroundColor = [UIColor js_randomColor];
+    self.backgroundColor = [UIColor whiteColor];
 }
 
 // 添加图片
 - (void)insertImage:(UIImage *)image {
     
-    NSMutableArray *tempArr = [NSMutableArray arrayWithArray:self.images];
-    
-    [tempArr addObject:image];
-    
-    self.images = tempArr.copy;
+    [self.images addObject:image];
+    [self reloadData];
     
 }
 
@@ -56,14 +53,14 @@ static NSString * const reusedId = @"pictureViewCell";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return 9;
+    return self.images.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     JSComposePictureViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reusedId forIndexPath:indexPath];
     
-    cell.backgroundColor = [UIColor js_randomColor];
+    cell.pictureImage = self.images[indexPath.item];
     
     return cell;
 }
@@ -72,10 +69,10 @@ static NSString * const reusedId = @"pictureViewCell";
 #pragma mark
 #pragma mark - lazy
 
-- (NSArray<UIImage *> *)images {
+- (NSMutableArray<UIImage *> *)images {
     
     if (_images == nil) {
-        _images = [NSArray array];
+        _images = [NSMutableArray array];
     }
     return _images;
 }

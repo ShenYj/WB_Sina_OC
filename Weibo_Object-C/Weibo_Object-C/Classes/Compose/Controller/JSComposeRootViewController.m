@@ -125,7 +125,7 @@ static CGFloat const kPictureMarginVertical = 100.f;
 - (void)clickLeftBarButtonItem:(UIBarButtonItem *)sender {
     // 取消第一响应者
     [self.textView resignFirstResponder];
-    
+    // 释放控制器
     [self dismissViewControllerAnimated:YES completion:nil];
 
 }
