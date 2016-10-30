@@ -50,7 +50,17 @@
     
     _pictureImage = pictureImage;
     
-    self.pictureImageView.image = pictureImage;
+    if (pictureImage) {
+        
+        self.deleteButton.hidden = NO;
+        self.pictureImageView.image = pictureImage;
+    } else {
+        
+        self.deleteButton.hidden = YES;
+        self.pictureImageView.image = [UIImage imageNamed:@"compose_pic_add"];
+        self.pictureImageView.highlightedImage = [UIImage imageNamed:@"compose_pic_add_highlighted"];
+    }
+    
 }
 
 // 删除按钮点击事件
@@ -66,7 +76,6 @@
     
     if (_pictureImageView == nil) {
         _pictureImageView = [[UIImageView alloc] init];
-        _pictureImageView.backgroundColor = [UIColor js_randomColor];
         _pictureImageView.clipsToBounds = YES;
         _pictureImageView.contentMode = UIViewContentModeScaleAspectFill;
     }

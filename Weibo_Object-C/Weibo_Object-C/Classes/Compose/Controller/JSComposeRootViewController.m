@@ -293,6 +293,11 @@ extern CGFloat itemSize;
     
     if (_pictureView == nil) {
         _pictureView = [[JSComposePictureView alloc] init];
+        __weak typeof(self) weakSelf = self;
+        // 添加图片
+        [_pictureView setInserImageHandler:^{
+            [weakSelf selectPicture];
+        }];
     }
     return _pictureView;
 }

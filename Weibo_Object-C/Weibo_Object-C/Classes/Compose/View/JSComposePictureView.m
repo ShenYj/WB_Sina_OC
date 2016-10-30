@@ -13,7 +13,7 @@
 
 static NSString * const reusedId = @"pictureViewCell";
 
-@interface JSComposePictureView () <UICollectionViewDataSource>
+@interface JSComposePictureView () <UICollectionViewDataSource,UICollectionViewDelegate>
 
 @property (nonatomic) NSMutableArray <UIImage *> *images;
 
@@ -36,13 +36,21 @@ static NSString * const reusedId = @"pictureViewCell";
     
     [self registerClass:[JSComposePictureViewCell class] forCellWithReuseIdentifier:reusedId];
     self.dataSource = self;
+    self.delegate = self;
     self.backgroundColor = [UIColor whiteColor];
 }
 
 // 添加图片
 - (void)insertImage:(UIImage *)image {
     
-    [self.images addObject:image];
+    //[self.images addObject:image];
+    [self.images insertObject:image atIndex:0];
+    
+    // 如果图片数量大于9,移除最后一个元素
+    if (self.images.count > 9) {
+        [self.images removeLastObject];
+    }
+    
     [self reloadData];
     
 }
@@ -53,16 +61,44 @@ static NSString * const reusedId = @"pictureViewCell";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return self.images.count;
+    if (self.images.count == 0 || self.images.count == 9) {
+        
+        return self.images.count;
+    } else {
+        
+        return self.images.count + 1;
+    }
+    
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     JSComposePictureViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reusedId forIndexPath:indexPath];
     
-    cell.pictureImage = self.images[indexPath.item];
+    if (indexPath.item == self.images.count) {
+        
+        cell.pictureImage = nil;
+    } else {
+        
+        cell.pictureImage = self.images[indexPath.item];
+    }
+    
     
     return cell;
+}
+
+#pragma mark
+#pragma mark - Delegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.item == self.images.count) {
+        
+        // 添加图片
+        if (self.inserImageHandler) {
+            self.inserImageHandler();
+        }
+    }
 }
 
 

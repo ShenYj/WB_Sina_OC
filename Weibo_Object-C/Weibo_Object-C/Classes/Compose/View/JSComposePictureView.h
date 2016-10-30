@@ -12,6 +12,11 @@
 
 
 /**
+ 添加图片的回调
+ */
+@property (nonatomic,assign) void(^inserImageHandler)();
+
+/**
  像图片视图添加图片
  */
 - (void)insertImage:(UIImage *)image;
