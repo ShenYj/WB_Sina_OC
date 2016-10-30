@@ -10,6 +10,9 @@
 
 @interface JSComposePictureViewCell : UICollectionViewCell
 
+// 删除按钮回调
+@property (nonatomic,copy) void(^deleteImageHandler)();
+// 图片
 @property (nonatomic) UIImage *pictureImage;
 
 

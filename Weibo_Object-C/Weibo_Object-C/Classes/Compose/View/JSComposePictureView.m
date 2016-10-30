@@ -10,11 +10,12 @@
 #import "JSPictureViewFlowLayout.h"
 #import "JSComposePictureViewCell.h"
 
-
+// 重用标识
 static NSString * const reusedId = @"pictureViewCell";
 
 @interface JSComposePictureView () <UICollectionViewDataSource,UICollectionViewDelegate>
 
+// 图片容器
 @property (nonatomic) NSMutableArray <UIImage *> *images;
 
 @end
@@ -26,6 +27,7 @@ static NSString * const reusedId = @"pictureViewCell";
     
     self = [super initWithFrame:CGRectZero collectionViewLayout:[[JSPictureViewFlowLayout alloc] init]];
     if (self) {
+        
         [self prepareView];
     }
     return self;
@@ -83,6 +85,12 @@ static NSString * const reusedId = @"pictureViewCell";
         cell.pictureImage = self.images[indexPath.item];
     }
     
+    __weak typeof(self) weakSelf = self;
+    [cell setDeleteImageHandler:^{
+        
+        [weakSelf.images removeObjectAtIndex:indexPath.item];
+        [weakSelf reloadData];
+    }];
     
     return cell;
 }
@@ -99,6 +107,7 @@ static NSString * const reusedId = @"pictureViewCell";
             self.inserImageHandler();
         }
     }
+    
 }
 
 

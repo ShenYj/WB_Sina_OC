@@ -51,11 +51,11 @@
     _pictureImage = pictureImage;
     
     if (pictureImage) {
-        
+        // 配图
         self.deleteButton.hidden = NO;
         self.pictureImageView.image = pictureImage;
     } else {
-        
+        // 添加配图Button
         self.deleteButton.hidden = YES;
         self.pictureImageView.image = [UIImage imageNamed:@"compose_pic_add"];
         self.pictureImageView.highlightedImage = [UIImage imageNamed:@"compose_pic_add_highlighted"];
@@ -66,7 +66,9 @@
 // 删除按钮点击事件
 - (void)clickDeleteButton:(UIButton *)sender {
     
-    
+    if (self.deleteImageHandler) {
+        self.deleteImageHandler();
+    }
 }
 
 #pragma mark
