@@ -15,7 +15,7 @@
 
 CGFloat const kPictureMarginHorizontal = 10.f; // 配图视图左右的间距
 static CGFloat const kPictureMarginVertical = 100.f;
-
+extern CGFloat itemSize;
 
 @interface JSComposeRootViewController () <UITextViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
@@ -179,9 +179,29 @@ static CGFloat const kPictureMarginVertical = 100.f;
     [self presentViewController:pickerController animated:YES completion:nil];
 }
 
+// 图片压缩处理
+- (UIImage *)scaleImage:(UIImage *)originalImage withExpectWidth:(CGFloat )expectWidth {
+    
+    // 原始图片的Size
+    CGSize imageOriginalSize = originalImage.size;
+    // 计算比例
+    CGFloat scale = expectWidth / imageOriginalSize.width;
+    CGRect rect = CGRectMake(0, 0, expectWidth, imageOriginalSize.height * scale);
+    // 绘图
+    UIGraphicsBeginImageContextWithOptions(rect.size, YES, 0.0);
+    // 将图片绘制到图形上下文中
+    [originalImage drawInRect:rect];
+    // 重新获取图片
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    // 关闭图形上下文
+    UIGraphicsEndImageContext();
+    
+    return image;
+    
+}
+
 // 表情键盘
 - (void)Selectemoticon {
-    
     
 }
 
@@ -190,8 +210,11 @@ static CGFloat const kPictureMarginVertical = 100.f;
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(nullable NSDictionary<NSString *,id> *)editingInfo NS_DEPRECATED_IOS(2_0, 3_0) {
     
+    // 压缩图片
+    UIImage *scaleImage = [self scaleImage:image withExpectWidth:itemSize];
     // 添加图片
-    [self.pictureView insertImage:image];
+    [self.pictureView insertImage:scaleImage];
+    
     // 释放控制器
     [self dismissViewControllerAnimated:YES completion:nil];
 }

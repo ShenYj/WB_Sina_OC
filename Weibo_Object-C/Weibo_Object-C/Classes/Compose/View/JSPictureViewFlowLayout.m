@@ -11,7 +11,7 @@
 extern CGFloat const kPictureMarginHorizontal;      // 配图视图距离父视图的左右间距
 static CGFloat const kItemsMargin = 5.f;            // item之间的间距
 static NSInteger const kItemsRowMaxTotalCount = 3;  // 每行items最大个数
-static CGFloat itemSize;                            // Item的Size
+CGFloat itemSize;                                   // Item的Size
 
 @implementation JSPictureViewFlowLayout
 
@@ -30,7 +30,5 @@ static CGFloat itemSize;                            // Item的Size
     self.minimumInteritemSpacing = kItemsMargin;
         
 }
-
-
 
 @end
