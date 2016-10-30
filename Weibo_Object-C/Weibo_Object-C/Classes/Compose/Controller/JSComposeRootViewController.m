@@ -85,6 +85,18 @@ extern CGFloat itemSize;
     // 发送通知
     //[[NSNotificationCenter defaultCenter] postNotificationName:UITextViewTextDidChangeNotification object:self.textView userInfo:nil];
     
+    __weak typeof(self) weakSelf = self;
+    // ComposeToolBar按钮点击事件回调
+    [self.composeToolBar setCompletionHandler:^(JSComposeToolBarType toolBarButtonType) {
+        // 调用内部的按钮点击事件方法
+        [weakSelf clickComposeToolBarAreaButton:JSComposeToolBarTypePicture];
+        
+    }];
+    // 添加图片
+    [self.pictureView setInserImageHandler:^{
+        [weakSelf selectPicture];
+    }];
+    
 }
 
 // 键盘Frame将要改变时接收到通知调用的方法
@@ -278,13 +290,6 @@ extern CGFloat itemSize;
     
     if (_composeToolBar == nil) {
         _composeToolBar = [[JSComposeToolBar alloc] init];
-        __weak typeof(self) weakSelf = self;
-        // ComposeToolBar按钮点击事件回调
-        [_composeToolBar setCompletionHandler:^(JSComposeToolBarType toolBarButtonType) {
-            // 调用内部的按钮点击事件方法
-            [weakSelf clickComposeToolBarAreaButton:JSComposeToolBarTypePicture];
-            
-        }];
     }
     return _composeToolBar;
 }
@@ -293,11 +298,6 @@ extern CGFloat itemSize;
     
     if (_pictureView == nil) {
         _pictureView = [[JSComposePictureView alloc] init];
-        __weak typeof(self) weakSelf = self;
-        // 添加图片
-        [_pictureView setInserImageHandler:^{
-            [weakSelf selectPicture];
-        }];
     }
     return _pictureView;
 }
