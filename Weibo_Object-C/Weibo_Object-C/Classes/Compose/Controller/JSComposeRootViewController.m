@@ -196,6 +196,12 @@ extern CGFloat itemSize;
     
     // 原始图片的Size
     CGSize imageOriginalSize = originalImage.size;
+    
+    if (expectWidth <= originalImage.size.width) {
+        // 如果传入图片的宽度已经小于等于期望压缩后的宽度,原图返回
+        return originalImage;
+    }
+    
     // 计算比例
     CGFloat scale = expectWidth / imageOriginalSize.width;
     CGRect rect = CGRectMake(0, 0, expectWidth, imageOriginalSize.height * scale);
