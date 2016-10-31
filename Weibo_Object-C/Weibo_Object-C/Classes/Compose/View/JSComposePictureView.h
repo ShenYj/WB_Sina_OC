@@ -21,4 +21,7 @@
  */
 - (void)insertImage:(UIImage *)image;
 
+// 图片容器
+@property (nonatomic) NSMutableArray <UIImage *> *images;
+
 @end

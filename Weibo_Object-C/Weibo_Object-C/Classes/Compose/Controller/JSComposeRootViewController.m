@@ -131,7 +131,7 @@ extern CGFloat itemSize;
 }
 
 #pragma mark
-#pragma mark - target
+#pragma mark - 导航栏按钮点击事件
 
 // dismiss控制器
 - (void)clickLeftBarButtonItem:(UIBarButtonItem *)sender {
@@ -145,13 +145,34 @@ extern CGFloat itemSize;
 // 发布微博
 - (void)clickRightBarButtonItem:(UIBarButtonItem *)sender {
     
-    // 发布微博
-    [[JSNetworkTool sharedNetworkTool] composeStatus:self.textView.text withFinishedBlock:^(id obj, NSError *error) {
+    
+    if (!(self.pictureView.images.count > 0)) {
         
-        if (error) {
-            NSLog(@"错误信息:%@",error);
-        }
-    }];
+        // 发布文字微博
+        [[JSNetworkTool sharedNetworkTool] composeStatus:self.textView.text withFinishedBlock:^(id obj, NSError *error) {
+            
+            if (error) {
+                NSLog(@"错误信息:%@",error);
+            }
+        }];
+    } else {
+        
+        // 发布文字&图片微博
+        NSDictionary *datas = @{
+                                @"status": self.textView.text,
+                                @"pics": self.pictureView.images
+                                };
+        
+        [[JSNetworkTool sharedNetworkTool] composeStatusWithPictures:datas withFinishedBlock:^(id obj, NSError *error) {
+            
+            if (error) {
+                NSLog(@"发布失败:%@",error);
+            }
+        }];
+        
+    }
+    
+    
     
     // 辞去第一响应者&dismiss控制器
     [self clickLeftBarButtonItem:nil];
@@ -162,13 +183,13 @@ extern CGFloat itemSize;
 - (void)clickComposeToolBarAreaButton:(JSComposeToolBarType)toolBarType {
     
     switch (toolBarType) {
-        case JSComposeToolBarTypePicture:       // 选择图片
+        case JSComposeToolBarTypePicture:        // 选择图片
             [self selectPicture];
             break;
-        case JSComposeToolBarTypeMention:       //
+        case JSComposeToolBarTypeMention:        //
             NSLog(@"JSComposeToolBarTypeMention");
             break;
-        case JSComposeToolBarTypeTrend:         //
+        case JSComposeToolBarTypeTrend:          //
             NSLog(@"JSComposeToolBarTypeTrend");
             break;
         case JSComposeToolBarTypeEmoticon:       // 表情键盘
@@ -197,7 +218,7 @@ extern CGFloat itemSize;
     // 原始图片的Size
     CGSize imageOriginalSize = originalImage.size;
     
-    if (expectWidth <= originalImage.size.width) {
+    if (expectWidth >= originalImage.size.width) {
         // 如果传入图片的宽度已经小于等于期望压缩后的宽度,原图返回
         return originalImage;
     }
@@ -230,6 +251,7 @@ extern CGFloat itemSize;
     
     // 压缩图片
     UIImage *scaleImage = [self scaleImage:image withExpectWidth:itemSize];
+    
     // 添加图片
     [self.pictureView insertImage:scaleImage];
     

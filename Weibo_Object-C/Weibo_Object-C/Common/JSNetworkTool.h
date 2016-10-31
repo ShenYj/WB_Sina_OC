@@ -64,7 +64,12 @@ typedef NS_ENUM(NSUInteger, RequestMethod) {
  */
 - (void)composeStatus:(NSString *)status withFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock;
 
-
+/**
+ 发布文字&图片文博
+ @param contents      文字&图片
+ @param finishedBlock 完成回调
+ */
+- (void)composeStatusWithPictures:(NSDictionary *)contents withFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock;
 
 
 @end

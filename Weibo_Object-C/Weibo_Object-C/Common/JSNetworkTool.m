@@ -157,6 +157,35 @@
     
 }
 
-
+#pragma mark - 发送文字&图片微博
+- (void)composeStatusWithPictures:(NSDictionary *)contents withFinishedBlock:(void (^)(id, NSError *))finishedBlock {
+    
+    NSString *urlString = @"https://upload.api.weibo.com/2/statuses/upload.json";
+    NSDictionary *paras = @{
+                            @"access_token": [JSUserAccountTool sharedManager].access_token,
+                            @"status": contents[@"status"]
+                            };
+    
+    [self POST:urlString parameters:paras constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+        NSArray *images = (NSArray <UIImage *>*)contents[@"pics"];
+        // 遍历配图数组
+        for (UIImage *image in images) {
+            
+            NSData *imageData = UIImagePNGRepresentation(image);
+            [imageData writeToFile:@"/Users/shenyj/Desktop/1.jpg" atomically:YES];
+            // 新浪微博中,服务器会为图片进行名称处理,即便指定也无意义
+            [formData appendPartWithFileData:imageData name:@"pic" fileName:@"image.jpg" mimeType:@"application/octet-stream"];
+        }
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        finishedBlock(responseObject,nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        finishedBlock(nil,error);
+    }];
+     
+}
 
 @end

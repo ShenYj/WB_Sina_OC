@@ -15,8 +15,6 @@ static NSString * const reusedId = @"pictureViewCell";
 
 @interface JSComposePictureView () <UICollectionViewDataSource,UICollectionViewDelegate>
 
-// 图片容器
-@property (nonatomic) NSMutableArray <UIImage *> *images;
 
 @end
 
