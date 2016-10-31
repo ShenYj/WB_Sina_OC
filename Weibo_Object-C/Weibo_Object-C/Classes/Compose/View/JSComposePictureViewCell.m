@@ -54,6 +54,7 @@
         // 配图
         self.deleteButton.hidden = NO;
         self.pictureImageView.image = pictureImage;
+        self.pictureImageView.highlightedImage = nil;
     } else {
         // 添加配图Button
         self.deleteButton.hidden = YES;
