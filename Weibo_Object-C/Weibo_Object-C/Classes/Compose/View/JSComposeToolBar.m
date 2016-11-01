@@ -102,7 +102,7 @@ static CGFloat const kHeight = 44.f;            // 自身控件高度
 - (void)clickToolBarButton:(JSComposeToolBarButton *)sender {
     
     if (self.completionHandler) {
-        self.completionHandler(sender.toolBarButtonType);
+        self.completionHandler(sender);
     }
 }
 

@@ -33,6 +33,7 @@ extern CGFloat itemSize;
 @property (nonatomic) JSEmoticonKeyboardView *keyboardView;
 
 
+
 @end
 
 @implementation JSComposeRootViewController
@@ -91,12 +92,12 @@ extern CGFloat itemSize;
     //[[NSNotificationCenter defaultCenter] postNotificationName:UITextViewTextDidChangeNotification object:self.textView userInfo:nil];
     
     __weak typeof(self) weakSelf = self;
-    // ComposeToolBar按钮点击事件回调
-    [self.composeToolBar setCompletionHandler:^(JSComposeToolBarType toolBarButtonType) {
+    
+    [self.composeToolBar setCompletionHandler:^(JSComposeToolBarButton *toolBarButton) {
         // 调用内部的按钮点击事件方法
-        [weakSelf clickComposeToolBarAreaButton:toolBarButtonType];
-        
+        [weakSelf clickComposeToolBarAreaButton:toolBarButton];
     }];
+    
     // 添加图片
     [self.pictureView setInserImageHandler:^{
         [weakSelf selectPicture];
@@ -182,8 +183,9 @@ extern CGFloat itemSize;
 }
 
 #pragma mark - ToolBar区 按钮点击事件
-- (void)clickComposeToolBarAreaButton:(JSComposeToolBarType)toolBarType {
+- (void)clickComposeToolBarAreaButton:(JSComposeToolBarButton *)toolBarButton {
     
+    JSComposeToolBarType toolBarType = toolBarButton.toolBarButtonType;
     switch (toolBarType) {
         case JSComposeToolBarTypePicture:        // 选择图片
             [self selectPicture];
@@ -195,7 +197,7 @@ extern CGFloat itemSize;
             NSLog(@"JSComposeToolBarTypeTrend");
             break;
         case JSComposeToolBarTypeEmoticon:       // 表情键盘
-            [self Selectemoticon];
+            [self Selectemoticon:toolBarButton];
             break;
         case JSComposeToolBarTypeAdd:            //
             NSLog(@"JSComposeToolBarTypeAdd");
@@ -242,9 +244,21 @@ extern CGFloat itemSize;
 }
 
 // 切换键盘
-- (void)Selectemoticon {
+- (void)Selectemoticon:(JSComposeToolBarButton *)toolBarButton {
     //compose_keyboardbutton_background
-    self.textView.inputView = self.keyboardView;
+    
+    toolBarButton.selected = !toolBarButton.isSelected;
+    
+    if (toolBarButton.isSelected) {
+        
+        self.textView.inputView = self.keyboardView;
+    } else {
+        
+        self.textView.inputView = nil;
+    }
+    
+    [self.textView reloadInputViews];
+    
 }
 
 #pragma mark
