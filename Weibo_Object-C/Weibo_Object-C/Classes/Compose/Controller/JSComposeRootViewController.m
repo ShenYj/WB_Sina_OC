@@ -89,7 +89,7 @@ extern CGFloat itemSize;
     // ComposeToolBar按钮点击事件回调
     [self.composeToolBar setCompletionHandler:^(JSComposeToolBarType toolBarButtonType) {
         // 调用内部的按钮点击事件方法
-        [weakSelf clickComposeToolBarAreaButton:JSComposeToolBarTypePicture];
+        [weakSelf clickComposeToolBarAreaButton:toolBarButtonType];
         
     }];
     // 添加图片
@@ -144,7 +144,6 @@ extern CGFloat itemSize;
 
 // 发布微博
 - (void)clickRightBarButtonItem:(UIBarButtonItem *)sender {
-    
     
     if (!(self.pictureView.images.count > 0)) {
         
@@ -318,6 +317,8 @@ extern CGFloat itemSize;
     
     if (_composeToolBar == nil) {
         _composeToolBar = [[JSComposeToolBar alloc] init];
+        
+        
     }
     return _composeToolBar;
 }
