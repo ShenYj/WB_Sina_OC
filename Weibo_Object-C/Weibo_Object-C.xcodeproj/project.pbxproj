@@ -61,8 +61,11 @@
 		F79927D21D1C14F200E9BA8C /* JSMessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F79927D11D1C14F200E9BA8C /* JSMessageTableViewController.m */; };
 		F79927D51D1C150100E9BA8C /* JSProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F79927D41D1C150100E9BA8C /* JSProfileTableViewController.m */; };
 		F7AF4CDE1DC8395E00BEA0BE /* JSEmoticonKeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF4CDD1DC8395E00BEA0BE /* JSEmoticonKeyboardView.m */; };
-		F7AF4CE11DC878FA00BEA0BE /* JSEmoticonToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF4CE01DC878FA00BEA0BE /* JSEmoticonToolBar.m */; };
-		F7AF4CE41DC881B900BEA0BE /* JSEmoticonToolBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF4CE31DC881B900BEA0BE /* JSEmoticonToolBarButton.m */; };
+		F7AF4CF01DC8B4E000BEA0BE /* JSEmoticonPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF4CED1DC8B4E000BEA0BE /* JSEmoticonPageView.m */; };
+		F7AF4CF11DC8B4E000BEA0BE /* JSEmoticonPageViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF4CEF1DC8B4E000BEA0BE /* JSEmoticonPageViewFlowLayout.m */; };
+		F7AF4CF41DC8B5E400BEA0BE /* JSEmoticonPageViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF4CF31DC8B5E400BEA0BE /* JSEmoticonPageViewCell.m */; };
+		F7AF4CFA1DC8B66900BEA0BE /* JSEmoticonToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF4CF71DC8B66900BEA0BE /* JSEmoticonToolBar.m */; };
+		F7AF4CFB1DC8B66900BEA0BE /* JSEmoticonToolBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF4CF91DC8B66900BEA0BE /* JSEmoticonToolBarButton.m */; };
 		F7F9DB121D24979D0029235B /* JSOAuthorizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F9DB111D24979D0029235B /* JSOAuthorizeViewController.m */; };
 		F7F9DB151D2499BA0029235B /* JSNetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F9DB141D2499BA0029235B /* JSNetworkTool.m */; };
 /* End PBXBuildFile section */
@@ -179,10 +182,16 @@
 		F79927D41D1C150100E9BA8C /* JSProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSProfileTableViewController.m; sourceTree = "<group>"; };
 		F7AF4CDC1DC8395E00BEA0BE /* JSEmoticonKeyboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEmoticonKeyboardView.h; sourceTree = "<group>"; };
 		F7AF4CDD1DC8395E00BEA0BE /* JSEmoticonKeyboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSEmoticonKeyboardView.m; sourceTree = "<group>"; };
-		F7AF4CDF1DC878FA00BEA0BE /* JSEmoticonToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEmoticonToolBar.h; sourceTree = "<group>"; };
-		F7AF4CE01DC878FA00BEA0BE /* JSEmoticonToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSEmoticonToolBar.m; sourceTree = "<group>"; };
-		F7AF4CE21DC881B900BEA0BE /* JSEmoticonToolBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEmoticonToolBarButton.h; sourceTree = "<group>"; };
-		F7AF4CE31DC881B900BEA0BE /* JSEmoticonToolBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSEmoticonToolBarButton.m; sourceTree = "<group>"; };
+		F7AF4CEC1DC8B4E000BEA0BE /* JSEmoticonPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEmoticonPageView.h; sourceTree = "<group>"; };
+		F7AF4CED1DC8B4E000BEA0BE /* JSEmoticonPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSEmoticonPageView.m; sourceTree = "<group>"; };
+		F7AF4CEE1DC8B4E000BEA0BE /* JSEmoticonPageViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEmoticonPageViewFlowLayout.h; sourceTree = "<group>"; };
+		F7AF4CEF1DC8B4E000BEA0BE /* JSEmoticonPageViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSEmoticonPageViewFlowLayout.m; sourceTree = "<group>"; };
+		F7AF4CF21DC8B5E400BEA0BE /* JSEmoticonPageViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEmoticonPageViewCell.h; sourceTree = "<group>"; };
+		F7AF4CF31DC8B5E400BEA0BE /* JSEmoticonPageViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSEmoticonPageViewCell.m; sourceTree = "<group>"; };
+		F7AF4CF61DC8B66900BEA0BE /* JSEmoticonToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEmoticonToolBar.h; sourceTree = "<group>"; };
+		F7AF4CF71DC8B66900BEA0BE /* JSEmoticonToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSEmoticonToolBar.m; sourceTree = "<group>"; };
+		F7AF4CF81DC8B66900BEA0BE /* JSEmoticonToolBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEmoticonToolBarButton.h; sourceTree = "<group>"; };
+		F7AF4CF91DC8B66900BEA0BE /* JSEmoticonToolBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSEmoticonToolBarButton.m; sourceTree = "<group>"; };
 		F7F9DB101D24979D0029235B /* JSOAuthorizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSOAuthorizeViewController.h; sourceTree = "<group>"; };
 		F7F9DB111D24979D0029235B /* JSOAuthorizeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSOAuthorizeViewController.m; sourceTree = "<group>"; };
 		F7F9DB131D2499BA0029235B /* JSNetworkTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSNetworkTool.h; sourceTree = "<group>"; };
@@ -622,12 +631,34 @@
 			children = (
 				F7AF4CDC1DC8395E00BEA0BE /* JSEmoticonKeyboardView.h */,
 				F7AF4CDD1DC8395E00BEA0BE /* JSEmoticonKeyboardView.m */,
-				F7AF4CDF1DC878FA00BEA0BE /* JSEmoticonToolBar.h */,
-				F7AF4CE01DC878FA00BEA0BE /* JSEmoticonToolBar.m */,
-				F7AF4CE21DC881B900BEA0BE /* JSEmoticonToolBarButton.h */,
-				F7AF4CE31DC881B900BEA0BE /* JSEmoticonToolBarButton.m */,
+				F7AF4CEB1DC8B4E000BEA0BE /* JSEmoticonPageView */,
+				F7AF4CF51DC8B66900BEA0BE /* JSEmoticonToolBar */,
 			);
 			path = Emoticon;
+			sourceTree = "<group>";
+		};
+		F7AF4CEB1DC8B4E000BEA0BE /* JSEmoticonPageView */ = {
+			isa = PBXGroup;
+			children = (
+				F7AF4CEC1DC8B4E000BEA0BE /* JSEmoticonPageView.h */,
+				F7AF4CED1DC8B4E000BEA0BE /* JSEmoticonPageView.m */,
+				F7AF4CEE1DC8B4E000BEA0BE /* JSEmoticonPageViewFlowLayout.h */,
+				F7AF4CEF1DC8B4E000BEA0BE /* JSEmoticonPageViewFlowLayout.m */,
+				F7AF4CF21DC8B5E400BEA0BE /* JSEmoticonPageViewCell.h */,
+				F7AF4CF31DC8B5E400BEA0BE /* JSEmoticonPageViewCell.m */,
+			);
+			path = JSEmoticonPageView;
+			sourceTree = "<group>";
+		};
+		F7AF4CF51DC8B66900BEA0BE /* JSEmoticonToolBar */ = {
+			isa = PBXGroup;
+			children = (
+				F7AF4CF61DC8B66900BEA0BE /* JSEmoticonToolBar.h */,
+				F7AF4CF71DC8B66900BEA0BE /* JSEmoticonToolBar.m */,
+				F7AF4CF81DC8B66900BEA0BE /* JSEmoticonToolBarButton.h */,
+				F7AF4CF91DC8B66900BEA0BE /* JSEmoticonToolBarButton.m */,
+			);
+			path = JSEmoticonToolBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -754,6 +785,7 @@
 			files = (
 				F731D1EF1D9ABB85001C7B72 /* JSComposeRootViewController.m in Sources */,
 				F731D1E61D9AACD9001C7B72 /* JSDownLoadOperationManager.m in Sources */,
+				F7AF4CF41DC8B5E400BEA0BE /* JSEmoticonPageViewCell.m in Sources */,
 				F74F57381D84F3DA00E3CC61 /* JSUserAccountTool.m in Sources */,
 				F767E2BE1DBDD71800254511 /* JSHomeStatusLayout.m in Sources */,
 				F778864A1D1EC9BC00BE4518 /* JSTabBar.m in Sources */,
@@ -777,16 +809,20 @@
 				F79927CF1D1C14E300E9BA8C /* JSHomeTableViewController.m in Sources */,
 				F7209EF61DC4CD1E00767F40 /* JSPictureViewFlowLayout.m in Sources */,
 				F7079FA41D8E5FC60018FDA4 /* JSUserAccountModel.m in Sources */,
+				F7AF4CFB1DC8B66900BEA0BE /* JSEmoticonToolBarButton.m in Sources */,
 				F747F79E1D843748000A0C8D /* UINavigationController+JSFullScreenPopGesture.m in Sources */,
+				F7AF4CF01DC8B4E000BEA0BE /* JSEmoticonPageView.m in Sources */,
 				F78A22DD1DC4B976001B7AB3 /* JSComposePictureView.m in Sources */,
 				F747F79F1D843748000A0C8D /* UIView+JSFrame.m in Sources */,
 				F72613A51DC2F1B0004FF7F9 /* JSHomeNavButton.m in Sources */,
 				F731D1E51D9AACD9001C7B72 /* JSDownLoadImageOperation.m in Sources */,
 				F72175F91DC087770065D3B8 /* JSRefresh.m in Sources */,
 				F747F79B1D843748000A0C8D /* NSString+JSExtension.m in Sources */,
+				F7AF4CF11DC8B4E000BEA0BE /* JSEmoticonPageViewFlowLayout.m in Sources */,
 				F747F7971D843748000A0C8D /* NSArray+JSLog.m in Sources */,
 				F79927C11D1C13D500E9BA8C /* main.m in Sources */,
 				F72613AE1DC37657004FF7F9 /* JSComposeToolBarButton.m in Sources */,
+				F7AF4CFA1DC8B66900BEA0BE /* JSEmoticonToolBar.m in Sources */,
 				F747F7981D843748000A0C8D /* NSObject+JSObjc.m in Sources */,
 				F7079FA71D8ECE260018FDA4 /* JSWelComeViewController.m in Sources */,
 				F731D1E71D9AACD9001C7B72 /* NSString+JSAppendPath.m in Sources */,
@@ -795,9 +831,7 @@
 				F77886471D1EC97E00BE4518 /* JSTabBarController.m in Sources */,
 				F79927BE1D1C13D500E9BA8C /* AppDelegate.m in Sources */,
 				F73BE44B1DBC801100C31595 /* JSPictureView.m in Sources */,
-				F7AF4CE41DC881B900BEA0BE /* JSEmoticonToolBarButton.m in Sources */,
 				F7271AA31DBA26A700CF96A0 /* JSHomeStatusUserModel.m in Sources */,
-				F7AF4CE11DC878FA00BEA0BE /* JSEmoticonToolBar.m in Sources */,
 				F747F79D1D843748000A0C8D /* UIImage+JSExtension.m in Sources */,
 				F7271AA01DB9F5EF00CF96A0 /* JSStatusOriginalView.m in Sources */,
 				F775B1651DBB0D6A006DAA79 /* JSStatusToolBarView.m in Sources */,
