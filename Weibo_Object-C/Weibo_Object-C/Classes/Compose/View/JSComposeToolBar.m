@@ -14,6 +14,8 @@ static CGFloat const kHeight = 44.f;            // 自身控件高度
 
 @interface JSComposeToolBar ()
 
+@property (nonatomic) JSComposeToolBarButton *emoticonButton;// 表情键盘按钮
+
 @end
 
 @implementation JSComposeToolBar
@@ -37,7 +39,7 @@ static CGFloat const kHeight = 44.f;            // 自身控件高度
     JSComposeToolBarButton *pictureBbutton = [self creatToolBarButtonName:@"compose_toolbar_picture"withButtonType:JSComposeToolBarTypePicture];
     JSComposeToolBarButton *mentionButton = [self creatToolBarButtonName:@"compose_mentionbutton_background"withButtonType:JSComposeToolBarTypeMention];
     JSComposeToolBarButton *trendButton = [self creatToolBarButtonName:@"compose_trendbutton_background"withButtonType:JSComposeToolBarTypeTrend];
-    JSComposeToolBarButton *emoticonButton = [self creatToolBarButtonName:@"compose_emoticonbutton_background"withButtonType:JSComposeToolBarTypeEmoticon];
+    self.emoticonButton = [self creatToolBarButtonName:@"compose_emoticonbutton_background"withButtonType:JSComposeToolBarTypeEmoticon];
     JSComposeToolBarButton *addButton = [self creatToolBarButtonName:@"compose_add_background"withButtonType:JSComposeToolBarTypeAdd];
     
 #pragma mark - 约束方式一
@@ -67,7 +69,7 @@ static CGFloat const kHeight = 44.f;            // 自身控件高度
 //    }];
     
 #pragma mark - 约束方式二
-    NSArray *buttonsArr = @[pictureBbutton,mentionButton,trendButton,emoticonButton,addButton];
+    NSArray *buttonsArr = @[pictureBbutton,mentionButton,trendButton,self.emoticonButton,addButton];
     [buttonsArr mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:0 leadSpacing:0 tailSpacing:0];
     [buttonsArr mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.mas_equalTo(self);
@@ -91,6 +93,25 @@ static CGFloat const kHeight = 44.f;            // 自身控件高度
     [button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_highlighted",name]] forState:UIControlStateHighlighted];
     [self addSubview:button];
     return button;
+}
+
+// 切换表情键盘按钮图片
+- (void)setEmoticon:(BOOL)emoticon {
+    
+    _emoticon = emoticon;
+    
+    // 如果为Yes,标识当前是表情键盘,Button显示为键盘图标
+    if (emoticon) {
+        
+        [self.emoticonButton setImage:[UIImage imageNamed:@"compose_keyboardbutton_background"] forState:UIControlStateNormal];
+        [self.emoticonButton setImage:[UIImage imageNamed:@"compose_keyboardbutton_background_highlighted"] forState:UIControlStateHighlighted];
+        
+    } else {
+        [self.emoticonButton setImage:[UIImage imageNamed:@"compose_emoticonbutton_background"] forState:UIControlStateNormal];
+        [self.emoticonButton setImage:[UIImage imageNamed:@"compose_emoticonbutton_background_highlighted"] forState:UIControlStateHighlighted];
+    }
+    
+    
 }
 
 #pragma mark 

@@ -12,6 +12,8 @@
 
 @interface JSComposeToolBar : UIView
 
+// 判断是否是表情键盘的标识
+@property (assign,nonatomic,getter=isEmoticon) BOOL emoticon;
 // 完成回调
 @property (copy,nonatomic) void(^completionHandler)(JSComposeToolBarButton *ToolBarButton);
 
