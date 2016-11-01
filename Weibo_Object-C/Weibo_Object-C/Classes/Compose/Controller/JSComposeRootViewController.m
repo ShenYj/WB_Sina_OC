@@ -245,20 +245,21 @@ extern CGFloat itemSize;
 
 // 切换键盘
 - (void)Selectemoticon:(JSComposeToolBarButton *)toolBarButton {
+    
     //compose_keyboardbutton_background
+    //toolBarButton.selected = !toolBarButton.isSelected;
     
-    toolBarButton.selected = !toolBarButton.isSelected;
-    
-    if (toolBarButton.isSelected) {
-        
+    if (self.textView.inputView == nil) {
+        // 自定义表情键盘
         self.textView.inputView = self.keyboardView;
     } else {
         
         self.textView.inputView = nil;
     }
-    
+    // 刷新InputView
     [self.textView reloadInputViews];
-    
+    // 成为第一响应者 (解决首次点击没有反应)
+    [self.textView becomeFirstResponder];
 }
 
 #pragma mark
