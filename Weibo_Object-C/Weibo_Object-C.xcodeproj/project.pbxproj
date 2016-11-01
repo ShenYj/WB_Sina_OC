@@ -60,6 +60,7 @@
 		F79927CF1D1C14E300E9BA8C /* JSHomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F79927CE1D1C14E300E9BA8C /* JSHomeTableViewController.m */; };
 		F79927D21D1C14F200E9BA8C /* JSMessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F79927D11D1C14F200E9BA8C /* JSMessageTableViewController.m */; };
 		F79927D51D1C150100E9BA8C /* JSProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F79927D41D1C150100E9BA8C /* JSProfileTableViewController.m */; };
+		F7AF4CDE1DC8395E00BEA0BE /* JSEmoticonKeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF4CDD1DC8395E00BEA0BE /* JSEmoticonKeyboardView.m */; };
 		F7F9DB121D24979D0029235B /* JSOAuthorizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F9DB111D24979D0029235B /* JSOAuthorizeViewController.m */; };
 		F7F9DB151D2499BA0029235B /* JSNetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F9DB141D2499BA0029235B /* JSNetworkTool.m */; };
 /* End PBXBuildFile section */
@@ -174,6 +175,8 @@
 		F79927D11D1C14F200E9BA8C /* JSMessageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSMessageTableViewController.m; sourceTree = "<group>"; };
 		F79927D31D1C150100E9BA8C /* JSProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSProfileTableViewController.h; sourceTree = "<group>"; };
 		F79927D41D1C150100E9BA8C /* JSProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSProfileTableViewController.m; sourceTree = "<group>"; };
+		F7AF4CDC1DC8395E00BEA0BE /* JSEmoticonKeyboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEmoticonKeyboardView.h; sourceTree = "<group>"; };
+		F7AF4CDD1DC8395E00BEA0BE /* JSEmoticonKeyboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSEmoticonKeyboardView.m; sourceTree = "<group>"; };
 		F7F9DB101D24979D0029235B /* JSOAuthorizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSOAuthorizeViewController.h; sourceTree = "<group>"; };
 		F7F9DB111D24979D0029235B /* JSOAuthorizeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSOAuthorizeViewController.m; sourceTree = "<group>"; };
 		F7F9DB131D2499BA0029235B /* JSNetworkTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSNetworkTool.h; sourceTree = "<group>"; };
@@ -290,6 +293,7 @@
 				F7209EFB1DC4DF4600767F40 /* JSComposePictureViewCell.m */,
 				F7209EF41DC4CD1E00767F40 /* JSPictureViewFlowLayout.h */,
 				F7209EF51DC4CD1E00767F40 /* JSPictureViewFlowLayout.m */,
+				F7AF4CDB1DC8391B00BEA0BE /* Emoticon */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -607,6 +611,15 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		F7AF4CDB1DC8391B00BEA0BE /* Emoticon */ = {
+			isa = PBXGroup;
+			children = (
+				F7AF4CDC1DC8395E00BEA0BE /* JSEmoticonKeyboardView.h */,
+				F7AF4CDD1DC8395E00BEA0BE /* JSEmoticonKeyboardView.m */,
+			);
+			path = Emoticon;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -744,6 +757,7 @@
 				F77886461D1EC97E00BE4518 /* JSNavigationController.m in Sources */,
 				F79927CC1D1C14D700E9BA8C /* JSDescoveryTableViewController.m in Sources */,
 				F73BE44C1DBC801100C31595 /* JSPictureViewCell.m in Sources */,
+				F7AF4CDE1DC8395E00BEA0BE /* JSEmoticonKeyboardView.m in Sources */,
 				F7271A9C1DB9EC9900CF96A0 /* JSStatusCell.m in Sources */,
 				F767E2C71DBE4E4E00254511 /* NSDate+JSIsThisYear.m in Sources */,
 				F778864D1D1F51EE00BE4518 /* JSVistorTableViewController.m in Sources */,

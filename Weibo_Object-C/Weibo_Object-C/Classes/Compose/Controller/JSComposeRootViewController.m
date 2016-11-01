@@ -12,8 +12,10 @@
 #import "JSComposeTextView.h"
 #import "JSComposeToolBar.h"
 #import "JSComposePictureView.h"
+#import "JSEmoticonKeyboardView.h"
 
 CGFloat const kPictureMarginHorizontal = 10.f; // 配图视图左右的间距
+CGFloat const kKeyboardViewHeigth = 216.f;     // 自定义表情键盘高度
 static CGFloat const kPictureMarginVertical = 100.f;
 extern CGFloat itemSize;
 
@@ -27,6 +29,9 @@ extern CGFloat itemSize;
 @property (nonatomic) JSComposeToolBar *composeToolBar;
 // 配图视图
 @property (nonatomic) JSComposePictureView *pictureView;
+// 自定义表情键盘
+@property (nonatomic) JSEmoticonKeyboardView *keyboardView;
+
 
 @end
 
@@ -171,8 +176,6 @@ extern CGFloat itemSize;
         
     }
     
-    
-    
     // 辞去第一响应者&dismiss控制器
     [self clickLeftBarButtonItem:nil];
     
@@ -238,9 +241,10 @@ extern CGFloat itemSize;
     
 }
 
-// 表情键盘
+// 切换键盘
 - (void)Selectemoticon {
-    
+    //compose_keyboardbutton_background
+    self.textView.inputView = self.keyboardView;
 }
 
 #pragma mark
@@ -329,6 +333,15 @@ extern CGFloat itemSize;
         _pictureView = [[JSComposePictureView alloc] init];
     }
     return _pictureView;
+}
+
+- (JSEmoticonKeyboardView *)keyboardView {
+    
+    if (_keyboardView == nil) {
+        _keyboardView = [[JSEmoticonKeyboardView alloc] init];
+        _keyboardView.frame = CGRectMake(0, 0, SCREEN_WIDTH, kKeyboardViewHeigth);
+    }
+    return _keyboardView;
 }
 
 @end
