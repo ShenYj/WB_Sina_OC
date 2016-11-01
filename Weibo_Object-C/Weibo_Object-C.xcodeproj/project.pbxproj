@@ -61,6 +61,8 @@
 		F79927D21D1C14F200E9BA8C /* JSMessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F79927D11D1C14F200E9BA8C /* JSMessageTableViewController.m */; };
 		F79927D51D1C150100E9BA8C /* JSProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F79927D41D1C150100E9BA8C /* JSProfileTableViewController.m */; };
 		F7AF4CDE1DC8395E00BEA0BE /* JSEmoticonKeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF4CDD1DC8395E00BEA0BE /* JSEmoticonKeyboardView.m */; };
+		F7AF4CE11DC878FA00BEA0BE /* JSEmoticonToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF4CE01DC878FA00BEA0BE /* JSEmoticonToolBar.m */; };
+		F7AF4CE41DC881B900BEA0BE /* JSEmoticonToolBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF4CE31DC881B900BEA0BE /* JSEmoticonToolBarButton.m */; };
 		F7F9DB121D24979D0029235B /* JSOAuthorizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F9DB111D24979D0029235B /* JSOAuthorizeViewController.m */; };
 		F7F9DB151D2499BA0029235B /* JSNetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F9DB141D2499BA0029235B /* JSNetworkTool.m */; };
 /* End PBXBuildFile section */
@@ -177,6 +179,10 @@
 		F79927D41D1C150100E9BA8C /* JSProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSProfileTableViewController.m; sourceTree = "<group>"; };
 		F7AF4CDC1DC8395E00BEA0BE /* JSEmoticonKeyboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEmoticonKeyboardView.h; sourceTree = "<group>"; };
 		F7AF4CDD1DC8395E00BEA0BE /* JSEmoticonKeyboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSEmoticonKeyboardView.m; sourceTree = "<group>"; };
+		F7AF4CDF1DC878FA00BEA0BE /* JSEmoticonToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEmoticonToolBar.h; sourceTree = "<group>"; };
+		F7AF4CE01DC878FA00BEA0BE /* JSEmoticonToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSEmoticonToolBar.m; sourceTree = "<group>"; };
+		F7AF4CE21DC881B900BEA0BE /* JSEmoticonToolBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEmoticonToolBarButton.h; sourceTree = "<group>"; };
+		F7AF4CE31DC881B900BEA0BE /* JSEmoticonToolBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSEmoticonToolBarButton.m; sourceTree = "<group>"; };
 		F7F9DB101D24979D0029235B /* JSOAuthorizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSOAuthorizeViewController.h; sourceTree = "<group>"; };
 		F7F9DB111D24979D0029235B /* JSOAuthorizeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSOAuthorizeViewController.m; sourceTree = "<group>"; };
 		F7F9DB131D2499BA0029235B /* JSNetworkTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSNetworkTool.h; sourceTree = "<group>"; };
@@ -616,6 +622,10 @@
 			children = (
 				F7AF4CDC1DC8395E00BEA0BE /* JSEmoticonKeyboardView.h */,
 				F7AF4CDD1DC8395E00BEA0BE /* JSEmoticonKeyboardView.m */,
+				F7AF4CDF1DC878FA00BEA0BE /* JSEmoticonToolBar.h */,
+				F7AF4CE01DC878FA00BEA0BE /* JSEmoticonToolBar.m */,
+				F7AF4CE21DC881B900BEA0BE /* JSEmoticonToolBarButton.h */,
+				F7AF4CE31DC881B900BEA0BE /* JSEmoticonToolBarButton.m */,
 			);
 			path = Emoticon;
 			sourceTree = "<group>";
@@ -785,7 +795,9 @@
 				F77886471D1EC97E00BE4518 /* JSTabBarController.m in Sources */,
 				F79927BE1D1C13D500E9BA8C /* AppDelegate.m in Sources */,
 				F73BE44B1DBC801100C31595 /* JSPictureView.m in Sources */,
+				F7AF4CE41DC881B900BEA0BE /* JSEmoticonToolBarButton.m in Sources */,
 				F7271AA31DBA26A700CF96A0 /* JSHomeStatusUserModel.m in Sources */,
+				F7AF4CE11DC878FA00BEA0BE /* JSEmoticonToolBar.m in Sources */,
 				F747F79D1D843748000A0C8D /* UIImage+JSExtension.m in Sources */,
 				F7271AA01DB9F5EF00CF96A0 /* JSStatusOriginalView.m in Sources */,
 				F775B1651DBB0D6A006DAA79 /* JSStatusToolBarView.m in Sources */,
