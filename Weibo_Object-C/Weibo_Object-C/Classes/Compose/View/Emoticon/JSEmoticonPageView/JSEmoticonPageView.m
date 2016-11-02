@@ -35,6 +35,11 @@ static NSString * const reusedId = @"恶魔体从PageViewCell";
 #pragma mark 
 #pragma mark - DataSource
 
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    
+    return 3;
+}
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
     return 3;
@@ -45,6 +50,8 @@ static NSString * const reusedId = @"恶魔体从PageViewCell";
     JSEmoticonPageViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reusedId forIndexPath:indexPath];
     
     cell.backgroundColor = [UIColor js_randomColor];
+    
+    cell.detail.text = [NSString stringWithFormat:@"%@组--%@页",@(indexPath.section),@(indexPath.item)];
     
     return cell;
 }

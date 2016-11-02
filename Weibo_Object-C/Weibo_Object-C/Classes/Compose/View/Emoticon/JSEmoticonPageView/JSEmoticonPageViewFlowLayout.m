@@ -22,6 +22,7 @@
     self.collectionView.showsVerticalScrollIndicator = NO;
     self.collectionView.showsHorizontalScrollIndicator = NO;
     self.collectionView.pagingEnabled = YES;
+    self.collectionView.bounces = NO;
     
 }
 

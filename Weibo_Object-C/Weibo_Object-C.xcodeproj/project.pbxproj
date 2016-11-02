@@ -66,6 +66,10 @@
 		F7AF4CF41DC8B5E400BEA0BE /* JSEmoticonPageViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF4CF31DC8B5E400BEA0BE /* JSEmoticonPageViewCell.m */; };
 		F7AF4CFA1DC8B66900BEA0BE /* JSEmoticonToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF4CF71DC8B66900BEA0BE /* JSEmoticonToolBar.m */; };
 		F7AF4CFB1DC8B66900BEA0BE /* JSEmoticonToolBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF4CF91DC8B66900BEA0BE /* JSEmoticonToolBarButton.m */; };
+		F7DE06E61DC997A30071B429 /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DE06E51DC997A30071B429 /* NSString+Emoji.m */; };
+		F7DE06E81DC997EF0071B429 /* Emoticons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F7DE06E71DC997EF0071B429 /* Emoticons.bundle */; };
+		F7DE06EB1DC99CC40071B429 /* JSEmoticonTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DE06EA1DC99CC40071B429 /* JSEmoticonTool.m */; };
+		F7DE06F11DC9A2330071B429 /* JSEmoticonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DE06F01DC9A2330071B429 /* JSEmoticonModel.m */; };
 		F7F9DB121D24979D0029235B /* JSOAuthorizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F9DB111D24979D0029235B /* JSOAuthorizeViewController.m */; };
 		F7F9DB151D2499BA0029235B /* JSNetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F9DB141D2499BA0029235B /* JSNetworkTool.m */; };
 /* End PBXBuildFile section */
@@ -192,6 +196,13 @@
 		F7AF4CF71DC8B66900BEA0BE /* JSEmoticonToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSEmoticonToolBar.m; sourceTree = "<group>"; };
 		F7AF4CF81DC8B66900BEA0BE /* JSEmoticonToolBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEmoticonToolBarButton.h; sourceTree = "<group>"; };
 		F7AF4CF91DC8B66900BEA0BE /* JSEmoticonToolBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSEmoticonToolBarButton.m; sourceTree = "<group>"; };
+		F7DE06E41DC997A30071B429 /* NSString+Emoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Emoji.h"; sourceTree = "<group>"; };
+		F7DE06E51DC997A30071B429 /* NSString+Emoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Emoji.m"; sourceTree = "<group>"; };
+		F7DE06E71DC997EF0071B429 /* Emoticons.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Emoticons.bundle; sourceTree = "<group>"; };
+		F7DE06E91DC99CC40071B429 /* JSEmoticonTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEmoticonTool.h; sourceTree = "<group>"; };
+		F7DE06EA1DC99CC40071B429 /* JSEmoticonTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSEmoticonTool.m; sourceTree = "<group>"; };
+		F7DE06EF1DC9A2330071B429 /* JSEmoticonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEmoticonModel.h; sourceTree = "<group>"; };
+		F7DE06F01DC9A2330071B429 /* JSEmoticonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSEmoticonModel.m; sourceTree = "<group>"; };
 		F7F9DB101D24979D0029235B /* JSOAuthorizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSOAuthorizeViewController.h; sourceTree = "<group>"; };
 		F7F9DB111D24979D0029235B /* JSOAuthorizeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSOAuthorizeViewController.m; sourceTree = "<group>"; };
 		F7F9DB131D2499BA0029235B /* JSNetworkTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSNetworkTool.h; sourceTree = "<group>"; };
@@ -289,6 +300,8 @@
 		F731D1EB1D9ABB66001C7B72 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F7DE06EF1DC9A2330071B429 /* JSEmoticonModel.h */,
+				F7DE06F01DC9A2330071B429 /* JSEmoticonModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -329,11 +342,11 @@
 		F747F7831D843748000A0C8D /* UIKit+JSExtension */ = {
 			isa = PBXGroup;
 			children = (
+				F747F7841D843748000A0C8D /* JSUIkitExtension.h */,
 				F767E2BF1DBE414600254511 /* JSDateFormatter.h */,
 				F767E2C01DBE414600254511 /* JSDateFormatter.m */,
 				F767E2C51DBE4E4E00254511 /* NSDate+JSIsThisYear.h */,
 				F767E2C61DBE4E4E00254511 /* NSDate+JSIsThisYear.m */,
-				F747F7841D843748000A0C8D /* JSUIkitExtension.h */,
 				F747F7851D843748000A0C8D /* NSArray+JSLog.h */,
 				F747F7861D843748000A0C8D /* NSArray+JSLog.m */,
 				F747F7871D843748000A0C8D /* NSObject+JSObjc.h */,
@@ -352,6 +365,7 @@
 				F747F7941D843748000A0C8D /* UINavigationController+JSFullScreenPopGesture.m */,
 				F747F7951D843748000A0C8D /* UIView+JSFrame.h */,
 				F747F7961D843748000A0C8D /* UIView+JSFrame.m */,
+				F7DE06E31DC997A30071B429 /* NSStringEmoji */,
 			);
 			path = "UIKit+JSExtension";
 			sourceTree = "<group>";
@@ -631,6 +645,8 @@
 			children = (
 				F7AF4CDC1DC8395E00BEA0BE /* JSEmoticonKeyboardView.h */,
 				F7AF4CDD1DC8395E00BEA0BE /* JSEmoticonKeyboardView.m */,
+				F7DE06E91DC99CC40071B429 /* JSEmoticonTool.h */,
+				F7DE06EA1DC99CC40071B429 /* JSEmoticonTool.m */,
 				F7AF4CEB1DC8B4E000BEA0BE /* JSEmoticonPageView */,
 				F7AF4CF51DC8B66900BEA0BE /* JSEmoticonToolBar */,
 			);
@@ -640,6 +656,7 @@
 		F7AF4CEB1DC8B4E000BEA0BE /* JSEmoticonPageView */ = {
 			isa = PBXGroup;
 			children = (
+				F7DE06E71DC997EF0071B429 /* Emoticons.bundle */,
 				F7AF4CEC1DC8B4E000BEA0BE /* JSEmoticonPageView.h */,
 				F7AF4CED1DC8B4E000BEA0BE /* JSEmoticonPageView.m */,
 				F7AF4CEE1DC8B4E000BEA0BE /* JSEmoticonPageViewFlowLayout.h */,
@@ -659,6 +676,15 @@
 				F7AF4CF91DC8B66900BEA0BE /* JSEmoticonToolBarButton.m */,
 			);
 			path = JSEmoticonToolBar;
+			sourceTree = "<group>";
+		};
+		F7DE06E31DC997A30071B429 /* NSStringEmoji */ = {
+			isa = PBXGroup;
+			children = (
+				F7DE06E41DC997A30071B429 /* NSString+Emoji.h */,
+				F7DE06E51DC997A30071B429 /* NSString+Emoji.m */,
+			);
+			path = NSStringEmoji;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -724,6 +750,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F79927BF1D1C13D500E9BA8C /* Assets.xcassets in Resources */,
+				F7DE06E81DC997EF0071B429 /* Emoticons.bundle in Resources */,
 				F79927C01D1C13D500E9BA8C /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -789,6 +816,7 @@
 				F74F57381D84F3DA00E3CC61 /* JSUserAccountTool.m in Sources */,
 				F767E2BE1DBDD71800254511 /* JSHomeStatusLayout.m in Sources */,
 				F778864A1D1EC9BC00BE4518 /* JSTabBar.m in Sources */,
+				F7DE06F11DC9A2330071B429 /* JSEmoticonModel.m in Sources */,
 				F7F9DB151D2499BA0029235B /* JSNetworkTool.m in Sources */,
 				F731D1E81D9AACD9001C7B72 /* UIImageView+JSWebCache.m in Sources */,
 				F747F7991D843748000A0C8D /* NSString+Emoji.m in Sources */,
@@ -803,6 +831,7 @@
 				F7271A9C1DB9EC9900CF96A0 /* JSStatusCell.m in Sources */,
 				F767E2C71DBE4E4E00254511 /* NSDate+JSIsThisYear.m in Sources */,
 				F778864D1D1F51EE00BE4518 /* JSVistorTableViewController.m in Sources */,
+				F7DE06EB1DC99CC40071B429 /* JSEmoticonTool.m in Sources */,
 				F747F79A1D843748000A0C8D /* NSString+Hash.m in Sources */,
 				F7209EFC1DC4DF4600767F40 /* JSComposePictureViewCell.m in Sources */,
 				F72613AB1DC36B54004FF7F9 /* JSComposeToolBar.m in Sources */,
@@ -832,6 +861,7 @@
 				F79927BE1D1C13D500E9BA8C /* AppDelegate.m in Sources */,
 				F73BE44B1DBC801100C31595 /* JSPictureView.m in Sources */,
 				F7271AA31DBA26A700CF96A0 /* JSHomeStatusUserModel.m in Sources */,
+				F7DE06E61DC997A30071B429 /* NSString+Emoji.m in Sources */,
 				F747F79D1D843748000A0C8D /* UIImage+JSExtension.m in Sources */,
 				F7271AA01DB9F5EF00CF96A0 /* JSStatusOriginalView.m in Sources */,
 				F775B1651DBB0D6A006DAA79 /* JSStatusToolBarView.m in Sources */,

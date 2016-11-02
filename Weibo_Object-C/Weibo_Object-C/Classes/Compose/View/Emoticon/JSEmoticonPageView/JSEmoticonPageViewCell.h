@@ -10,4 +10,7 @@
 
 @interface JSEmoticonPageViewCell : UICollectionViewCell
 
+// 展示label
+@property (nonatomic) UILabel *detail;
+
 @end

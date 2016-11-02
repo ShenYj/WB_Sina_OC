@@ -19,5 +19,6 @@
 #import "UIView+JSFrame.h"
 #import "NSObject+JSObjc.h"
 #import "UIImageView+JSWebCache.h"
+#import "NSString+Emoji.h"
 
 #endif /* JSUIkitExtension_h */

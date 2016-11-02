@@ -11,6 +11,7 @@
 #import "JSWelComeViewController.h"
 #import "JSUserAccountTool.h"
 #import <Bugly/Bugly.h>
+#import "JSEmoticonTool.h"
 
 
 @interface AppDelegate ()
@@ -27,6 +28,8 @@
     [Bugly startWithAppId:@"02fe94de4d"];
     
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    
+    NSLog(@"%@",[JSEmoticonTool shared].langxiaohua);
 
     // 监听kChangeRootViewControllerNotification通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeRootViewController:) name:[JSUserAccountTool sharedManager].kChangeRootViewControllerNotification object:nil];

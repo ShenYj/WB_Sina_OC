@@ -8,6 +8,12 @@
 
 #import "JSEmoticonPageViewCell.h"
 
+@interface JSEmoticonPageViewCell ()
+
+
+
+@end
+
 @implementation JSEmoticonPageViewCell
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -23,6 +29,26 @@
 - (void)prepareView {
     
     self.backgroundColor = [UIColor js_randomColor];
+    
+    [self.contentView addSubview:self.detail];
+    
+    [self.detail mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.contentView);
+    }];
+}
+
+#pragma mark
+#pragma mark - lazy
+
+- (UILabel *)detail {
+    
+    if (_detail == nil) {
+        _detail = [[UILabel alloc] init];
+        _detail.font = [UIFont systemFontOfSize:50];
+        _detail.textAlignment = NSTextAlignmentCenter;
+        _detail.textColor = [UIColor js_randomColor];
+    }
+    return _detail;
 }
 
 @end
