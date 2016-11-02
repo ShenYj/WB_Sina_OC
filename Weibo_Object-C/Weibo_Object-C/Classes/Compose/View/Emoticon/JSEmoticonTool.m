@@ -11,12 +11,20 @@
 
 static JSEmoticonTool *_instanceType = nil;
 
+static NSInteger const kEmoticonsRowCount = 3;  // 表情键盘中表情行数
+static NSInteger const kEmoticonsColCount = 7;  // 表情键盘中表情列数
+static NSInteger maxEmoticonCounts;             // 表情键盘每页最大数
+
 @interface JSEmoticonTool ()
 
 // emoticons Bundle文件
 @property (nonatomic,strong) NSBundle *emoticonsBundle;
 
 
+// emoji表情          (一维数组)
+@property (nonatomic,strong) NSArray <JSEmoticonModel *>*emoji;
+// langxiaohua表情    (一维数组)
+@property (nonatomic,strong) NSArray <JSEmoticonModel *>*langxiaohua;
 
 
 
@@ -24,6 +32,11 @@ static JSEmoticonTool *_instanceType = nil;
 
 @implementation JSEmoticonTool
 
+
++ (void)load {
+    // 计算表情键盘每一页最多展示表情个数
+    maxEmoticonCounts = kEmoticonsColCount * kEmoticonsRowCount - 1;
+}
 
 + (instancetype)shared {
     
@@ -34,6 +47,47 @@ static JSEmoticonTool *_instanceType = nil;
     return _instanceType;
 }
 
+// 遍历一维数组,转二维数组
+- (NSArray <NSArray <JSEmoticonModel *>*> *)getEmoticonGroupWithEmoticons:(NSArray <JSEmoticonModel *>*)emocitons {
+    
+    // 临时可变数组
+    NSMutableArray <NSArray <JSEmoticonModel *>*> *tempArr = [NSMutableArray array];
+    
+    // 遍历方式一:
+//    // 计算表情一维数组的页数
+//    NSInteger pageCount = (emocitons.count + maxEmoticonCounts - 1) / maxEmoticonCounts;
+//    for (int i = 0; i < pageCount; i ++) {
+//        
+//        NSInteger loc = i * maxEmoticonCounts;
+//        NSInteger len = maxEmoticonCounts;
+//        
+//        // 防止越界
+//        if (loc + len > emocitons.count) {
+//            len = emocitons.count - loc;
+//        }
+//        
+//        NSRange range = NSMakeRange(loc, len);
+//        
+//        NSArray <JSEmoticonModel *>*arr = [emocitons subarrayWithRange:range];
+//        [tempArr addObject:arr];
+//    }
+    
+    // 遍历方式二:
+    [emocitons enumerateObjectsUsingBlock:^(JSEmoticonModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        NSInteger loc = (idx / maxEmoticonCounts) * maxEmoticonCounts;
+        NSInteger len = maxEmoticonCounts;
+        
+        if (loc + len > emocitons.count) {
+            len = emocitons.count - loc;
+        }
+        NSRange range = NSMakeRange(loc, len);
+        NSArray <JSEmoticonModel *>*arr = [emocitons subarrayWithRange:range];
+        [tempArr addObject:arr];
+    }];
+    
+    return tempArr.copy;
+}
 
 // 读取plist文件获取表情,返回表情一维数组
 - (NSArray <JSEmoticonModel *>*)getEmoticonsWithFileName:(NSString *)fileName {
@@ -43,7 +97,6 @@ static JSEmoticonTool *_instanceType = nil;
     NSString *fileFullPath = [self.emoticonsBundle pathForResource:filePath ofType:@"plist"];
     // 获取数据
     NSArray *arr = [NSArray arrayWithContentsOfFile:fileFullPath];
-    
     // 遍历转模型
     NSMutableArray *tempArr = [NSMutableArray array];
     
@@ -74,7 +127,7 @@ static JSEmoticonTool *_instanceType = nil;
 - (NSArray<JSEmoticonModel *> *)defalut {
     
     if (_defalut == nil) {
-        _defalut = [self getEmoticonsWithFileName:@"defalut"];
+        _defalut = [self getEmoticonsWithFileName:@"default"];
     }
     return _defalut;
 }

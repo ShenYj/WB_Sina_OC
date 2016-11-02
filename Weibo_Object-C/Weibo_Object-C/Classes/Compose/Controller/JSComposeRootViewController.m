@@ -13,6 +13,8 @@
 #import "JSComposeToolBar.h"
 #import "JSComposePictureView.h"
 #import "JSEmoticonKeyboardView.h"
+#import "JSEmoticonTool.h"
+
 
 CGFloat const kPictureMarginHorizontal = 10.f; // 配图视图左右的间距
 CGFloat const kKeyboardViewHeigth = 216.f;     // 自定义表情键盘高度
@@ -60,6 +62,10 @@ extern CGFloat itemSize;
 #pragma mark - 设置视图
 
 - (void)prepareView {
+    
+    NSArray *ar = [JSEmoticonTool shared].defalut;    
+    NSArray *tem = [[JSEmoticonTool shared] getEmoticonGroupWithEmoticons:ar];
+    NSLog(@"%@",tem);
     
     // 设置背景色
     self.view.backgroundColor = [UIColor whiteColor];

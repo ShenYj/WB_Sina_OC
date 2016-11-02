@@ -12,13 +12,12 @@
 
 @interface JSEmoticonTool : NSObject
 
+// 单例
++ (instancetype)shared;
+
 // default表情        (一维数组)
 @property (nonatomic,strong) NSArray <JSEmoticonModel *>*defalut;
-// emoji表情          (一维数组)
-@property (nonatomic,strong) NSArray <JSEmoticonModel *>*emoji;
-// langxiaohua表情    (一维数组)
-@property (nonatomic,strong) NSArray <JSEmoticonModel *>*langxiaohua;
 
-+ (instancetype)shared;
+- (NSArray <NSArray <JSEmoticonModel *>*> *)getEmoticonGroupWithEmoticons:(NSArray <JSEmoticonModel *>*)emocitons;
 
 @end
