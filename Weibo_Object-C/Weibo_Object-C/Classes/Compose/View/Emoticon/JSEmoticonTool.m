@@ -25,6 +25,8 @@ static NSInteger maxEmoticonCounts;             // 表情键盘每页最大数
 @property (nonatomic,strong) NSArray <JSEmoticonModel *>*emoji;
 // langxiaohua表情    (一维数组)
 @property (nonatomic,strong) NSArray <JSEmoticonModel *>*langxiaohua;
+// default表情        (一维数组)
+@property (nonatomic,strong) NSArray <JSEmoticonModel *>*defalut;
 
 
 
@@ -53,38 +55,23 @@ static NSInteger maxEmoticonCounts;             // 表情键盘每页最大数
     // 临时可变数组
     NSMutableArray <NSArray <JSEmoticonModel *>*> *tempArr = [NSMutableArray array];
     
-    // 遍历方式一:
-//    // 计算表情一维数组的页数
-//    NSInteger pageCount = (emocitons.count + maxEmoticonCounts - 1) / maxEmoticonCounts;
-//    for (int i = 0; i < pageCount; i ++) {
-//        
-//        NSInteger loc = i * maxEmoticonCounts;
-//        NSInteger len = maxEmoticonCounts;
-//        
-//        // 防止越界
-//        if (loc + len > emocitons.count) {
-//            len = emocitons.count - loc;
-//        }
-//        
-//        NSRange range = NSMakeRange(loc, len);
-//        
-//        NSArray <JSEmoticonModel *>*arr = [emocitons subarrayWithRange:range];
-//        [tempArr addObject:arr];
-//    }
-    
-    // 遍历方式二:
-    [emocitons enumerateObjectsUsingBlock:^(JSEmoticonModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    // 计算表情一维数组的页数
+    NSInteger pageCount = (emocitons.count + maxEmoticonCounts - 1) / maxEmoticonCounts;
+    for (int i = 0; i < pageCount; i ++) {
         
-        NSInteger loc = (idx / maxEmoticonCounts) * maxEmoticonCounts;
+        NSInteger loc = i * maxEmoticonCounts;
         NSInteger len = maxEmoticonCounts;
         
+        // 防止越界
         if (loc + len > emocitons.count) {
             len = emocitons.count - loc;
         }
+        
         NSRange range = NSMakeRange(loc, len);
+        
         NSArray <JSEmoticonModel *>*arr = [emocitons subarrayWithRange:range];
         [tempArr addObject:arr];
-    }];
+    }
     
     return tempArr.copy;
 }
@@ -148,6 +135,16 @@ static NSInteger maxEmoticonCounts;             // 表情键盘每页最大数
     return _langxiaohua;
 }
 
-
+- (NSArray<NSArray<JSEmoticonModel *> *> *)allEmoticons {
+    
+    if (_allEmoticons == nil) {
+        _allEmoticons = @[
+                       [self getEmoticonGroupWithEmoticons:self.defalut],
+                       [self getEmoticonGroupWithEmoticons:self.emoji],
+                       [self getEmoticonGroupWithEmoticons:self.langxiaohua]
+                       ];
+    }
+    return _allEmoticons;
+}
 
 @end

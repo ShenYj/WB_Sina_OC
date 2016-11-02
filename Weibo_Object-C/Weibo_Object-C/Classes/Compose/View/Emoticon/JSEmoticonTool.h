@@ -15,9 +15,8 @@
 // 单例
 + (instancetype)shared;
 
-// default表情        (一维数组)
-@property (nonatomic,strong) NSArray <JSEmoticonModel *>*defalut;
+// 表情               (三维数组)
+@property (nonatomic,strong) NSArray <NSArray <JSEmoticonModel *>*>*allEmoticons;
 
-- (NSArray <NSArray <JSEmoticonModel *>*> *)getEmoticonGroupWithEmoticons:(NSArray <JSEmoticonModel *>*)emocitons;
 
 @end

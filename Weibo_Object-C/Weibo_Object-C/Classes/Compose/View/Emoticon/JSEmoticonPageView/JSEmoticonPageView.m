@@ -9,6 +9,8 @@
 #import "JSEmoticonPageView.h"
 #import "JSEmoticonPageViewFlowLayout.h"
 #import "JSEmoticonPageViewCell.h"
+#import "JSEmoticonTool.h"
+
 
 static NSString * const reusedId = @"恶魔体从PageViewCell";
 
@@ -37,12 +39,12 @@ static NSString * const reusedId = @"恶魔体从PageViewCell";
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     
-    return 3;
+    return [JSEmoticonTool shared].allEmoticons.count;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
-    return 3;
+    NSArray *emoticons = [JSEmoticonTool shared].allEmoticons[section];
+    return emoticons.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
