@@ -33,6 +33,11 @@
 @property (copy,nonatomic) NSString *png;
 
 
+// 判断是否为emoji表情标识
+@property (assign,nonatomic,getter=isEmoji) BOOL emoji;
+// 拼接路径
+@property (nonatomic,copy) NSString *path;
+
 #pragma mark
 #pragma mark -
 

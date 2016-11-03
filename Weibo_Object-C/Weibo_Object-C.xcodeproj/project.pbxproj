@@ -70,6 +70,7 @@
 		F7DE06E81DC997EF0071B429 /* Emoticons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F7DE06E71DC997EF0071B429 /* Emoticons.bundle */; };
 		F7DE06EB1DC99CC40071B429 /* JSEmoticonTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DE06EA1DC99CC40071B429 /* JSEmoticonTool.m */; };
 		F7DE06F11DC9A2330071B429 /* JSEmoticonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DE06F01DC9A2330071B429 /* JSEmoticonModel.m */; };
+		F7DE06F41DCB18D00071B429 /* JSEmoticonButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DE06F31DCB18D00071B429 /* JSEmoticonButton.m */; };
 		F7F9DB121D24979D0029235B /* JSOAuthorizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F9DB111D24979D0029235B /* JSOAuthorizeViewController.m */; };
 		F7F9DB151D2499BA0029235B /* JSNetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F9DB141D2499BA0029235B /* JSNetworkTool.m */; };
 /* End PBXBuildFile section */
@@ -203,6 +204,8 @@
 		F7DE06EA1DC99CC40071B429 /* JSEmoticonTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSEmoticonTool.m; sourceTree = "<group>"; };
 		F7DE06EF1DC9A2330071B429 /* JSEmoticonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEmoticonModel.h; sourceTree = "<group>"; };
 		F7DE06F01DC9A2330071B429 /* JSEmoticonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSEmoticonModel.m; sourceTree = "<group>"; };
+		F7DE06F21DCB18D00071B429 /* JSEmoticonButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEmoticonButton.h; sourceTree = "<group>"; };
+		F7DE06F31DCB18D00071B429 /* JSEmoticonButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSEmoticonButton.m; sourceTree = "<group>"; };
 		F7F9DB101D24979D0029235B /* JSOAuthorizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSOAuthorizeViewController.h; sourceTree = "<group>"; };
 		F7F9DB111D24979D0029235B /* JSOAuthorizeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSOAuthorizeViewController.m; sourceTree = "<group>"; };
 		F7F9DB131D2499BA0029235B /* JSNetworkTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSNetworkTool.h; sourceTree = "<group>"; };
@@ -663,6 +666,8 @@
 				F7AF4CEF1DC8B4E000BEA0BE /* JSEmoticonPageViewFlowLayout.m */,
 				F7AF4CF21DC8B5E400BEA0BE /* JSEmoticonPageViewCell.h */,
 				F7AF4CF31DC8B5E400BEA0BE /* JSEmoticonPageViewCell.m */,
+				F7DE06F21DCB18D00071B429 /* JSEmoticonButton.h */,
+				F7DE06F31DCB18D00071B429 /* JSEmoticonButton.m */,
 			);
 			path = JSEmoticonPageView;
 			sourceTree = "<group>";
@@ -864,6 +869,7 @@
 				F7DE06E61DC997A30071B429 /* NSString+Emoji.m in Sources */,
 				F747F79D1D843748000A0C8D /* UIImage+JSExtension.m in Sources */,
 				F7271AA01DB9F5EF00CF96A0 /* JSStatusOriginalView.m in Sources */,
+				F7DE06F41DCB18D00071B429 /* JSEmoticonButton.m in Sources */,
 				F775B1651DBB0D6A006DAA79 /* JSStatusToolBarView.m in Sources */,
 				F79927D51D1C150100E9BA8C /* JSProfileTableViewController.m in Sources */,
 				F77886561D201CBD00BE4518 /* JSVistorView.m in Sources */,

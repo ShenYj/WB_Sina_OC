@@ -12,6 +12,7 @@
 
 @interface JSEmoticonPageViewCell : UICollectionViewCell
 
+// 表情一维数组
 @property (nonatomic) NSArray <JSEmoticonModel *>*emoticons;
 // 展示label
 @property (nonatomic) UILabel *detail;

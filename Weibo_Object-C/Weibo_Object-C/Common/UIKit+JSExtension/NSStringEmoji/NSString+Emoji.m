@@ -10,8 +10,9 @@
 
 @implementation NSString (Emoji)
 
-+ (NSString *)emojiWithIntCode:(int)intCode {
-    int symbol = EmojiCodeToSymbol(intCode);
++ (NSString *)emojiWithIntCode:(long)intCode {
+    
+    int symbol = EmojiCodeToSymbol(@(intCode).intValue);
     NSString *string = [[NSString alloc] initWithBytes:&symbol length:sizeof(symbol) encoding:NSUTF8StringEncoding];
     if (string == nil) { // 新版Emoji
         string = [NSString stringWithFormat:@"%C", (unichar)intCode];
@@ -19,21 +20,20 @@
     return string;
 }
 
-- (NSString *)emoji
-{
+- (NSString *)emoji {
     return [NSString emojiWithStringCode:self];
 }
 
-+ (NSString *)emojiWithStringCode:(NSString *)stringCode
-{
++ (NSString *)emojiWithStringCode:(NSString *)stringCode {
+    
     char *charCode = (char *)stringCode.UTF8String;
-    int intCode = strtol(charCode, NULL, 16);
+    long intCode = strtol(charCode, NULL, 16);
     return [self emojiWithIntCode:intCode];
 }
 
 // 判断是否是 emoji表情
-- (BOOL)isEmoji
-{
+- (BOOL)isEmoji {
+    
      BOOL returnValue = NO;
          
      const unichar hs = [self characterAtIndex:0];

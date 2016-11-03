@@ -50,9 +50,6 @@ static NSString * const reusedId = @"恶魔体从PageViewCell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     JSEmoticonPageViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reusedId forIndexPath:indexPath];
-    
-    cell.backgroundColor = [UIColor js_randomColor];
-    
     cell.detail.text = [NSString stringWithFormat:@"%@组--%@页",@(indexPath.section),@(indexPath.item)];
     cell.emoticons = [JSEmoticonTool shared].allEmoticons[indexPath.section][indexPath.item];
     

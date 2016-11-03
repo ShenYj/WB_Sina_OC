@@ -34,4 +34,14 @@
     return [self dictionaryWithValuesForKeys:keys].description;
 }
 
+- (void)setType:(NSString *)type {
+    
+    _type = type;
+    if ([type isEqualToString:@"0"]) {
+        self.emoji = NO;
+    } else {
+        self.emoji = YES;
+    }
+}
+
 @end

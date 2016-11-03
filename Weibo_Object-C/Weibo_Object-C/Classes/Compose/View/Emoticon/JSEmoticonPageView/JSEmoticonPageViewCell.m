@@ -7,7 +7,9 @@
 //
 
 #import "JSEmoticonPageViewCell.h"
-//#import "JSEmoticonTool.h"
+#import "JSEmoticonButton.h"
+#import "JSEmoticonModel.h"
+#import "JSEmoticonTool.h"
 
 extern NSInteger maxEmoticonCounts;             // 表情键盘每页展示表情最多个数
 extern NSInteger const kEmoticonsColCount;      // 表情键盘中表情列数
@@ -17,7 +19,7 @@ extern CGFloat const kKeyboardViewHeigth;       // 自定义表情键盘高度
 
 @interface JSEmoticonPageViewCell ()
 
-@property (nonatomic) NSArray *emoticonButtons;
+@property (nonatomic) NSArray <JSEmoticonButton *>*emoticonButtons;
 
 @end
 
@@ -36,12 +38,7 @@ extern CGFloat const kKeyboardViewHeigth;       // 自定义表情键盘高度
 - (void)prepareView {
     
     self.backgroundColor = [UIColor whiteColor];
-    // 添加子控件
-    [self.contentView addSubview:self.detail];
-    // 设置约束
-    [self.detail mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(self.contentView);
-    }];
+    
 }
 
 - (void)layoutSubviews {
@@ -69,44 +66,66 @@ extern CGFloat const kKeyboardViewHeigth;       // 自定义表情键盘高度
     
 }
 
+#pragma mark
+#pragma mark - 设置表情按钮
+- (void)setEmoticons:(NSArray<JSEmoticonModel *> *)emoticons {
+    
+    _emoticons = emoticons;
+    
+    // 解决Cell重用显示表情问题,默认全部隐藏
+    for (JSEmoticonButton *emoticonButton in self.emoticonButtons) {
+        emoticonButton.hidden = YES;
+    }
+    
+    // 遍历表情数组容器,给Button赋值 (遍历Button会出现数组越界问题)
+    [emoticons enumerateObjectsUsingBlock:^(JSEmoticonModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        JSEmoticonModel *emoticonModel = (JSEmoticonModel *)obj;
+        JSEmoticonButton *emoticonButton = self.emoticonButtons[idx];
+        // 显示按钮
+        emoticonButton.hidden = NO;
+        
+        if (emoticonModel.isEmoji) {
+            // emoji表情
+            NSString *emojiEmoticon = [emoticonModel.code emoji];
+            
+            [emoticonButton setTitle:emojiEmoticon forState:UIControlStateNormal];
+            [emoticonButton setImage:nil forState:UIControlStateNormal];
+            
+        } else {
+            
+            // 拼接Bundle下的完整路径
+            NSString *fileFullPath = [NSString stringWithFormat:@"%@/%@",emoticonModel.path,emoticonModel.png];
+            // 从Emoticons.bundle中加载图片
+            UIImage *image = [UIImage imageNamed:fileFullPath inBundle:[JSEmoticonTool shared].emoticonsBundle compatibleWithTraitCollection:nil];
+            // 图片表情
+            [emoticonButton setTitle:nil forState:UIControlStateNormal];
+            [emoticonButton setImage:image forState:UIControlStateNormal];
+            
+        }
+        
+    }];
+    
+    
+}
 
 #pragma mark
 #pragma mark - lazy
 
 // 创建20个表情按钮
-- (NSArray *)emoticonButtons {
+- (NSArray <JSEmoticonButton *>*)emoticonButtons {
     
     if (_emoticonButtons == nil) {
         
         NSMutableArray *tempArr = [NSMutableArray array];
         for (int i = 0; i<maxEmoticonCounts; i ++) {
-            UIButton *button = [[UIButton alloc] init];
-            button.backgroundColor = [UIColor js_randomColor];
+            JSEmoticonButton *button = [[JSEmoticonButton alloc] init];
             [self.contentView addSubview:button];// 添加子控件
             [tempArr addObject:button];
         }
         _emoticonButtons = tempArr.copy;
     }
     return _emoticonButtons;
-}
-
-- (void)setEmoticons:(NSArray<JSEmoticonModel *> *)emoticons {
-    
-    _emoticons = emoticons;
-    
-    NSLog(@"%@",emoticons);
-    
-}
-
-- (UILabel *)detail {
-    
-    if (_detail == nil) {
-        _detail = [[UILabel alloc] init];
-        _detail.font = [UIFont systemFontOfSize:50];
-        _detail.textAlignment = NSTextAlignmentCenter;
-        _detail.textColor = [UIColor js_randomColor];
-    }
-    return _detail;
 }
 
 @end

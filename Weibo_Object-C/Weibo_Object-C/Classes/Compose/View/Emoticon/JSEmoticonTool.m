@@ -17,9 +17,6 @@ NSInteger maxEmoticonCounts;             // 表情键盘每页最大数
 
 @interface JSEmoticonTool ()
 
-// emoticons Bundle文件
-@property (nonatomic,strong) NSBundle *emoticonsBundle;
-
 // emoji表情          (一维数组)
 @property (nonatomic,strong) NSArray <JSEmoticonModel *>*emoji;
 // langxiaohua表情    (一维数组)
@@ -89,6 +86,9 @@ NSInteger maxEmoticonCounts;             // 表情键盘每页最大数
     for (NSDictionary *dict in arr) {
         
         JSEmoticonModel *model = [JSEmoticonModel emoticonWithDict:dict];
+        // 缓存表情包路径 
+        [model setValue:[NSString stringWithFormat:@"%@",fileName] forKey:@"path"];
+        
        [tempArr addObject:model];
     }
     

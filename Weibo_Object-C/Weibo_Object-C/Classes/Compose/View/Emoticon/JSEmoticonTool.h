@@ -15,6 +15,9 @@
 // 单例
 + (instancetype)shared;
 
+// emoticons Bundle文件
+@property (nonatomic,strong) NSBundle *emoticonsBundle;
+
 // 表情               (三维数组)
 @property (nonatomic,strong) NSArray < NSArray <NSArray <JSEmoticonModel *>*> * >* allEmoticons;
 
