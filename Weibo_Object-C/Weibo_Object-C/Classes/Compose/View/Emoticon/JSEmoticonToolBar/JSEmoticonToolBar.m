@@ -13,6 +13,8 @@
 
 // 记录选中按钮
 @property (nonatomic) JSEmoticonToolBarButton *currentButton;
+// 缓存按钮
+@property (nonatomic) NSArray <JSEmoticonToolBarButton *>*buttons;
 
 @end
 
@@ -48,11 +50,17 @@
     [emoji_BT addTarget:self action:@selector(clickToolBarButton:) forControlEvents:UIControlEventTouchUpInside];
     [langxiaohua_BT addTarget:self action:@selector(clickToolBarButton:) forControlEvents:UIControlEventTouchUpInside];
     
+    // 记录按钮
+    self.buttons = @[default_BT,emoji_BT,langxiaohua_BT];
+    
     // 添加子控件
     [self addArrangedSubview:default_BT];
     [self addArrangedSubview:emoji_BT];
     [self addArrangedSubview:langxiaohua_BT];
     
+    // 设置首次按钮选中
+    default_BT.selected = YES;
+    self.currentButton = default_BT;
     
 }
 
@@ -72,5 +80,17 @@
     }
 }
 
+- (void)setCurrentButtonIndex:(NSInteger)index {
+    NSLog(@"%zd",index);
+    JSEmoticonToolBarButton *button = self.buttons[index];
+    if (self.currentButton == button) {
+        return;
+    }
+    
+    self.currentButton.selected = NO;
+    button.selected = YES;
+    self.currentButton = button;
+
+}
 
 @end

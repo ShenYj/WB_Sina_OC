@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSUInteger, EmoticonToolBarButtonType) {
-    EmoticonToolBarButtonTypeDefault     = 1101,
-    EmoticonToolBarButtonTypeEmoji       = 1102,
-    EmoticonToolBarButtonTypeLangxiaohua = 1103
+    EmoticonToolBarButtonTypeDefault     = 1100,
+    EmoticonToolBarButtonTypeEmoji       = 1101,
+    EmoticonToolBarButtonTypeLangxiaohua = 1102
 };
 
 @interface JSEmoticonToolBarButton : UIButton

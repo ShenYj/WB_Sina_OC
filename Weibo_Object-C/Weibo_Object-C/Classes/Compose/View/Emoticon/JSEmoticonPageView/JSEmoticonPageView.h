@@ -10,4 +10,5 @@
 
 @interface JSEmoticonPageView : UICollectionView <UICollectionViewDataSource>
 
+
 @end

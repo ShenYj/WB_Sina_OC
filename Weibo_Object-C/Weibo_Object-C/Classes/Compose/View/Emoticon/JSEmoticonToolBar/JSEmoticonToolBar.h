@@ -15,4 +15,7 @@
 // 点击按钮回调
 @property (copy,nonatomic) void(^clickCompeletionHandler)(JSEmoticonToolBarButton *button);
 
+// 设置当前选中按钮
+- (void)setCurrentButtonIndex:(NSInteger)index;
+
 @end
