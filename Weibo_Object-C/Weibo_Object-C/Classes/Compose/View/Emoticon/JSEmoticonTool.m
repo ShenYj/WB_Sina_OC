@@ -11,15 +11,14 @@
 
 static JSEmoticonTool *_instanceType = nil;
 
-static NSInteger const kEmoticonsRowCount = 3;  // 表情键盘中表情行数
-static NSInteger const kEmoticonsColCount = 7;  // 表情键盘中表情列数
-static NSInteger maxEmoticonCounts;             // 表情键盘每页最大数
+NSInteger const kEmoticonsRowCount = 3;  // 表情键盘中表情行数
+NSInteger const kEmoticonsColCount = 7;  // 表情键盘中表情列数
+NSInteger maxEmoticonCounts;             // 表情键盘每页最大数
 
 @interface JSEmoticonTool ()
 
 // emoticons Bundle文件
 @property (nonatomic,strong) NSBundle *emoticonsBundle;
-
 
 // emoji表情          (一维数组)
 @property (nonatomic,strong) NSArray <JSEmoticonModel *>*emoji;
@@ -135,7 +134,7 @@ static NSInteger maxEmoticonCounts;             // 表情键盘每页最大数
     return _langxiaohua;
 }
 
-- (NSArray<NSArray<JSEmoticonModel *> *> *)allEmoticons {
+- (NSArray < NSArray <NSArray <JSEmoticonModel *>*> * > *)allEmoticons {
     
     if (_allEmoticons == nil) {
         _allEmoticons = @[

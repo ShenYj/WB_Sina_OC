@@ -16,7 +16,7 @@
 + (instancetype)shared;
 
 // 表情               (三维数组)
-@property (nonatomic,strong) NSArray <NSArray <JSEmoticonModel *>*>*allEmoticons;
+@property (nonatomic,strong) NSArray < NSArray <NSArray <JSEmoticonModel *>*> * >* allEmoticons;
 
 
 @end

@@ -13,7 +13,7 @@
 #import "JSEmoticonPageViewCell.h"
 
 
-static CGFloat const kEmoticonToolBarHeight = 37.f; // 表情键盘底部Toolbar高度
+CGFloat const kEmoticonToolBarHeight = 37.f; // 表情键盘底部Toolbar高度
 
 @interface JSEmoticonKeyboardView () <UICollectionViewDelegate>
 
@@ -48,8 +48,8 @@ static CGFloat const kEmoticonToolBarHeight = 37.f; // 表情键盘底部Toolbar
     // 添加子控件
     [self addSubview:self.emoticonPageView];
     [self addSubview:self.emoticonToolBar];
-    // 添加约束
     
+    // 添加约束
     [self.emoticonToolBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.mas_equalTo(self);
         make.height.mas_equalTo(kEmoticonToolBarHeight);

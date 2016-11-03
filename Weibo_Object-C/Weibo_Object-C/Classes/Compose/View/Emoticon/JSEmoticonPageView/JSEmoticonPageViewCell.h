@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class JSEmoticonModel;
+
 @interface JSEmoticonPageViewCell : UICollectionViewCell
 
+@property (nonatomic) NSArray <JSEmoticonModel *>*emoticons;
 // 展示label
 @property (nonatomic) UILabel *detail;
 

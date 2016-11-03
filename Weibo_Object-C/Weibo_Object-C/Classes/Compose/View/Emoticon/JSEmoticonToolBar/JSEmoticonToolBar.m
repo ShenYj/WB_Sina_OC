@@ -81,7 +81,7 @@
 }
 
 - (void)setCurrentButtonIndex:(NSInteger)index {
-    NSLog(@"%zd",index);
+    
     JSEmoticonToolBarButton *button = self.buttons[index];
     if (self.currentButton == button) {
         return;

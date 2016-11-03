@@ -54,6 +54,7 @@ static NSString * const reusedId = @"恶魔体从PageViewCell";
     cell.backgroundColor = [UIColor js_randomColor];
     
     cell.detail.text = [NSString stringWithFormat:@"%@组--%@页",@(indexPath.section),@(indexPath.item)];
+    cell.emoticons = [JSEmoticonTool shared].allEmoticons[indexPath.section][indexPath.item];
     
     return cell;
 }
