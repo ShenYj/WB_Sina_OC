@@ -42,7 +42,7 @@ extern CGFloat const kEmoticonPageViewBottomMargin;       // 表情键盘表情�
 
 - (void)prepareView {
     
-    self.backgroundColor = [UIColor whiteColor];
+    
     
 }
 
@@ -137,6 +137,7 @@ extern CGFloat const kEmoticonPageViewBottomMargin;       // 表情键盘表情�
         NSMutableArray *tempArr = [NSMutableArray array];
         for (int i = 0; i<maxEmoticonCounts; i ++) {
             JSEmoticonButton *button = [[JSEmoticonButton alloc] init];
+            button.backgroundColor = self.backgroundColor;
             [self.contentView addSubview:button];// 添加子控件
             [tempArr addObject:button];
         }
