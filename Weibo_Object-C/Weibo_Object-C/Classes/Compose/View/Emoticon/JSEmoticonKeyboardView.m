@@ -11,7 +11,7 @@
 #import "JSEmoticonToolBar.h"
 #import "JSEmoticonToolBarButton.h"
 #import "JSEmoticonPageViewCell.h"
-
+#import "JSEmoticonTool.h"
 
 CGFloat const kEmoticonToolBarHeight = 37.f;             // 表情键盘底部Toolbar高度
 CGFloat const kEmoticonPageViewHorizontalMargin = 5.f;   // 表情键盘左右两侧间距
@@ -26,6 +26,8 @@ CGFloat const kEmoticonPageViewBottomMargin = 20.f;      // 表情键盘表情�
 @property (nonatomic) JSEmoticonToolBar *emoticonToolBar;
 // 记录滚动表情键盘时的索引
 @property (assign,nonatomic) NSInteger currentIndex;
+// PageControl
+@property (nonatomic) UIPageControl *pageControl;
 
 
 @end
@@ -52,6 +54,7 @@ CGFloat const kEmoticonPageViewBottomMargin = 20.f;      // 表情键盘表情�
     [self addSubview:self.emoticonPageView];
     [self addSubview:self.emoticonToolBar];
     
+    [self addSubview:self.pageControl];
     // 添加约束
     [self.emoticonToolBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.mas_equalTo(self);
@@ -65,6 +68,11 @@ CGFloat const kEmoticonPageViewBottomMargin = 20.f;      // 表情键盘表情�
         make.bottom.mas_equalTo(self.emoticonToolBar.mas_top).mas_equalTo(-kEmoticonPageViewBottomMargin);
     }];
     
+    [self.pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.emoticonPageView.mas_bottom);
+        make.bottom.mas_equalTo(self.emoticonToolBar.mas_top);
+        make.centerX.mas_equalTo(self);
+    }];
     
     // 点击底部的ToolBar回调
     __weak typeof(self) weakSelf = self;
@@ -72,6 +80,10 @@ CGFloat const kEmoticonPageViewBottomMargin = 20.f;      // 表情键盘表情�
         
         // 获取点击button的枚举值
         NSInteger flag = button.toolBarButtonType - 1100;
+        
+        // 设置PageControl
+        weakSelf.pageControl.numberOfPages = [JSEmoticonTool shared].allEmoticons[flag].count;
+        weakSelf.pageControl.currentPage = 0;
         
         NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:flag];
         [weakSelf.emoticonPageView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
@@ -116,6 +128,11 @@ CGFloat const kEmoticonPageViewBottomMargin = 20.f;      // 表情键盘表情�
             
             indexPath = [self.emoticonPageView indexPathForCell:lastCell];
         }
+        
+        // 设置pageControl
+        self.pageControl.numberOfPages = [JSEmoticonTool shared].allEmoticons[indexPath.section].count;
+        self.pageControl.currentPage = indexPath.item;
+        
         // 获取Section
         NSInteger section = indexPath.section;
         // 避免选中按钮多次调用,如果当前Section数相同,就直接返回
@@ -149,6 +166,20 @@ CGFloat const kEmoticonPageViewBottomMargin = 20.f;      // 表情键盘表情�
         _emoticonToolBar = [[JSEmoticonToolBar alloc] init];
     }
     return _emoticonToolBar;
+}
+
+- (UIPageControl *)pageControl {
+    
+    if (_pageControl == nil) {
+        _pageControl = [[UIPageControl alloc] init];
+        _pageControl.numberOfPages = [JSEmoticonTool shared].allEmoticons[0].count;
+        _pageControl.currentPage = 0;
+        [_pageControl setValue:[UIImage imageNamed:@"compose_keyboard_dot_normal"] forKey:@"pageImage"];
+        [_pageControl setValue:[UIImage imageNamed:@"compose_keyboard_dot_selected"] forKey:@"currentPageImage"];
+        //_pageControl.pageIndicatorTintColor = [UIColor whiteColor];
+        //_pageControl.currentPageIndicatorTintColor = [UIColor redColor];
+    }
+    return _pageControl;
 }
 
 @end
