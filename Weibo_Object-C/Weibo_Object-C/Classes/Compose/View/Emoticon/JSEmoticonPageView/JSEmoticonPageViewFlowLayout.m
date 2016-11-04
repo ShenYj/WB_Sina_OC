@@ -8,6 +8,10 @@
 
 #import "JSEmoticonPageViewFlowLayout.h"
 
+extern CGFloat const kEmoticonToolBarHeight;              // 表情键盘底部Toolbar高度
+extern CGFloat const kEmoticonPageViewHorizontalMargin;   // 表情键盘左右两侧间距
+extern CGFloat const kEmoticonPageViewBottomMargin;       // 表情键盘表情区域底部间距
+
 @implementation JSEmoticonPageViewFlowLayout
 
 - (void)prepareLayout {
@@ -15,7 +19,7 @@
         216 表情键盘的高度(PageView + 底部ToolBar)
         37 底部ToolBar的高度
      */
-    self.itemSize = CGSizeMake(SCREEN_WIDTH, 216 - 37);
+    self.itemSize = CGSizeMake(SCREEN_WIDTH - kEmoticonPageViewHorizontalMargin*2, 216 - kEmoticonToolBarHeight - kEmoticonPageViewBottomMargin);
     self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     self.minimumLineSpacing = 0;
     self.minimumInteritemSpacing = 0;

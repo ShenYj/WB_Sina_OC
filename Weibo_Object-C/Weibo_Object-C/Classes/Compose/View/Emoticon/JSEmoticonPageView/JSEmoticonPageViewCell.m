@@ -11,11 +11,12 @@
 #import "JSEmoticonModel.h"
 #import "JSEmoticonTool.h"
 
-extern NSInteger maxEmoticonCounts;             // 表情键盘每页展示表情最多个数
-extern NSInteger const kEmoticonsColCount;      // 表情键盘中表情列数
-extern CGFloat const kEmoticonToolBarHeight;    // 表情键盘底部Toolbar高度
-extern CGFloat const kKeyboardViewHeigth;       // 自定义表情键盘高度
-
+extern NSInteger maxEmoticonCounts;                       // 表情键盘每页展示表情最多个数
+extern NSInteger const kEmoticonsColCount;                // 表情键盘中表情列数
+extern CGFloat const kEmoticonToolBarHeight;              // 表情键盘底部Toolbar高度
+extern CGFloat const kKeyboardViewHeigth;                 // 自定义表情键盘高度
+extern CGFloat const kEmoticonPageViewHorizontalMargin;   // 表情键盘左右两侧间距
+extern CGFloat const kEmoticonPageViewBottomMargin;       // 表情键盘表情区域底部间距
 
 @interface JSEmoticonPageViewCell ()
 
@@ -44,8 +45,8 @@ extern CGFloat const kKeyboardViewHeigth;       // 自定义表情键盘高度
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    CGFloat buttonWidth = SCREEN_WIDTH / kEmoticonsColCount;
-    CGFloat buttonHeight = (kKeyboardViewHeigth - kEmoticonToolBarHeight) / 3;
+    CGFloat buttonWidth = (SCREEN_WIDTH - 2*kEmoticonPageViewHorizontalMargin) / kEmoticonsColCount;
+    CGFloat buttonHeight = (kKeyboardViewHeigth - kEmoticonToolBarHeight - kEmoticonPageViewBottomMargin) / 3;
     [self.emoticonButtons enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
        
         NSInteger row = idx / kEmoticonsColCount;

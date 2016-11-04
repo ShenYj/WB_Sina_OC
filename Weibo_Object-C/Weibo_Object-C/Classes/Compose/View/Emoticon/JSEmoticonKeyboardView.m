@@ -13,7 +13,10 @@
 #import "JSEmoticonPageViewCell.h"
 
 
-CGFloat const kEmoticonToolBarHeight = 37.f; // 表情键盘底部Toolbar高度
+CGFloat const kEmoticonToolBarHeight = 37.f;             // 表情键盘底部Toolbar高度
+CGFloat const kEmoticonPageViewHorizontalMargin = 5.f;   // 表情键盘左右两侧间距
+CGFloat const kEmoticonPageViewBottomMargin = 20.f;      // 表情键盘表情区域底部间距
+
 
 @interface JSEmoticonKeyboardView () <UICollectionViewDelegate>
 
@@ -56,8 +59,10 @@ CGFloat const kEmoticonToolBarHeight = 37.f; // 表情键盘底部Toolbar高度
     }];
     
     [self.emoticonPageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.top.mas_equalTo(self);
-        make.bottom.mas_equalTo(self.emoticonToolBar.mas_top);
+        make.top.mas_equalTo(self);
+        make.left.mas_equalTo(self).mas_offset(kEmoticonPageViewHorizontalMargin);
+        make.right.mas_equalTo(self).mas_offset(-kEmoticonPageViewHorizontalMargin);
+        make.bottom.mas_equalTo(self.emoticonToolBar.mas_top).mas_equalTo(-kEmoticonPageViewBottomMargin);
     }];
     
     
