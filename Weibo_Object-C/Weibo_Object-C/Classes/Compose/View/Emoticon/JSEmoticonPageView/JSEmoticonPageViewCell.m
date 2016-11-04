@@ -18,9 +18,13 @@ extern CGFloat const kKeyboardViewHeigth;                 // 自定义表情键�
 extern CGFloat const kEmoticonPageViewHorizontalMargin;   // 表情键盘左右两侧间距
 extern CGFloat const kEmoticonPageViewBottomMargin;       // 表情键盘表情区域底部间距
 
+
 @interface JSEmoticonPageViewCell ()
 
+// 表情按钮数组
 @property (nonatomic) NSArray <JSEmoticonButton *>*emoticonButtons;
+// 删除按钮
+@property (nonatomic) UIButton *deleteButton;
 
 @end
 
@@ -42,6 +46,7 @@ extern CGFloat const kEmoticonPageViewBottomMargin;       // 表情键盘表情�
     
 }
 
+// 设置表情按钮和删除按钮约束
 - (void)layoutSubviews {
     [super layoutSubviews];
     
@@ -63,6 +68,12 @@ extern CGFloat const kEmoticonPageViewBottomMargin;       // 表情键盘表情�
             make.height.mas_equalTo(buttonHeight);
         }];
         
+    }];
+    
+    [self.deleteButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(self.contentView).mas_offset(-kEmoticonPageViewHorizontalMargin);
+        make.bottom.mas_equalTo(self.contentView);
+        make.size.mas_equalTo(CGSizeMake(buttonWidth, buttonHeight));
     }];
     
 }
@@ -107,7 +118,12 @@ extern CGFloat const kEmoticonPageViewBottomMargin;       // 表情键盘表情�
         
     }];
     
+}
+
+// 点击删除表情按钮
+- (void)clickDeleteEmoticonButton:(UIButton *)sender {
     
+    NSLog(@"%s",__func__);
 }
 
 #pragma mark
@@ -127,6 +143,18 @@ extern CGFloat const kEmoticonPageViewBottomMargin;       // 表情键盘表情�
         _emoticonButtons = tempArr.copy;
     }
     return _emoticonButtons;
+}
+
+- (UIButton *)deleteButton {
+    
+    if (_deleteButton == nil) {
+        _deleteButton = [[UIButton alloc] init];
+        [_deleteButton setImage:[UIImage imageNamed:@"compose_emotion_delete"] forState:UIControlStateNormal];
+        [_deleteButton setImage:[UIImage imageNamed:@"compose_emotion_delete_highlighted"] forState:UIControlStateHighlighted];
+        [_deleteButton addTarget:self action:@selector(clickDeleteEmoticonButton:) forControlEvents:UIControlEventTouchUpInside];
+        [self.contentView addSubview:_deleteButton];// 添加子控件
+    }
+    return _deleteButton;
 }
 
 @end
