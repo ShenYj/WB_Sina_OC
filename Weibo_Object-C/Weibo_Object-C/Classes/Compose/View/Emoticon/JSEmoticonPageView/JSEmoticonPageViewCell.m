@@ -122,9 +122,11 @@ extern CGFloat const kEmoticonPageViewBottomMargin;       // 表情键盘表情�
 
 // 点击删除表情按钮
 - (void)clickDeleteEmoticonButton:(UIButton *)sender {
-    
-    NSLog(@"%s",__func__);
+    // 发送通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"deleteEmoticonButtonNotification" object:nil userInfo:nil];
 }
+
+
 
 #pragma mark
 #pragma mark - lazy

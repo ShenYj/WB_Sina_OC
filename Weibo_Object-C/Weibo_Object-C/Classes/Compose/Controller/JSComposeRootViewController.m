@@ -93,6 +93,9 @@ extern CGFloat itemSize;
     // 发送通知
     //[[NSNotificationCenter defaultCenter] postNotificationName:UITextViewTextDidChangeNotification object:self.textView userInfo:nil];
     
+    // 注册删除按钮通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteEmoticonButtonNotification:) name:@"deleteEmoticonButtonNotification" object:nil];
+    
     __weak typeof(self) weakSelf = self;
     
     [self.composeToolBar setCompletionHandler:^(JSComposeToolBarButton *toolBarButton) {
@@ -262,6 +265,14 @@ extern CGFloat itemSize;
     // 成为第一响应者 (解决首次点击没有反应)
     [self.textView becomeFirstResponder];
 }
+
+
+// 删除按钮通知的实现
+- (void)deleteEmoticonButtonNotification:(NSNotification *)notification {
+    
+    [self.textView deleteBackward];
+}
+
 
 #pragma mark
 #pragma mark - UIImagePickerControllerDelegate

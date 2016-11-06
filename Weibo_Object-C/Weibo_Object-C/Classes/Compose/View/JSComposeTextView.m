@@ -29,6 +29,11 @@ static CGFloat const kMarginLeft = 5.f;// 占位文字左侧间距
     return self;
 }
 
+- (void)dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 // 设置视图
 - (void)prepareView {
     
