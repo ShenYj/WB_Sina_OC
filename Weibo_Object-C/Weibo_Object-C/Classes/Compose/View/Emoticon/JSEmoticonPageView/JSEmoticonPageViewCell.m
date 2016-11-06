@@ -100,7 +100,7 @@ extern CGFloat const kEmoticonPageViewBottomMargin;       // 表情键盘表情�
         if (emoticonModel.isEmoji) {
             // emoji表情
             NSString *emojiEmoticon = [emoticonModel.code emoji];
-            
+            emoticonButton.emoticonModel = emoticonModel;   // 给表情按钮设置属性
             [emoticonButton setTitle:emojiEmoticon forState:UIControlStateNormal];
             [emoticonButton setImage:nil forState:UIControlStateNormal];
             
@@ -120,13 +120,19 @@ extern CGFloat const kEmoticonPageViewBottomMargin;       // 表情键盘表情�
     
 }
 
+#pragma mark - 表情按钮&删除按钮点击事件
+
 // 点击删除表情按钮
 - (void)clickDeleteEmoticonButton:(UIButton *)sender {
     // 发送通知
     [[NSNotificationCenter defaultCenter] postNotificationName:@"deleteEmoticonButtonNotification" object:nil userInfo:nil];
 }
 
-
+// 点击表情按钮事件
+- (void)clickEmoticonButton:(JSEmoticonButton *)button {
+    // 发送通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"clickEmoticonButtonNotification" object:button.emoticonModel userInfo:nil];
+}
 
 #pragma mark
 #pragma mark - lazy
@@ -139,6 +145,7 @@ extern CGFloat const kEmoticonPageViewBottomMargin;       // 表情键盘表情�
         NSMutableArray *tempArr = [NSMutableArray array];
         for (int i = 0; i<maxEmoticonCounts; i ++) {
             JSEmoticonButton *button = [[JSEmoticonButton alloc] init];
+            [button addTarget:self action:@selector(clickEmoticonButton:) forControlEvents:UIControlEventTouchUpInside];
             button.backgroundColor = self.backgroundColor;
             [self.contentView addSubview:button];// 添加子控件
             [tempArr addObject:button];

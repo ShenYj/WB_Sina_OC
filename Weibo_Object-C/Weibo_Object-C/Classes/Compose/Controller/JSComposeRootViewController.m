@@ -13,7 +13,7 @@
 #import "JSComposeToolBar.h"
 #import "JSComposePictureView.h"
 #import "JSEmoticonKeyboardView.h"
-
+#import "JSEmoticonModel.h"
 
 
 CGFloat const kPictureMarginHorizontal = 10.f; // 配图视图左右的间距
@@ -95,6 +95,10 @@ extern CGFloat itemSize;
     
     // 注册删除按钮通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteEmoticonButtonNotification:) name:@"deleteEmoticonButtonNotification" object:nil];
+    
+    // 注册表情按钮通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clickEmoticonButtonNotification:) name:@"clickEmoticonButtonNotification" object:nil];
+    
     
     __weak typeof(self) weakSelf = self;
     
@@ -271,6 +275,20 @@ extern CGFloat itemSize;
 - (void)deleteEmoticonButtonNotification:(NSNotification *)notification {
     
     [self.textView deleteBackward];
+}
+
+- (void)clickEmoticonButtonNotification:(NSNotification *)notification {
+    
+    JSEmoticonModel *emoticonModel = (JSEmoticonModel *)notification.object;
+    
+    if (emoticonModel.isEmoji) {
+        // emoji表情
+        [self.textView insertText:[emoticonModel.code emoji]];
+    } else {
+        // 图片表情
+        
+    }
+    
 }
 
 
