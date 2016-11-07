@@ -10,7 +10,11 @@
 #import "JSHomeStatusModel.h"
 #import "JSHomeStatusUserModel.h"
 #import "JSPictureView.h"
-
+#import "RegexKitLite.h"
+#import "JSEmoticonTool.h"
+#import "JSEmoticonModel.h"
+#import "JSMatchResultModel.h"
+#import "JSEmoticonTextAttachment.h"
 
 #pragma mark
 #pragma mark -- Magic Number  (引用JSHomeStatusModel中的常量)
@@ -147,7 +151,8 @@ extern CGFloat kOriginalContentLabelFontSize;
     self.timeLabel.text = statusData.created_at_formatterString;
     
     // 微博内容
-    self.contentLabel.text = statusData.text;
+    self.contentLabel.attributedText = [self getWeiBoAttributedText:statusData.text];
+    
     
     // 用户状态(在线/离线)
     UserStatus status = statusData.user.userstatus;
@@ -212,6 +217,59 @@ extern CGFloat kOriginalContentLabelFontSize;
     
     
 }
+
+#pragma mark - 将微博内容转成富文本
+- (NSMutableAttributedString *)getWeiBoAttributedText:(NSString *)originalText {
+    
+    // 可变临时数组
+    NSMutableArray *tempArr = [NSMutableArray array];
+    
+    // 将微博内容转换成富文本
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:originalText];
+    
+    // 正则表达式遍历  \[\]
+    [originalText enumerateStringsMatchedByRegex:@"\\[[A-Za-z0-9\\u4E00-\\u9FA5]+\\]" usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
+        
+        JSEmoticonModel *emoticonModel = [[JSEmoticonTool shared] searchEmoticonChs:*capturedStrings];
+        if (emoticonModel) {
+            // 存在图片表情
+            
+            // 创建模型对象
+            JSMatchResultModel *resultModel = [[JSMatchResultModel alloc] initWithResult:*capturedStrings withRange:*capturedRanges];
+            // 添加到可变数组
+            [tempArr addObject:resultModel];
+            
+        }
+        
+    }];
+    
+    // 倒序遍历模型数组 (直接遍历富文本进行转换,会造成数组越界)
+    [tempArr enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        // 匹配结果模型对象
+        JSMatchResultModel *matchModel = (JSMatchResultModel *)obj;
+        // 通过表情描述遍历查找表情模型
+        JSEmoticonModel *emoticonModel = [[JSEmoticonTool shared] searchEmoticonChs:matchModel.result];
+        
+        // 实例化文本附件
+        JSEmoticonTextAttachment *textAttachment = [[JSEmoticonTextAttachment alloc] init];
+        // 设置属性
+        NSString *imageName = [NSString stringWithFormat:@"%@/%@",emoticonModel.path,emoticonModel.png];
+        textAttachment.image = [UIImage imageNamed:imageName inBundle:[JSEmoticonTool shared].emoticonsBundle compatibleWithTraitCollection:nil];
+        textAttachment.bounds = CGRectMake(0, -4, self.contentLabel.font.lineHeight, self.contentLabel.font.lineHeight);
+        
+        NSAttributedString *attributedStr = [NSAttributedString attributedStringWithAttachment:textAttachment];
+        
+        [attributedString replaceCharactersInRange:matchModel.range withAttributedString:attributedStr];
+        
+    }];
+    
+    // 返回富文本
+    return attributedString;
+    
+}
+
+
 
 #pragma mark
 #pragma mark - lazy

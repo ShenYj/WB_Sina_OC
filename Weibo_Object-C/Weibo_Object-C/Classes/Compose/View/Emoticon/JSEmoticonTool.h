@@ -21,5 +21,7 @@
 // 表情               (三维数组)
 @property (nonatomic,strong) NSArray < NSArray <NSArray <JSEmoticonModel *>*> * >* allEmoticons;
 
+// 通过表情描述查找表情模型
+- (JSEmoticonModel *)searchEmoticonChs:(NSString *)chs;
 
 @end

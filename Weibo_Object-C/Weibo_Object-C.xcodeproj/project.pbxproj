@@ -53,6 +53,9 @@
 		F77886561D201CBD00BE4518 /* JSVistorView.m in Sources */ = {isa = PBXBuildFile; fileRef = F77886551D201CBD00BE4518 /* JSVistorView.m */; };
 		F78A22DD1DC4B976001B7AB3 /* JSComposePictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = F78A22DC1DC4B976001B7AB3 /* JSComposePictureView.m */; };
 		F7969E9A1DD04D2A003D6A38 /* JSEmoticonTextAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = F7969E991DD04D2A003D6A38 /* JSEmoticonTextAttachment.m */; };
+		F7969EA01DD06761003D6A38 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = F7969E9F1DD06761003D6A38 /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F7969EA21DD067F8003D6A38 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F7969EA11DD067F8003D6A38 /* libicucore.tbd */; };
+		F7969EA51DD07BFE003D6A38 /* JSMatchResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7969EA41DD07BFE003D6A38 /* JSMatchResultModel.m */; };
 		F79927BE1D1C13D500E9BA8C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F79927B91D1C13D500E9BA8C /* AppDelegate.m */; };
 		F79927BF1D1C13D500E9BA8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F79927BA1D1C13D500E9BA8C /* Assets.xcassets */; };
 		F79927C01D1C13D500E9BA8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F79927BB1D1C13D500E9BA8C /* LaunchScreen.storyboard */; };
@@ -173,6 +176,11 @@
 		F78A22DC1DC4B976001B7AB3 /* JSComposePictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSComposePictureView.m; sourceTree = "<group>"; };
 		F7969E981DD04D2A003D6A38 /* JSEmoticonTextAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEmoticonTextAttachment.h; sourceTree = "<group>"; };
 		F7969E991DD04D2A003D6A38 /* JSEmoticonTextAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSEmoticonTextAttachment.m; sourceTree = "<group>"; };
+		F7969E9E1DD06761003D6A38 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
+		F7969E9F1DD06761003D6A38 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
+		F7969EA11DD067F8003D6A38 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		F7969EA31DD07BFE003D6A38 /* JSMatchResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSMatchResultModel.h; sourceTree = "<group>"; };
+		F7969EA41DD07BFE003D6A38 /* JSMatchResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSMatchResultModel.m; sourceTree = "<group>"; };
 		F799278C1D1C11EA00E9BA8C /* Weibo_Object-C.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weibo_Object-C.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F79927A01D1C11EA00E9BA8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		F79927B81D1C13D500E9BA8C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -220,6 +228,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7969EA21DD067F8003D6A38 /* libicucore.tbd in Frameworks */,
 				E6D542BB8EA798826F2569E1 /* libPods-Weibo_Object-C.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -230,6 +239,7 @@
 		1CFED4CCE944CD3A0A573F87 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F7969EA11DD067F8003D6A38 /* libicucore.tbd */,
 				CA89379BD5C259B8114A7F9F /* libPods-Weibo_Object-C.a */,
 			);
 			name = Frameworks;
@@ -423,6 +433,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		F7969E9D1DD06761003D6A38 /* RegexKitLite */ = {
+			isa = PBXGroup;
+			children = (
+				F7969E9E1DD06761003D6A38 /* RegexKitLite.h */,
+				F7969E9F1DD06761003D6A38 /* RegexKitLite.m */,
+			);
+			path = RegexKitLite;
+			sourceTree = "<group>";
+		};
 		F79927831D1C11EA00E9BA8C = {
 			isa = PBXGroup;
 			children = (
@@ -527,6 +546,8 @@
 				F73BE43E1DBC7DDD00C31595 /* JSHomeStatusPictureModel.m */,
 				F767E2BC1DBDD71800254511 /* JSHomeStatusLayout.h */,
 				F767E2BD1DBDD71800254511 /* JSHomeStatusLayout.m */,
+				F7969EA31DD07BFE003D6A38 /* JSMatchResultModel.h */,
+				F7969EA41DD07BFE003D6A38 /* JSMatchResultModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -626,6 +647,7 @@
 		F79927C21D1C13FE00E9BA8C /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				F7969E9D1DD06761003D6A38 /* RegexKitLite */,
 				F72175F31DC080580065D3B8 /* JSRefreshTool */,
 				F731D1DC1D9AACD9001C7B72 /* JSOperation */,
 				F747F7831D843748000A0C8D /* UIKit+JSExtension */,
@@ -846,6 +868,7 @@
 				F7209EFC1DC4DF4600767F40 /* JSComposePictureViewCell.m in Sources */,
 				F72613AB1DC36B54004FF7F9 /* JSComposeToolBar.m in Sources */,
 				F79927CF1D1C14E300E9BA8C /* JSHomeTableViewController.m in Sources */,
+				F7969EA01DD06761003D6A38 /* RegexKitLite.m in Sources */,
 				F7209EF61DC4CD1E00767F40 /* JSPictureViewFlowLayout.m in Sources */,
 				F7079FA41D8E5FC60018FDA4 /* JSUserAccountModel.m in Sources */,
 				F7AF4CFB1DC8B66900BEA0BE /* JSEmoticonToolBarButton.m in Sources */,
@@ -858,6 +881,7 @@
 				F72175F91DC087770065D3B8 /* JSRefresh.m in Sources */,
 				F747F79B1D843748000A0C8D /* NSString+JSExtension.m in Sources */,
 				F7AF4CF11DC8B4E000BEA0BE /* JSEmoticonPageViewFlowLayout.m in Sources */,
+				F7969EA51DD07BFE003D6A38 /* JSMatchResultModel.m in Sources */,
 				F747F7971D843748000A0C8D /* NSArray+JSLog.m in Sources */,
 				F79927C11D1C13D500E9BA8C /* main.m in Sources */,
 				F72613AE1DC37657004FF7F9 /* JSComposeToolBarButton.m in Sources */,

@@ -95,6 +95,26 @@ NSInteger maxEmoticonCounts;             // 表情键盘每页最大数
     return tempArr.copy;
 }
 
+// 通过chs(表情描述)查找对应的表情模型对象
+- (JSEmoticonModel *)searchEmoticonChs:(NSString *)chs {
+    
+    // 遍历默认表情
+    for (JSEmoticonModel *model in self.defalut) {
+        
+        if ([model.chs isEqualToString:chs]) {
+            return model;
+        }
+    }
+    // 遍历浪小花表情
+    for (JSEmoticonModel *model in self.langxiaohua) {
+        
+        if ([model.chs isEqualToString:model.chs]) {
+            return model;
+        }
+    }
+    
+    return nil;
+}
 
 #pragma mark
 #pragma mark - lazy
