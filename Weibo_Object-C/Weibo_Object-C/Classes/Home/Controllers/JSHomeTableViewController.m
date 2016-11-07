@@ -13,9 +13,12 @@
 #import "JSNetworkTool.h"
 #import "JSHomeStatusModel.h"
 #import "JSStatusCell.h"
+#import "JSStatusTipCell.h"
 #import "JSHomeNavButton.h"
 
+
 static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
+static NSString * const homeTableCellTipReusedId = @"homeTableCellTipReusedId";
 
 @interface JSHomeTableViewController ()
 
@@ -49,12 +52,18 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
 
 - (void)prepareView {
     
+    // 监听网络
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkReachablityDidChanged:) name:AFNetworkingReachabilityDidChangeNotification object:nil];
+    
     // 使用Status模型类记录行高
     //self.tableView.rowHeight = UITableViewAutomaticDimension;
     //self.tableView.estimatedRowHeight = 200.f;
     
     self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    [self.tableView registerClass:[JSStatusTipCell class] forCellReuseIdentifier:homeTableCellTipReusedId];
+    [self.tableView registerClass:[JSStatusCell class] forCellReuseIdentifier:homeTableCellReusedId];
     
     // 使用自定义JSRefresh实现下拉刷新
     [self.tableView addSubview:self.refreshControl];
@@ -65,6 +74,8 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
     
     // 首次展示首页请求数据
     [self loadHomeStatusDataByIsPulling:self.activityIndicatorView.isAnimating];
+    
+    
 
 }
 
@@ -170,16 +181,26 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
     
 }
 
+// 网络发生变化
+- (void)networkReachablityDidChanged:(NSNotification *)notification {
+    // 刷新数据源
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
 
 #pragma mark
 #pragma mark - Table view data source & delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    if (section == 0) {
+        return [JSNetworkTool sharedNetworkTool].reachabilityManager.reachable ? 0 : 1;
+    }
 
     return self.homeStatusDatas.count;
 }
@@ -188,11 +209,11 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
     
     JSHomeStatusModel *dataModel = self.homeStatusDatas[indexPath.row];
     
-    JSStatusCell *cell = [tableView dequeueReusableCellWithIdentifier:homeTableCellReusedId];
-    
-    if ( !cell ) {
-        cell = [[JSStatusCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:homeTableCellReusedId];
+    if (indexPath.section == 0) {
+        return [tableView dequeueReusableCellWithIdentifier:homeTableCellTipReusedId forIndexPath:indexPath];
     }
+    
+    JSStatusCell *cell = [tableView dequeueReusableCellWithIdentifier:homeTableCellReusedId forIndexPath:indexPath];
     
     cell.statusData = dataModel;
     
@@ -200,6 +221,10 @@ static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.section == 0) {
+        return 44;
+    }
 
     JSHomeStatusModel *statusModel = self.homeStatusDatas[indexPath.row];
     

@@ -11,7 +11,7 @@
 #import "JSWelComeViewController.h"
 #import "JSUserAccountTool.h"
 #import <Bugly/Bugly.h>
-
+#import "AFNetworkReachabilityManager.h"
 
 
 @interface AppDelegate ()
@@ -31,6 +31,28 @@
         
     // 监听kChangeRootViewControllerNotification通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeRootViewController:) name:[JSUserAccountTool sharedManager].kChangeRootViewControllerNotification object:nil];
+    // 监听网络状态
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    
+//    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+//        
+//        switch (status) {
+//            case AFNetworkReachabilityStatusUnknown:
+//                NSLog(@"AFNetworkReachabilityStatusUnknown");
+//                break;
+//            case AFNetworkReachabilityStatusNotReachable:
+//                NSLog(@"AFNetworkReachabilityStatusNotReachable");
+//                break;
+//            case AFNetworkReachabilityStatusReachableViaWWAN:
+//                NSLog(@"AFNetworkReachabilityStatusReachableViaWWAN");
+//                break;
+//            case AFNetworkReachabilityStatusReachableViaWiFi:
+//                NSLog(@"AFNetworkReachabilityStatusReachableViaWiFi");
+//                break;
+//            default:
+//                break;
+//        }
+//    }];
     
     // 设置根控制器
     [self setupRootViewController];

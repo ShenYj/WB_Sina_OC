@@ -64,6 +64,7 @@
 		F79927CF1D1C14E300E9BA8C /* JSHomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F79927CE1D1C14E300E9BA8C /* JSHomeTableViewController.m */; };
 		F79927D21D1C14F200E9BA8C /* JSMessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F79927D11D1C14F200E9BA8C /* JSMessageTableViewController.m */; };
 		F79927D51D1C150100E9BA8C /* JSProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F79927D41D1C150100E9BA8C /* JSProfileTableViewController.m */; };
+		F7A3480D1DD0CC5B00457632 /* JSStatusTipCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A3480C1DD0CC5B00457632 /* JSStatusTipCell.m */; };
 		F7AF4CDE1DC8395E00BEA0BE /* JSEmoticonKeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF4CDD1DC8395E00BEA0BE /* JSEmoticonKeyboardView.m */; };
 		F7AF4CF01DC8B4E000BEA0BE /* JSEmoticonPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF4CED1DC8B4E000BEA0BE /* JSEmoticonPageView.m */; };
 		F7AF4CF11DC8B4E000BEA0BE /* JSEmoticonPageViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF4CEF1DC8B4E000BEA0BE /* JSEmoticonPageViewFlowLayout.m */; };
@@ -196,6 +197,8 @@
 		F79927D11D1C14F200E9BA8C /* JSMessageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSMessageTableViewController.m; sourceTree = "<group>"; };
 		F79927D31D1C150100E9BA8C /* JSProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSProfileTableViewController.h; sourceTree = "<group>"; };
 		F79927D41D1C150100E9BA8C /* JSProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSProfileTableViewController.m; sourceTree = "<group>"; };
+		F7A3480B1DD0CC5B00457632 /* JSStatusTipCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSStatusTipCell.h; sourceTree = "<group>"; };
+		F7A3480C1DD0CC5B00457632 /* JSStatusTipCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSStatusTipCell.m; sourceTree = "<group>"; };
 		F7AF4CDC1DC8395E00BEA0BE /* JSEmoticonKeyboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEmoticonKeyboardView.h; sourceTree = "<group>"; };
 		F7AF4CDD1DC8395E00BEA0BE /* JSEmoticonKeyboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSEmoticonKeyboardView.m; sourceTree = "<group>"; };
 		F7AF4CEC1DC8B4E000BEA0BE /* JSEmoticonPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEmoticonPageView.h; sourceTree = "<group>"; };
@@ -557,6 +560,8 @@
 			children = (
 				F7271A9A1DB9EC9900CF96A0 /* JSStatusCell.h */,
 				F7271A9B1DB9EC9900CF96A0 /* JSStatusCell.m */,
+				F7A3480B1DD0CC5B00457632 /* JSStatusTipCell.h */,
+				F7A3480C1DD0CC5B00457632 /* JSStatusTipCell.m */,
 				F7271A9D1DB9F5DD00CF96A0 /* SubViews */,
 				F72613A31DC2F1B0004FF7F9 /* JSHomeNavButton.h */,
 				F72613A41DC2F1B0004FF7F9 /* JSHomeNavButton.m */,
@@ -846,6 +851,7 @@
 				F731D1E61D9AACD9001C7B72 /* JSDownLoadOperationManager.m in Sources */,
 				F7AF4CF41DC8B5E400BEA0BE /* JSEmoticonPageViewCell.m in Sources */,
 				F74F57381D84F3DA00E3CC61 /* JSUserAccountTool.m in Sources */,
+				F7A3480D1DD0CC5B00457632 /* JSStatusTipCell.m in Sources */,
 				F767E2BE1DBDD71800254511 /* JSHomeStatusLayout.m in Sources */,
 				F778864A1D1EC9BC00BE4518 /* JSTabBar.m in Sources */,
 				F7DE06F11DC9A2330071B429 /* JSEmoticonModel.m in Sources */,

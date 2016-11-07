@@ -95,7 +95,6 @@ extern CGFloat itemSize;
     // 注册表情按钮通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clickEmoticonButtonNotification:) name:@"clickEmoticonButtonNotification" object:nil];
     
-    
     __weak typeof(self) weakSelf = self;
     
     [self.composeToolBar setCompletionHandler:^(JSComposeToolBarButton *toolBarButton) {
@@ -109,6 +108,7 @@ extern CGFloat itemSize;
     }];
     
 }
+
 
 // 键盘Frame将要改变时接收到通知调用的方法
 - (void)keyboardWillChangeFrame:(NSNotification *)notification {
@@ -336,6 +336,9 @@ extern CGFloat itemSize;
     }
     
 }
+
+
+
 
 
 #pragma mark
