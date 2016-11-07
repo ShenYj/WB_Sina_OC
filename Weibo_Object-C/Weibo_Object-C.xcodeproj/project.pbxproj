@@ -52,6 +52,7 @@
 		F778864D1D1F51EE00BE4518 /* JSVistorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F778864C1D1F51EE00BE4518 /* JSVistorTableViewController.m */; };
 		F77886561D201CBD00BE4518 /* JSVistorView.m in Sources */ = {isa = PBXBuildFile; fileRef = F77886551D201CBD00BE4518 /* JSVistorView.m */; };
 		F78A22DD1DC4B976001B7AB3 /* JSComposePictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = F78A22DC1DC4B976001B7AB3 /* JSComposePictureView.m */; };
+		F7969E9A1DD04D2A003D6A38 /* JSEmoticonTextAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = F7969E991DD04D2A003D6A38 /* JSEmoticonTextAttachment.m */; };
 		F79927BE1D1C13D500E9BA8C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F79927B91D1C13D500E9BA8C /* AppDelegate.m */; };
 		F79927BF1D1C13D500E9BA8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F79927BA1D1C13D500E9BA8C /* Assets.xcassets */; };
 		F79927C01D1C13D500E9BA8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F79927BB1D1C13D500E9BA8C /* LaunchScreen.storyboard */; };
@@ -170,6 +171,8 @@
 		F778865D1D20A9D000BE4518 /* Common.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.pch; sourceTree = "<group>"; };
 		F78A22DB1DC4B976001B7AB3 /* JSComposePictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSComposePictureView.h; sourceTree = "<group>"; };
 		F78A22DC1DC4B976001B7AB3 /* JSComposePictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSComposePictureView.m; sourceTree = "<group>"; };
+		F7969E981DD04D2A003D6A38 /* JSEmoticonTextAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEmoticonTextAttachment.h; sourceTree = "<group>"; };
+		F7969E991DD04D2A003D6A38 /* JSEmoticonTextAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSEmoticonTextAttachment.m; sourceTree = "<group>"; };
 		F799278C1D1C11EA00E9BA8C /* Weibo_Object-C.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weibo_Object-C.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F79927A01D1C11EA00E9BA8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		F79927B81D1C13D500E9BA8C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -324,6 +327,8 @@
 				F7209EFB1DC4DF4600767F40 /* JSComposePictureViewCell.m */,
 				F7209EF41DC4CD1E00767F40 /* JSPictureViewFlowLayout.h */,
 				F7209EF51DC4CD1E00767F40 /* JSPictureViewFlowLayout.m */,
+				F7969E981DD04D2A003D6A38 /* JSEmoticonTextAttachment.h */,
+				F7969E991DD04D2A003D6A38 /* JSEmoticonTextAttachment.m */,
 				F7AF4CDB1DC8391B00BEA0BE /* Emoticon */,
 			);
 			path = View;
@@ -875,6 +880,7 @@
 				F77886561D201CBD00BE4518 /* JSVistorView.m in Sources */,
 				F7F9DB121D24979D0029235B /* JSOAuthorizeViewController.m in Sources */,
 				F79927D21D1C14F200E9BA8C /* JSMessageTableViewController.m in Sources */,
+				F7969E9A1DD04D2A003D6A38 /* JSEmoticonTextAttachment.m in Sources */,
 				F72613A81DC31B9A004FF7F9 /* JSComposeTextView.m in Sources */,
 				F747F79C1D843748000A0C8D /* UIColor+JSExtension.m in Sources */,
 			);

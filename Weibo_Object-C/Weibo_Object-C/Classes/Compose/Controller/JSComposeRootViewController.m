@@ -15,6 +15,7 @@
 #import "JSEmoticonKeyboardView.h"
 #import "JSEmoticonModel.h"
 #import "JSEmoticonTool.h"
+#import "JSEmoticonTextAttachment.h"
 
 CGFloat const kPictureMarginHorizontal = 10.f; // 配图视图左右的间距
 CGFloat const kKeyboardViewHeigth = 216.f;     // 自定义表情键盘高度
@@ -155,23 +156,37 @@ extern CGFloat itemSize;
 // 发布微博
 - (void)clickRightBarButtonItem:(UIBarButtonItem *)sender {
     
-    if (!(self.pictureView.images.count > 0)) {
+    // 拼接表情+文本的可变字符串
+    NSMutableString *composeText = [[NSMutableString alloc] init];
+    
+    // 遍历TextView的富文本
+    [self.textView.attributedText enumerateAttributesInRange:NSMakeRange(0, self.textView.attributedText.length) options:0 usingBlock:^(NSDictionary<NSString *,id> * _Nonnull attrs, NSRange range, BOOL * _Nonnull stop) {
         
+        JSEmoticonTextAttachment *emoticonTextAttachment = (JSEmoticonTextAttachment *)attrs[@"NSAttachment"];
+        if (emoticonTextAttachment) {
+            // 文本附件
+            [composeText appendString:emoticonTextAttachment.emoticonModel.chs];
+        } else {
+            // 纯文本
+            [composeText appendString:[self.textView.attributedText.string substringWithRange:range]];
+        }
+        
+    }];
+    
+    if (!(self.pictureView.images.count > 0)) {
         // 发布文字微博
-        [[JSNetworkTool sharedNetworkTool] composeStatus:self.textView.text withFinishedBlock:^(id obj, NSError *error) {
+        [[JSNetworkTool sharedNetworkTool] composeStatus:composeText.copy withFinishedBlock:^(id obj, NSError *error) {
             
             if (error) {
                 NSLog(@"错误信息:%@",error);
             }
         }];
     } else {
-        
         // 发布文字&图片微博
         NSDictionary *datas = @{
-                                @"status": self.textView.text,
+                                @"status": composeText.copy,
                                 @"pics": self.pictureView.images
                                 };
-        
         [[JSNetworkTool sharedNetworkTool] composeStatusWithPictures:datas withFinishedBlock:^(id obj, NSError *error) {
             
             if (error) {
@@ -293,7 +308,9 @@ extern CGFloat itemSize;
         UIImage *image = [UIImage imageNamed:imageName inBundle:[JSEmoticonTool shared].emoticonsBundle compatibleWithTraitCollection:nil];
         
         // 实例化文本附件
-        NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
+        JSEmoticonTextAttachment *textAttachment = [[JSEmoticonTextAttachment alloc] init];
+        // 属性赋值
+        textAttachment.emoticonModel = emoticonModel;
         // 设置图片
         textAttachment.image = image;
         // 设置bounds 注意点一
