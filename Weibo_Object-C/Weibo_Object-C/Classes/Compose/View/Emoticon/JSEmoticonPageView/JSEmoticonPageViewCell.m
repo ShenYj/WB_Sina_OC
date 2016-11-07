@@ -94,13 +94,14 @@ extern CGFloat const kEmoticonPageViewBottomMargin;       // 表情键盘表情�
         
         JSEmoticonModel *emoticonModel = (JSEmoticonModel *)obj;
         JSEmoticonButton *emoticonButton = self.emoticonButtons[idx];
+        // 给表情按钮设置属性
+        emoticonButton.emoticonModel = emoticonModel;
         // 显示按钮
         emoticonButton.hidden = NO;
         
         if (emoticonModel.isEmoji) {
             // emoji表情
             NSString *emojiEmoticon = [emoticonModel.code emoji];
-            emoticonButton.emoticonModel = emoticonModel;   // 给表情按钮设置属性
             [emoticonButton setTitle:emojiEmoticon forState:UIControlStateNormal];
             [emoticonButton setImage:nil forState:UIControlStateNormal];
             

@@ -12,7 +12,7 @@
 #import "JSEmoticonTool.h"
 
 
-static NSString * const reusedId = @"恶魔体从PageViewCell";
+static NSString * const reusedId = @"emoticonPageViewCell";
 
 @implementation JSEmoticonPageView
 

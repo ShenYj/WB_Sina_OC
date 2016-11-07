@@ -14,7 +14,7 @@
 #import "JSComposePictureView.h"
 #import "JSEmoticonKeyboardView.h"
 #import "JSEmoticonModel.h"
-
+#import "JSEmoticonTool.h"
 
 CGFloat const kPictureMarginHorizontal = 10.f; // 配图视图左右的间距
 CGFloat const kKeyboardViewHeigth = 216.f;     // 自定义表情键盘高度
@@ -284,9 +284,25 @@ extern CGFloat itemSize;
     if (emoticonModel.isEmoji) {
         // emoji表情
         [self.textView insertText:[emoticonModel.code emoji]];
+        
+        
     } else {
         // 图片表情
+        // 拼接图片名
+        NSString *imageName = [NSString stringWithFormat:@"%@/%@",emoticonModel.path,emoticonModel.png];
+        // 从emoticonBundle中获取图片
+        UIImage *image = [UIImage imageNamed:imageName inBundle:[JSEmoticonTool shared].emoticonsBundle compatibleWithTraitCollection:nil];
         
+        // 实例化文本附件
+        NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
+        // 设置图片
+        textAttachment.image = image;
+        // 设置bounds
+        textAttachment.bounds = CGRectMake(0, 0, self.textView.font.lineHeight, self.textView.font.lineHeight);
+        // 创建富文本
+        NSAttributedString *attributedString = [NSAttributedString attributedStringWithAttachment:textAttachment];
+        // 设置富文本
+        self.textView.attributedText = attributedString;
     }
     
 }
