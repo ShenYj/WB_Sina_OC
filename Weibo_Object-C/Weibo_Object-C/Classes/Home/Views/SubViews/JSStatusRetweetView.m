@@ -69,7 +69,8 @@ extern CGFloat kMargin;
     _statusData = statusData;
     
     // 设置转发微博内容
-    self.contentLabel.text = statusData.text;
+    //self.contentLabel.text = statusData.text;
+    self.contentLabel.attributedText = statusData.attributedString;
     
     // 传递数据
     self.pictureView.statusData = statusData;
