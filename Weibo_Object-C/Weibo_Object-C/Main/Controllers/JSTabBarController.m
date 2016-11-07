@@ -66,11 +66,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)tabBar:(JSTabBar *)tabBarwithButtonClick{
-    
-    NSLog(@"%s",__func__);
-}
-
 #pragma mark 
 #pragma mark JSTabBarDelegate
 

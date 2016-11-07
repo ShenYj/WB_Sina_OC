@@ -47,7 +47,7 @@ static CGFloat const kMarginLeft = 5.f;// 占位文字左侧间距
     }];
     
     // 监听通知
-    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(composeTextViewValueChanged:) name:UITextViewTextDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(composeTextViewValueChanged:) name:UITextViewTextDidChangeNotification object:nil];
     
 }
 
@@ -64,18 +64,19 @@ static CGFloat const kMarginLeft = 5.f;// 占位文字左侧间距
 }
 
 // 设置占位文字Label显隐
-- (void)setPlaceholderHidden:(BOOL)placeholderHidden {
-    _placeholderHidden = placeholderHidden;
-    self.placeHolder.hidden = placeholderHidden;
-}
+//- (void)setPlaceholderHidden:(BOOL)placeholderHidden {
+//    _placeholderHidden = placeholderHidden;
+//    self.placeHolder.hidden = placeholderHidden;
+//}
+
 
 /**
  监听到JSComposeTextView的值发生变化后执行的方法
  */
-//- (void)composeTextViewValueChanged:(NSNotification *)notification {
-//    
-//    self.placeHolder.hidden = ((JSComposeTextView *)notification.object).hasText;
-//}
+- (void)composeTextViewValueChanged:(NSNotification *)notification {
+    
+    self.placeHolder.hidden = ((JSComposeTextView *)notification.object).hasText;
+}
 
 #pragma mark 
 #pragma mark - lazy

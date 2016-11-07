@@ -89,13 +89,8 @@ extern CGFloat itemSize;
     
     // 通过系统通知监听键盘
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
-    
-    // 发送通知
-    //[[NSNotificationCenter defaultCenter] postNotificationName:UITextViewTextDidChangeNotification object:self.textView userInfo:nil];
-    
     // 注册删除按钮通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteEmoticonButtonNotification:) name:@"deleteEmoticonButtonNotification" object:nil];
-    
     // 注册表情按钮通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clickEmoticonButtonNotification:) name:@"clickEmoticonButtonNotification" object:nil];
     
@@ -288,6 +283,10 @@ extern CGFloat itemSize;
         
     } else {
         // 图片表情
+        
+        // 记录textView当前的富文本
+        NSMutableAttributedString *oldAttributedString = [[NSMutableAttributedString alloc] initWithAttributedString:self.textView.attributedText];
+        
         // 拼接图片名
         NSString *imageName = [NSString stringWithFormat:@"%@/%@",emoticonModel.path,emoticonModel.png];
         // 从emoticonBundle中获取图片
@@ -297,12 +296,26 @@ extern CGFloat itemSize;
         NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
         // 设置图片
         textAttachment.image = image;
-        // 设置bounds
-        textAttachment.bounds = CGRectMake(0, 0, self.textView.font.lineHeight, self.textView.font.lineHeight);
+        // 设置bounds 注意点一
+        textAttachment.bounds = CGRectMake(0, -4, self.textView.font.lineHeight, self.textView.font.lineHeight);
         // 创建富文本
         NSAttributedString *attributedString = [NSAttributedString attributedStringWithAttachment:textAttachment];
+        // 获取选中光标位置
+        NSRange selectedRange = self.textView.selectedRange;
+        // 拼接富文本数据
+        [oldAttributedString replaceCharactersInRange:selectedRange withAttributedString:attributedString];
+        // 设置富文本font 注意点二
+        [oldAttributedString addAttribute:NSFontAttributeName value:self.textView.font range:NSMakeRange(0, oldAttributedString.length)];
         // 设置富文本
-        self.textView.attributedText = attributedString;
+        self.textView.attributedText = oldAttributedString;
+        // 更改选中光标位置
+        self.textView.selectedRange = NSMakeRange(selectedRange.location + 1, 0);
+        
+        // 设置TextView的占位文字隐藏
+        [[NSNotificationCenter defaultCenter] postNotificationName:UITextViewTextDidChangeNotification object:self.textView userInfo:nil];
+        
+        // 设置右侧导航按钮的可选
+        [self.textView.delegate textViewDidChange:self.textView];
     }
     
 }
@@ -331,8 +344,8 @@ extern CGFloat itemSize;
 - (void)textViewDidChange:(UITextView *)textView {
     // 有内容时发布按钮可以被点击
     self.navigationItem.rightBarButtonItem.enabled = textView.hasText;
-    // 设置占位文字的显示和隐藏
-    self.textView.placeholderHidden = textView.hasText;
+    // 设置占位文字的显示和隐藏 (使用通知)
+    //self.textView.placeholderHidden = textView.hasText;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
