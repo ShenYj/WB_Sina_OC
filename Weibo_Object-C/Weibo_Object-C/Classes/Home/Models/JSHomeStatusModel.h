@@ -66,6 +66,8 @@ typedef struct {
 @property (nonatomic,copy) NSString *comments_count_string;
 @property (nonatomic,copy) NSString *attitudes_count_string;
 
+@property (nonatomic,copy) NSMutableAttributedString *attributedString;
+
 // (配图视图的Size)
 @property (nonatomic,assign) CGSize pictureViewSize;
 

@@ -13,6 +13,10 @@
 #import "JSHomeStatusLayout.h"
 #import "JSDateFormatter.h"
 #import "NSDate+JSIsThisYear.h"
+#import "RegexKitLite.h"
+#import "JSEmoticonTool.h"
+#import "JSEmoticonModel.h"
+#import "JSMatchResultModel.h"
 
 // 原创微博相关
 CGFloat const kTopMargin = 8.f;                     // 首页视图顶部间距
@@ -25,7 +29,7 @@ CGFloat const kItemMargin = 5.f;                    // 首页视图配图视图�
 CGFloat itemSizeWH;                                 // 首页视图配图视图中每个Item的宽高
 CGSize pictureViewMaxSize;                          // 首页视图配图视图的对重大尺寸
 // 转发微博相关
-CGFloat const kRetweetContentLabelFontSize = 13.f;  // 首页视图转发微博字体大小
+CGFloat const kRetweetContentLabelFontSize = 14.f;  // 首页视图转发微博字体大小
 // 底部ToolBar相关
 CGFloat const kStatusToolBarHeight = 35.f;          // 底部ToolBar视图高度
 CGFloat const kBottomMargin = 5.f;                  // 底部ToolBar视图底部间距
@@ -268,6 +272,13 @@ CGFloat const kBottomMargin = 5.f;                  // 底部ToolBar视图底部
     
 }
 
+- (void)setText:(NSString *)text {
+    _text = text;
+    
+    // 将文本内容转换成富文本并记录在attributedString属性中
+    self.attributedString = [self getWeiBoAttributedText:text];
+}
+
 // 微博发布时间 (因为需要实时判断,在SetCreated_at方法中重写,只会记录一次)
 - (NSString *)created_at_formatterString {
     
@@ -434,6 +445,58 @@ CGFloat const kBottomMargin = 5.f;                  // 底部ToolBar视图底部
     
 }
 
+#pragma mark - 将微博内容转成富文本
+- (NSMutableAttributedString *)getWeiBoAttributedText:(NSString *)originalText {
+    
+    // 可变临时数组
+    NSMutableArray *tempArr = [NSMutableArray array];
+    
+    // 将微博内容转换成富文本
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:originalText];
+    
+    // 正则表达式遍历  \[\]
+    [originalText enumerateStringsMatchedByRegex:@"\\[[A-Za-z0-9\\u4E00-\\u9FA5]+\\]" usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
+        
+        JSEmoticonModel *emoticonModel = [[JSEmoticonTool shared] searchEmoticonChs:*capturedStrings];
+        if (emoticonModel) {
+            // 存在图片表情
+            
+            // 创建模型对象
+            JSMatchResultModel *resultModel = [[JSMatchResultModel alloc] initWithResult:*capturedStrings withRange:*capturedRanges];
+            // 添加到可变数组
+            [tempArr addObject:resultModel];
+            
+        }
+        
+    }];
+    
+    // 倒序遍历模型数组 (直接遍历富文本进行转换,会造成数组越界)
+    [tempArr enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        // 匹配结果模型对象
+        JSMatchResultModel *matchModel = (JSMatchResultModel *)obj;
+        // 通过表情描述遍历查找表情模型
+        JSEmoticonModel *emoticonModel = [[JSEmoticonTool shared] searchEmoticonChs:matchModel.result];
+        
+        // 实例化文本附件
+        NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
+        // 设置属性
+        NSString *imageName = [NSString stringWithFormat:@"%@/%@",emoticonModel.path,emoticonModel.png];
+        textAttachment.image = [UIImage imageNamed:imageName inBundle:[JSEmoticonTool shared].emoticonsBundle compatibleWithTraitCollection:nil];
+        
+        CGFloat lineHeight = [UIFont systemFontOfSize:kOriginalContentLabelFontSize].lineHeight;
+        textAttachment.bounds = CGRectMake(0, -4, lineHeight, lineHeight);
+        
+        NSAttributedString *attributedStr = [NSAttributedString attributedStringWithAttachment:textAttachment];
+        
+        [attributedString replaceCharactersInRange:matchModel.range withAttributedString:attributedStr];
+        
+    }];
+    
+    // 返回富文本
+    return attributedString;
+    
+}
 
 - (NSString *)description {
     
