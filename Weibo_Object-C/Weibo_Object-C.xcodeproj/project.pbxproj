@@ -65,6 +65,8 @@
 		F79927D21D1C14F200E9BA8C /* JSMessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F79927D11D1C14F200E9BA8C /* JSMessageTableViewController.m */; };
 		F79927D51D1C150100E9BA8C /* JSProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F79927D41D1C150100E9BA8C /* JSProfileTableViewController.m */; };
 		F7A3480D1DD0CC5B00457632 /* JSStatusTipCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A3480C1DD0CC5B00457632 /* JSStatusTipCell.m */; };
+		F7A348101DD1F79700457632 /* JSSQLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A3480F1DD1F79700457632 /* JSSQLManager.m */; };
+		F7A348121DD2017900457632 /* db.sql in Resources */ = {isa = PBXBuildFile; fileRef = F7A348111DD2017900457632 /* db.sql */; };
 		F7AF4CDE1DC8395E00BEA0BE /* JSEmoticonKeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF4CDD1DC8395E00BEA0BE /* JSEmoticonKeyboardView.m */; };
 		F7AF4CF01DC8B4E000BEA0BE /* JSEmoticonPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF4CED1DC8B4E000BEA0BE /* JSEmoticonPageView.m */; };
 		F7AF4CF11DC8B4E000BEA0BE /* JSEmoticonPageViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF4CEF1DC8B4E000BEA0BE /* JSEmoticonPageViewFlowLayout.m */; };
@@ -199,6 +201,9 @@
 		F79927D41D1C150100E9BA8C /* JSProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSProfileTableViewController.m; sourceTree = "<group>"; };
 		F7A3480B1DD0CC5B00457632 /* JSStatusTipCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSStatusTipCell.h; sourceTree = "<group>"; };
 		F7A3480C1DD0CC5B00457632 /* JSStatusTipCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSStatusTipCell.m; sourceTree = "<group>"; };
+		F7A3480E1DD1F79700457632 /* JSSQLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSQLManager.h; sourceTree = "<group>"; };
+		F7A3480F1DD1F79700457632 /* JSSQLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSQLManager.m; sourceTree = "<group>"; };
+		F7A348111DD2017900457632 /* db.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = db.sql; sourceTree = "<group>"; };
 		F7AF4CDC1DC8395E00BEA0BE /* JSEmoticonKeyboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEmoticonKeyboardView.h; sourceTree = "<group>"; };
 		F7AF4CDD1DC8395E00BEA0BE /* JSEmoticonKeyboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSEmoticonKeyboardView.m; sourceTree = "<group>"; };
 		F7AF4CEC1DC8B4E000BEA0BE /* JSEmoticonPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEmoticonPageView.h; sourceTree = "<group>"; };
@@ -661,6 +666,9 @@
 				F74F57371D84F3DA00E3CC61 /* JSUserAccountTool.m */,
 				F7F9DB131D2499BA0029235B /* JSNetworkTool.h */,
 				F7F9DB141D2499BA0029235B /* JSNetworkTool.m */,
+				F7A3480E1DD1F79700457632 /* JSSQLManager.h */,
+				F7A3480F1DD1F79700457632 /* JSSQLManager.m */,
+				F7A348111DD2017900457632 /* db.sql */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -788,6 +796,7 @@
 			files = (
 				F79927BF1D1C13D500E9BA8C /* Assets.xcassets in Resources */,
 				F7DE06E81DC997EF0071B429 /* Emoticons.bundle in Resources */,
+				F7A348121DD2017900457632 /* db.sql in Resources */,
 				F79927C01D1C13D500E9BA8C /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -867,6 +876,7 @@
 				F73BE44C1DBC801100C31595 /* JSPictureViewCell.m in Sources */,
 				F7AF4CDE1DC8395E00BEA0BE /* JSEmoticonKeyboardView.m in Sources */,
 				F7271A9C1DB9EC9900CF96A0 /* JSStatusCell.m in Sources */,
+				F7A348101DD1F79700457632 /* JSSQLManager.m in Sources */,
 				F767E2C71DBE4E4E00254511 /* NSDate+JSIsThisYear.m in Sources */,
 				F778864D1D1F51EE00BE4518 /* JSVistorTableViewController.m in Sources */,
 				F7DE06EB1DC99CC40071B429 /* JSEmoticonTool.m in Sources */,
