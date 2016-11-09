@@ -15,4 +15,9 @@
 
 @property (nonatomic) FMDatabaseQueue *databaseQueue;
 
+/**
+ * 查询本地数据
+ */
+- (NSArray <NSDictionary *>*)queryTableWithSQL:(NSString *)sql;
+
 @end

@@ -8,11 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+
+@class JSHomeStatusModel;
+
 @interface JSSQLDAL : NSObject
 
 /**
  * 保存数据
  */
-+ (void)saveCache:(NSArray *)status;
++ (void)saveCache:(NSArray <NSDictionary *>*)status;
+
+/**
+ *查询本地数据
+ */
++ (NSArray <JSHomeStatusModel *>*)getLocalCacheWithSinceid:(NSInteger)sinceId withMaxId:(NSInteger)maxId;
 
 @end

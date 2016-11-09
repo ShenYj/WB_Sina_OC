@@ -12,7 +12,7 @@
 #import "JSUserAccountTool.h"
 #import <Bugly/Bugly.h>
 #import "AFNetworkReachabilityManager.h"
-
+#import "JSSQLDAL.h"
 
 
 @interface AppDelegate ()
@@ -85,6 +85,16 @@
         
         self.window.rootViewController = [[JSTabBarController alloc] init];
     }
+    
+}
+
+- (void)getLocalData {
+    
+    NSString *uid = [JSUserAccountTool sharedManager].userAccountModel.uid;
+    if (!uid) {
+        return;
+    }
+    
     
 }
 
