@@ -15,7 +15,7 @@
 #import "JSStatusCell.h"
 #import "JSStatusTipCell.h"
 #import "JSHomeNavButton.h"
-
+#import "JSSQLDAL.h"
 
 static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
 static NSString * const homeTableCellTipReusedId = @"homeTableCellTipReusedId";
@@ -142,6 +142,9 @@ static NSString * const homeTableCellTipReusedId = @"homeTableCellTipReusedId";
     [[JSNetworkTool sharedNetworkTool] loadHomePublicDatawithFinishedBlock:^(id obj, NSError *error) {
         
         NSArray *statusDataArr = (NSArray *)obj;
+        
+        // 数据库存储
+        [JSSQLDAL saveCache:statusDataArr];
         
         NSMutableArray *mArr = [NSMutableArray array];
         
