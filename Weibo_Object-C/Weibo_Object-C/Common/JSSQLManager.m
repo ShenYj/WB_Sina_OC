@@ -44,7 +44,7 @@ static NSString * const databasePath = @"status.db";
 
 // 查询表
 - (NSArray *)queryTableWithSQL:(NSString *)sql {
-    
+        
     // 可变临时数组
     NSMutableArray *tempArr = [NSMutableArray array];
     
