@@ -126,7 +126,7 @@
     
     [self requestWithMethod:RequestMethodGet withParameters:para withUrlString:urlString withSuccess:^(id obj) {
         
-        NSArray *statuses = [obj objectForKey:@"statuses"];
+        NSArray <NSDictionary *>*statuses = [obj objectForKey:@"statuses"];
         
         finishedBlock(statuses,nil);
         

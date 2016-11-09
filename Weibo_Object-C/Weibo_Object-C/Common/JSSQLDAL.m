@@ -10,6 +10,7 @@
 #import "JSUserAccountTool.h"
 #import "JSSQLManager.h"
 #import "JSHomeStatusModel.h"
+#import "JSNetworkTool.h"
 
 @implementation JSSQLDAL
 
@@ -96,5 +97,45 @@
     return tempArr.copy;
     
 }
+
+
+// 检查本地是否有缓存数据
++ (void)checkLocalCacheWithSinceid:(NSInteger)sinceId withMaxid:(NSInteger)maxId withFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock {
+    
+    NSArray *localCache = [self getLocalCacheWithSinceid:sinceId withMaxId:maxId];
+    
+    if (localCache.count > 0) {
+        // 本地有缓存数据
+        finishedBlock(localCache,nil);
+        
+        
+    } else {
+        // 本地没有数据
+        [[JSNetworkTool sharedNetworkTool] loadHomePublicDatawithFinishedBlock:^(id obj, NSError *error) {
+            
+            NSArray <NSDictionary *>*statusDataArr = (NSArray <NSDictionary *>*)obj;
+            
+            // 数据库存储(异步执行)
+            dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                
+                [self saveCache:statusDataArr];
+            });
+            
+            NSMutableArray *mArr = [NSMutableArray array];
+            
+            for (NSDictionary *dict in statusDataArr) {
+                
+                JSHomeStatusModel *model = [JSHomeStatusModel statuWithDict:dict];
+                [mArr addObject:model];
+                
+            }
+            // 完成回调
+            finishedBlock(mArr.copy,error);
+            
+        } Since_id:sinceId max_id:maxId];
+    }
+    
+}
+
 
 @end

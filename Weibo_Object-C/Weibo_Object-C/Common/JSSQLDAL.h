@@ -19,8 +19,14 @@
 + (void)saveCache:(NSArray <NSDictionary *>*)status;
 
 /**
- *查询本地数据
+ * 查询本地数据
  */
 + (NSArray <JSHomeStatusModel *>*)getLocalCacheWithSinceid:(NSInteger)sinceId withMaxId:(NSInteger)maxId;
+
+/**
+ * 检查本地是否有缓存数据,若没有,请求网络数据,有则加载本地数据
+ */
++ (void)checkLocalCacheWithSinceid:(NSInteger)sinceId withMaxid:(NSInteger)maxId withFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock;
+
 
 @end

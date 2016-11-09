@@ -139,37 +139,58 @@ static NSString * const homeTableCellTipReusedId = @"homeTableCellTipReusedId";
         
     }
     
-    [[JSNetworkTool sharedNetworkTool] loadHomePublicDatawithFinishedBlock:^(id obj, NSError *error) {
+    // 检查是否有本地数据,如果没有,请求网络数据
+    [JSSQLDAL checkLocalCacheWithSinceid:sinceId withMaxid:maxId withFinishedBlock:^(id obj, NSError *error) {
         
-        NSArray *statusDataArr = (NSArray *)obj;
-        
-        // 数据库存储
-        [JSSQLDAL saveCache:statusDataArr];
-        
-        NSMutableArray *mArr = [NSMutableArray array];
-        
-        for (NSDictionary *dict in statusDataArr) {
-            
-            JSHomeStatusModel *model = [JSHomeStatusModel statuWithDict:dict];
-            [mArr addObject:model];
-            
-        }
-        
+        NSArray <JSHomeStatusModel *>*statusData = (NSArray <JSHomeStatusModel *>*)obj;
         if (isPulling) {
             
             // 上拉加载更多
-            self.homeStatusDatas = [self.homeStatusDatas arrayByAddingObjectsFromArray:mArr];
+            self.homeStatusDatas = [self.homeStatusDatas arrayByAddingObjectsFromArray:statusData];
             
         } else {
             
             // 下拉刷新
-            self.homeStatusDatas = [mArr arrayByAddingObjectsFromArray:self.homeStatusDatas];
+            self.homeStatusDatas = [statusData arrayByAddingObjectsFromArray:self.homeStatusDatas];
             
         }
         
         [self.tableView reloadData];
         
-    } Since_id:sinceId max_id:maxId];
+    }];
+    
+    
+//    [[JSNetworkTool sharedNetworkTool] loadHomePublicDatawithFinishedBlock:^(id obj, NSError *error) {
+//        
+//        NSArray *statusDataArr = (NSArray *)obj;
+//        
+//        // 数据库存储
+//        [JSSQLDAL saveCache:statusDataArr];
+//        
+//        NSMutableArray *mArr = [NSMutableArray array];
+//        
+//        for (NSDictionary *dict in statusDataArr) {
+//            
+//            JSHomeStatusModel *model = [JSHomeStatusModel statuWithDict:dict];
+//            [mArr addObject:model];
+//            
+//        }
+//        
+//        if (isPulling) {
+//            
+//            // 上拉加载更多
+//            self.homeStatusDatas = [self.homeStatusDatas arrayByAddingObjectsFromArray:mArr];
+//            
+//        } else {
+//            
+//            // 下拉刷新
+//            self.homeStatusDatas = [mArr arrayByAddingObjectsFromArray:self.homeStatusDatas];
+//            
+//        }
+//        
+//        [self.tableView reloadData];
+//        
+//    } Since_id:sinceId max_id:maxId];
     
     
 }
