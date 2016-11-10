@@ -35,7 +35,10 @@
  */
 @property (nonatomic,strong) NSDate *expires_Date;
 
-
+/**
+ 保存数据周期 (默认一周)
+ */
+@property (nonatomic,assign) NSInteger expiredCycle;
 
 
 @end

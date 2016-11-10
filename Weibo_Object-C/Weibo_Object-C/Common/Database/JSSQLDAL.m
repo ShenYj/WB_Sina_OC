@@ -11,6 +11,10 @@
 #import "JSSQLManager.h"
 #import "JSHomeStatusModel.h"
 #import "JSNetworkTool.h"
+#import "JSDateFormatter.h"
+#import "NSString+JSAppendPath.h"
+
+static double kExpiredCycle = -60*60*24*7; // 默认一周
 
 @implementation JSSQLDAL
 
@@ -136,6 +140,34 @@
     }
     
 }
+
+
++ (void)deleteCache {
+    
+    JSUserAccountModel *userAccountModel = [NSKeyedUnarchiver unarchiveObjectWithFile:[NSString getDocumentDirectoryPath]];
+    
+    // 过期时间到当前时间的临界值 (一周前)
+    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:@(userAccountModel.expiredCycle).doubleValue];
+    
+    [JSDateFormatter sharedDateFormatterManager].dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    NSString *dateString = [[JSDateFormatter sharedDateFormatterManager] stringFromDate:date];
+    
+    // 删除距离当前时间一周前的数据
+    NSString *sql = [NSString stringWithFormat:@"DELETE FROM T_Status WHERE createtime < '%@'",dateString];
+    
+    [[JSSQLManager sharedManager].databaseQueue inDatabase:^(FMDatabase *db) {
+       
+        BOOL result = [db executeUpdate:sql withArgumentsInArray:nil];
+        
+        if (!result) {
+            NSLog(@"删除失败");
+        }
+        
+    }];
+    
+    
+}
+
 
 
 @end

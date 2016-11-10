@@ -201,6 +201,8 @@ static NSString * const kTestPassword = @"qwertyuiop123";
         
         [userAccount setValue:obj[@"avatar_large"] forKey:@"avatar_large"];
         [userAccount setValue:obj[@"screen_name"] forKey:@"screen_name"];
+        //[userAccount setValue:@(-60*60*24*7) forKey:@"expiredCycle"];
+        userAccount.expiredCycle = -60*60*24*7; // 默认的数据缓存周期
         
         // 存入UserAccountTool中并本地化存储
         [[JSUserAccountTool sharedManager] saveUserAccount:userAccount];

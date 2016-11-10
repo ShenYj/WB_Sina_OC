@@ -13,4 +13,6 @@
 // 拼接沙盒存放路径
 - (instancetype)js_appendCachePath;
 
++ (instancetype)getDocumentDirectoryPath;
+
 @end

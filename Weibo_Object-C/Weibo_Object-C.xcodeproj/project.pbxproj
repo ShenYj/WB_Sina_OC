@@ -65,9 +65,9 @@
 		F79927D21D1C14F200E9BA8C /* JSMessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F79927D11D1C14F200E9BA8C /* JSMessageTableViewController.m */; };
 		F79927D51D1C150100E9BA8C /* JSProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F79927D41D1C150100E9BA8C /* JSProfileTableViewController.m */; };
 		F7A3480D1DD0CC5B00457632 /* JSStatusTipCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A3480C1DD0CC5B00457632 /* JSStatusTipCell.m */; };
-		F7A348101DD1F79700457632 /* JSSQLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A3480F1DD1F79700457632 /* JSSQLManager.m */; };
-		F7A348121DD2017900457632 /* db.sql in Resources */ = {isa = PBXBuildFile; fileRef = F7A348111DD2017900457632 /* db.sql */; };
-		F7A348151DD2C56000457632 /* JSSQLDAL.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A348141DD2C56000457632 /* JSSQLDAL.m */; };
+		F7A3481C1DD4037300457632 /* db.sql in Resources */ = {isa = PBXBuildFile; fileRef = F7A348171DD4037300457632 /* db.sql */; };
+		F7A3481D1DD4037300457632 /* JSSQLDAL.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A348191DD4037300457632 /* JSSQLDAL.m */; };
+		F7A3481E1DD4037300457632 /* JSSQLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A3481B1DD4037300457632 /* JSSQLManager.m */; };
 		F7AF4CDE1DC8395E00BEA0BE /* JSEmoticonKeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF4CDD1DC8395E00BEA0BE /* JSEmoticonKeyboardView.m */; };
 		F7AF4CF01DC8B4E000BEA0BE /* JSEmoticonPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF4CED1DC8B4E000BEA0BE /* JSEmoticonPageView.m */; };
 		F7AF4CF11DC8B4E000BEA0BE /* JSEmoticonPageViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF4CEF1DC8B4E000BEA0BE /* JSEmoticonPageViewFlowLayout.m */; };
@@ -202,11 +202,11 @@
 		F79927D41D1C150100E9BA8C /* JSProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSProfileTableViewController.m; sourceTree = "<group>"; };
 		F7A3480B1DD0CC5B00457632 /* JSStatusTipCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSStatusTipCell.h; sourceTree = "<group>"; };
 		F7A3480C1DD0CC5B00457632 /* JSStatusTipCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSStatusTipCell.m; sourceTree = "<group>"; };
-		F7A3480E1DD1F79700457632 /* JSSQLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSQLManager.h; sourceTree = "<group>"; };
-		F7A3480F1DD1F79700457632 /* JSSQLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSQLManager.m; sourceTree = "<group>"; };
-		F7A348111DD2017900457632 /* db.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = db.sql; sourceTree = "<group>"; };
-		F7A348131DD2C56000457632 /* JSSQLDAL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSQLDAL.h; sourceTree = "<group>"; };
-		F7A348141DD2C56000457632 /* JSSQLDAL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSQLDAL.m; sourceTree = "<group>"; };
+		F7A348171DD4037300457632 /* db.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = db.sql; sourceTree = "<group>"; };
+		F7A348181DD4037300457632 /* JSSQLDAL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSQLDAL.h; sourceTree = "<group>"; };
+		F7A348191DD4037300457632 /* JSSQLDAL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSQLDAL.m; sourceTree = "<group>"; };
+		F7A3481A1DD4037300457632 /* JSSQLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSQLManager.h; sourceTree = "<group>"; };
+		F7A3481B1DD4037300457632 /* JSSQLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSQLManager.m; sourceTree = "<group>"; };
 		F7AF4CDC1DC8395E00BEA0BE /* JSEmoticonKeyboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEmoticonKeyboardView.h; sourceTree = "<group>"; };
 		F7AF4CDD1DC8395E00BEA0BE /* JSEmoticonKeyboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSEmoticonKeyboardView.m; sourceTree = "<group>"; };
 		F7AF4CEC1DC8B4E000BEA0BE /* JSEmoticonPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEmoticonPageView.h; sourceTree = "<group>"; };
@@ -660,6 +660,7 @@
 		F79927C21D1C13FE00E9BA8C /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				F7A348161DD4037300457632 /* Database */,
 				F7969E9D1DD06761003D6A38 /* RegexKitLite */,
 				F72175F31DC080580065D3B8 /* JSRefreshTool */,
 				F731D1DC1D9AACD9001C7B72 /* JSOperation */,
@@ -669,11 +670,6 @@
 				F74F57371D84F3DA00E3CC61 /* JSUserAccountTool.m */,
 				F7F9DB131D2499BA0029235B /* JSNetworkTool.h */,
 				F7F9DB141D2499BA0029235B /* JSNetworkTool.m */,
-				F7A3480E1DD1F79700457632 /* JSSQLManager.h */,
-				F7A3480F1DD1F79700457632 /* JSSQLManager.m */,
-				F7A348131DD2C56000457632 /* JSSQLDAL.h */,
-				F7A348141DD2C56000457632 /* JSSQLDAL.m */,
-				F7A348111DD2017900457632 /* db.sql */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -686,6 +682,18 @@
 				F77886451D1EC97E00BE4518 /* Views */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		F7A348161DD4037300457632 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				F7A348171DD4037300457632 /* db.sql */,
+				F7A348181DD4037300457632 /* JSSQLDAL.h */,
+				F7A348191DD4037300457632 /* JSSQLDAL.m */,
+				F7A3481A1DD4037300457632 /* JSSQLManager.h */,
+				F7A3481B1DD4037300457632 /* JSSQLManager.m */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 		F7AF4CDB1DC8391B00BEA0BE /* Emoticon */ = {
@@ -801,7 +809,7 @@
 			files = (
 				F79927BF1D1C13D500E9BA8C /* Assets.xcassets in Resources */,
 				F7DE06E81DC997EF0071B429 /* Emoticons.bundle in Resources */,
-				F7A348121DD2017900457632 /* db.sql in Resources */,
+				F7A3481C1DD4037300457632 /* db.sql in Resources */,
 				F79927C01D1C13D500E9BA8C /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -874,6 +882,7 @@
 				F747F7991D843748000A0C8D /* NSString+Emoji.m in Sources */,
 				F7271A991DB9C3D900CF96A0 /* JSHomeStatusModel.m in Sources */,
 				F74737611DBB2DA4003F9C10 /* JSStatusRetweetView.m in Sources */,
+				F7A3481E1DD4037300457632 /* JSSQLManager.m in Sources */,
 				F767E2C11DBE414600254511 /* JSDateFormatter.m in Sources */,
 				F73BE44A1DBC801100C31595 /* JSFlowLayout.m in Sources */,
 				F77886461D1EC97E00BE4518 /* JSNavigationController.m in Sources */,
@@ -881,7 +890,6 @@
 				F73BE44C1DBC801100C31595 /* JSPictureViewCell.m in Sources */,
 				F7AF4CDE1DC8395E00BEA0BE /* JSEmoticonKeyboardView.m in Sources */,
 				F7271A9C1DB9EC9900CF96A0 /* JSStatusCell.m in Sources */,
-				F7A348101DD1F79700457632 /* JSSQLManager.m in Sources */,
 				F767E2C71DBE4E4E00254511 /* NSDate+JSIsThisYear.m in Sources */,
 				F778864D1D1F51EE00BE4518 /* JSVistorTableViewController.m in Sources */,
 				F7DE06EB1DC99CC40071B429 /* JSEmoticonTool.m in Sources */,
@@ -898,6 +906,7 @@
 				F78A22DD1DC4B976001B7AB3 /* JSComposePictureView.m in Sources */,
 				F747F79F1D843748000A0C8D /* UIView+JSFrame.m in Sources */,
 				F72613A51DC2F1B0004FF7F9 /* JSHomeNavButton.m in Sources */,
+				F7A3481D1DD4037300457632 /* JSSQLDAL.m in Sources */,
 				F731D1E51D9AACD9001C7B72 /* JSDownLoadImageOperation.m in Sources */,
 				F72175F91DC087770065D3B8 /* JSRefresh.m in Sources */,
 				F747F79B1D843748000A0C8D /* NSString+JSExtension.m in Sources */,
@@ -928,7 +937,6 @@
 				F7969E9A1DD04D2A003D6A38 /* JSEmoticonTextAttachment.m in Sources */,
 				F72613A81DC31B9A004FF7F9 /* JSComposeTextView.m in Sources */,
 				F747F79C1D843748000A0C8D /* UIColor+JSExtension.m in Sources */,
-				F7A348151DD2C56000457632 /* JSSQLDAL.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

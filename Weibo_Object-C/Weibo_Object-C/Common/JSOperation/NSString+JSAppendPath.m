@@ -17,4 +17,9 @@
     
 }
 
++ (NSString *)getDocumentDirectoryPath {
+    
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject stringByAppendingPathComponent:@"userAccount.archiver"];
+}
+
 @end

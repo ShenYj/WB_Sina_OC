@@ -17,6 +17,8 @@
     [aCoder encodeObject:self.access_token forKey:@"access_token"];
     [aCoder encodeObject:self.expires_Date forKey:@"expires_date"];
     [aCoder encodeObject:self.avatar_large forKey:@"avatar_large"];
+    [aCoder encodeInteger:self.expiredCycle forKey:@"expiredCycle"];
+    
     
 }
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder{
@@ -28,6 +30,7 @@
         self.access_token = [aDecoder decodeObjectForKey:@"access_token"];
         self.expires_Date = [aDecoder decodeObjectForKey:@"expires_date"];
         self.avatar_large = [aDecoder decodeObjectForKey:@"avatar_large"];
+        self.expiredCycle = [aDecoder decodeIntegerForKey:@"expiredCycle"];
     }
     return self;
 }

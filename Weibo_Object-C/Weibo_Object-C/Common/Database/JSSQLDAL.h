@@ -28,5 +28,9 @@
  */
 + (void)checkLocalCacheWithSinceid:(NSInteger)sinceId withMaxid:(NSInteger)maxId withFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock;
 
+/**
+ * 清除缓存,(默认时间一周)
+ */
++ (void)deleteCache;
 
 @end
