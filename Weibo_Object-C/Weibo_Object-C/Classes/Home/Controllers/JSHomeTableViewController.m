@@ -240,7 +240,7 @@ static CGFloat const kPullDownLabelHeight = 34.f; // 下拉刷新展示更新多
          UIViewAnimationOptionTransitionFlipFromTop     = 6 << 20,
          UIViewAnimationOptionTransitionFlipFromBottom  = 7 << 20,
          */
-        [UIView animateWithDuration:1 delay:0.25 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+        [UIView animateWithDuration:1 delay:0.25 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             
             self.pullDownStatusCountsLabel.transform = CGAffineTransformIdentity;
             
