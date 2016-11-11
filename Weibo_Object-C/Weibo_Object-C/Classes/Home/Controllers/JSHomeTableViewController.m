@@ -19,6 +19,7 @@
 
 static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
 static NSString * const homeTableCellTipReusedId = @"homeTableCellTipReusedId";
+static CGFloat const kPullDownLabelHeight = 34.f; // 下拉刷新展示更新多少条数据Label的高度
 
 @interface JSHomeTableViewController ()
 
@@ -28,7 +29,8 @@ static NSString * const homeTableCellTipReusedId = @"homeTableCellTipReusedId";
 @property (nonatomic) UIActivityIndicatorView *activityIndicatorView;
 // 下拉刷新
 @property (nonatomic) JSRefresh *refreshControl;
-
+// 展示更新微博条数
+@property (nonatomic) UILabel *pullDownStatusCountsLabel;
 
 @end
 
@@ -156,6 +158,8 @@ static NSString * const homeTableCellTipReusedId = @"homeTableCellTipReusedId";
         }
         
         [self.tableView reloadData];
+        // 显示更新多少条微博数据
+        [self pullDownAnimationWithStatusCounts:statusData.count];
         
     }];
     
@@ -193,6 +197,33 @@ static NSString * const homeTableCellTipReusedId = @"homeTableCellTipReusedId";
 //    } Since_id:sinceId max_id:maxId];
     
     
+}
+
+// 下拉刷新动画 (展示更新多少条微博数据)
+- (void)pullDownAnimationWithStatusCounts:(NSInteger)counts {
+    
+    if (self.pullDownStatusCountsLabel.superview == nil) {
+        
+        self.pullDownStatusCountsLabel.text = [NSString stringWithFormat:@"本次更新%zd条微博",counts];
+        [self.navigationController.view insertSubview:self.pullDownStatusCountsLabel belowSubview:self.navigationController.navigationBar];
+    }
+    
+    [UIView animateWithDuration:1 animations:^{
+        
+        self.pullDownStatusCountsLabel.transform = CGAffineTransformTranslate(self.pullDownStatusCountsLabel.transform, 0, kPullDownLabelHeight);
+        
+    } completion:^(BOOL finished) {
+        
+        [UIView animateWithDuration:1 animations:^{
+            
+            self.pullDownStatusCountsLabel.transform = CGAffineTransformIdentity;
+            
+        } completion:^(BOOL finished) {
+            
+            [self.pullDownStatusCountsLabel removeFromSuperview];
+        }];
+        
+    }];
 }
 
 // 下拉刷新
@@ -308,6 +339,19 @@ static NSString * const homeTableCellTipReusedId = @"homeTableCellTipReusedId";
         _refreshControl = [[JSRefresh alloc] init];
     }
     return _refreshControl;
+}
+// 展示下拉刷新微博条数
+- (UILabel *)pullDownStatusCountsLabel {
+    
+    if (_pullDownStatusCountsLabel == nil) {
+        _pullDownStatusCountsLabel = [[UILabel alloc] init];
+        _pullDownStatusCountsLabel.frame = CGRectMake(0, 64-kPullDownLabelHeight, SCREEN_WIDTH, kPullDownLabelHeight);
+        _pullDownStatusCountsLabel.font = [UIFont systemFontOfSize:16];
+        _pullDownStatusCountsLabel.textAlignment = NSTextAlignmentCenter;
+        _pullDownStatusCountsLabel.textColor = THEME_COLOR;
+        _pullDownStatusCountsLabel.backgroundColor = [UIColor orangeColor];
+    }
+    return _pullDownStatusCountsLabel;
 }
 
 @end

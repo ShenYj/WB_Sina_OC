@@ -36,7 +36,6 @@ extern CGFloat itemSize;
 @property (nonatomic) JSEmoticonKeyboardView *keyboardView;
 
 
-
 @end
 
 @implementation JSComposeRootViewController
@@ -96,7 +95,6 @@ extern CGFloat itemSize;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clickEmoticonButtonNotification:) name:@"clickEmoticonButtonNotification" object:nil];
     
     __weak typeof(self) weakSelf = self;
-    
     [self.composeToolBar setCompletionHandler:^(JSComposeToolBarButton *toolBarButton) {
         // 调用内部的按钮点击事件方法
         [weakSelf clickComposeToolBarAreaButton:toolBarButton];
@@ -437,5 +435,7 @@ extern CGFloat itemSize;
     }
     return _keyboardView;
 }
+
+
 
 @end

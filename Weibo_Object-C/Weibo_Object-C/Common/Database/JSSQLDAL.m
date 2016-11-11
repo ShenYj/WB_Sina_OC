@@ -14,8 +14,6 @@
 #import "JSDateFormatter.h"
 #import "NSString+JSAppendPath.h"
 
-static double kExpiredCycle = -60*60*24*7; // 默认一周
-
 @implementation JSSQLDAL
 
 + (void)saveCache:(NSArray <NSDictionary *>*)status {
