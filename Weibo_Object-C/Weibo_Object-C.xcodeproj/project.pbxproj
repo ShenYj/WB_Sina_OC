@@ -477,7 +477,6 @@
 				F79927C31D1C141000E9BA8C /* Main */,
 				F79927C21D1C13FE00E9BA8C /* Common */,
 				F79927A61D1C13D500E9BA8C /* Classes */,
-				F79927B71D1C13D500E9BA8C /* SupportingFIles */,
 			);
 			path = "Weibo_Object-C";
 			sourceTree = "<group>";
@@ -613,6 +612,7 @@
 		F79927B31D1C13D500E9BA8C /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				F79927B71D1C13D500E9BA8C /* SupportingFIles */,
 				F79927B41D1C13D500E9BA8C /* Controllers */,
 				F79927B51D1C13D500E9BA8C /* Models */,
 				F79927B61D1C13D500E9BA8C /* Views */,
@@ -654,7 +654,8 @@
 				F79927BB1D1C13D500E9BA8C /* LaunchScreen.storyboard */,
 				F79927BD1D1C13D500E9BA8C /* main.m */,
 			);
-			path = SupportingFIles;
+			name = SupportingFIles;
+			path = ../../SupportingFIles;
 			sourceTree = "<group>";
 		};
 		F79927C21D1C13FE00E9BA8C /* Common */ = {

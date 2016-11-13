@@ -39,14 +39,12 @@ static CGFloat const kStatusLabelFontSize = 15.f;   // 下拉刷新控件的状�
 
 // 自定义下拉刷新控件状态
 @property (assign,nonatomic) JSRefreshCurrentStatus refreshCurrentStatus;
-
 // 状态展示Label
 @property (nonatomic) UILabel *statusLabel;
 // 状态指示器
 @property (nonatomic) UIActivityIndicatorView *indicatorView;
 // 被观察对象
 @property (weak,nonatomic) UIScrollView *superScrollView;
-
 // 记录状态(上一个状态是否属于正在刷新中)
 @property (assign,nonatomic) BOOL isLastStatusRefreshing;
 
