@@ -11,6 +11,8 @@
 #import "JSPictureViewCell.h"
 #import "JSHomeStatusModel.h"
 #import "JSHomeStatusLayout.h"
+#import "SDPhotoBrowser.h"
+#import "JSHomeStatusPictureModel.h"
 
 static NSString * const pictureReusedID = @"pictureReusedID";
 // 引用JSHomeStatusModel中的 kItemMargin全局变量(这里并未使用,仅仅是为了避免最后不再使用也没有注释的方法中报错)
@@ -19,7 +21,7 @@ extern CGFloat kItemMargin;
 //extern CGSize pictureViewMaxSize;
 
 
-@interface JSPictureView () <UICollectionViewDataSource,UICollectionViewDelegate>
+@interface JSPictureView () <UICollectionViewDataSource,UICollectionViewDelegate,SDPhotoBrowserDelegate>
 
 @end
 
@@ -96,6 +98,28 @@ extern CGFloat kItemMargin;
 //    
 //}
 
+#pragma mark 
+#pragma mark - SDPhotoBrowserDelegate
+
+// 返回临时占位图片（即原来的小图）
+- (UIImage *)photoBrowser:(SDPhotoBrowser *)browser placeholderImageForIndex:(NSInteger)index {
+    
+    JSPictureViewCell *cell = (JSPictureViewCell *)[self cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
+    return cell.pictureImageView.image;
+    
+//    JSHomeStatusPictureModel *pictureModel = self.statusData.pic_urls[index];
+//    UIImage *image = [UIImage imageNamed:pictureModel.thumbnail_pic];
+//    return image;
+}
+
+// 返回高质量图片的url
+- (NSURL *)photoBrowser:(SDPhotoBrowser *)browser highQualityImageURLForIndex:(NSInteger)index {
+    
+    JSHomeStatusPictureModel *pictureModel = self.statusData.pic_urls[index];
+    NSString *imageUrlString = pictureModel.thumbnail_pic;
+    return [NSURL URLWithString:[imageUrlString stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"]];
+}
+
 
 #pragma mark
 #pragma mark - UICollectionViewDataSource,UICollectionViewDelegate
@@ -116,7 +140,15 @@ extern CGFloat kItemMargin;
     return cell;
 }
 
-
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    SDPhotoBrowser *photoBrowser = [[SDPhotoBrowser alloc] init];
+    photoBrowser.delegate = self;
+    photoBrowser.sourceImagesContainerView = self;
+    photoBrowser.currentImageIndex = indexPath.item;
+    photoBrowser.imageCount = self.statusData.pic_urls.count;
+    [photoBrowser show];
+}
 
 
 // 根据配图的个数,计算配图视图的宽度和高度 (转移至模型类<JSStatusModel>中进行计算)

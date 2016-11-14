@@ -9,9 +9,9 @@ pod 'FMDB'
 pod 'MJRefresh'
 pod 'MBProgressHUD'
 pod 'YYModel'
-pod 'Reveal-iOS-SDK', :configurations => ['Debug']
+#pod 'Reveal-iOS-SDK', :configurations => ['Debug']
 pod 'Bugly'
 pod 'FMDB'
-
+#pod 'SDWebImage'
 
 end

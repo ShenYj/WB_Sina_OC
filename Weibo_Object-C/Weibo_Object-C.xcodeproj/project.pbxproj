@@ -68,6 +68,9 @@
 		F7A3481C1DD4037300457632 /* db.sql in Resources */ = {isa = PBXBuildFile; fileRef = F7A348171DD4037300457632 /* db.sql */; };
 		F7A3481D1DD4037300457632 /* JSSQLDAL.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A348191DD4037300457632 /* JSSQLDAL.m */; };
 		F7A3481E1DD4037300457632 /* JSSQLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A3481B1DD4037300457632 /* JSSQLManager.m */; };
+		F7A348871DD94E1900457632 /* SDBrowserImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A348811DD94E1900457632 /* SDBrowserImageView.m */; };
+		F7A348881DD94E1900457632 /* SDPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A348831DD94E1900457632 /* SDPhotoBrowser.m */; };
+		F7A348891DD94E1900457632 /* SDWaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A348861DD94E1900457632 /* SDWaitingView.m */; };
 		F7AF4CDE1DC8395E00BEA0BE /* JSEmoticonKeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF4CDD1DC8395E00BEA0BE /* JSEmoticonKeyboardView.m */; };
 		F7AF4CF01DC8B4E000BEA0BE /* JSEmoticonPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF4CED1DC8B4E000BEA0BE /* JSEmoticonPageView.m */; };
 		F7AF4CF11DC8B4E000BEA0BE /* JSEmoticonPageViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF4CEF1DC8B4E000BEA0BE /* JSEmoticonPageViewFlowLayout.m */; };
@@ -207,6 +210,13 @@
 		F7A348191DD4037300457632 /* JSSQLDAL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSQLDAL.m; sourceTree = "<group>"; };
 		F7A3481A1DD4037300457632 /* JSSQLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSQLManager.h; sourceTree = "<group>"; };
 		F7A3481B1DD4037300457632 /* JSSQLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSQLManager.m; sourceTree = "<group>"; };
+		F7A348801DD94E1900457632 /* SDBrowserImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBrowserImageView.h; sourceTree = "<group>"; };
+		F7A348811DD94E1900457632 /* SDBrowserImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDBrowserImageView.m; sourceTree = "<group>"; };
+		F7A348821DD94E1900457632 /* SDPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPhotoBrowser.h; sourceTree = "<group>"; };
+		F7A348831DD94E1900457632 /* SDPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDPhotoBrowser.m; sourceTree = "<group>"; };
+		F7A348841DD94E1900457632 /* SDPhotoBrowserConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPhotoBrowserConfig.h; sourceTree = "<group>"; };
+		F7A348851DD94E1900457632 /* SDWaitingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWaitingView.h; sourceTree = "<group>"; };
+		F7A348861DD94E1900457632 /* SDWaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWaitingView.m; sourceTree = "<group>"; };
 		F7AF4CDC1DC8395E00BEA0BE /* JSEmoticonKeyboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEmoticonKeyboardView.h; sourceTree = "<group>"; };
 		F7AF4CDD1DC8395E00BEA0BE /* JSEmoticonKeyboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSEmoticonKeyboardView.m; sourceTree = "<group>"; };
 		F7AF4CEC1DC8B4E000BEA0BE /* JSEmoticonPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEmoticonPageView.h; sourceTree = "<group>"; };
@@ -661,6 +671,7 @@
 		F79927C21D1C13FE00E9BA8C /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				F7A3487F1DD94E1900457632 /* SDPhotoBrowser */,
 				F7A348161DD4037300457632 /* Database */,
 				F7969E9D1DD06761003D6A38 /* RegexKitLite */,
 				F72175F31DC080580065D3B8 /* JSRefreshTool */,
@@ -695,6 +706,20 @@
 				F7A3481B1DD4037300457632 /* JSSQLManager.m */,
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		F7A3487F1DD94E1900457632 /* SDPhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				F7A348801DD94E1900457632 /* SDBrowserImageView.h */,
+				F7A348811DD94E1900457632 /* SDBrowserImageView.m */,
+				F7A348821DD94E1900457632 /* SDPhotoBrowser.h */,
+				F7A348831DD94E1900457632 /* SDPhotoBrowser.m */,
+				F7A348841DD94E1900457632 /* SDPhotoBrowserConfig.h */,
+				F7A348851DD94E1900457632 /* SDWaitingView.h */,
+				F7A348861DD94E1900457632 /* SDWaitingView.m */,
+			);
+			path = SDPhotoBrowser;
 			sourceTree = "<group>";
 		};
 		F7AF4CDB1DC8391B00BEA0BE /* Emoticon */ = {
@@ -900,6 +925,7 @@
 				F79927CF1D1C14E300E9BA8C /* JSHomeTableViewController.m in Sources */,
 				F7969EA01DD06761003D6A38 /* RegexKitLite.m in Sources */,
 				F7209EF61DC4CD1E00767F40 /* JSPictureViewFlowLayout.m in Sources */,
+				F7A348881DD94E1900457632 /* SDPhotoBrowser.m in Sources */,
 				F7079FA41D8E5FC60018FDA4 /* JSUserAccountModel.m in Sources */,
 				F7AF4CFB1DC8B66900BEA0BE /* JSEmoticonToolBarButton.m in Sources */,
 				F747F79E1D843748000A0C8D /* UINavigationController+JSFullScreenPopGesture.m in Sources */,
@@ -918,7 +944,9 @@
 				F72613AE1DC37657004FF7F9 /* JSComposeToolBarButton.m in Sources */,
 				F7AF4CFA1DC8B66900BEA0BE /* JSEmoticonToolBar.m in Sources */,
 				F747F7981D843748000A0C8D /* NSObject+JSObjc.m in Sources */,
+				F7A348871DD94E1900457632 /* SDBrowserImageView.m in Sources */,
 				F7079FA71D8ECE260018FDA4 /* JSWelComeViewController.m in Sources */,
+				F7A348891DD94E1900457632 /* SDWaitingView.m in Sources */,
 				F731D1E71D9AACD9001C7B72 /* NSString+JSAppendPath.m in Sources */,
 				F775B1681DBB1511006DAA79 /* JSToolBarButton.m in Sources */,
 				F73BE43F1DBC7DDD00C31595 /* JSHomeStatusPictureModel.m in Sources */,

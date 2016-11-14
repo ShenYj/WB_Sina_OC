@@ -12,7 +12,7 @@
 
 @interface JSPictureViewCell ()
 
-@property (nonatomic) UIImageView *pictureImageView;
+
 
 @end
 

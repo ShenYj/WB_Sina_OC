@@ -14,4 +14,6 @@
 
 @property (nonatomic) JSHomeStatusPictureModel *pictureModel;
 
+@property (nonatomic) UIImageView *pictureImageView;
+
 @end
