@@ -68,7 +68,11 @@
     
 }
 
-
+// 默认只允许竖屏
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    
+    return UIInterfaceOrientationMaskPortrait;
+}
 
 
 - (void)didReceiveMemoryWarning {
