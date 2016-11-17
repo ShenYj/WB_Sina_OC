@@ -17,6 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    //self.navigationBar.hidden = YES;
+    
+    // 使用自定义navigationBar
     self.navigationBar.translucent = NO;// 设置bar不透明
     self.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationBar.barTintColor = THEME_COLOR;
@@ -30,11 +33,8 @@
     if (self.childViewControllers.count > 0) {
         [viewController setHidesBottomBarWhenPushed:YES];
         
-        NSLog(@"%zd",self.childViewControllers.count);
-        
         if (self.childViewControllers.count > 1) {
-//            viewController.navigationItem.leftBarButtonItem.title = @"首页";
-            [viewController.navigationItem.leftBarButtonItem setValue:@"首页" forKey:@"title"];
+            viewController.navigationItem.leftBarButtonItem.title = @"首页";
         }
         
     }

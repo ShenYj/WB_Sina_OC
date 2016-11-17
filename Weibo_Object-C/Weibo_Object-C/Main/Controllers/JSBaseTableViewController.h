@@ -15,4 +15,6 @@
 // 是否登录的标识
 @property (nonatomic,assign,getter=isLogin) BOOL login;
 
+
+
 @end

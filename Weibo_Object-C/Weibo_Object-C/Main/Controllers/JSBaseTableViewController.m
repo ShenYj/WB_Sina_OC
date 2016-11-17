@@ -36,26 +36,26 @@
         self.view = self.vistorView;
         
     }
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     if ( !self.isLogin) {
-        
         //设置导航按钮
         [self setNavButton];
-    }
-    
+    } 
     
 }
 
-
+// 未登录状态
 - (void)setNavButton{
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"登录" style:UIBarButtonItemStylePlain target:self action:@selector(buttonClick:)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"注册" style:UIBarButtonItemStylePlain target:self action:@selector(buttonClick:)];
 }
+
 
 - (void)buttonClick:(UIBarButtonItem *)sender{
     
@@ -90,5 +90,7 @@
     
     return [JSUserAccountTool sharedManager].isLogin;
 }
+
+
 
 @end

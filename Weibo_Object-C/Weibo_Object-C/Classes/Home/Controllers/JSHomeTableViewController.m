@@ -80,13 +80,12 @@ static CGFloat const kPullDownLabelHeight = 34.f; // 下拉刷新展示更新多
     } else {
         
         [self prepareView];
-        [self prepareNavigationView];
     }
-    
 }
 
-
 - (void)prepareView {
+    
+    [self prepareNavigationView];
     
     // 监听网络
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkReachablityDidChanged:) name:AFNetworkingReachabilityDidChangeNotification object:nil];
@@ -130,7 +129,7 @@ static CGFloat const kPullDownLabelHeight = 34.f; // 下拉刷新展示更新多
     // 右侧导航栏按钮
     JSHomeNavButton *navigationRightButton = [[JSHomeNavButton alloc] initWithName:@"navigationbar_pop"];
     [navigationRightButton setClickHandler:^{
-        UIViewController *VC = [[UIViewController alloc] init];
+        JSDemoViewController *VC = [[JSDemoViewController alloc] init];
         [weakSelf.navigationController pushViewController:VC animated:YES];
     }];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:navigationRightButton];
