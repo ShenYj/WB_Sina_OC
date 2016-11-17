@@ -52,6 +52,7 @@ static CGFloat const kPullDownLabelHeight = 34.f; // 下拉刷新展示更新多
     
 }
 
+
 - (void)prepareView {
     
     // 监听网络
@@ -84,11 +85,23 @@ static CGFloat const kPullDownLabelHeight = 34.f; // 下拉刷新展示更新多
 // 设置导航栏按钮
 - (void)prepareNavigationView {
     
+    __weak typeof(self) weakSelf = self;
+    
     // 左侧导航栏按钮
     JSHomeNavButton *navitionLeftButton = [[JSHomeNavButton alloc] initWithName:@"navigationbar_friendsearch"];
+    [navitionLeftButton setClickHandler:^{
+        UIViewController *VC = [[UIViewController alloc] init];
+        VC.view.backgroundColor = [UIColor js_randomColor];
+        [weakSelf.navigationController pushViewController:VC animated:YES];
+    }];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:navitionLeftButton];
     // 右侧导航栏按钮
     JSHomeNavButton *navigationRightButton = [[JSHomeNavButton alloc] initWithName:@"navigationbar_pop"];
+    [navigationRightButton setClickHandler:^{
+        UIViewController *VC = [[UIViewController alloc] init];
+        VC.view.backgroundColor = [UIColor js_randomColor];
+        [weakSelf.navigationController pushViewController:VC animated:YES];
+    }];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:navigationRightButton];
     
 }

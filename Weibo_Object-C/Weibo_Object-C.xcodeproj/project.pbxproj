@@ -49,7 +49,7 @@
 		F77886461D1EC97E00BE4518 /* JSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F77886411D1EC97E00BE4518 /* JSNavigationController.m */; };
 		F77886471D1EC97E00BE4518 /* JSTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F77886431D1EC97E00BE4518 /* JSTabBarController.m */; };
 		F778864A1D1EC9BC00BE4518 /* JSTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F77886491D1EC9BC00BE4518 /* JSTabBar.m */; };
-		F778864D1D1F51EE00BE4518 /* JSVistorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F778864C1D1F51EE00BE4518 /* JSVistorTableViewController.m */; };
+		F778864D1D1F51EE00BE4518 /* JSBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F778864C1D1F51EE00BE4518 /* JSBaseTableViewController.m */; };
 		F77886561D201CBD00BE4518 /* JSVistorView.m in Sources */ = {isa = PBXBuildFile; fileRef = F77886551D201CBD00BE4518 /* JSVistorView.m */; };
 		F78A22DD1DC4B976001B7AB3 /* JSComposePictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = F78A22DC1DC4B976001B7AB3 /* JSComposePictureView.m */; };
 		F7969E9A1DD04D2A003D6A38 /* JSEmoticonTextAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = F7969E991DD04D2A003D6A38 /* JSEmoticonTextAttachment.m */; };
@@ -174,8 +174,8 @@
 		F77886431D1EC97E00BE4518 /* JSTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTabBarController.m; sourceTree = "<group>"; };
 		F77886481D1EC9BC00BE4518 /* JSTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTabBar.h; sourceTree = "<group>"; };
 		F77886491D1EC9BC00BE4518 /* JSTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTabBar.m; sourceTree = "<group>"; };
-		F778864B1D1F51EE00BE4518 /* JSVistorTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSVistorTableViewController.h; sourceTree = "<group>"; };
-		F778864C1D1F51EE00BE4518 /* JSVistorTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSVistorTableViewController.m; sourceTree = "<group>"; };
+		F778864B1D1F51EE00BE4518 /* JSBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSBaseTableViewController.h; sourceTree = "<group>"; };
+		F778864C1D1F51EE00BE4518 /* JSBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSBaseTableViewController.m; sourceTree = "<group>"; };
 		F77886541D201CBD00BE4518 /* JSVistorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSVistorView.h; sourceTree = "<group>"; };
 		F77886551D201CBD00BE4518 /* JSVistorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSVistorView.m; sourceTree = "<group>"; };
 		F778865D1D20A9D000BE4518 /* Common.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.pch; sourceTree = "<group>"; };
@@ -420,16 +420,16 @@
 		F778863F1D1EC97E00BE4518 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F77886401D1EC97E00BE4518 /* JSNavigationController.h */,
-				F77886411D1EC97E00BE4518 /* JSNavigationController.m */,
 				F77886421D1EC97E00BE4518 /* JSTabBarController.h */,
 				F77886431D1EC97E00BE4518 /* JSTabBarController.m */,
-				F778864B1D1F51EE00BE4518 /* JSVistorTableViewController.h */,
-				F778864C1D1F51EE00BE4518 /* JSVistorTableViewController.m */,
-				F7079FA51D8ECE260018FDA4 /* JSWelComeViewController.h */,
-				F7079FA61D8ECE260018FDA4 /* JSWelComeViewController.m */,
+				F77886401D1EC97E00BE4518 /* JSNavigationController.h */,
+				F77886411D1EC97E00BE4518 /* JSNavigationController.m */,
+				F778864B1D1F51EE00BE4518 /* JSBaseTableViewController.h */,
+				F778864C1D1F51EE00BE4518 /* JSBaseTableViewController.m */,
 				F7F9DB101D24979D0029235B /* JSOAuthorizeViewController.h */,
 				F7F9DB111D24979D0029235B /* JSOAuthorizeViewController.m */,
+				F7079FA51D8ECE260018FDA4 /* JSWelComeViewController.h */,
+				F7079FA61D8ECE260018FDA4 /* JSWelComeViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -917,7 +917,7 @@
 				F7AF4CDE1DC8395E00BEA0BE /* JSEmoticonKeyboardView.m in Sources */,
 				F7271A9C1DB9EC9900CF96A0 /* JSStatusCell.m in Sources */,
 				F767E2C71DBE4E4E00254511 /* NSDate+JSIsThisYear.m in Sources */,
-				F778864D1D1F51EE00BE4518 /* JSVistorTableViewController.m in Sources */,
+				F778864D1D1F51EE00BE4518 /* JSBaseTableViewController.m in Sources */,
 				F7DE06EB1DC99CC40071B429 /* JSEmoticonTool.m in Sources */,
 				F747F79A1D843748000A0C8D /* NSString+Hash.m in Sources */,
 				F7209EFC1DC4DF4600767F40 /* JSComposePictureViewCell.m in Sources */,

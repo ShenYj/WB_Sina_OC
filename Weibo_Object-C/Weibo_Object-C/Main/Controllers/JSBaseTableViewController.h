@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class JSVistorView;
-@interface JSVistorTableViewController : UITableViewController
+@interface JSBaseTableViewController : UITableViewController
 
 // 访客视图View
 @property (nonatomic,strong) JSVistorView *vistorView;

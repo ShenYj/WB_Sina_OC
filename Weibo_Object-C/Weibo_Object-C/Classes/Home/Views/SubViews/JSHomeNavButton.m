@@ -27,6 +27,10 @@
 - (void)clickNavigationBarButton:(UIBarButtonItem *)barButtonItem {
     
     NSLog(@"%s",__func__);
+    if (self.clickHandler) {
+        self.clickHandler();
+    }
+    
 }
 
 @end

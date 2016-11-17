@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JSVistorTableViewController.h"
+#import "JSBaseTableViewController.h"
 
-@interface JSProfileTableViewController : JSVistorTableViewController
+@interface JSProfileTableViewController : JSBaseTableViewController
 
 @end

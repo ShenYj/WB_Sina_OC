@@ -6,17 +6,17 @@
 //  Copyright © 2016年 ___ShenYJ___. All rights reserved.
 //
 
-#import "JSVistorTableViewController.h"
+#import "JSBaseTableViewController.h"
 #import "JSVistorView.h"
 #import "JSNavigationController.h"
 #import "JSOAuthorizeViewController.h"
 #import "JSUserAccountTool.h"
 
-@interface JSVistorTableViewController ()
+@interface JSBaseTableViewController () <UIViewControllerInteractiveTransitioning>
 
 @end
 
-@implementation JSVistorTableViewController
+@implementation JSBaseTableViewController
 
 - (void)loadView{
     
@@ -62,18 +62,9 @@
     JSOAuthorizeViewController *webVC = [[JSOAuthorizeViewController alloc]init];
     JSNavigationController *naVc = [[JSNavigationController alloc]initWithRootViewController:webVC];
     
-    [self presentViewController:naVc animated:YES completion:^{
-        
-    }];
+    [self presentViewController:naVc animated:YES completion:nil];
     
 }
-
-// 默认只允许竖屏
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
-    
-    return UIInterfaceOrientationMaskPortrait;
-}
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

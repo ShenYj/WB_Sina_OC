@@ -12,5 +12,6 @@
 
 // 自定义构造函数
 - (instancetype)initWithName:(NSString *)name;
-
+/** button点击回调 */
+@property (nonatomic,copy) void (^clickHandler)();
 @end
