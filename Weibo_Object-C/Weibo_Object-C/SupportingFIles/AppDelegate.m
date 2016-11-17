@@ -28,6 +28,8 @@
     // Bugly
     [Bugly startWithAppId:@"02fe94de4d"];
     
+    sleep(2);
+    
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
         
     // 监听kChangeRootViewControllerNotification通知

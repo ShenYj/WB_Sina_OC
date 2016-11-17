@@ -11,7 +11,6 @@
 @implementation JSHomeNavButton
 
 - (instancetype)initWithName:(NSString *)name {
-    
     self = [super init];
     if (self) {
         [self setImage:[UIImage imageNamed:name] forState:UIControlStateNormal];
@@ -23,10 +22,23 @@
     return self;
 }
 
+- (instancetype)initWithTitleName:(NSString *)titleName withAction:(SEL)selector withTarget:(id)target {
+    self = [super init];
+    if (self) {
+        self.titleLabel.font = [UIFont systemFontOfSize:16];
+        [self setTitle:titleName forState:UIControlStateNormal];
+        [self setTitle:titleName forState:UIControlStateHighlighted];
+        [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self setTitleColor:[UIColor orangeColor] forState:UIControlStateHighlighted];
+        [self addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
+        [self sizeToFit];
+    }
+    return self;
+}
+
 // 按钮点击事件
-- (void)clickNavigationBarButton:(UIBarButtonItem *)barButtonItem {
+- (void)clickNavigationBarButton:(JSHomeNavButton *)barButtonItem {
     
-    NSLog(@"%s",__func__);
     if (self.clickHandler) {
         self.clickHandler();
     }

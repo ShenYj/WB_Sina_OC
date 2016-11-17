@@ -18,33 +18,36 @@
 #import "JSSQLDAL.h"
 #import "JSNavigationController.h"
 
-@interface JSDemoViewController : JSBaseTableViewController
+@interface JSDemoViewController : UIViewController
 
 @end
-
 @implementation JSDemoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor js_randomColor];
     [self setupNavigationBar];
 }
 
 - (void)setupNavigationBar {
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"下一个" style:UIBarButtonItemStylePlain target:self action:@selector(clickRightButton:)];
+    
+    JSHomeNavButton *leftButton = [[JSHomeNavButton alloc] initWithTitleName:@"首页" withAction: NSSelectorFromString(@"clickLeftButton:") withTarget:self];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
+    
+    JSHomeNavButton *rightButton = [[JSHomeNavButton alloc] initWithTitleName:@"下一个" withAction: @selector(clickRightButton:) withTarget:self];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
 }
 
-- (void)clickRightButton:(UIBarButtonItem *)sender {
+- (void)clickLeftButton:(JSHomeNavButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)clickRightButton:(JSHomeNavButton *)sender {
     JSDemoViewController *VC = [[JSDemoViewController alloc] init];
-    VC.view.backgroundColor = [UIColor js_randomColor];
-    JSNavigationController *nav = [[JSNavigationController alloc] initWithRootViewController:VC];
-    [self.navigationController pushViewController:nav animated:YES];
+    [self.navigationController pushViewController:VC animated:YES];
 }
 
 @end
-
-
-
-
 
 
 static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
@@ -108,7 +111,6 @@ static CGFloat const kPullDownLabelHeight = 34.f; // 下拉刷新展示更新多
     // 首次展示首页请求数据
     [self loadHomeStatusDataByIsPulling:self.activityIndicatorView.isAnimating];
     
-    
 
 }
 
@@ -121,16 +123,14 @@ static CGFloat const kPullDownLabelHeight = 34.f; // 下拉刷新展示更新多
     JSHomeNavButton *navitionLeftButton = [[JSHomeNavButton alloc] initWithName:@"navigationbar_friendsearch"];
     [navitionLeftButton setClickHandler:^{
         JSDemoViewController *VC = [[JSDemoViewController alloc] init];
-        VC.view.backgroundColor = [UIColor js_randomColor];
-        JSNavigationController *nav = [[JSNavigationController alloc] initWithRootViewController:VC];
-        [weakSelf.navigationController pushViewController:nav animated:YES];
+        [weakSelf.navigationController pushViewController:VC animated:YES];
+        
     }];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:navitionLeftButton];
     // 右侧导航栏按钮
     JSHomeNavButton *navigationRightButton = [[JSHomeNavButton alloc] initWithName:@"navigationbar_pop"];
     [navigationRightButton setClickHandler:^{
         UIViewController *VC = [[UIViewController alloc] init];
-        VC.view.backgroundColor = [UIColor js_randomColor];
         [weakSelf.navigationController pushViewController:VC animated:YES];
     }];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:navigationRightButton];

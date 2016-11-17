@@ -30,8 +30,11 @@
     if (self.childViewControllers.count > 0) {
         [viewController setHidesBottomBarWhenPushed:YES];
         
+        NSLog(@"%zd",self.childViewControllers.count);
+        
         if (self.childViewControllers.count > 1) {
-            viewController.navigationItem.backBarButtonItem.title = @"首页";
+//            viewController.navigationItem.leftBarButtonItem.title = @"首页";
+            [viewController.navigationItem.leftBarButtonItem setValue:@"首页" forKey:@"title"];
         }
         
     }

@@ -12,6 +12,11 @@
 
 // 自定义构造函数
 - (instancetype)initWithName:(NSString *)name;
+// 自定义构造函数
+- (instancetype)initWithTitleName:(NSString *)titleName withAction:(SEL)selector withTarget:(id)target;
+
 /** button点击回调 */
 @property (nonatomic,copy) void (^clickHandler)();
+
+
 @end
