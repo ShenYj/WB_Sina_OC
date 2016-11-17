@@ -12,7 +12,7 @@
 #import "JSOAuthorizeViewController.h"
 #import "JSUserAccountTool.h"
 
-@interface JSBaseTableViewController () <UIViewControllerInteractiveTransitioning>
+@interface JSBaseTableViewController ()
 
 @end
 

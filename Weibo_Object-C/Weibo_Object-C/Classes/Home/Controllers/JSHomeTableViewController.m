@@ -16,6 +16,36 @@
 #import "JSStatusTipCell.h"
 #import "JSHomeNavButton.h"
 #import "JSSQLDAL.h"
+#import "JSNavigationController.h"
+
+@interface JSDemoViewController : JSBaseTableViewController
+
+@end
+
+@implementation JSDemoViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self setupNavigationBar];
+}
+
+- (void)setupNavigationBar {
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"下一个" style:UIBarButtonItemStylePlain target:self action:@selector(clickRightButton:)];
+}
+
+- (void)clickRightButton:(UIBarButtonItem *)sender {
+    JSDemoViewController *VC = [[JSDemoViewController alloc] init];
+    VC.view.backgroundColor = [UIColor js_randomColor];
+    JSNavigationController *nav = [[JSNavigationController alloc] initWithRootViewController:VC];
+    [self.navigationController pushViewController:nav animated:YES];
+}
+
+@end
+
+
+
+
+
 
 static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
 static NSString * const homeTableCellTipReusedId = @"homeTableCellTipReusedId";
@@ -90,9 +120,10 @@ static CGFloat const kPullDownLabelHeight = 34.f; // 下拉刷新展示更新多
     // 左侧导航栏按钮
     JSHomeNavButton *navitionLeftButton = [[JSHomeNavButton alloc] initWithName:@"navigationbar_friendsearch"];
     [navitionLeftButton setClickHandler:^{
-        UIViewController *VC = [[UIViewController alloc] init];
+        JSDemoViewController *VC = [[JSDemoViewController alloc] init];
         VC.view.backgroundColor = [UIColor js_randomColor];
-        [weakSelf.navigationController pushViewController:VC animated:YES];
+        JSNavigationController *nav = [[JSNavigationController alloc] initWithRootViewController:VC];
+        [weakSelf.navigationController pushViewController:nav animated:YES];
     }];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:navitionLeftButton];
     // 右侧导航栏按钮
