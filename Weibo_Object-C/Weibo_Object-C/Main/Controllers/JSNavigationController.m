@@ -27,13 +27,15 @@
 // push时隐藏底部TabBar
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
     
-    [[UIApplication sharedApplication].keyWindow.rootViewController.childViewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-       
-        if (idx != 0) {
-            
-            [viewController setHidesBottomBarWhenPushed:YES];
-        }
-    }];
+//    [[UIApplication sharedApplication].keyWindow.rootViewController.childViewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//       
+//        if (idx != 0) {
+//            [viewController setHidesBottomBarWhenPushed:YES];
+//        }
+//    }];
+    if (self.childViewControllers.count != 0) {
+        [viewController setHidesBottomBarWhenPushed:YES];
+    }
     [super pushViewController:viewController animated:animated];
 }
 
