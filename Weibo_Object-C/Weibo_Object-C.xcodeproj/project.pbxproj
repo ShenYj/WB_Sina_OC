@@ -13,6 +13,11 @@
 		F7209EF61DC4CD1E00767F40 /* JSPictureViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F7209EF51DC4CD1E00767F40 /* JSPictureViewFlowLayout.m */; };
 		F7209EFC1DC4DF4600767F40 /* JSComposePictureViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7209EFB1DC4DF4600767F40 /* JSComposePictureViewCell.m */; };
 		F72175F91DC087770065D3B8 /* JSRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = F72175F81DC087770065D3B8 /* JSRefresh.m */; };
+		F72350581DDF408B005D0E2E /* JSBaseNavBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F72350521DDF408B005D0E2E /* JSBaseNavBarButtonItem.m */; };
+		F72350591DDF408B005D0E2E /* JSBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F72350541DDF408B005D0E2E /* JSBaseViewController.m */; };
+		F723505A1DDF408B005D0E2E /* JSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F72350561DDF408B005D0E2E /* JSNavigationController.m */; };
+		F723505B1DDF408B005D0E2E /* v2_goback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F72350571DDF408B005D0E2E /* v2_goback@2x.png */; };
+		F723505E1DDF4466005D0E2E /* JSHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F723505D1DDF4466005D0E2E /* JSHomeViewController.m */; };
 		F72613A51DC2F1B0004FF7F9 /* JSHomeNavButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F72613A41DC2F1B0004FF7F9 /* JSHomeNavButton.m */; };
 		F72613A81DC31B9A004FF7F9 /* JSComposeTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F72613A71DC31B9A004FF7F9 /* JSComposeTextView.m */; };
 		F72613AB1DC36B54004FF7F9 /* JSComposeToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F72613AA1DC36B54004FF7F9 /* JSComposeToolBar.m */; };
@@ -46,7 +51,6 @@
 		F767E2C71DBE4E4E00254511 /* NSDate+JSIsThisYear.m in Sources */ = {isa = PBXBuildFile; fileRef = F767E2C61DBE4E4E00254511 /* NSDate+JSIsThisYear.m */; };
 		F775B1651DBB0D6A006DAA79 /* JSStatusToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F775B1641DBB0D6A006DAA79 /* JSStatusToolBarView.m */; };
 		F775B1681DBB1511006DAA79 /* JSToolBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F775B1671DBB1511006DAA79 /* JSToolBarButton.m */; };
-		F77886461D1EC97E00BE4518 /* JSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F77886411D1EC97E00BE4518 /* JSNavigationController.m */; };
 		F77886471D1EC97E00BE4518 /* JSTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F77886431D1EC97E00BE4518 /* JSTabBarController.m */; };
 		F778864A1D1EC9BC00BE4518 /* JSTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F77886491D1EC9BC00BE4518 /* JSTabBar.m */; };
 		F778864D1D1F51EE00BE4518 /* JSBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F778864C1D1F51EE00BE4518 /* JSBaseTableViewController.m */; };
@@ -100,6 +104,15 @@
 		F7209EFB1DC4DF4600767F40 /* JSComposePictureViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSComposePictureViewCell.m; sourceTree = "<group>"; };
 		F72175F71DC087770065D3B8 /* JSRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSRefresh.h; sourceTree = "<group>"; };
 		F72175F81DC087770065D3B8 /* JSRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSRefresh.m; sourceTree = "<group>"; };
+		F72350511DDF408B005D0E2E /* JSBaseNavBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSBaseNavBarButtonItem.h; sourceTree = "<group>"; };
+		F72350521DDF408B005D0E2E /* JSBaseNavBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSBaseNavBarButtonItem.m; sourceTree = "<group>"; };
+		F72350531DDF408B005D0E2E /* JSBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSBaseViewController.h; sourceTree = "<group>"; };
+		F72350541DDF408B005D0E2E /* JSBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSBaseViewController.m; sourceTree = "<group>"; };
+		F72350551DDF408B005D0E2E /* JSNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSNavigationController.h; sourceTree = "<group>"; };
+		F72350561DDF408B005D0E2E /* JSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSNavigationController.m; sourceTree = "<group>"; };
+		F72350571DDF408B005D0E2E /* v2_goback@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "v2_goback@2x.png"; sourceTree = "<group>"; };
+		F723505C1DDF4466005D0E2E /* JSHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSHomeViewController.h; sourceTree = "<group>"; };
+		F723505D1DDF4466005D0E2E /* JSHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSHomeViewController.m; sourceTree = "<group>"; };
 		F72613A31DC2F1B0004FF7F9 /* JSHomeNavButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSHomeNavButton.h; path = SubViews/JSHomeNavButton.h; sourceTree = "<group>"; };
 		F72613A41DC2F1B0004FF7F9 /* JSHomeNavButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSHomeNavButton.m; path = SubViews/JSHomeNavButton.m; sourceTree = "<group>"; };
 		F72613A61DC31B9A004FF7F9 /* JSComposeTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSComposeTextView.h; sourceTree = "<group>"; };
@@ -168,8 +181,6 @@
 		F775B1641DBB0D6A006DAA79 /* JSStatusToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSStatusToolBarView.m; sourceTree = "<group>"; };
 		F775B1661DBB1511006DAA79 /* JSToolBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSToolBarButton.h; sourceTree = "<group>"; };
 		F775B1671DBB1511006DAA79 /* JSToolBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSToolBarButton.m; sourceTree = "<group>"; };
-		F77886401D1EC97E00BE4518 /* JSNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSNavigationController.h; sourceTree = "<group>"; };
-		F77886411D1EC97E00BE4518 /* JSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSNavigationController.m; sourceTree = "<group>"; };
 		F77886421D1EC97E00BE4518 /* JSTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTabBarController.h; sourceTree = "<group>"; };
 		F77886431D1EC97E00BE4518 /* JSTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTabBarController.m; sourceTree = "<group>"; };
 		F77886481D1EC9BC00BE4518 /* JSTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTabBar.h; sourceTree = "<group>"; };
@@ -282,6 +293,20 @@
 				F72175F81DC087770065D3B8 /* JSRefresh.m */,
 			);
 			path = JSRefreshTool;
+			sourceTree = "<group>";
+		};
+		F72350501DDF408B005D0E2E /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F72350511DDF408B005D0E2E /* JSBaseNavBarButtonItem.h */,
+				F72350521DDF408B005D0E2E /* JSBaseNavBarButtonItem.m */,
+				F72350531DDF408B005D0E2E /* JSBaseViewController.h */,
+				F72350541DDF408B005D0E2E /* JSBaseViewController.m */,
+				F72350551DDF408B005D0E2E /* JSNavigationController.h */,
+				F72350561DDF408B005D0E2E /* JSNavigationController.m */,
+				F72350571DDF408B005D0E2E /* v2_goback@2x.png */,
+			);
+			path = BaseViewController;
 			sourceTree = "<group>";
 		};
 		F7271A9D1DB9F5DD00CF96A0 /* SubViews */ = {
@@ -420,10 +445,9 @@
 		F778863F1D1EC97E00BE4518 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F72350501DDF408B005D0E2E /* BaseViewController */,
 				F77886421D1EC97E00BE4518 /* JSTabBarController.h */,
 				F77886431D1EC97E00BE4518 /* JSTabBarController.m */,
-				F77886401D1EC97E00BE4518 /* JSNavigationController.h */,
-				F77886411D1EC97E00BE4518 /* JSNavigationController.m */,
 				F778864B1D1F51EE00BE4518 /* JSBaseTableViewController.h */,
 				F778864C1D1F51EE00BE4518 /* JSBaseTableViewController.m */,
 				F7F9DB101D24979D0029235B /* JSOAuthorizeViewController.h */,
@@ -552,6 +576,8 @@
 			children = (
 				F79927CD1D1C14E300E9BA8C /* JSHomeTableViewController.h */,
 				F79927CE1D1C14E300E9BA8C /* JSHomeTableViewController.m */,
+				F723505C1DDF4466005D0E2E /* JSHomeViewController.h */,
+				F723505D1DDF4466005D0E2E /* JSHomeViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -834,6 +860,7 @@
 			files = (
 				F79927BF1D1C13D500E9BA8C /* Assets.xcassets in Resources */,
 				F7DE06E81DC997EF0071B429 /* Emoticons.bundle in Resources */,
+				F723505B1DDF408B005D0E2E /* v2_goback@2x.png in Resources */,
 				F7A3481C1DD4037300457632 /* db.sql in Resources */,
 				F79927C01D1C13D500E9BA8C /* LaunchScreen.storyboard in Resources */,
 			);
@@ -909,8 +936,8 @@
 				F74737611DBB2DA4003F9C10 /* JSStatusRetweetView.m in Sources */,
 				F7A3481E1DD4037300457632 /* JSSQLManager.m in Sources */,
 				F767E2C11DBE414600254511 /* JSDateFormatter.m in Sources */,
+				F72350591DDF408B005D0E2E /* JSBaseViewController.m in Sources */,
 				F73BE44A1DBC801100C31595 /* JSFlowLayout.m in Sources */,
-				F77886461D1EC97E00BE4518 /* JSNavigationController.m in Sources */,
 				F79927CC1D1C14D700E9BA8C /* JSDescoveryTableViewController.m in Sources */,
 				F73BE44C1DBC801100C31595 /* JSPictureViewCell.m in Sources */,
 				F7AF4CDE1DC8395E00BEA0BE /* JSEmoticonKeyboardView.m in Sources */,
@@ -929,6 +956,7 @@
 				F7AF4CFB1DC8B66900BEA0BE /* JSEmoticonToolBarButton.m in Sources */,
 				F747F79E1D843748000A0C8D /* UINavigationController+JSFullScreenPopGesture.m in Sources */,
 				F7AF4CF01DC8B4E000BEA0BE /* JSEmoticonPageView.m in Sources */,
+				F723505A1DDF408B005D0E2E /* JSNavigationController.m in Sources */,
 				F78A22DD1DC4B976001B7AB3 /* JSComposePictureView.m in Sources */,
 				F747F79F1D843748000A0C8D /* UIView+JSFrame.m in Sources */,
 				F72613A51DC2F1B0004FF7F9 /* JSHomeNavButton.m in Sources */,
@@ -943,6 +971,7 @@
 				F72613AE1DC37657004FF7F9 /* JSComposeToolBarButton.m in Sources */,
 				F7AF4CFA1DC8B66900BEA0BE /* JSEmoticonToolBar.m in Sources */,
 				F747F7981D843748000A0C8D /* NSObject+JSObjc.m in Sources */,
+				F723505E1DDF4466005D0E2E /* JSHomeViewController.m in Sources */,
 				F7A348871DD94E1900457632 /* SDBrowserImageView.m in Sources */,
 				F7079FA71D8ECE260018FDA4 /* JSWelComeViewController.m in Sources */,
 				F7A348891DD94E1900457632 /* SDWaitingView.m in Sources */,
@@ -950,6 +979,7 @@
 				F775B1681DBB1511006DAA79 /* JSToolBarButton.m in Sources */,
 				F73BE43F1DBC7DDD00C31595 /* JSHomeStatusPictureModel.m in Sources */,
 				F77886471D1EC97E00BE4518 /* JSTabBarController.m in Sources */,
+				F72350581DDF408B005D0E2E /* JSBaseNavBarButtonItem.m in Sources */,
 				F79927BE1D1C13D500E9BA8C /* AppDelegate.m in Sources */,
 				F73BE44B1DBC801100C31595 /* JSPictureView.m in Sources */,
 				F7271AA31DBA26A700CF96A0 /* JSHomeStatusUserModel.m in Sources */,

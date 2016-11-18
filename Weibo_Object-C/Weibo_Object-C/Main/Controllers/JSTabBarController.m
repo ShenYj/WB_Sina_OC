@@ -9,7 +9,8 @@
 #import "JSTabBar.h"
 #import "JSTabBarController.h"
 #import "JSNavigationController.h"
-#import "JSHomeTableViewController.h"
+#import "JSHomeViewController.h"
+//#import "JSHomeTableViewController.h"
 #import "JSComposeRootViewController.h"
 #import "JSMessageTableViewController.h"
 #import "JSProfileTableViewController.h"
@@ -30,7 +31,7 @@
     tabBar.tabBarDelegate = self;
     [self setValue:tabBar forKey:@"tabBar"];
 
-    JSHomeTableViewController *homeTvc = [[JSHomeTableViewController alloc]init];
+    JSHomeViewController *homeTvc = [[JSHomeViewController alloc]init]; // JSHomeBaseViewController
     JSMessageTableViewController *messageTvc = [[JSMessageTableViewController alloc]init];
     JSDescoveryTableViewController *descoveryTvc = [[JSDescoveryTableViewController alloc]init];
     JSProfileTableViewController *profileTvc = [[JSProfileTableViewController alloc]init];
