@@ -18,6 +18,10 @@
 		F723505A1DDF408B005D0E2E /* JSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F72350561DDF408B005D0E2E /* JSNavigationController.m */; };
 		F723505B1DDF408B005D0E2E /* v2_goback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F72350571DDF408B005D0E2E /* v2_goback@2x.png */; };
 		F723505E1DDF4466005D0E2E /* JSHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F723505D1DDF4466005D0E2E /* JSHomeViewController.m */; };
+		F72350611DDF48C9005D0E2E /* JSNextDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F72350601DDF48C9005D0E2E /* JSNextDemoViewController.m */; };
+		F72350641DDF4A63005D0E2E /* JSDescoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F72350631DDF4A63005D0E2E /* JSDescoveryViewController.m */; };
+		F72350671DDF4AB4005D0E2E /* JSMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F72350661DDF4AB4005D0E2E /* JSMessageViewController.m */; };
+		F723506A1DDF4AE9005D0E2E /* JSProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F72350691DDF4AE9005D0E2E /* JSProfileViewController.m */; };
 		F72613A51DC2F1B0004FF7F9 /* JSHomeNavButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F72613A41DC2F1B0004FF7F9 /* JSHomeNavButton.m */; };
 		F72613A81DC31B9A004FF7F9 /* JSComposeTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F72613A71DC31B9A004FF7F9 /* JSComposeTextView.m */; };
 		F72613AB1DC36B54004FF7F9 /* JSComposeToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F72613AA1DC36B54004FF7F9 /* JSComposeToolBar.m */; };
@@ -113,6 +117,14 @@
 		F72350571DDF408B005D0E2E /* v2_goback@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "v2_goback@2x.png"; sourceTree = "<group>"; };
 		F723505C1DDF4466005D0E2E /* JSHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSHomeViewController.h; sourceTree = "<group>"; };
 		F723505D1DDF4466005D0E2E /* JSHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSHomeViewController.m; sourceTree = "<group>"; };
+		F723505F1DDF48C9005D0E2E /* JSNextDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSNextDemoViewController.h; sourceTree = "<group>"; };
+		F72350601DDF48C9005D0E2E /* JSNextDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSNextDemoViewController.m; sourceTree = "<group>"; };
+		F72350621DDF4A63005D0E2E /* JSDescoveryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDescoveryViewController.h; sourceTree = "<group>"; };
+		F72350631DDF4A63005D0E2E /* JSDescoveryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDescoveryViewController.m; sourceTree = "<group>"; };
+		F72350651DDF4AB4005D0E2E /* JSMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSMessageViewController.h; sourceTree = "<group>"; };
+		F72350661DDF4AB4005D0E2E /* JSMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSMessageViewController.m; sourceTree = "<group>"; };
+		F72350681DDF4AE9005D0E2E /* JSProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSProfileViewController.h; sourceTree = "<group>"; };
+		F72350691DDF4AE9005D0E2E /* JSProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSProfileViewController.m; sourceTree = "<group>"; };
 		F72613A31DC2F1B0004FF7F9 /* JSHomeNavButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSHomeNavButton.h; path = SubViews/JSHomeNavButton.h; sourceTree = "<group>"; };
 		F72613A41DC2F1B0004FF7F9 /* JSHomeNavButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSHomeNavButton.m; path = SubViews/JSHomeNavButton.m; sourceTree = "<group>"; };
 		F72613A61DC31B9A004FF7F9 /* JSComposeTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSComposeTextView.h; sourceTree = "<group>"; };
@@ -454,6 +466,8 @@
 				F7F9DB111D24979D0029235B /* JSOAuthorizeViewController.m */,
 				F7079FA51D8ECE260018FDA4 /* JSWelComeViewController.h */,
 				F7079FA61D8ECE260018FDA4 /* JSWelComeViewController.m */,
+				F723505F1DDF48C9005D0E2E /* JSNextDemoViewController.h */,
+				F72350601DDF48C9005D0E2E /* JSNextDemoViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -521,8 +535,8 @@
 			children = (
 				F731D1E91D9ABB66001C7B72 /* Compose */,
 				F79927AB1D1C13D500E9BA8C /* Home */,
-				F79927A71D1C13D500E9BA8C /* Descovery */,
 				F79927AF1D1C13D500E9BA8C /* Message */,
+				F79927A71D1C13D500E9BA8C /* Descovery */,
 				F79927B31D1C13D500E9BA8C /* Profile */,
 			);
 			path = Classes;
@@ -541,6 +555,8 @@
 		F79927A81D1C13D500E9BA8C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F72350621DDF4A63005D0E2E /* JSDescoveryViewController.h */,
+				F72350631DDF4A63005D0E2E /* JSDescoveryViewController.m */,
 				F79927CA1D1C14D700E9BA8C /* JSDescoveryTableViewController.h */,
 				F79927CB1D1C14D700E9BA8C /* JSDescoveryTableViewController.m */,
 			);
@@ -574,10 +590,10 @@
 		F79927AC1D1C13D500E9BA8C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F79927CD1D1C14E300E9BA8C /* JSHomeTableViewController.h */,
-				F79927CE1D1C14E300E9BA8C /* JSHomeTableViewController.m */,
 				F723505C1DDF4466005D0E2E /* JSHomeViewController.h */,
 				F723505D1DDF4466005D0E2E /* JSHomeViewController.m */,
+				F79927CD1D1C14E300E9BA8C /* JSHomeTableViewController.h */,
+				F79927CE1D1C14E300E9BA8C /* JSHomeTableViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -626,6 +642,8 @@
 		F79927B01D1C13D500E9BA8C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F72350651DDF4AB4005D0E2E /* JSMessageViewController.h */,
+				F72350661DDF4AB4005D0E2E /* JSMessageViewController.m */,
 				F79927D01D1C14F200E9BA8C /* JSMessageTableViewController.h */,
 				F79927D11D1C14F200E9BA8C /* JSMessageTableViewController.m */,
 			);
@@ -659,6 +677,8 @@
 		F79927B41D1C13D500E9BA8C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F72350681DDF4AE9005D0E2E /* JSProfileViewController.h */,
+				F72350691DDF4AE9005D0E2E /* JSProfileViewController.m */,
 				F79927D31D1C150100E9BA8C /* JSProfileTableViewController.h */,
 				F79927D41D1C150100E9BA8C /* JSProfileTableViewController.m */,
 			);
@@ -927,6 +947,7 @@
 				F74F57381D84F3DA00E3CC61 /* JSUserAccountTool.m in Sources */,
 				F7A3480D1DD0CC5B00457632 /* JSStatusTipCell.m in Sources */,
 				F767E2BE1DBDD71800254511 /* JSHomeStatusLayout.m in Sources */,
+				F72350641DDF4A63005D0E2E /* JSDescoveryViewController.m in Sources */,
 				F778864A1D1EC9BC00BE4518 /* JSTabBar.m in Sources */,
 				F7DE06F11DC9A2330071B429 /* JSEmoticonModel.m in Sources */,
 				F7F9DB151D2499BA0029235B /* JSNetworkTool.m in Sources */,
@@ -947,6 +968,7 @@
 				F7DE06EB1DC99CC40071B429 /* JSEmoticonTool.m in Sources */,
 				F747F79A1D843748000A0C8D /* NSString+Hash.m in Sources */,
 				F7209EFC1DC4DF4600767F40 /* JSComposePictureViewCell.m in Sources */,
+				F723506A1DDF4AE9005D0E2E /* JSProfileViewController.m in Sources */,
 				F72613AB1DC36B54004FF7F9 /* JSComposeToolBar.m in Sources */,
 				F79927CF1D1C14E300E9BA8C /* JSHomeTableViewController.m in Sources */,
 				F7969EA01DD06761003D6A38 /* RegexKitLite.m in Sources */,
@@ -957,6 +979,7 @@
 				F747F79E1D843748000A0C8D /* UINavigationController+JSFullScreenPopGesture.m in Sources */,
 				F7AF4CF01DC8B4E000BEA0BE /* JSEmoticonPageView.m in Sources */,
 				F723505A1DDF408B005D0E2E /* JSNavigationController.m in Sources */,
+				F72350671DDF4AB4005D0E2E /* JSMessageViewController.m in Sources */,
 				F78A22DD1DC4B976001B7AB3 /* JSComposePictureView.m in Sources */,
 				F747F79F1D843748000A0C8D /* UIView+JSFrame.m in Sources */,
 				F72613A51DC2F1B0004FF7F9 /* JSHomeNavButton.m in Sources */,
@@ -990,6 +1013,7 @@
 				F775B1651DBB0D6A006DAA79 /* JSStatusToolBarView.m in Sources */,
 				F79927D51D1C150100E9BA8C /* JSProfileTableViewController.m in Sources */,
 				F77886561D201CBD00BE4518 /* JSVistorView.m in Sources */,
+				F72350611DDF48C9005D0E2E /* JSNextDemoViewController.m in Sources */,
 				F7F9DB121D24979D0029235B /* JSOAuthorizeViewController.m in Sources */,
 				F79927D21D1C14F200E9BA8C /* JSMessageTableViewController.m in Sources */,
 				F7969E9A1DD04D2A003D6A38 /* JSEmoticonTextAttachment.m in Sources */,

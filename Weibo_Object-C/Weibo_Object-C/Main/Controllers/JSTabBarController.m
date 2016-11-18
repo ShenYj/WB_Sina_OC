@@ -10,11 +10,14 @@
 #import "JSTabBarController.h"
 #import "JSNavigationController.h"
 #import "JSHomeViewController.h"
-//#import "JSHomeTableViewController.h"
 #import "JSComposeRootViewController.h"
-#import "JSMessageTableViewController.h"
-#import "JSProfileTableViewController.h"
-#import "JSDescoveryTableViewController.h"
+#import "JSMessageViewController.h"
+#import "JSDescoveryViewController.h"
+#import "JSProfileViewController.h"
+//#import "JSMessageTableViewController.h"
+//#import "JSHomeTableViewController.h"
+//#import "JSDescoveryTableViewController.h"
+//#import "JSProfileTableViewController.h"
 
 
 
@@ -32,9 +35,9 @@
     [self setValue:tabBar forKey:@"tabBar"];
 
     JSHomeViewController *homeTvc = [[JSHomeViewController alloc]init]; // JSHomeBaseViewController
-    JSMessageTableViewController *messageTvc = [[JSMessageTableViewController alloc]init];
-    JSDescoveryTableViewController *descoveryTvc = [[JSDescoveryTableViewController alloc]init];
-    JSProfileTableViewController *profileTvc = [[JSProfileTableViewController alloc]init];
+    JSMessageViewController *messageTvc = [[JSMessageViewController alloc]init];
+    JSDescoveryViewController *descoveryTvc = [[JSDescoveryViewController alloc]init];
+    JSProfileViewController *profileTvc = [[JSProfileViewController alloc]init];
     
     [self loadNavigationControllerWithViewController:homeTvc withTitle:@"首页" withTabBarImageName:@"tabbar_home"];
     [self loadNavigationControllerWithViewController:messageTvc withTitle:@"消息" withTabBarImageName:@"tabbar_message_center"];

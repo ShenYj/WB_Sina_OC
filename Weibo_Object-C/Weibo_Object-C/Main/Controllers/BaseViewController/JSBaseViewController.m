@@ -26,6 +26,11 @@ static CGFloat const kNavigationBarHeight = 64.f;  /** 自定义导航条高度 
 #pragma mark
 #pragma mark - set up UI
 
+/** 设置朝向 */
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 /** 设置标题 */ 
 - (void)setTitle:(NSString *)title {
     [super setTitle:title];
@@ -34,13 +39,11 @@ static CGFloat const kNavigationBarHeight = 64.f;  /** 自定义导航条高度 
 
 /** 设置UI */
 - (void)setUpUI {
-    
     [self prepareCustomNavigationBar];
     [self prepareView];
 }
 /** 主视图 */
 - (void)prepareView {
-    
     self.view.backgroundColor = [UIColor whiteColor];
 }
 
