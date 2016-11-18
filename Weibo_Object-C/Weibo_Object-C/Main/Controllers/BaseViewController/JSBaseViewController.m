@@ -26,11 +26,6 @@ static CGFloat const kNavigationBarHeight = 64.f;  /** 自定义导航条高度 
 #pragma mark
 #pragma mark - set up UI
 
-/** 设置朝向 */
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskPortrait;
-}
-
 /** 设置标题 */ 
 - (void)setTitle:(NSString *)title {
     [super setTitle:title];
