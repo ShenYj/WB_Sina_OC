@@ -310,12 +310,12 @@
 		F72350501DDF408B005D0E2E /* BaseViewController */ = {
 			isa = PBXGroup;
 			children = (
-				F72350511DDF408B005D0E2E /* JSBaseNavBarButtonItem.h */,
-				F72350521DDF408B005D0E2E /* JSBaseNavBarButtonItem.m */,
 				F72350531DDF408B005D0E2E /* JSBaseViewController.h */,
 				F72350541DDF408B005D0E2E /* JSBaseViewController.m */,
 				F72350551DDF408B005D0E2E /* JSNavigationController.h */,
 				F72350561DDF408B005D0E2E /* JSNavigationController.m */,
+				F72350511DDF408B005D0E2E /* JSBaseNavBarButtonItem.h */,
+				F72350521DDF408B005D0E2E /* JSBaseNavBarButtonItem.m */,
 				F72350571DDF408B005D0E2E /* v2_goback@2x.png */,
 			);
 			path = BaseViewController;

@@ -58,6 +58,8 @@
     //[viewController.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName: THEME_COLOR} forState:UIControlStateSelected];
     
     JSNavigationController *navigationController = [[JSNavigationController alloc]initWithRootViewController:viewController];
+    // 设置底部bar在Push时隐藏
+    navigationController.bottomBarHiddenWhenPushed = YES;
     viewController.title = title;
     viewController.tabBarItem.image = img_Normal;
     viewController.tabBarItem.selectedImage = img_Select;
