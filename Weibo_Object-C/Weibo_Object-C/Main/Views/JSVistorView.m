@@ -32,6 +32,7 @@
 }
 - (void)layoutSubviews{
     [super layoutSubviews];
+    
     [self.circleImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self);
         make.centerY.mas_equalTo(self);

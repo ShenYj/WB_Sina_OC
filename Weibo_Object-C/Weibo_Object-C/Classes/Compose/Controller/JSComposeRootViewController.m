@@ -48,6 +48,10 @@ extern CGFloat itemSize;
     [self prepareNavigationView];   // 设置导航栏视图
 }
 
+- (void)setUpUI {
+    // 空实现
+}
+
 - (void)dealloc {
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -148,7 +152,7 @@ extern CGFloat itemSize;
 #pragma mark - 导航栏按钮点击事件
 
 // dismiss控制器
-- (void)clickLeftBarButtonItem:(UIBarButtonItem *)sender {
+- (void)clickLeftBarButtonItem:(JSBaseNavBarButtonItem *)sender {
     // 取消第一响应者
     [self.textView resignFirstResponder];
     // 释放控制器
@@ -157,7 +161,7 @@ extern CGFloat itemSize;
 }
 
 // 发布微博
-- (void)clickRightBarButtonItem:(UIBarButtonItem *)sender {
+- (void)clickRightBarButtonItem:(JSBaseNavBarButtonItem *)sender {
     
     // 拼接表情+文本的可变字符串
     NSMutableString *composeText = [[NSMutableString alloc] init];
