@@ -8,25 +8,62 @@
 
 #import "JSHomeViewController.h"
 #import "JSNextDemoViewController.h"
+#import "JSHomeTableViewController.h"
+
+@interface JSHomeViewController ()
+
+@property (nonatomic,strong) JSHomeTableViewController *homeTableVC;
+
+@end
 
 @implementation JSHomeViewController
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self prepareNavView];
 }
 
-/** 设置视图 */
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+}
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    [self.homeTableVC.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.view).mas_offset(64);
+        make.left.top.bottom.mas_equalTo(self.view);
+    }];
+    
+}
+
+/** 设置导航栏视图 */
 - (void)prepareNavView {
     self.js_navigationItem.title = @"首页";
     self.js_navigationItem.leftBarButtonItem = [[JSBaseNavBarButtonItem alloc] initWithTitle:@"首页" withFont:16 withTarget:self withAction:@selector(clickLeftBarButtonItem:)];
     
 }
 
+/** 设置主界面视图 */
+- (void)prepareView {
+    [self addChildViewController:self.homeTableVC];
+    [self.view addSubview:self.homeTableVC.tableView];
+}
+
 /** 右侧导航栏按钮点击事件 */
 - (void)clickLeftBarButtonItem:(JSBaseNavBarButtonItem *)sender {
     JSNextDemoViewController *nextVC = [[JSNextDemoViewController alloc] init];
     [self.navigationController pushViewController:nextVC animated:YES];
+}
+
+
+#pragma mark
+#pragma mark - lazy
+- (JSHomeTableViewController *)homeTableVC {
+    if (!_homeTableVC) {
+        _homeTableVC = [[JSHomeTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    }
+    return _homeTableVC;
 }
 
 

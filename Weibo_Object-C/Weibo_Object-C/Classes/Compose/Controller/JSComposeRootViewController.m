@@ -73,7 +73,9 @@ extern CGFloat itemSize;
     
     
     [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(self.view);
+        make.top.mas_equalTo(self.view).mas_offset(64);
+        make.left.right.bottom.mas_equalTo(self.view);
+        //make.edges.mas_equalTo(self.view);
     }];
     
     [self.pictureView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -130,12 +132,14 @@ extern CGFloat itemSize;
 - (void)prepareNavigationView {
     
     // 中间TitleView
-    self.navigationItem.titleView = self.titleView;
+    self.js_navigationItem.titleView = self.titleView;
     // 左侧取消按钮
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(clickLeftBarButtonItem:)];
+    //self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(clickLeftBarButtonItem:)];
+    //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发布" style:UIBarButtonItemStylePlain target:self action:@selector(clickRightBarButtonItem:)];
+    self.js_navigationItem.rightBarButtonItem = [[JSBaseNavBarButtonItem alloc] initWithTitle:@"发布" withFont:16 withTarget:self withAction:@selector(clickRightBarButtonItem:)];
+    self.js_navigationItem.leftBarButtonItem = [[JSBaseNavBarButtonItem alloc] initWithTitle:@"取消" withFont:16 withTarget:self withAction:@selector(clickLeftBarButtonItem:)];
     // 右侧发布按钮
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发布" style:UIBarButtonItemStylePlain target:self action:@selector(clickRightBarButtonItem:)];
-    self.navigationItem.rightBarButtonItem.enabled = NO;
+    self.js_navigationItem.rightBarButtonItem.enabled = NO;
     
 }
 
@@ -397,7 +401,7 @@ extern CGFloat itemSize;
         NSString *displayString = [NSString stringWithFormat:@"发微博\n%@",userNickName];
         NSRange range = [displayString rangeOfString:userNickName];
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:displayString];
-        [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, displayString.length - 1)];
+        [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor purpleColor] range:NSMakeRange(0, displayString.length - 1)];
         [attributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:13] range:NSMakeRange(0, displayString.length - 1)];
         [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:range];
         [attributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:range];

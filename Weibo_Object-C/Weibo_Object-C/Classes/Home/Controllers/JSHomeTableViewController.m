@@ -19,7 +19,6 @@
 #import "JSNavigationController.h"
 
 @interface JSDemoViewController : UIViewController
-
 @end
 @implementation JSDemoViewController
 
@@ -71,17 +70,30 @@ static CGFloat const kPullDownLabelHeight = 34.f; // 下拉刷新展示更新多
 
 @synthesize refreshControl = _refreshControl;
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    if (!self.isLogin) {
+- (instancetype)initWithStyle:(UITableViewStyle)style {
+    self = [super initWithStyle:style];
+    if (self) {
         
-        [self.vistorView setupVistorViewInfoWithTitle:nil withImageName:nil];
-    } else {
-        
-        [self prepareView];
+        if (!self.isLogin) {
+            [self.vistorView setupVistorViewInfoWithTitle:nil withImageName:nil];
+        } else {
+            [self prepareView];
+        }
     }
+    return self;
 }
+
+//- (void)viewDidLoad {
+//    [super viewDidLoad];
+//    
+//    if (!self.isLogin) {
+//        
+//        [self.vistorView setupVistorViewInfoWithTitle:nil withImageName:nil];
+//    } else {
+//        
+//        [self prepareView];
+//    }
+//}
 
 - (void)prepareView {
     

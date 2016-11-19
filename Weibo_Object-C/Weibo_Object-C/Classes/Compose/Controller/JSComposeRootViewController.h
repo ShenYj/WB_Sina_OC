@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JSBaseViewController.h"
 
-@interface JSComposeRootViewController : UIViewController
+@interface JSComposeRootViewController : JSBaseViewController
 
 @end
+
