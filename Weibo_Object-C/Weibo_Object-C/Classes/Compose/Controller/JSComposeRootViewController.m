@@ -40,16 +40,20 @@ extern CGFloat itemSize;
 
 @implementation JSComposeRootViewController
 
+
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+    
+    NSLog(@"%ld",(long)previousTraitCollection.userInterfaceIdiom);
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    [self prepareView];             // 设置视图
-    [self prepareNavigationView];   // 设置导航栏视图
 }
 
 - (void)setUpUI {
-    // 空实现
+    [self prepareView];             // 设置视图
+    [self prepareNavigationView];   // 设置导航栏视图
 }
 
 - (void)dealloc {
@@ -139,11 +143,18 @@ extern CGFloat itemSize;
     // 中间TitleView
     self.js_navigationItem.titleView = self.titleView;
     // 左侧取消按钮
-    //self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(clickLeftBarButtonItem:)];
-    //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发布" style:UIBarButtonItemStylePlain target:self action:@selector(clickRightBarButtonItem:)];
-    self.js_navigationItem.rightBarButtonItem = [[JSBaseNavBarButtonItem alloc] initWithTitle:@"发布" withFont:16 withTarget:self withAction:@selector(clickRightBarButtonItem:)];
-    self.js_navigationItem.leftBarButtonItem = [[JSBaseNavBarButtonItem alloc] initWithTitle:@"取消" withFont:16 withTarget:self withAction:@selector(clickLeftBarButtonItem:)];
+    self.js_navigationItem.leftBarButtonItem = [[JSBaseNavBarButtonItem alloc] initWithTitle:@"取消"
+                                                                                    withFont:16
+                                                                                  withTarget:self
+                                                                                  withAction:@selector(clickLeftBarButtonItem:)
+                                                ];
     // 右侧发布按钮
+    self.js_navigationItem.rightBarButtonItem = [[JSBaseNavBarButtonItem alloc] initWithTitle:@"发布"
+                                                                                     withFont:16
+                                                                                   withTarget:self
+                                                                                   withAction:@selector(clickRightBarButtonItem:)
+                                                 ];
+    
     self.js_navigationItem.rightBarButtonItem.enabled = NO;
     
 }

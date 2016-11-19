@@ -202,8 +202,6 @@ static CGFloat const kNavigationBarHeight = 64.f;  /** 自定义导航条高度 
     return _activityIndicatorView;
 }
 
-#pragma mark - lazy
-
 - (BOOL)isLogin {
     
     return [JSUserAccountTool sharedManager].isLogin;
