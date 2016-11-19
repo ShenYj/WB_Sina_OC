@@ -31,7 +31,8 @@ static CGFloat const kNavigationBarHeight = 64.f;  /** 自定义导航条高度 
 #pragma mark
 #pragma mark - 请求数据 子类具体处理
 - (void)loadData {
-    
+    // 细节处理:如果子类不实现,结束刷新
+    [self.refreshControl endRefresh];
 }
 
 #pragma mark
