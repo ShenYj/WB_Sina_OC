@@ -218,14 +218,14 @@
 		F79927BA1D1C13D500E9BA8C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F79927BC1D1C13D500E9BA8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F79927BD1D1C13D500E9BA8C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		F79927CA1D1C14D700E9BA8C /* JSDescoveryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDescoveryTableViewController.h; sourceTree = "<group>"; };
-		F79927CB1D1C14D700E9BA8C /* JSDescoveryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDescoveryTableViewController.m; sourceTree = "<group>"; };
-		F79927CD1D1C14E300E9BA8C /* JSHomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSHomeTableViewController.h; sourceTree = "<group>"; };
-		F79927CE1D1C14E300E9BA8C /* JSHomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSHomeTableViewController.m; sourceTree = "<group>"; };
-		F79927D01D1C14F200E9BA8C /* JSMessageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSMessageTableViewController.h; sourceTree = "<group>"; };
-		F79927D11D1C14F200E9BA8C /* JSMessageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSMessageTableViewController.m; sourceTree = "<group>"; };
-		F79927D31D1C150100E9BA8C /* JSProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSProfileTableViewController.h; sourceTree = "<group>"; };
-		F79927D41D1C150100E9BA8C /* JSProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSProfileTableViewController.m; sourceTree = "<group>"; };
+		F79927CA1D1C14D700E9BA8C /* JSDescoveryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSDescoveryTableViewController.h; path = ../../Classes/Descovery/Controllers/JSDescoveryTableViewController.h; sourceTree = "<group>"; };
+		F79927CB1D1C14D700E9BA8C /* JSDescoveryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSDescoveryTableViewController.m; path = ../../Classes/Descovery/Controllers/JSDescoveryTableViewController.m; sourceTree = "<group>"; };
+		F79927CD1D1C14E300E9BA8C /* JSHomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSHomeTableViewController.h; path = ../../Classes/Home/Controllers/JSHomeTableViewController.h; sourceTree = "<group>"; };
+		F79927CE1D1C14E300E9BA8C /* JSHomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSHomeTableViewController.m; path = ../../Classes/Home/Controllers/JSHomeTableViewController.m; sourceTree = "<group>"; };
+		F79927D01D1C14F200E9BA8C /* JSMessageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSMessageTableViewController.h; path = ../../Classes/Message/Controllers/JSMessageTableViewController.h; sourceTree = "<group>"; };
+		F79927D11D1C14F200E9BA8C /* JSMessageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSMessageTableViewController.m; path = ../../Classes/Message/Controllers/JSMessageTableViewController.m; sourceTree = "<group>"; };
+		F79927D31D1C150100E9BA8C /* JSProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSProfileTableViewController.h; path = ../../Classes/Profile/Controllers/JSProfileTableViewController.h; sourceTree = "<group>"; };
+		F79927D41D1C150100E9BA8C /* JSProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSProfileTableViewController.m; path = ../../Classes/Profile/Controllers/JSProfileTableViewController.m; sourceTree = "<group>"; };
 		F7A3480B1DD0CC5B00457632 /* JSStatusTipCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSStatusTipCell.h; sourceTree = "<group>"; };
 		F7A3480C1DD0CC5B00457632 /* JSStatusTipCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSStatusTipCell.m; sourceTree = "<group>"; };
 		F7A348171DD4037300457632 /* db.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = db.sql; sourceTree = "<group>"; };
@@ -319,6 +319,34 @@
 				F72350571DDF408B005D0E2E /* v2_goback@2x.png */,
 			);
 			path = BaseViewController;
+			sourceTree = "<group>";
+		};
+		F723506B1DE05BDF005D0E2E /* 废弃 */ = {
+			isa = PBXGroup;
+			children = (
+				F79927CA1D1C14D700E9BA8C /* JSDescoveryTableViewController.h */,
+				F79927CB1D1C14D700E9BA8C /* JSDescoveryTableViewController.m */,
+				F79927D31D1C150100E9BA8C /* JSProfileTableViewController.h */,
+				F79927D41D1C150100E9BA8C /* JSProfileTableViewController.m */,
+				F79927D01D1C14F200E9BA8C /* JSMessageTableViewController.h */,
+				F79927D11D1C14F200E9BA8C /* JSMessageTableViewController.m */,
+				F79927CD1D1C14E300E9BA8C /* JSHomeTableViewController.h */,
+				F79927CE1D1C14E300E9BA8C /* JSHomeTableViewController.m */,
+				F778864B1D1F51EE00BE4518 /* JSBaseTableViewController.h */,
+				F778864C1D1F51EE00BE4518 /* JSBaseTableViewController.m */,
+			);
+			name = "废弃";
+			sourceTree = "<group>";
+		};
+		F723506C1DE05CE4005D0E2E /* OAuth&Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				F7F9DB101D24979D0029235B /* JSOAuthorizeViewController.h */,
+				F7F9DB111D24979D0029235B /* JSOAuthorizeViewController.m */,
+				F7079FA51D8ECE260018FDA4 /* JSWelComeViewController.h */,
+				F7079FA61D8ECE260018FDA4 /* JSWelComeViewController.m */,
+			);
+			name = "OAuth&Welcome";
 			sourceTree = "<group>";
 		};
 		F7271A9D1DB9F5DD00CF96A0 /* SubViews */ = {
@@ -457,15 +485,11 @@
 		F778863F1D1EC97E00BE4518 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F72350501DDF408B005D0E2E /* BaseViewController */,
 				F77886421D1EC97E00BE4518 /* JSTabBarController.h */,
 				F77886431D1EC97E00BE4518 /* JSTabBarController.m */,
-				F778864B1D1F51EE00BE4518 /* JSBaseTableViewController.h */,
-				F778864C1D1F51EE00BE4518 /* JSBaseTableViewController.m */,
-				F7F9DB101D24979D0029235B /* JSOAuthorizeViewController.h */,
-				F7F9DB111D24979D0029235B /* JSOAuthorizeViewController.m */,
-				F7079FA51D8ECE260018FDA4 /* JSWelComeViewController.h */,
-				F7079FA61D8ECE260018FDA4 /* JSWelComeViewController.m */,
+				F72350501DDF408B005D0E2E /* BaseViewController */,
+				F723506C1DE05CE4005D0E2E /* OAuth&Welcome */,
+				F723506B1DE05BDF005D0E2E /* 废弃 */,
 				F723505F1DDF48C9005D0E2E /* JSNextDemoViewController.h */,
 				F72350601DDF48C9005D0E2E /* JSNextDemoViewController.m */,
 			);
@@ -557,8 +581,6 @@
 			children = (
 				F72350621DDF4A63005D0E2E /* JSDescoveryViewController.h */,
 				F72350631DDF4A63005D0E2E /* JSDescoveryViewController.m */,
-				F79927CA1D1C14D700E9BA8C /* JSDescoveryTableViewController.h */,
-				F79927CB1D1C14D700E9BA8C /* JSDescoveryTableViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -592,8 +614,6 @@
 			children = (
 				F723505C1DDF4466005D0E2E /* JSHomeViewController.h */,
 				F723505D1DDF4466005D0E2E /* JSHomeViewController.m */,
-				F79927CD1D1C14E300E9BA8C /* JSHomeTableViewController.h */,
-				F79927CE1D1C14E300E9BA8C /* JSHomeTableViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -644,8 +664,6 @@
 			children = (
 				F72350651DDF4AB4005D0E2E /* JSMessageViewController.h */,
 				F72350661DDF4AB4005D0E2E /* JSMessageViewController.m */,
-				F79927D01D1C14F200E9BA8C /* JSMessageTableViewController.h */,
-				F79927D11D1C14F200E9BA8C /* JSMessageTableViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -679,8 +697,6 @@
 			children = (
 				F72350681DDF4AE9005D0E2E /* JSProfileViewController.h */,
 				F72350691DDF4AE9005D0E2E /* JSProfileViewController.m */,
-				F79927D31D1C150100E9BA8C /* JSProfileTableViewController.h */,
-				F79927D41D1C150100E9BA8C /* JSProfileTableViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
