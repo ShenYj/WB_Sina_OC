@@ -8,7 +8,7 @@
 
 #import "JSBaseTableViewController.h"
 #import "JSVistorView.h"
-#import "JSNavigationController.h"
+#import "JSBaseNavigationController.h"
 #import "JSOAuthorizeViewController.h"
 #import "JSUserAccountTool.h"
 
@@ -60,7 +60,7 @@
 - (void)buttonClick:(UIBarButtonItem *)sender{
     
     JSOAuthorizeViewController *webVC = [[JSOAuthorizeViewController alloc]init];
-    JSNavigationController *naVc = [[JSNavigationController alloc]initWithRootViewController:webVC];
+    JSBaseNavigationController *naVc = [[JSBaseNavigationController alloc]initWithRootViewController:webVC];
     
     [self presentViewController:naVc animated:YES completion:nil];
     

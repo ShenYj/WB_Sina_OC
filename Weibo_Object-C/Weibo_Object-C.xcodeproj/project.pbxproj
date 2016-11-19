@@ -15,7 +15,7 @@
 		F72175F91DC087770065D3B8 /* JSRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = F72175F81DC087770065D3B8 /* JSRefresh.m */; };
 		F72350581DDF408B005D0E2E /* JSBaseNavBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F72350521DDF408B005D0E2E /* JSBaseNavBarButtonItem.m */; };
 		F72350591DDF408B005D0E2E /* JSBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F72350541DDF408B005D0E2E /* JSBaseViewController.m */; };
-		F723505A1DDF408B005D0E2E /* JSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F72350561DDF408B005D0E2E /* JSNavigationController.m */; };
+		F723505A1DDF408B005D0E2E /* JSBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F72350561DDF408B005D0E2E /* JSBaseNavigationController.m */; };
 		F723505B1DDF408B005D0E2E /* v2_goback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F72350571DDF408B005D0E2E /* v2_goback@2x.png */; };
 		F723505E1DDF4466005D0E2E /* JSHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F723505D1DDF4466005D0E2E /* JSHomeViewController.m */; };
 		F72350611DDF48C9005D0E2E /* JSNextDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F72350601DDF48C9005D0E2E /* JSNextDemoViewController.m */; };
@@ -112,8 +112,8 @@
 		F72350521DDF408B005D0E2E /* JSBaseNavBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSBaseNavBarButtonItem.m; sourceTree = "<group>"; };
 		F72350531DDF408B005D0E2E /* JSBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSBaseViewController.h; sourceTree = "<group>"; };
 		F72350541DDF408B005D0E2E /* JSBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSBaseViewController.m; sourceTree = "<group>"; };
-		F72350551DDF408B005D0E2E /* JSNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSNavigationController.h; sourceTree = "<group>"; };
-		F72350561DDF408B005D0E2E /* JSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSNavigationController.m; sourceTree = "<group>"; };
+		F72350551DDF408B005D0E2E /* JSBaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSBaseNavigationController.h; sourceTree = "<group>"; };
+		F72350561DDF408B005D0E2E /* JSBaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSBaseNavigationController.m; sourceTree = "<group>"; };
 		F72350571DDF408B005D0E2E /* v2_goback@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "v2_goback@2x.png"; sourceTree = "<group>"; };
 		F723505C1DDF4466005D0E2E /* JSHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSHomeViewController.h; sourceTree = "<group>"; };
 		F723505D1DDF4466005D0E2E /* JSHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSHomeViewController.m; sourceTree = "<group>"; };
@@ -312,8 +312,8 @@
 			children = (
 				F72350531DDF408B005D0E2E /* JSBaseViewController.h */,
 				F72350541DDF408B005D0E2E /* JSBaseViewController.m */,
-				F72350551DDF408B005D0E2E /* JSNavigationController.h */,
-				F72350561DDF408B005D0E2E /* JSNavigationController.m */,
+				F72350551DDF408B005D0E2E /* JSBaseNavigationController.h */,
+				F72350561DDF408B005D0E2E /* JSBaseNavigationController.m */,
 				F72350511DDF408B005D0E2E /* JSBaseNavBarButtonItem.h */,
 				F72350521DDF408B005D0E2E /* JSBaseNavBarButtonItem.m */,
 				F72350571DDF408B005D0E2E /* v2_goback@2x.png */,
@@ -978,7 +978,7 @@
 				F7AF4CFB1DC8B66900BEA0BE /* JSEmoticonToolBarButton.m in Sources */,
 				F747F79E1D843748000A0C8D /* UINavigationController+JSFullScreenPopGesture.m in Sources */,
 				F7AF4CF01DC8B4E000BEA0BE /* JSEmoticonPageView.m in Sources */,
-				F723505A1DDF408B005D0E2E /* JSNavigationController.m in Sources */,
+				F723505A1DDF408B005D0E2E /* JSBaseNavigationController.m in Sources */,
 				F72350671DDF4AB4005D0E2E /* JSMessageViewController.m in Sources */,
 				F78A22DD1DC4B976001B7AB3 /* JSComposePictureView.m in Sources */,
 				F747F79F1D843748000A0C8D /* UIView+JSFrame.m in Sources */,

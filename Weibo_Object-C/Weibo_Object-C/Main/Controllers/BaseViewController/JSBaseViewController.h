@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "JSBaseNavBarButtonItem.h"
 #import "JSRefresh.h"
-
+#import "JSVistorView.h"
 
 @interface JSBaseViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
@@ -28,6 +28,11 @@
 @property (nonatomic) JSRefresh *refreshControl;
 /** 上拉刷新指示控件 */ 
 @property (nonatomic) UIActivityIndicatorView *activityIndicatorView;
+
+// 是否登录的标识
+@property (nonatomic,assign,getter=isLogin) BOOL login;
+// 访客视图View
+@property (nonatomic,strong) JSVistorView *vistorView;
 
 /** 请求数据 由子类具体实现 */
 - (void)loadData;

@@ -8,7 +8,7 @@
 
 #import "JSTabBar.h"
 #import "JSTabBarController.h"
-#import "JSNavigationController.h"
+#import "JSBaseNavigationController.h"
 #import "JSHomeViewController.h"
 #import "JSComposeRootViewController.h"
 #import "JSMessageViewController.h"
@@ -62,7 +62,7 @@
     [viewController.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]} forState:UIControlStateNormal];
     //[viewController.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName: THEME_COLOR} forState:UIControlStateSelected];
     
-    JSNavigationController *navigationController = [[JSNavigationController alloc]initWithRootViewController:viewController];
+    JSBaseNavigationController *navigationController = [[JSBaseNavigationController alloc]initWithRootViewController:viewController];
     // 设置底部bar在Push时隐藏
     navigationController.bottomBarHiddenWhenPushed = YES;
     viewController.title = title;
@@ -84,7 +84,7 @@
     
     // 弹出发布微博界面
     JSComposeRootViewController *composeVC = [[JSComposeRootViewController alloc] init];
-    JSNavigationController *navigationController = [[JSNavigationController alloc]initWithRootViewController:composeVC];
+    JSBaseNavigationController *navigationController = [[JSBaseNavigationController alloc]initWithRootViewController:composeVC];
     
     [self presentViewController:navigationController animated:YES completion:nil];
     

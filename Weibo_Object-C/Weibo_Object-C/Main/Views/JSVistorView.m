@@ -7,7 +7,7 @@
 //
 
 #import "JSVistorView.h"
-#import "Masonry.h"
+
 
 @interface JSVistorView ()
 
@@ -21,23 +21,17 @@
 
 @implementation JSVistorView
 
-- (instancetype)init{
-    
-    self = [super init];
+- (instancetype)initWithFrame:(CGRect)frame{
+    self = [super initWithFrame:frame];
     if (self) {
         
         self.backgroundColor = [UIColor whiteColor];
         [self setupUI];
-        
     }
     return self;
 }
-
-
-
 - (void)layoutSubviews{
     [super layoutSubviews];
-    
     [self.circleImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self);
         make.centerY.mas_equalTo(self);
@@ -67,8 +61,8 @@
         make.width.mas_equalTo(self.loginButton);
         make.top.mas_equalTo(self.loginButton);
     }];
+    
 }
-
 - (void)setupUI{
     
     [self addSubview:self.circleImageView];

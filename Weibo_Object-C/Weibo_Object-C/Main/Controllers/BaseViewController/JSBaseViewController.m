@@ -7,16 +7,12 @@
 //
 
 #import "JSBaseViewController.h"
-#import "JSNavigationController.h"
-
+#import "JSBaseNavigationController.h"
+#import "JSBaseNavigationController.h"
+#import "JSOAuthorizeViewController.h"
+#import "JSUserAccountTool.h"
 
 static CGFloat const kNavigationBarHeight = 64.f;  /** 自定义导航条高度 */
-
-@interface JSBaseViewController () 
-
-
-
-@end
 
 @implementation JSBaseViewController
 
@@ -25,7 +21,7 @@ static CGFloat const kNavigationBarHeight = 64.f;  /** 自定义导航条高度 
     // Do any additional setup after loading the view.
     [self setUpUI];
     
-    [self loadData];
+    //[self loadData];
 }
 
 #pragma mark
@@ -48,7 +44,10 @@ static CGFloat const kNavigationBarHeight = 64.f;  /** 自定义导航条高度 
 - (void)setUpUI {
     [self prepareCustomNavigationBar];
     [self prepareView];
-    [self prepareTableView];
+    
+    // 根据用户是否登录设置视图(表格视图/访客视图)
+    self.isLogin ? ([self prepareTableView]) : ([self prepareVistorView]);
+    
 }
 /** 主视图相关 */
 - (void)prepareView {
@@ -84,6 +83,13 @@ static CGFloat const kNavigationBarHeight = 64.f;  /** 自定义导航条高度 
     
     // 使用UIActivityIndicatorView实现上拉刷新功能
     self.tableView.tableFooterView = self.activityIndicatorView;
+}
+
+/** 设置访客视图 */
+- (void)prepareVistorView {
+    
+    [self.view insertSubview:self.vistorView belowSubview:self.js_NavigationBar];
+    
 }
 
 #pragma mark
@@ -123,8 +129,6 @@ static CGFloat const kNavigationBarHeight = 64.f;  /** 自定义导航条高度 
     
 }
 
-
-
 #pragma mark
 #pragma mark - lazy
 
@@ -144,6 +148,7 @@ static CGFloat const kNavigationBarHeight = 64.f;  /** 自定义导航条高度 
     return _js_navigationItem;
 }
 
+// 表格视图
 - (UITableView *)tableView {
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
@@ -151,6 +156,14 @@ static CGFloat const kNavigationBarHeight = 64.f;  /** 自定义导航条高度 
         _tableView.delegate = self;
     }
     return _tableView;
+}
+
+// 访客视图
+- (JSVistorView *)vistorView {
+    if (!_vistorView) {
+        _vistorView = [[JSVistorView alloc] initWithFrame:self.view.bounds];
+    }
+    return _vistorView;
 }
 
 // 下拉刷新指示条
@@ -170,6 +183,13 @@ static CGFloat const kNavigationBarHeight = 64.f;  /** 自定义导航条高度 
         _activityIndicatorView.color = THEME_COLOR;
     }
     return _activityIndicatorView;
+}
+
+#pragma mark - lazy
+
+- (BOOL)isLogin {
+    
+    return [JSUserAccountTool sharedManager].isLogin;
 }
 
 @end

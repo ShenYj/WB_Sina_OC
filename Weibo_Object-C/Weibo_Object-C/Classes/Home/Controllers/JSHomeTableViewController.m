@@ -16,7 +16,7 @@
 #import "JSStatusTipCell.h"
 #import "JSHomeNavButton.h"
 #import "JSSQLDAL.h"
-#import "JSNavigationController.h"
+#import "JSBaseNavigationController.h"
 
 @interface JSDemoViewController : UIViewController
 @end
