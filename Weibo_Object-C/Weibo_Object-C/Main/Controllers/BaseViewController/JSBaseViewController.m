@@ -19,9 +19,11 @@ static CGFloat const kNavigationBarHeight = 64.f;  /** 自定义导航条高度 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    // 设置自定义导航栏视图
+    [self prepareCustomNavigationBar];
+    // 设置其他视图
     [self setUpUI];
     
-    //[self loadData];
 }
 
 #pragma mark
@@ -40,20 +42,6 @@ static CGFloat const kNavigationBarHeight = 64.f;  /** 自定义导航条高度 
     self.js_navigationItem.title = title;
 }
 
-/** 设置UI */
-- (void)setUpUI {
-    [self prepareCustomNavigationBar];
-    [self prepareView];
-    
-    // 根据用户是否登录设置视图(表格视图/访客视图)
-    self.isLogin ? ([self prepareTableView]) : ([self prepareVistorView]);
-    
-}
-/** 主视图相关 */
-- (void)prepareView {
-    self.view.backgroundColor = [UIColor whiteColor];
-}
-
 /** 导航条视图 */
 - (void)prepareCustomNavigationBar {
     
@@ -68,6 +56,24 @@ static CGFloat const kNavigationBarHeight = 64.f;  /** 自定义导航条高度 
                                                     NSForegroundColorAttributeName: [UIColor orangeColor]}
      ];
     
+}
+
+/** 设置UI */
+- (void)setUpUI {
+    
+    // 设置主视图相关
+    [self prepareView];
+    
+    // 根据用户是否登录设置视图(表格视图/访客视图)
+    self.isLogin ? ([self prepareTableView]) : ([self prepareVistorView]);
+    
+    // 请求数据
+    [self loadData];
+    
+}
+/** 主视图相关 */
+- (void)prepareView {
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 /** 设置表格视图 */
@@ -89,6 +95,17 @@ static CGFloat const kNavigationBarHeight = 64.f;  /** 自定义导航条高度 
 - (void)prepareVistorView {
     
     [self.view insertSubview:self.vistorView belowSubview:self.js_NavigationBar];
+    __weak typeof(self) weakSelf = self;
+    [self.vistorView setFinishedBlock:^{
+        [weakSelf buttonClick:nil];
+    }];
+}
+
+
+- (void)buttonClick:(UIButton *)sender{
+    JSOAuthorizeViewController *webVC = [[JSOAuthorizeViewController alloc]init];
+    JSBaseNavigationController *naVc = [[JSBaseNavigationController alloc]initWithRootViewController:webVC];
+    [self presentViewController:naVc animated:YES completion:nil];
     
 }
 

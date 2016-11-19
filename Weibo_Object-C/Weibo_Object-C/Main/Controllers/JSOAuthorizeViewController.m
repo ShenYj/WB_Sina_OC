@@ -31,6 +31,10 @@ static NSString * const kTestPassword = @"qwertyuiop123";
     self.view = self.webView;
 }
 
+- (void)setUpUI{
+    // 空实现
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -44,9 +48,9 @@ static NSString * const kTestPassword = @"qwertyuiop123";
 
 - (void)preapareNavigationBar{
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(clickLeftBarButtonItem:)];
+    self.js_navigationItem.leftBarButtonItem = [[JSBaseNavBarButtonItem alloc] initWithTitle:@"取消" withFont:16 withTarget:self withAction:@selector(clickLeftBarButtonItem:)];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"自动填充" style:UIBarButtonItemStylePlain target:self action:@selector(clickRightBarButtonItem:)];
+    self.js_navigationItem.rightBarButtonItem = [[JSBaseNavBarButtonItem alloc] initWithTitle:@"自动填充" withFont:16 withTarget:self withAction:@selector(clickRightBarButtonItem:)];
 }
 
 #pragma mark - target

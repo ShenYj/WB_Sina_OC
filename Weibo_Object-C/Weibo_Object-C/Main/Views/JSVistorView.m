@@ -105,8 +105,9 @@
 
 //按钮点击事件
 - (void)buttonClick:(UIButton *)sender{
-    
-    self.finishedBlock();
+    if (self.finishedBlock) {
+        self.finishedBlock();
+    }
     
 }
 

@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JSBaseViewController.h"
 
-@interface JSOAuthorizeViewController : UIViewController
+
+@interface JSOAuthorizeViewController : JSBaseViewController
 
 
 //是否登录的标识

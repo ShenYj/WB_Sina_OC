@@ -117,6 +117,9 @@
      trim_user	false	int	返回值中user字段开关，0：返回完整user字段、1：user字段仅返回user_id，默认为0。
      
      */
+    if (![JSUserAccountTool sharedManager].access_token) {
+        return;
+    }
     NSString *urlString = @"https://api.weibo.com/2/statuses/home_timeline.json";
     NSDictionary *para = @{
                            @"access_token": [JSUserAccountTool sharedManager].access_token,
