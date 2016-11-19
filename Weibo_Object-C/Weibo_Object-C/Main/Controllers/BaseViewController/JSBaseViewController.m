@@ -8,10 +8,14 @@
 
 #import "JSBaseViewController.h"
 #import "JSNavigationController.h"
+#import "JSRefresh.h"
 
 static CGFloat const kNavigationBarHeight = 64.f;  /** 自定义导航条高度 */
 
-@interface JSBaseViewController ()
+@interface JSBaseViewController () 
+
+// 下拉刷新
+@property (nonatomic) JSRefresh *refreshControl;
 
 @end
 
@@ -21,6 +25,14 @@ static CGFloat const kNavigationBarHeight = 64.f;  /** 自定义导航条高度 
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setUpUI];
+    
+    [self loadData];
+}
+
+#pragma mark
+#pragma mark - 请求数据 子类具体处理
+- (void)loadData {
+    
 }
 
 #pragma mark
@@ -36,14 +48,18 @@ static CGFloat const kNavigationBarHeight = 64.f;  /** 自定义导航条高度 
 - (void)setUpUI {
     [self prepareCustomNavigationBar];
     [self prepareView];
+    [self prepareTableView];
 }
-/** 主视图 */
+/** 主视图相关 */
 - (void)prepareView {
     self.view.backgroundColor = [UIColor whiteColor];
 }
 
 /** 导航条视图 */
 - (void)prepareCustomNavigationBar {
+    
+    // 取消穿透
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     [self.view addSubview:self.js_NavigationBar];
     self.js_NavigationBar.items = @[self.js_navigationItem];
@@ -53,6 +69,20 @@ static CGFloat const kNavigationBarHeight = 64.f;  /** 自定义导航条高度 
                                                     NSForegroundColorAttributeName: [UIColor orangeColor]}
      ];
     
+}
+
+/** 设置表格视图 */
+- (void)prepareTableView {
+    
+    [self.view insertSubview:self.tableView belowSubview:self.js_NavigationBar];
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.view);
+    }];
+    self.tableView.contentInset = UIEdgeInsetsMake(self.js_NavigationBar.bounds.size.height, 0, self.tabBarController.tabBar.bounds.size.height, 0);
+    
+    // 使用自定义JSRefresh实现下拉刷新
+    [self.tableView addSubview:self.refreshControl];
+    [self.refreshControl addTarget:self action:@selector(loadData) forControlEvents:UIControlEventValueChanged];
 }
 
 #pragma mark 
@@ -74,5 +104,39 @@ static CGFloat const kNavigationBarHeight = 64.f;  /** 自定义导航条高度 
     return _js_navigationItem;
 }
 
+- (UITableView *)tableView {
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectZero];
+        _tableView.dataSource = self;
+        _tableView.delegate = self;
+    }
+    return _tableView;
+}
+
+// 下拉刷新指示条
+- (JSRefresh *)refreshControl {
+    
+    if (_refreshControl == nil) {
+        _refreshControl = [[JSRefresh alloc] init];
+    }
+    return _refreshControl;
+}
+
+#pragma mark - Table view data source
+/** 基类不负责数据实现,只负责准备方法,指定的数据源由子类处理 */
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
+    return 0;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    // 只是保证不出现语法错误
+    return [[UITableViewCell alloc] init];
+}
 
 @end

@@ -68,6 +68,7 @@ extern CGFloat itemSize;
     
     // 设置视图 ComposeTextView & ToolBar & 配图视图
     [self.view addSubview:self.textView];
+    //[self.view insertSubview:self.textView belowSubview:self.js_NavigationBar];
     [self.view addSubview:self.composeToolBar];
     [self.textView addSubview:self.pictureView];
     
