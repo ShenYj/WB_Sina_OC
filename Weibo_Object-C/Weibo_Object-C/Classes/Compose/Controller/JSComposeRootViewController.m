@@ -155,7 +155,7 @@ extern CGFloat itemSize;
                                                                                    withAction:@selector(clickRightBarButtonItem:)
                                                  ];
     
-    self.js_navigationItem.rightBarButtonItem.enabled = NO;
+    self.js_navigationItem.rightBarButtonItem.enabled = self.textView.hasText;
     
 }
 
@@ -379,9 +379,9 @@ extern CGFloat itemSize;
 #pragma mark
 #pragma mark - UITextViewDelegate
 
-- (void)textViewDidChange:(UITextView *)textView {
+- (void)textViewDidChange:(JSComposeTextView *)textView {
     // 有内容时发布按钮可以被点击
-    self.navigationItem.rightBarButtonItem.enabled = textView.hasText;
+    self.js_navigationItem.rightBarButtonItem.enabled = textView.hasText;
     // 设置占位文字的显示和隐藏 (使用通知)
     //self.textView.placeholderHidden = textView.hasText;
 }
