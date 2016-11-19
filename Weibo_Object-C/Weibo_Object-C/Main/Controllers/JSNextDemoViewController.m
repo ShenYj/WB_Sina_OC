@@ -17,16 +17,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    NSLog(@"%@",self);
     self.js_navigationItem.title = [NSString stringWithFormat:@"第%zd个子视图",self.navigationController.childViewControllers.count - 1];
-    self.js_navigationItem.rightBarButtonItem = [[JSBaseNavBarButtonItem alloc] initWithTitle:@"下一个" withFont:16 withTarget:self withAction:@selector(clickRightBarButtonItem:)];
+    self.js_navigationItem.rightBarButtonItem = [[JSBaseNavBarButtonItem alloc] initWithTitle:@"下一个"
+                                                                                     withFont:16
+                                                                                   withTarget:self
+                                                                                   withAction:@selector(clickRightBarButtonItem:)
+                                                 ];
 }
+
 
 - (void)clickRightBarButtonItem:(JSBaseNavBarButtonItem *)sender {
     JSNextDemoViewController *nextVC = [[JSNextDemoViewController alloc] init];
     [self.navigationController pushViewController:nextVC animated:YES];
 }
 
+
+- (void)setUpUI {
+    self.view.backgroundColor = [UIColor whiteColor];
+}
 
 
 @end

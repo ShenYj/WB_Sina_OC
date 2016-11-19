@@ -40,8 +40,11 @@
     if (isBack && backImageName) {
         // 是返回按钮 (使用原图样式,不做渲染)
         [button setImage:[[UIImage imageNamed:backImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
-        [button setImage:[[UIImage imageNamed:[NSString stringWithFormat:@"%@_highlighted",backImageName]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]  forState:UIControlStateHighlighted];
+        if ([UIImage imageNamed:[NSString stringWithFormat:@"%@_highlighted",backImageName]]) {
+            [button setImage:[[UIImage imageNamed:[NSString stringWithFormat:@"%@_highlighted",backImageName]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]  forState:UIControlStateHighlighted];
+        }
     }
+    
     [button sizeToFit];
     JSBaseNavBarButtonItem *barButtonItem = [[JSBaseNavBarButtonItem alloc] initWithCustomView:button];
     return barButtonItem;

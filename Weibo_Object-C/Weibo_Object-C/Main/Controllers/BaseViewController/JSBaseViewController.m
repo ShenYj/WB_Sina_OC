@@ -50,7 +50,11 @@ static CGFloat const kNavigationBarHeight = 64.f;  /** 自定义导航条高度 
     
     [self.view addSubview:self.js_NavigationBar];
     self.js_NavigationBar.items = @[self.js_navigationItem];
-    self.js_NavigationBar.barTintColor = [UIColor colorWithRed:245 / 255.0 green:245 / 255.0 blue:245 / 255.0 alpha:1.0];
+    self.js_NavigationBar.barTintColor = [UIColor colorWithRed:245 / 255.0
+                                                         green:245 / 255.0
+                                                          blue:245 / 255.0
+                                                         alpha:1.0
+                                          ];
     [self.js_NavigationBar setTitleTextAttributes:@{
                                                     NSFontAttributeName: [UIFont systemFontOfSize:18],
                                                     NSForegroundColorAttributeName: [UIColor orangeColor]}
@@ -81,11 +85,17 @@ static CGFloat const kNavigationBarHeight = 64.f;  /** 自定义导航条高度 
     
     [self.view insertSubview:self.tableView belowSubview:self.js_NavigationBar];
 
-    self.tableView.contentInset = UIEdgeInsetsMake(self.js_NavigationBar.bounds.size.height, 0, self.tabBarController.tabBar.bounds.size.height, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(self.js_NavigationBar.bounds.size.height,
+                                                   0,
+                                                   self.tabBarController.tabBar.bounds.size.height,
+                                                   0);
     
     // 使用自定义JSRefresh实现下拉刷新
     [self.tableView addSubview:self.refreshControl];
-    [self.refreshControl addTarget:self action:@selector(loadData) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self
+                            action:@selector(loadData)
+                  forControlEvents:UIControlEventValueChanged
+     ];
     
     // 使用UIActivityIndicatorView实现上拉刷新功能
     self.tableView.tableFooterView = self.activityIndicatorView;

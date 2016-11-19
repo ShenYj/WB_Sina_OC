@@ -41,10 +41,10 @@ extern CGFloat itemSize;
 @implementation JSComposeRootViewController
 
 
-- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
-    
-    NSLog(@"%ld",(long)previousTraitCollection.userInterfaceIdiom);
-}
+//- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+//    
+//    NSLog(@"%ld",(long)previousTraitCollection.userInterfaceIdiom);
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

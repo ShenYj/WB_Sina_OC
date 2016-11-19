@@ -31,6 +31,9 @@ static CGFloat const kPullDownLabelHeight = 34.f; // 下拉刷新展示更新多
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self prepareNavView];
+    
     // 监听网络
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkReachablityDidChanged:) name:AFNetworkingReachabilityDidChangeNotification object:nil];
     
@@ -40,8 +43,6 @@ static CGFloat const kPullDownLabelHeight = 34.f; // 下拉刷新展示更新多
     
     [self.tableView registerClass:[JSStatusTipCell class] forCellReuseIdentifier:homeTableCellTipReusedId];
     [self.tableView registerClass:[JSStatusCell class] forCellReuseIdentifier:homeTableCellReusedId];
-    
-    [self prepareNavView];
     
 }
 

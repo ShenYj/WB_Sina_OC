@@ -37,19 +37,28 @@
             JSBaseViewController *nextVC = (JSBaseViewController *)viewController;
             NSString *title = @"返回";
             if (self.childViewControllers.count == 1) {
-                JSBaseViewController *parentVC = self.childViewControllers.firstObject;
+                JSBaseViewController *parentVC = (JSBaseViewController *)self.childViewControllers.firstObject;
                 title = parentVC.js_navigationItem.title;
             }
-            nextVC.js_navigationItem.leftBarButtonItem = [[JSBaseNavBarButtonItem alloc] initWithTitle:title withFont:16 withNormalColor:nil withHighlightedColor:nil withTarget:self withAction:@selector(goBackToParentController:)isBack:YES withBackImageName:@"v2_goback"];
+            nextVC.js_navigationItem.leftBarButtonItem = [[JSBaseNavBarButtonItem alloc] initWithTitle:title
+                                                                                              withFont:16
+                                                                                       withNormalColor:nil
+                                                                                  withHighlightedColor:nil
+                                                                                            withTarget:self
+                                                                                            withAction:@selector(goBackToParentController)
+                                                                                                isBack:YES
+                                                                                     withBackImageName:@"v2_goback"
+                                                          ];
+            
             
         }
     
     }
-    
     [super pushViewController:viewController animated:animated];
 }
 
-- (void)goBackToParentController:(JSBaseNavBarButtonItem *)sender {
+- (void)goBackToParentController{
+    NSLog(@"%@",self.childViewControllers);
     [self popViewControllerAnimated:YES];
 }
 
