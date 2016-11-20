@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "JSTabBarController.h"
+#import "JSRootTabBarController.h"
 #import "JSWelComeViewController.h"
 #import "JSUserAccountTool.h"
 #import <Bugly/Bugly.h>
@@ -74,7 +74,7 @@
         
     } else {
         
-        self.window.rootViewController = [[JSTabBarController alloc]init];
+        self.window.rootViewController = [[JSRootTabBarController alloc]init];
     }
 }
 
@@ -86,7 +86,7 @@
         
     } else {
         
-        self.window.rootViewController = [[JSTabBarController alloc] init];
+        self.window.rootViewController = [[JSRootTabBarController alloc] init];
     }
     
 }

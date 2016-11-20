@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JSTabBarController : UITabBarController
+@interface JSRootTabBarController : UITabBarController
 
 @end

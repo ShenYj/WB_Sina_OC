@@ -7,7 +7,7 @@
 //
 
 #import "JSTabBar.h"
-#import "JSTabBarController.h"
+#import "JSRootTabBarController.h"
 #import "JSBaseNavigationController.h"
 #import "JSHomeViewController.h"
 #import "JSComposeRootViewController.h"
@@ -22,46 +22,46 @@
 
 
 
-@interface JSTabBarController () <JSTabBarDelegate>
+@interface JSRootTabBarController () <JSTabBarDelegate>
 
 @end
 
-@implementation JSTabBarController
+@implementation JSRootTabBarController
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     NSArray <NSDictionary *>*subVCInfo =  @[
-                                         @{
-                                             @"className": @"JSHomeViewController",
-                                             @"title": @"首页",
-                                             @"message": @"",
-                                             @"imageName": @"",
-                                             @"tabBarImg": @"tabbar_home"
-                                             },
-                                         @{
-                                             @"className": @"JSMessageViewController",
-                                             @"title": @"消息",
-                                             @"message": @"登录后，最新、最热微博尽在掌握，不再会与实事潮流擦肩而过",
-                                             @"imageName": @"visitordiscover_image_message",
-                                             @"tabBarImg": @"tabbar_message_center"
-                                             },
-                                         @{
-                                             @"className": @"JSDescoveryViewController",
-                                             @"title": @"发现",
-                                             @"message": @"登录后，最新、最热微博尽在掌握，不再会与实事潮流擦肩而过",
-                                             @"imageName": @"visitordiscover_image_message",
-                                             @"tabBarImg": @"tabbar_discover"
-                                             },
-                                         @{
-                                             @"className": @"JSProfileViewController",
-                                             @"title": @"我",
-                                             @"message": @"登录后，你的微博、相册、个人资料会显示在这里，展示给别人",
-                                             @"imageName": @"visitordiscover_image_profile",
-                                             @"tabBarImg": @"tabbar_profile"
-                                             },
-                                 ];
+                                                 @{
+                                                     @"className": @"JSHomeViewController",
+                                                     @"title": @"首页",
+                                                     @"message": @"",
+                                                     @"imageName": @"",
+                                                     @"tabBarImg": @"tabbar_home"
+                                                     },
+                                                 @{
+                                                     @"className": @"JSMessageViewController",
+                                                     @"title": @"消息",
+                                                     @"message": @"登录后，最新、最热微博尽在掌握，不再会与实事潮流擦肩而过",
+                                                     @"imageName": @"visitordiscover_image_message",
+                                                     @"tabBarImg": @"tabbar_message_center"
+                                                     },
+                                                 @{
+                                                     @"className": @"JSDescoveryViewController",
+                                                     @"title": @"发现",
+                                                     @"message": @"登录后，最新、最热微博尽在掌握，不再会与实事潮流擦肩而过",
+                                                     @"imageName": @"visitordiscover_image_message",
+                                                     @"tabBarImg": @"tabbar_discover"
+                                                     },
+                                                 @{
+                                                     @"className": @"JSProfileViewController",
+                                                     @"title": @"我",
+                                                     @"message": @"登录后，你的微博、相册、个人资料会显示在这里，展示给别人",
+                                                     @"imageName": @"visitordiscover_image_profile",
+                                                     @"tabBarImg": @"tabbar_profile"
+                                                     },
+                                            ];
 
     JSTabBar *tabBar = [[JSTabBar alloc]init];
     tabBar.tabBarDelegate = self;

@@ -55,7 +55,7 @@
 		F767E2C71DBE4E4E00254511 /* NSDate+JSIsThisYear.m in Sources */ = {isa = PBXBuildFile; fileRef = F767E2C61DBE4E4E00254511 /* NSDate+JSIsThisYear.m */; };
 		F775B1651DBB0D6A006DAA79 /* JSStatusToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F775B1641DBB0D6A006DAA79 /* JSStatusToolBarView.m */; };
 		F775B1681DBB1511006DAA79 /* JSToolBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F775B1671DBB1511006DAA79 /* JSToolBarButton.m */; };
-		F77886471D1EC97E00BE4518 /* JSTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F77886431D1EC97E00BE4518 /* JSTabBarController.m */; };
+		F77886471D1EC97E00BE4518 /* JSRootTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F77886431D1EC97E00BE4518 /* JSRootTabBarController.m */; };
 		F778864A1D1EC9BC00BE4518 /* JSTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F77886491D1EC9BC00BE4518 /* JSTabBar.m */; };
 		F778864D1D1F51EE00BE4518 /* JSBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F778864C1D1F51EE00BE4518 /* JSBaseTableViewController.m */; };
 		F77886561D201CBD00BE4518 /* JSVistorView.m in Sources */ = {isa = PBXBuildFile; fileRef = F77886551D201CBD00BE4518 /* JSVistorView.m */; };
@@ -193,8 +193,8 @@
 		F775B1641DBB0D6A006DAA79 /* JSStatusToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSStatusToolBarView.m; sourceTree = "<group>"; };
 		F775B1661DBB1511006DAA79 /* JSToolBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSToolBarButton.h; sourceTree = "<group>"; };
 		F775B1671DBB1511006DAA79 /* JSToolBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSToolBarButton.m; sourceTree = "<group>"; };
-		F77886421D1EC97E00BE4518 /* JSTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTabBarController.h; sourceTree = "<group>"; };
-		F77886431D1EC97E00BE4518 /* JSTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTabBarController.m; sourceTree = "<group>"; };
+		F77886421D1EC97E00BE4518 /* JSRootTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSRootTabBarController.h; sourceTree = "<group>"; };
+		F77886431D1EC97E00BE4518 /* JSRootTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSRootTabBarController.m; sourceTree = "<group>"; };
 		F77886481D1EC9BC00BE4518 /* JSTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTabBar.h; sourceTree = "<group>"; };
 		F77886491D1EC9BC00BE4518 /* JSTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTabBar.m; sourceTree = "<group>"; };
 		F778864B1D1F51EE00BE4518 /* JSBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSBaseTableViewController.h; sourceTree = "<group>"; };
@@ -485,8 +485,8 @@
 		F778863F1D1EC97E00BE4518 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F77886421D1EC97E00BE4518 /* JSTabBarController.h */,
-				F77886431D1EC97E00BE4518 /* JSTabBarController.m */,
+				F77886421D1EC97E00BE4518 /* JSRootTabBarController.h */,
+				F77886431D1EC97E00BE4518 /* JSRootTabBarController.m */,
 				F72350501DDF408B005D0E2E /* BaseViewController */,
 				F723506C1DE05CE4005D0E2E /* OAuth&Welcome */,
 				F723506B1DE05BDF005D0E2E /* 废弃 */,
@@ -1017,7 +1017,7 @@
 				F731D1E71D9AACD9001C7B72 /* NSString+JSAppendPath.m in Sources */,
 				F775B1681DBB1511006DAA79 /* JSToolBarButton.m in Sources */,
 				F73BE43F1DBC7DDD00C31595 /* JSHomeStatusPictureModel.m in Sources */,
-				F77886471D1EC97E00BE4518 /* JSTabBarController.m in Sources */,
+				F77886471D1EC97E00BE4518 /* JSRootTabBarController.m in Sources */,
 				F72350581DDF408B005D0E2E /* JSBaseNavBarButtonItem.m in Sources */,
 				F79927BE1D1C13D500E9BA8C /* AppDelegate.m in Sources */,
 				F73BE44B1DBC801100C31595 /* JSPictureView.m in Sources */,
