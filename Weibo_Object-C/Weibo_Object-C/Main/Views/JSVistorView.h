@@ -10,8 +10,13 @@
 
 @interface JSVistorView : UIView
 
+// 访客视图参数
+@property (nonatomic,strong) NSDictionary *userInfo;
+
+// 访客视图注册/登录按钮点击回调
 @property (nonatomic,copy) void(^finishedBlock)();
-//设置访客视图信息
+
+// 设置访客视图信息
 - (void)setupVistorViewInfoWithTitle:(NSString *)title withImageName:(NSString *)imageName;
 
 @end

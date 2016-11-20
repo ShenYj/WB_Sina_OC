@@ -112,6 +112,24 @@
     
 }
 
+- (void)setUserInfo:(NSDictionary *)userInfo {
+    _userInfo = userInfo;
+    if ([userInfo[@"message"] isEqualToString:@""] && [userInfo[@"imageName"] isEqualToString:@""]) {
+        //设置主页控制器动画
+        [self setAnimation];
+        
+    }else{
+        //设置控制器信息
+        self.circleImageView.alpha = 0.01;
+        self.iconImageView.image = [UIImage imageNamed:userInfo[@"imageName"]];
+        self.messageLabel.text = userInfo[@"message"];
+    }
+    
+}
+
+
+#pragma mark
+#pragma mark - lazy
 
 - (UIImageView *)circleImageView {
     

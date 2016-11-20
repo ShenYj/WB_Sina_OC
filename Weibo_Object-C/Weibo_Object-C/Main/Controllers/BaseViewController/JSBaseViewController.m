@@ -109,6 +109,8 @@ static CGFloat const kNavigationBarHeight = 64.f;  /** 自定义导航条高度 
     [self.vistorView setFinishedBlock:^{
         [weakSelf buttonClick:nil];
     }];
+    
+    self.vistorView.userInfo = self.userInfo;
 }
 
 

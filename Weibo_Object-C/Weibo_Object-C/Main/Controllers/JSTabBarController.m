@@ -14,6 +14,7 @@
 #import "JSMessageViewController.h"
 #import "JSDescoveryViewController.h"
 #import "JSProfileViewController.h"
+
 //#import "JSMessageTableViewController.h"
 //#import "JSHomeTableViewController.h"
 //#import "JSDescoveryTableViewController.h"
@@ -27,24 +28,51 @@
 
 @implementation JSTabBarController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSArray <NSDictionary *>*subVCInfo =  @[
+                                         @{
+                                             @"className": @"JSHomeViewController",
+                                             @"title": @"首页",
+                                             @"message": @"",
+                                             @"imageName": @"",
+                                             @"tabBarImg": @"tabbar_home"
+                                             },
+                                         @{
+                                             @"className": @"JSMessageViewController",
+                                             @"title": @"消息",
+                                             @"message": @"登录后，最新、最热微博尽在掌握，不再会与实事潮流擦肩而过",
+                                             @"imageName": @"visitordiscover_image_message",
+                                             @"tabBarImg": @"tabbar_message_center"
+                                             },
+                                         @{
+                                             @"className": @"JSDescoveryViewController",
+                                             @"title": @"发现",
+                                             @"message": @"登录后，最新、最热微博尽在掌握，不再会与实事潮流擦肩而过",
+                                             @"imageName": @"visitordiscover_image_message",
+                                             @"tabBarImg": @"tabbar_discover"
+                                             },
+                                         @{
+                                             @"className": @"JSProfileViewController",
+                                             @"title": @"我",
+                                             @"message": @"登录后，你的微博、相册、个人资料会显示在这里，展示给别人",
+                                             @"imageName": @"visitordiscover_image_profile",
+                                             @"tabBarImg": @"tabbar_profile"
+                                             },
+                                 ];
 
     JSTabBar *tabBar = [[JSTabBar alloc]init];
     tabBar.tabBarDelegate = self;
     [self setValue:tabBar forKey:@"tabBar"];
-
-    JSHomeViewController *homeTvc = [[JSHomeViewController alloc]init]; // JSHomeBaseViewController
-    JSMessageViewController *messageTvc = [[JSMessageViewController alloc]init];
-    JSDescoveryViewController *descoveryTvc = [[JSDescoveryViewController alloc]init];
-    JSProfileViewController *profileTvc = [[JSProfileViewController alloc]init];
     
-    [self loadNavigationControllerWithViewController:homeTvc withTitle:@"首页" withTabBarImageName:@"tabbar_home"];
-    [self loadNavigationControllerWithViewController:messageTvc withTitle:@"消息" withTabBarImageName:@"tabbar_message_center"];
-    [self loadNavigationControllerWithViewController:descoveryTvc withTitle:@"发现" withTabBarImageName:@"tabbar_discover"];
-    [self loadNavigationControllerWithViewController:profileTvc withTitle:@"我" withTabBarImageName:@"tabbar_profile"];
-//    self.tabBar.barTintColor = [UIColor orangeColor];
-    self.tabBar.tintColor = THEME_COLOR;//设置图片\文字的颜色(不带渲染)
+    for (int i = 0; i < 4; i ++) {
+        @autoreleasepool {
+            [self loadNavigationControllerWithInfo:subVCInfo[i]];
+        }
+    }
+    //self.tabBar.tintColor = THEME_COLOR;//设置图片\文字的颜色(不带渲染)
 }
 
 /** 设置朝向 */
@@ -52,22 +80,21 @@
     return UIInterfaceOrientationMaskPortrait;
 }
 
-- (void)loadNavigationControllerWithViewController:(UIViewController *)viewController withTitle:(NSString *)title withTabBarImageName:(NSString *)imageName{
+// 实例化子控制器方法
+- (void)loadNavigationControllerWithInfo:(NSDictionary *)subVCInfo {
     
-    UIImage *img_Normal = [[UIImage imageNamed:imageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    //UIImage *img_Select = [[UIImage imageNamed:[NSString stringWithFormat:@"%@_selected",imageName]]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    Class className = NSClassFromString(subVCInfo[@"className"]);
+    JSBaseViewController *subViewController = [[className alloc] init];
+    subViewController.title = subVCInfo[@"title"];
+    subViewController.userInfo = subVCInfo;
+    UIImage *image = [[UIImage imageNamed:subVCInfo[@"tabBarImg"]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIImage *selIm = [[UIImage imageNamed:[NSString stringWithFormat:@"%@_selected",subVCInfo[@"tabBarImg"]]]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    subViewController.tabBarItem.image = image;
+    subViewController.tabBarItem.selectedImage = selIm;
+    [subViewController.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor]} forState:UIControlStateNormal];
+    [subViewController.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor orangeColor]} forState:UIControlStateSelected];
     
-//    UIImage *img_Normal = [UIImage imageNamed:imageName];
-    UIImage *img_Select = [UIImage imageNamed:[NSString stringWithFormat:@"%@_selected",imageName]];
-    [viewController.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]} forState:UIControlStateNormal];
-    //[viewController.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName: THEME_COLOR} forState:UIControlStateSelected];
-    
-    JSBaseNavigationController *navigationController = [[JSBaseNavigationController alloc]initWithRootViewController:viewController];
-    // 设置底部bar在Push时隐藏
-    navigationController.bottomBarHiddenWhenPushed = YES;
-    viewController.title = title;
-    viewController.tabBarItem.image = img_Normal;
-    viewController.tabBarItem.selectedImage = img_Select;
+    JSBaseNavigationController *navigationController = [[JSBaseNavigationController alloc]initWithRootViewController:subViewController];
     [self addChildViewController:navigationController];
     
 }

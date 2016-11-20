@@ -58,7 +58,6 @@
 }
 
 - (void)goBackToParentController{
-    NSLog(@"%@",self.childViewControllers);
     [self popViewControllerAnimated:YES];
 }
 
