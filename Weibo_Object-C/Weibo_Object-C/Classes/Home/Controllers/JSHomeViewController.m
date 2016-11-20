@@ -49,14 +49,24 @@ static CGFloat const kPullDownLabelHeight = 34.f; // 下拉刷新展示更新多
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
-- (void)loadData {
-    // 准备数据
-    [self loadHomeStatusDataByIsPulling:self.isPullingUp];
-}
-
+/** 重写父类方法 */
 - (void)prepareTableView {
     [super prepareTableView];
     [self prepareNavView];
+}
+
+
+/** 设置导航栏视图 */
+- (void)prepareNavView {
+    self.js_navigationItem.title = @"好友";
+    self.js_navigationItem.leftBarButtonItem = [[JSBaseNavBarButtonItem alloc] initWithTitle:@"首页" withFont:16 withTarget:self withAction:@selector(clickLeftBarButtonItem:)];
+    
+}
+
+/** 重写父类方法请求数据 */
+- (void)loadData {
+    // 准备数据
+    [self loadHomeStatusDataByIsPulling:self.isPullingUp];
 }
 
 /**  请求首页数据 since_id  若指定此参数 -->下拉  && max_id	 若指定此参数 -->上拉*/
@@ -135,13 +145,6 @@ static CGFloat const kPullDownLabelHeight = 34.f; // 下拉刷新展示更新多
         }];
         
     }];
-}
-
-/** 设置导航栏视图 */
-- (void)prepareNavView {
-    self.js_navigationItem.title = @"首页";
-    self.js_navigationItem.leftBarButtonItem = [[JSBaseNavBarButtonItem alloc] initWithTitle:@"首页" withFont:16 withTarget:self withAction:@selector(clickLeftBarButtonItem:)];
-    
 }
 
 /** 右侧导航栏按钮点击事件 */

@@ -11,6 +11,6 @@ pod 'MBProgressHUD'
 pod 'YYModel'
 #pod 'Reveal-iOS-SDK', :configurations => ['Debug']
 pod 'Bugly'
-#pod 'SDWebImage'
+pod 'SDWebImage'
 
 end

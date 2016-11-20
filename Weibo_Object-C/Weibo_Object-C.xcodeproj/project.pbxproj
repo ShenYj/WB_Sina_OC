@@ -177,7 +177,6 @@
 		F747F7961D843748000A0C8D /* UIView+JSFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JSFrame.m"; sourceTree = "<group>"; };
 		F74F57361D84F3DA00E3CC61 /* JSUserAccountTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSUserAccountTool.h; sourceTree = "<group>"; };
 		F74F57371D84F3DA00E3CC61 /* JSUserAccountTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSUserAccountTool.m; sourceTree = "<group>"; };
-		F75F0D521D87027800549EC3 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		F767E2BC1DBDD71800254511 /* JSHomeStatusLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSHomeStatusLayout.h; sourceTree = "<group>"; };
 		F767E2BD1DBDD71800254511 /* JSHomeStatusLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSHomeStatusLayout.m; sourceTree = "<group>"; };
 		F767E2BF1DBE414600254511 /* JSDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSDateFormatter.h; path = ../JSDateFormatter.h; sourceTree = "<group>"; };
@@ -445,7 +444,6 @@
 		F75F0D511D87026900549EC3 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
-				F75F0D521D87027800549EC3 /* Reveal.framework */,
 			);
 			path = Libs;
 			sourceTree = "<group>";

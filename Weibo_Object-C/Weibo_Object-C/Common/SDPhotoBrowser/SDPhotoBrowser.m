@@ -8,7 +8,7 @@
 
 #import "SDPhotoBrowser.h"
 //#import "UIImageView+YYWebImage.h"
-//#import "UIImageView+WebCache.h"
+#import "UIImageView+WebCache.h"
 #import "SDBrowserImageView.h"
 
  
