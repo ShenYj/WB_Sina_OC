@@ -75,6 +75,7 @@ static CGFloat const kNavigationBarHeight = 64.f;  /** 自定义导航条高度 
     [self loadData];
     
 }
+
 /** 主视图相关 */
 - (void)prepareView {
     self.view.backgroundColor = [UIColor whiteColor];
@@ -111,6 +112,15 @@ static CGFloat const kNavigationBarHeight = 64.f;  /** 自定义导航条高度 
     }];
     
     self.vistorView.userInfo = self.userInfo;
+    
+    // 设置访客视图导航栏按钮
+    self.js_navigationItem.leftBarButtonItem = [[JSBaseNavBarButtonItem alloc] initWithTitle:@"登录" withFont:16 withTarget:self withAction:@selector(ClickVistorNavigationBarButtonItem:)];
+    self.js_navigationItem.rightBarButtonItem = [[JSBaseNavBarButtonItem alloc] initWithTitle:@"注册" withFont:16 withTarget:self withAction:@selector(ClickVistorNavigationBarButtonItem:)];
+}
+
+
+- (void)ClickVistorNavigationBarButtonItem:(JSBaseNavBarButtonItem *)barButtonItem {
+    [self buttonClick:nil];
 }
 
 

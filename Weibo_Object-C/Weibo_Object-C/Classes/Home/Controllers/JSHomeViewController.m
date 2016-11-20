@@ -8,7 +8,6 @@
 
 #import "JSHomeViewController.h"
 #import "JSNextDemoViewController.h"
-#import "JSHomeTableViewController.h"
 #import "JSNetworkTool.h"
 #import "JSHomeStatusModel.h"
 #import "JSStatusCell.h"
@@ -32,8 +31,6 @@ static CGFloat const kPullDownLabelHeight = 34.f; // 下拉刷新展示更新多
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self prepareNavView];
-    
     // 监听网络
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkReachablityDidChanged:) name:AFNetworkingReachabilityDidChangeNotification object:nil];
     
@@ -55,6 +52,11 @@ static CGFloat const kPullDownLabelHeight = 34.f; // 下拉刷新展示更新多
 - (void)loadData {
     // 准备数据
     [self loadHomeStatusDataByIsPulling:self.isPullingUp];
+}
+
+- (void)prepareTableView {
+    [super prepareTableView];
+    [self prepareNavView];
 }
 
 /**  请求首页数据 since_id  若指定此参数 -->下拉  && max_id	 若指定此参数 -->上拉*/

@@ -24,8 +24,6 @@
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        
-        self.backgroundColor = [UIColor whiteColor];
         [self setupUI];
     }
     return self;
@@ -66,28 +64,13 @@
 }
 - (void)setupUI{
     
+    self.backgroundColor = [UIColor js_colorWithHex:0xEDEDED];
     [self addSubview:self.circleImageView];
     [self addSubview:self.maskImageView];
     [self addSubview:self.iconImageView];
     [self addSubview:self.messageLabel];
     [self addSubview:self.loginButton];
     [self addSubview:self.registerButton];
-    
-}
-
-- (void)setupVistorViewInfoWithTitle:(NSString *)title withImageName:(NSString *)imageName{
-    
-    if (title == nil && imageName == nil) {
-        
-        //设置主页控制器动画
-        [self setAnimation];
-        
-    }else{
-        //设置控制器信息
-        self.circleImageView.alpha = 0.01;
-        self.iconImageView.image = [UIImage imageNamed:imageName];
-        self.messageLabel.text = title;
-    }
     
 }
 
@@ -120,6 +103,7 @@
         
     }else{
         //设置控制器信息
+        self.maskImageView.hidden = YES;
         self.circleImageView.alpha = 0.01;
         self.iconImageView.image = [UIImage imageNamed:userInfo[@"imageName"]];
         self.messageLabel.text = userInfo[@"message"];
