@@ -28,7 +28,11 @@ typedef NS_ENUM(NSUInteger, RequestMethod) {
  @param success       成功回调
  @param failure       失败回调
  */
-- (void)requestWithMethod:(RequestMethod)requestMethod withParameters:(NSDictionary *)parametes withUrlString:(NSString *)urlString withSuccess:(void (^)(id obj))success withError:(void (^)(NSError *error))failure;
+- (void)requestWithMethod:(RequestMethod)requestMethod
+           withParameters:(NSDictionary *)parametes
+            withUrlString:(NSString *)urlString
+              withSuccess:(void (^)(id obj))success
+                withError:(void (^)(NSError *error))failure;
 
 
 /**

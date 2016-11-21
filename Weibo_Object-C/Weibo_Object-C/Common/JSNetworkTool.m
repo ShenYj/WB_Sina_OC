@@ -28,7 +28,11 @@
 #pragma mark
 #pragma mark - Public
 
-- (void)requestWithMethod:(RequestMethod)requestMethod withParameters:(NSDictionary *)parametes withUrlString:(NSString *)urlString withSuccess:(void (^)(id obj))success withError:(void (^)(NSError *error))failure{
+- (void)requestWithMethod:(RequestMethod)requestMethod
+           withParameters:(NSDictionary *)parametes
+            withUrlString:(NSString *)urlString
+              withSuccess:(void (^)(id obj))success
+                withError:(void (^)(NSError *error))failure {
     
     if (requestMethod == RequestMethodGet) {
         
@@ -39,6 +43,13 @@
             success(responseObject);
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            
+            NSHTTPURLResponse *urlResponse = (NSHTTPURLResponse *)task.response;
+            if (urlResponse.statusCode == 403) {
+                NSLog(@"Token过期");
+                // 发送通知 切换到登录视图
+                
+            }
             
             failure(error);
             
@@ -64,7 +75,8 @@
 
 #pragma mark
 #pragma mark - Load access_token
-- (void)loadAccessTokenWithCode:(NSString *)code withFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock {
+- (void)loadAccessTokenWithCode:(NSString *)code
+              withFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock {
     
     NSDictionary *para = @{
                            @"client_id":@"3071143364",
@@ -85,7 +97,8 @@
 
 
 #pragma mark - Load User Info
-- (void)loadUserAccountInfo:(JSUserAccountModel *)userAccountModel withFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock {
+- (void)loadUserAccountInfo:(JSUserAccountModel *)userAccountModel
+          withFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock {
     
     NSDictionary *para = @{
                            @"access_token":userAccountModel.access_token,
@@ -103,7 +116,9 @@
 }
 
 #pragma mark - public content
-- (void)loadHomePublicDatawithFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock Since_id:(NSInteger)since_id max_id:(NSInteger)max_id {
+- (void)loadHomePublicDatawithFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock
+                                   Since_id:(NSInteger)since_id
+                                     max_id:(NSInteger)max_id {
     
     /*
      
@@ -141,7 +156,8 @@
 }
 
 #pragma mark - 发送文字微博
-- (void)composeStatus:(NSString *)status withFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock {
+- (void)composeStatus:(NSString *)status
+    withFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock {
     
     NSString *urlString = @"https://api.weibo.com/2/statuses/update.json";
     NSDictionary *paras = @{
@@ -161,7 +177,8 @@
 }
 
 #pragma mark - 发送文字&图片微博
-- (void)composeStatusWithPictures:(NSDictionary *)contents withFinishedBlock:(void (^)(id, NSError *))finishedBlock {
+- (void)composeStatusWithPictures:(NSDictionary *)contents
+                withFinishedBlock:(void (^)(id, NSError *))finishedBlock {
     
     NSString *urlString = @"https://upload.api.weibo.com/2/statuses/upload.json";
     NSDictionary *paras = @{
