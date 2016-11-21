@@ -14,6 +14,7 @@
 #import "JSMessageViewController.h"
 #import "JSDescoveryViewController.h"
 #import "JSProfileViewController.h"
+#import "JSNetworkTool+JSUnreadExtension.h"
 
 //#import "JSMessageTableViewController.h"
 //#import "JSHomeTableViewController.h"
@@ -23,6 +24,9 @@
 
 
 @interface JSRootTabBarController () <JSTabBarDelegate>
+
+/** 更新未读消息的定时器 */
+@property (nonatomic,strong) NSTimer *timer;
 
 @end
 
@@ -70,12 +74,28 @@
     [self setValue:tabBar forKey:@"tabBar"];
     
     for (int i = 0; i < 4; i ++) {
-        @autoreleasepool {
-            [self loadNavigationControllerWithInfo:subVCInfo[i]];
-        }
+        [self loadNavigationControllerWithInfo:subVCInfo[i]];
     }
+    
+    // 更新未读消息
+    [self updateUnReadHomeStatus];
+    
     //self.tabBar.tintColor = THEME_COLOR;//设置图片\文字的颜色(不带渲染)
 }
+
+/** 获取微博未读消息 */
+- (void)updateUnReadHomeStatus {
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(updateUnreadHomeStatusByTimer) userInfo:nil repeats:YES];
+
+}
+- (void)updateUnreadHomeStatusByTimer {
+    __weak typeof(self) weakSelf = self;
+    [[JSNetworkTool sharedNetworkTool] loadUnreadStatusCountsWithCompeletionHandler:^(NSInteger count) {
+        // 如果设置为@""(空),将会显示成一个球形提醒
+        weakSelf.tabBar.items[0].badgeValue = count > 0 ? @(count).description : nil;
+    }];
+}
+
 
 /** 设置朝向 */
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
@@ -104,6 +124,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc {
+    [self.timer invalidate];
+    self.timer = nil;
 }
 
 #pragma mark 
