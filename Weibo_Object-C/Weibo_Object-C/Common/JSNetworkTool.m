@@ -55,7 +55,7 @@
             
         }];
         
-    }else{
+    } else {
         
         [self POST:urlString parameters:parametes progress:^(NSProgress * _Nonnull uploadProgress) {
             

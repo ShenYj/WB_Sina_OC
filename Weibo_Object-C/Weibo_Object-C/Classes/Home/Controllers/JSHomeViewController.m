@@ -18,12 +18,16 @@
 static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
 static NSString * const homeTableCellTipReusedId = @"homeTableCellTipReusedId";
 static CGFloat const kPullDownLabelHeight = 34.f; // 下拉刷新展示更新多少条数据Label的高度
+extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大次数
 
 @interface JSHomeViewController ()
 // 微博数据容器
 @property (nonatomic,strong) NSArray  <JSHomeStatusModel *> *homeStatusDatas;
 // 展示更新微博条数
 @property (nonatomic) UILabel *pullDownStatusCountsLabel;
+// 上拉刷新记次
+@property (nonatomic,assign) NSInteger pullUpCount;
+
 @end
 
 @implementation JSHomeViewController
@@ -95,11 +99,20 @@ static CGFloat const kPullDownLabelHeight = 34.f; // 下拉刷新展示更新多
         
     }
     
+    if (self.isPullingUp && self.pullUpCount >= pullUpErrorMaxTimes ) {
+        // 上上拉刷新时,请求回数据为0的次数大于等于最大尝试错误次数时,直接返回,不再请求刷新数据
+        return;
+    }
+    
     // 检查是否有本地数据,如果没有,请求网络数据
     [JSSQLDAL checkLocalCacheWithSinceid:sinceId withMaxid:maxId withFinishedBlock:^(id obj, NSError *error) {
         
         NSArray <JSHomeStatusModel *>*statusData = (NSArray <JSHomeStatusModel *>*)obj;
         if (isPulling) {
+            
+            if (statusData.count == 0) {
+                self.pullUpCount ++;
+            }
             
             // 上拉加载更多
             self.homeStatusDatas = [self.homeStatusDatas arrayByAddingObjectsFromArray:statusData];

@@ -12,8 +12,13 @@
 #import "JSOAuthorizeViewController.h"
 #import "JSUserAccountTool.h"
 
-static CGFloat const kNavigationBarHeight = 64.f;  /** 自定义导航条高度 */
+static CGFloat const kNavigationBarHeight = 64.f;   /** 自定义导航条高度 */
+NSInteger const pullUpErrorMaxTimes = 3;            /** 上拉刷新错误最大次数 */
 
+
+@interface JSBaseViewController ()
+
+@end
 @implementation JSBaseViewController
 
 - (void)viewDidLoad {
