@@ -101,6 +101,9 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
     
     if (self.isPullingUp && self.pullUpCount >= pullUpErrorMaxTimes ) {
         // 上上拉刷新时,请求回数据为0的次数大于等于最大尝试错误次数时,直接返回,不再请求刷新数据
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2*60 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            self.pullUpCount = 0;
+        });
         return;
     }
     
