@@ -91,8 +91,11 @@
 - (void)updateUnreadHomeStatusByTimer {
     __weak typeof(self) weakSelf = self;
     [[JSNetworkTool sharedNetworkTool] loadUnreadStatusCountsWithCompeletionHandler:^(NSInteger count) {
-        // 如果设置为@""(空),将会显示成一个球形提醒
-        weakSelf.tabBar.items[0].badgeValue = count > 0 ? @(count).description : nil;
+        
+        // 设置tabBarItem badgeValue
+        weakSelf.tabBar.items[0].badgeValue = count > 0 ? @(count).description : nil;// 如果设置为@""(空),将会显示成一个球形提醒
+        // 设置应用图标badgeNumber
+        [UIApplication sharedApplication].applicationIconBadgeNumber = count;
     }];
 }
 

@@ -32,6 +32,10 @@
     sleep(2);
     
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    
+    // 用户授权
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories:nil];
+    [application registerUserNotificationSettings:settings];
         
     // 监听kChangeRootViewControllerNotification通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeRootViewController:) name:[JSUserAccountTool sharedManager].kChangeRootViewControllerNotification object:nil];
