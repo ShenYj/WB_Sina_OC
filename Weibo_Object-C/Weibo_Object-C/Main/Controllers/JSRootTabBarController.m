@@ -22,8 +22,9 @@
 //#import "JSProfileTableViewController.h"
 
 
+extern CGFloat const kNavigationBarHeight;   /** 自定义导航条高度 */
 
-@interface JSRootTabBarController () <JSTabBarDelegate>
+@interface JSRootTabBarController () <JSTabBarDelegate,UITabBarControllerDelegate>
 
 /** 更新未读消息的定时器 */
 @property (nonatomic,strong) NSTimer *timer;
@@ -35,6 +36,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.delegate = self;
     
     NSArray <NSDictionary *>*subVCInfo =  @[
                                                  @{
@@ -85,7 +88,7 @@
 
 /** 获取微博未读消息 */
 - (void)updateUnReadHomeStatus {
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(updateUnreadHomeStatusByTimer) userInfo:nil repeats:YES];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(updateUnreadHomeStatusByTimer) userInfo:nil repeats:YES];
 
 }
 - (void)updateUnreadHomeStatusByTimer {
@@ -147,6 +150,40 @@
     
 }
 
+#pragma mark
+#pragma mark - UITabBarControllerDelegate
+
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController NS_AVAILABLE_IOS(3_0) {
+    
+//    if ([viewController isKindOfClass:[XXXController class]] ) {
+//        // 还可以通过此方式解决TabBar自定义Button穿帮问题
+//        return NO;
+//    }
+    
+    if ( tabBarController.selectedViewController == viewController && tabBarController.selectedIndex == 0) {
+        // 首页TabBarItem重复点击
+        JSBaseNavigationController *navController = (JSBaseNavigationController *)tabBarController.childViewControllers.firstObject;
+        JSHomeViewController *homeViewController = (JSHomeViewController *)navController.childViewControllers.firstObject;
+        // 滚动到顶端
+        
+        //[homeViewController.tableView setContentOffset:CGPointMake(0, -kNavigationBarHeight)];
+        [homeViewController.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        
+        dispatch_after(0.5, dispatch_get_main_queue(), ^{
+            
+            // 请求数据
+            [homeViewController loadData];
+        });
+       
+        
+    }
+    
+    return YES;
+}
+
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+    
+}
 
 /*
 #pragma mark - Navigation

@@ -133,11 +133,14 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
         
     }];
     
-    
 }
 
 // 下拉刷新动画 (展示更新多少条微博数据)
 - (void)pullDownAnimationWithStatusCounts:(NSInteger)counts {
+    
+    if (self.pullDownStatusCountsLabel.superview) {
+        return;
+    }
     
     if (self.pullDownStatusCountsLabel.superview == nil) {
         
@@ -148,6 +151,7 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
     [UIView animateWithDuration:1 animations:^{
         
         self.pullDownStatusCountsLabel.transform = CGAffineTransformTranslate(self.pullDownStatusCountsLabel.transform, 0, kPullDownLabelHeight);
+        //self.pullDownStatusCountsLabel.transform = CGAffineTransformMakeTranslation(0, kPullDownLabelHeight);
         
     } completion:^(BOOL finished) {
         
