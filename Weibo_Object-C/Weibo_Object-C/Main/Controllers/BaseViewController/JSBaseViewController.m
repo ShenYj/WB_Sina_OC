@@ -76,8 +76,12 @@ NSInteger const pullUpErrorMaxTimes = 3;     /** 上拉刷新错误最大次数 
     // 根据用户是否登录设置视图(表格视图/访客视图)
     self.isLogin ? ([self prepareTableView]) : ([self prepareVistorView]);
     
-    // 请求数据
-    [self loadData];
+    if ([JSUserAccountTool sharedManager].isLogin) {
+        
+        // 请求数据
+        [self loadData];
+    }
+    
     
 }
 

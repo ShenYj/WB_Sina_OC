@@ -15,6 +15,7 @@
 #import "JSDescoveryViewController.h"
 #import "JSProfileViewController.h"
 #import "JSNetworkTool+JSUnreadExtension.h"
+#import "JSUserAccountTool.h"
 
 //#import "JSMessageTableViewController.h"
 //#import "JSHomeTableViewController.h"
@@ -80,6 +81,7 @@ extern CGFloat const kNavigationBarHeight;   /** 自定义导航条高度 */
         [self loadNavigationControllerWithInfo:subVCInfo[i]];
     }
     
+    
     // 更新未读消息
     [self updateUnReadHomeStatus];
     
@@ -88,7 +90,13 @@ extern CGFloat const kNavigationBarHeight;   /** 自定义导航条高度 */
 
 /** 获取微博未读消息 */
 - (void)updateUnReadHomeStatus {
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(updateUnreadHomeStatusByTimer) userInfo:nil repeats:YES];
+    
+    // 如果用户登录,才开启定时器请求未读消息数据
+    if (![JSUserAccountTool sharedManager].isLogin) {
+        return;
+    }
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(updateUnreadHomeStatusByTimer) userInfo:nil repeats:YES];
 
 }
 - (void)updateUnreadHomeStatusByTimer {
