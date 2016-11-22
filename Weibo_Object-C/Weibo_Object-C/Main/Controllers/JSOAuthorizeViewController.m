@@ -10,8 +10,8 @@
 static NSString * const kAppKey = @"3071143364";
 static NSString * const kAppSecret = @"dc2478f9204b2551d8ff7dba427d576e";
 static NSString * const kRedirect_URI = @"http://www.jianshu.com/users/5ec5747435a2/latest_articles";
-static NSString * const kTestAccount = @"18519153799";
-static NSString * const kTestPassword = @"qwertyuiop123";
+static NSString * const kTestAccount = @"请输入你的账号";
+static NSString * const kTestPassword = @"请输入你的密码";
 
 #import "JSOAuthorizeViewController.h"
 #import "JSUserAccountTool.h"
@@ -206,7 +206,7 @@ static NSString * const kTestPassword = @"qwertyuiop123";
         [userAccount setValue:obj[@"avatar_large"] forKey:@"avatar_large"];
         [userAccount setValue:obj[@"screen_name"] forKey:@"screen_name"];
         //[userAccount setValue:@(-60*60*24*7) forKey:@"expiredCycle"];
-        userAccount.expiredCycle = -60*60*24*7; // 默认的数据缓存周期
+        userAccount.expiredCycle = -60*60*24*3; // 默认的数据缓存周期
         
         // 存入UserAccountTool中并本地化存储
         [[JSUserAccountTool sharedManager] saveUserAccount:userAccount];
