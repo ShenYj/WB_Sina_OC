@@ -233,6 +233,7 @@ static NSString * const kTestPassword = @"qwertyuiop123";
     if (_webView == nil) {
         _webView = [[WKWebView alloc] init];
         _webView.navigationDelegate = self;
+        _webView.scrollView.scrollEnabled = NO;
         //_webView.delegate = self;
         //https://api.weibo.com/oauth2/authorize?client_id=%@&redirect_uri=%@
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.weibo.com/oauth2/authorize?client_id=%@&redirect_uri=%@",kAppKey,kRedirect_URI]]];
