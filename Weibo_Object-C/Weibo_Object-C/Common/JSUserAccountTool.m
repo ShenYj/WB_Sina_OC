@@ -74,6 +74,8 @@ static JSUserAccountTool *_instanceType = nil;
             return self.userAccountModel.access_token;
             
         }else {
+            // 清除数据
+            [[NSFileManager defaultManager] removeItemAtPath:[self getDocumentDirectoryPath] error:NULL];
             
             return nil;
         }

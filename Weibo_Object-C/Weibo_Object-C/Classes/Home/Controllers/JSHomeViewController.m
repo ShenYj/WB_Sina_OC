@@ -131,6 +131,13 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
         
         [self.tableView reloadData];
         
+        // 设置应用图标badgeNumber
+        dispatch_after(0.5, dispatch_get_main_queue(), ^{
+            
+            [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+            self.tabBarItem.badgeValue = 0;
+        });
+        
     }];
     
 }
