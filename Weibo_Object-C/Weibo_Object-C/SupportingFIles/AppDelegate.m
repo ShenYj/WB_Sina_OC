@@ -125,7 +125,7 @@
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     
     // 进入后台后清理缓存
-    [JSSQLDAL deleteCache];
+    //[JSSQLDAL deleteCache];
     //NSLog(@"%s",__FUNCTION__);
 }
 
