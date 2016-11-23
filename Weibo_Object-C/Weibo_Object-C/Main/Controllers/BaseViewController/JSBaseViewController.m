@@ -99,6 +99,7 @@ NSInteger const pullUpErrorMaxTimes = 3;     /** 上拉刷新错误最大次数 
                                                    0,
                                                    self.tabBarController.tabBar.bounds.size.height,
                                                    0);
+    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(self.js_NavigationBar.bounds.size.height, 0, 0, 0);
     
     // 使用自定义JSRefresh实现下拉刷新
     [self.tableView addSubview:self.refreshControl];
