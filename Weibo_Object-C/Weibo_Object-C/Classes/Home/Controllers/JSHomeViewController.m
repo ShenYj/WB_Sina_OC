@@ -62,8 +62,8 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
 
 /** 设置导航栏视图 */
 - (void)prepareNavView {
-    self.js_navigationItem.title = @"好友";
-    self.js_navigationItem.leftBarButtonItem = [[JSBaseNavBarButtonItem alloc] initWithTitle:@"首页" withFont:16 withTarget:self withAction:@selector(clickLeftBarButtonItem:)];
+    self.js_navigationItem.title = @"首页";
+    self.js_navigationItem.leftBarButtonItem = [[JSBaseNavBarButtonItem alloc] initWithTitle:@"好友" withFont:16 withTarget:self withAction:@selector(clickLeftBarButtonItem:)];
     
 }
 

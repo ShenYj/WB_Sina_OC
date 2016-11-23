@@ -145,6 +145,7 @@ extern CGFloat const kNavigationBarHeight;   /** 自定义导航条高度 */
     self.timer = nil;
 }
 
+
 #pragma mark 
 #pragma mark JSTabBarDelegate
 

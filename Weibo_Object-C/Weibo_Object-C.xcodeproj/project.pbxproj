@@ -51,6 +51,7 @@
 		F747F79F1D843748000A0C8D /* UIView+JSFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = F747F7961D843748000A0C8D /* UIView+JSFrame.m */; };
 		F74F57381D84F3DA00E3CC61 /* JSUserAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F74F57371D84F3DA00E3CC61 /* JSUserAccountTool.m */; };
 		F752EF921DE5706B00F8B01C /* JSNetworkTool+JSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F752EF911DE5706B00F8B01C /* JSNetworkTool+JSExtension.m */; };
+		F752EF951DE57CB700F8B01C /* JSNewFeatureView.m in Sources */ = {isa = PBXBuildFile; fileRef = F752EF941DE57CB700F8B01C /* JSNewFeatureView.m */; };
 		F767E2BE1DBDD71800254511 /* JSHomeStatusLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F767E2BD1DBDD71800254511 /* JSHomeStatusLayout.m */; };
 		F767E2C11DBE414600254511 /* JSDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F767E2C01DBE414600254511 /* JSDateFormatter.m */; };
 		F767E2C71DBE4E4E00254511 /* NSDate+JSIsThisYear.m in Sources */ = {isa = PBXBuildFile; fileRef = F767E2C61DBE4E4E00254511 /* NSDate+JSIsThisYear.m */; };
@@ -181,6 +182,8 @@
 		F74F57371D84F3DA00E3CC61 /* JSUserAccountTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSUserAccountTool.m; sourceTree = "<group>"; };
 		F752EF901DE5706B00F8B01C /* JSNetworkTool+JSExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JSNetworkTool+JSExtension.h"; sourceTree = "<group>"; };
 		F752EF911DE5706B00F8B01C /* JSNetworkTool+JSExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSNetworkTool+JSExtension.m"; sourceTree = "<group>"; };
+		F752EF931DE57CB700F8B01C /* JSNewFeatureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSNewFeatureView.h; path = ../Controllers/JSNewFeatureView.h; sourceTree = "<group>"; };
+		F752EF941DE57CB700F8B01C /* JSNewFeatureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSNewFeatureView.m; path = ../Controllers/JSNewFeatureView.m; sourceTree = "<group>"; };
 		F767E2BC1DBDD71800254511 /* JSHomeStatusLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSHomeStatusLayout.h; sourceTree = "<group>"; };
 		F767E2BD1DBDD71800254511 /* JSHomeStatusLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSHomeStatusLayout.m; sourceTree = "<group>"; };
 		F767E2BF1DBE414600254511 /* JSDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSDateFormatter.h; path = ../JSDateFormatter.h; sourceTree = "<group>"; };
@@ -479,6 +482,8 @@
 		F77886451D1EC97E00BE4518 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F752EF931DE57CB700F8B01C /* JSNewFeatureView.h */,
+				F752EF941DE57CB700F8B01C /* JSNewFeatureView.m */,
 				F77886481D1EC9BC00BE4518 /* JSTabBar.h */,
 				F77886491D1EC9BC00BE4518 /* JSTabBar.m */,
 				F77886541D201CBD00BE4518 /* JSVistorView.h */,
@@ -1007,6 +1012,7 @@
 				F752EF921DE5706B00F8B01C /* JSNetworkTool+JSExtension.m in Sources */,
 				F72613A81DC31B9A004FF7F9 /* JSComposeTextView.m in Sources */,
 				F747F79C1D843748000A0C8D /* UIColor+JSExtension.m in Sources */,
+				F752EF951DE57CB700F8B01C /* JSNewFeatureView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

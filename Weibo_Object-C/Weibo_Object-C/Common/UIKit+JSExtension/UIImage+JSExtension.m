@@ -7,6 +7,8 @@
 //
 
 #import "UIImage+JSExtension.h"
+#import <ImageIO/ImageIO.h>
+
 
 @implementation UIImage (Color)
 
@@ -85,6 +87,8 @@
     });
     
 }
+
+
 
 
 // 生成纯色图片
@@ -166,6 +170,86 @@
     return image;
     
     
+}
+
+
+
+/** SDWebImage源码 使用了ImageIO的函数*/
++ (UIImage *)js_animatedGIFWithData:(NSData *)data {
+    if (!data) {
+        return nil;
+    }
+    CGImageSourceCreateWithData((CFDataRef)data, NULL);
+    CGImageSourceRef source = CGImageSourceCreateWithData((__bridge CFDataRef)data, NULL);
+    // 取出gif动图的帧数
+    size_t count = CGImageSourceGetCount(source);
+    
+    UIImage *animatedImage;
+    // 判断图片数量,如果为1,直接返回静态图像
+    if (count <= 1) {
+        animatedImage = [[UIImage alloc] initWithData:data];
+    }
+    else { // 创建图像数组
+        NSMutableArray *images = [NSMutableArray array];
+        
+        NSTimeInterval duration = 0.0f;
+        
+        for (size_t i = 0; i < count; i++) {
+            // 取出第i帧
+            CGImageRef image = CGImageSourceCreateImageAtIndex(source, i, NULL);
+            if (!image) {
+                continue;
+            }
+            // 累加时长
+            duration += [self js_frameDurationAtIndex:i source:source];
+            // 添加到图像数组中
+            [images addObject:[UIImage imageWithCGImage:image scale:[UIScreen mainScreen].scale orientation:UIImageOrientationUp]];
+            
+            CGImageRelease(image);
+        }
+        
+        if (!duration) {
+            duration = (1.0f / 10.0f) * count;
+        }
+        // 设置动图数组
+        animatedImage = [UIImage animatedImageWithImages:images duration:duration];
+    }
+    
+    CFRelease(source);
+    
+    return animatedImage;
+}
+
+
++ (float)js_frameDurationAtIndex:(NSUInteger)index source:(CGImageSourceRef)source {
+    float frameDuration = 0.1f;
+    CFDictionaryRef cfFrameProperties = CGImageSourceCopyPropertiesAtIndex(source, index, nil);
+    NSDictionary *frameProperties = (__bridge NSDictionary *)cfFrameProperties;
+    NSDictionary *gifProperties = frameProperties[(NSString *)kCGImagePropertyGIFDictionary];
+    
+    NSNumber *delayTimeUnclampedProp = gifProperties[(NSString *)kCGImagePropertyGIFUnclampedDelayTime];
+    if (delayTimeUnclampedProp) {
+        frameDuration = [delayTimeUnclampedProp floatValue];
+    }
+    else {
+        
+        NSNumber *delayTimeProp = gifProperties[(NSString *)kCGImagePropertyGIFDelayTime];
+        if (delayTimeProp) {
+            frameDuration = [delayTimeProp floatValue];
+        }
+    }
+    
+    // Many annoying ads specify a 0 duration to make an image flash as quickly as possible.
+    // We follow Firefox's behavior and use a duration of 100 ms for any frames that specify
+    // a duration of <= 10 ms. See <rdar://problem/7689300> and <http://webkit.org/b/36082>
+    // for more information.
+    
+    if (frameDuration < 0.011f) {
+        frameDuration = 0.100f;
+    }
+    
+    CFRelease(cfFrameProperties);
+    return frameDuration;
 }
 
 

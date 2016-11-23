@@ -9,12 +9,9 @@
 #import "JSPictureViewCell.h"
 #import "JSHomeStatusModel.h"
 #import "JSHomeStatusPictureModel.h"
-
-@interface JSPictureViewCell ()
-
+#import "YYAnimatedImageView.h"
 
 
-@end
 
 @implementation JSPictureViewCell
 
@@ -61,10 +58,10 @@
 #pragma mark 
 #pragma mark - lazy
 
-- (UIImageView *)pictureImageView {
+- (YYAnimatedImageView *)pictureImageView {
     
     if (_pictureImageView == nil) {
-        _pictureImageView = [[UIImageView alloc] init];
+        _pictureImageView = [[YYAnimatedImageView alloc] init];
         _pictureImageView.backgroundColor = [UIColor whiteColor];
         _pictureImageView.clipsToBounds = YES;
         _pictureImageView.contentMode = UIViewContentModeScaleAspectFill;

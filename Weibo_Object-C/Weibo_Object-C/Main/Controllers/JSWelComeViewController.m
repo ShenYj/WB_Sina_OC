@@ -8,7 +8,7 @@
 
 #import "JSWelComeViewController.h"
 #import "JSUserAccountTool.h"
-
+#import "JSNewFeatureView.h"
 
 static CGFloat const kHeadIconImageViewBottomMargin = 100; // 用户头像距离底边的距离
 static CGFloat const kHeadIconImageViewSize = 100;         // 用户头像尺寸
@@ -32,11 +32,34 @@ static CGFloat const kMargin = 10;                         // 用户头像与欢
 
 @implementation JSWelComeViewController
 
+
+- (BOOL)isNewVersion {
+    
+    // 获取本地保存的版本
+    NSString *localVersion = [[NSUserDefaults standardUserDefaults] objectForKey:@"localVersion"];
+    // 从Infoplist中获取当前版本
+    NSString *currentVersion = [NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"];
+    // 如果不同,标识当前不是最新版本
+    if (![localVersion isEqualToString:currentVersion]) {
+        
+        [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:@"localVersion"];
+        return NO;
+    }
+    
+    return YES;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    //[self isNewVersion] ? ([self prepareView]) : ([self prepareNewVersionView]);
+    
     [self prepareView];
+}
+
+- (void)prepareNewVersionView {
+    self.view.backgroundColor = [UIColor orangeColor];
 }
 
 - (void)prepareView {
@@ -62,6 +85,10 @@ static CGFloat const kMargin = 10;                         // 用户头像与欢
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    
+//    if (![self isNewVersion]) {
+//        return;
+//    }
     
     [UIView animateWithDuration:2 delay:0.8 usingSpringWithDamping:0.7 initialSpringVelocity:0 options:UIViewAnimationOptionLayoutSubviews animations:^{
         
@@ -100,6 +127,8 @@ static CGFloat const kMargin = 10;                         // 用户头像与欢
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 
 

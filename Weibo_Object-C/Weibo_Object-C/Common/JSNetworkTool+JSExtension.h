@@ -34,7 +34,6 @@
  @param finishedBlock 完成回调
  */
 - (void)loadHomePublicDatawithFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock Since_id:(NSInteger)since_id max_id:(NSInteger)max_id;
-//- (void)loadHomePublicDatawithFinishedBlock:(void (^)(id obj, NSError *error))finishedBlock;
 
 
 /**

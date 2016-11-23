@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YYAnimatedImageView.h"
 
 @class JSHomeStatusPictureModel;
 
@@ -14,6 +15,6 @@
 
 @property (nonatomic) JSHomeStatusPictureModel *pictureModel;
 
-@property (nonatomic) UIImageView *pictureImageView;
+@property (nonatomic) YYAnimatedImageView *pictureImageView;
 
 @end
