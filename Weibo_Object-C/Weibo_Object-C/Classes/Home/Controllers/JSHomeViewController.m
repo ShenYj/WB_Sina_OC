@@ -8,7 +8,7 @@
 
 #import "JSHomeViewController.h"
 #import "JSNextDemoViewController.h"
-#import "JSNetworkTool.h"
+#import "JSNetworkTool+JSExtension.h"
 #import "JSHomeStatusModel.h"
 #import "JSStatusCell.h"
 #import "JSStatusTipCell.h"

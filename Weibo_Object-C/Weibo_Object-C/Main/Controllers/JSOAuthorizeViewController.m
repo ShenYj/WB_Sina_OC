@@ -16,7 +16,7 @@ static NSString * const kTestPassword = @"请输入你的密码";
 #import "JSOAuthorizeViewController.h"
 #import "JSUserAccountTool.h"
 #import <WebKit/WebKit.h>
-#import "JSNetworkTool+JSUnreadExtension.h"
+#import "JSNetworkTool+JSExtension.h"
 
 @interface JSOAuthorizeViewController () <WKNavigationDelegate>
 

@@ -9,7 +9,6 @@
 #import "JSNetworkTool.h"
 #import "JSUserAccountTool.h"
 
-
 @implementation JSNetworkTool
 
 + (instancetype)sharedNetworkTool{

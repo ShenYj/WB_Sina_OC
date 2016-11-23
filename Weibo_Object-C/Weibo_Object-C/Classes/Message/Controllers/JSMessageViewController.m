@@ -7,6 +7,7 @@
 //
 
 #import "JSMessageViewController.h"
+#import "JSNetworkTool+JSExtension.h"
 #import "JSNetworkTool+JSUnreadExtension.h"
 #import "JSUserAccountTool.h"
 
