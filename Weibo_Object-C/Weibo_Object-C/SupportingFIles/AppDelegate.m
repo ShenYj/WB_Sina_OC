@@ -11,6 +11,7 @@
 #import "JSWelComeViewController.h"
 #import "JSUserAccountTool.h"
 #import <Bugly/Bugly.h>
+#import "AFNetworkActivityIndicatorManager.h"
 #import "AFNetworkReachabilityManager.h"
 #import "JSSQLDAL.h"
 
@@ -39,6 +40,9 @@
         
     // 监听kChangeRootViewControllerNotification通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeRootViewController:) name:[JSUserAccountTool sharedManager].kChangeRootViewControllerNotification object:nil];
+    
+    //application.networkActivityIndicatorVisible = YES;
+    //[AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     // 监听网络状态
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     

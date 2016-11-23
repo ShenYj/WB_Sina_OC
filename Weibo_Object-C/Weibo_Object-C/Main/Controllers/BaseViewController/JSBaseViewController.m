@@ -21,6 +21,8 @@ NSInteger const pullUpErrorMaxTimes = 3;     /** 上拉刷新错误最大次数 
 @end
 @implementation JSBaseViewController
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.

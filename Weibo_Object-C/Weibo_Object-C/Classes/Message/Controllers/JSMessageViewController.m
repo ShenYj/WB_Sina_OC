@@ -7,6 +7,8 @@
 //
 
 #import "JSMessageViewController.h"
+#import "JSNetworkTool+JSUnreadExtension.h"
+#import "JSUserAccountTool.h"
 
 @interface JSMessageViewController ()
 
@@ -17,6 +19,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
+    [[JSNetworkTool sharedNetworkTool] loadHomeStatusCompeletionHandler:^(NSArray *datas, BOOL isSuccess) {
+       
+        if (!isSuccess) {
+            NSLog(@"请求失败");
+            return ;
+        }
+        
+    }];
+    
+}
+
+- (void)loadData {
+    
+}
+
+- (void)prepareTableView {
+    
 }
 
 - (void)didReceiveMemoryWarning {
