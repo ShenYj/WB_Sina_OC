@@ -453,6 +453,8 @@
 		F75F0D511D87026900549EC3 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				F7A3487F1DD94E1900457632 /* SDPhotoBrowser */,
+				F7969E9D1DD06761003D6A38 /* RegexKitLite */,
 			);
 			path = Libs;
 			sourceTree = "<group>";
@@ -498,7 +500,8 @@
 				F7969E9E1DD06761003D6A38 /* RegexKitLite.h */,
 				F7969E9F1DD06761003D6A38 /* RegexKitLite.m */,
 			);
-			path = RegexKitLite;
+			name = RegexKitLite;
+			path = ../../Common/RegexKitLite;
 			sourceTree = "<group>";
 		};
 		F79927831D1C11EA00E9BA8C = {
@@ -708,9 +711,7 @@
 		F79927C21D1C13FE00E9BA8C /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				F7A3487F1DD94E1900457632 /* SDPhotoBrowser */,
 				F7A348161DD4037300457632 /* Database */,
-				F7969E9D1DD06761003D6A38 /* RegexKitLite */,
 				F72175F31DC080580065D3B8 /* JSRefreshTool */,
 				F731D1DC1D9AACD9001C7B72 /* JSOperation */,
 				F747F7831D843748000A0C8D /* UIKit+JSExtension */,
@@ -760,7 +761,8 @@
 				F7A348851DD94E1900457632 /* SDWaitingView.h */,
 				F7A348861DD94E1900457632 /* SDWaitingView.m */,
 			);
-			path = SDPhotoBrowser;
+			name = SDPhotoBrowser;
+			path = ../../Common/SDPhotoBrowser;
 			sourceTree = "<group>";
 		};
 		F7AF4CDB1DC8391B00BEA0BE /* Emoticon */ = {

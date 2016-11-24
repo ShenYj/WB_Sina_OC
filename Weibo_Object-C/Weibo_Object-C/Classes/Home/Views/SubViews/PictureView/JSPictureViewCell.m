@@ -10,7 +10,7 @@
 #import "JSHomeStatusModel.h"
 #import "JSHomeStatusPictureModel.h"
 #import "YYAnimatedImageView.h"
-
+#import "UIImageView+WebCache.h";
 
 
 @implementation JSPictureViewCell
@@ -52,16 +52,17 @@
     _pictureModel = pictureModel;
     
     // 设置配图
-    [self.pictureImageView yy_setImageWithURL:[NSURL URLWithString:pictureModel.thumbnail_pic] options:YYWebImageOptionShowNetworkActivity];
+    [self.pictureImageView sd_setImageWithURL:[NSURL URLWithString:pictureModel.thumbnail_pic] placeholderImage:nil options:SDWebImageRetryFailed];
+    //[self.pictureImageView yy_setImageWithURL:[NSURL URLWithString:pictureModel.thumbnail_pic] options:YYWebImageOptionShowNetworkActivity];
 }
 
 #pragma mark 
 #pragma mark - lazy
 
-- (YYAnimatedImageView *)pictureImageView {
+- (UIImageView *)pictureImageView {
     
     if (_pictureImageView == nil) {
-        _pictureImageView = [[YYAnimatedImageView alloc] init];
+        _pictureImageView = [[UIImageView alloc] init];
         _pictureImageView.backgroundColor = [UIColor whiteColor];
         _pictureImageView.clipsToBounds = YES;
         _pictureImageView.contentMode = UIViewContentModeScaleAspectFill;
