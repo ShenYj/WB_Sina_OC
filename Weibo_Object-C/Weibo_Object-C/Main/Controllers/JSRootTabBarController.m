@@ -174,7 +174,6 @@ extern CGFloat const kNavigationBarHeight;   /** 自定义导航条高度 */
         JSBaseNavigationController *navController = (JSBaseNavigationController *)tabBarController.childViewControllers.firstObject;
         JSHomeViewController *homeViewController = (JSHomeViewController *)navController.childViewControllers.firstObject;
         // 滚动到顶端
-        
         //[homeViewController.tableView setContentOffset:CGPointMake(0, -kNavigationBarHeight)];
         [homeViewController.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionTop animated:YES];
         

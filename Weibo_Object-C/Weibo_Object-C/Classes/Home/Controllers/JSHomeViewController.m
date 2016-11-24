@@ -26,7 +26,7 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
 // 展示更新微博条数
 @property (nonatomic) UILabel *pullDownStatusCountsLabel;
 // 上拉刷新记次
-@property (nonatomic,assign) NSInteger pullUpCount;
+//@property (nonatomic,assign) NSInteger pullUpCount;
 
 @end
 
@@ -98,52 +98,35 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
         sinceId = self.homeStatusDatas.firstObject.wb_id.integerValue;
         
     }
-    
-    
-    if (self.isPullingUp && self.pullUpCount >= pullUpErrorMaxTimes ) {
-        // 上上拉刷新时,请求回数据为0的次数大于等于最大尝试错误次数时,直接返回,不再请求刷新数据
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2*60 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            self.pullUpCount = 0;
-        });
-        return;
-    }
+//    if (self.isPullingUp && self.pullUpCount >= pullUpErrorMaxTimes ) {
+//        // 上上拉刷新时,请求回数据为0的次数大于等于最大尝试错误次数时,直接返回,不再请求刷新数据
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2*60 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            self.pullUpCount = 0;
+//        });
+//        return;
+//    }
     
     [[JSNetworkTool sharedNetworkTool] loadHomePublicDatawithFinishedBlock:^(id obj, NSError *error) {
         
-        
         NSArray <NSDictionary *>*statusData = (NSArray <NSDictionary *>*)obj;
-        
         NSMutableArray *mArr = [NSMutableArray array];
-        
         for (NSDictionary *dict in statusData) {
-            
             JSHomeStatusModel *model = [JSHomeStatusModel statuWithDict:dict];
             [mArr addObject:model];
-            
         }
 
-        
-        //NSArray <JSHomeStatusModel *>*statusData = (NSArray <JSHomeStatusModel *>*)obj;
         if (isPulling) {
-            
-            if (statusData.count == 0) {
-                self.pullUpCount ++;
-            }
-            
             // 上拉加载更多
             self.homeStatusDatas = [self.homeStatusDatas arrayByAddingObjectsFromArray:mArr.copy];
             
         } else {
-            
             // 下拉刷新
             self.homeStatusDatas = [mArr.copy arrayByAddingObjectsFromArray:self.homeStatusDatas];
-            
             // 显示更新多少条微博数据
             [self pullDownAnimationWithStatusCounts:statusData.count];
         }
         
         [self.tableView reloadData];
-        
         // 设置应用图标badgeNumber
         dispatch_after(0.5, dispatch_get_main_queue(), ^{
             
