@@ -13,21 +13,21 @@
 
 @interface JSBaseViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
-
+// 是否登录的标识
+@property (nonatomic,assign,getter=isLogin) BOOL login;
 /** 自定义导航条 */
 @property (nonatomic,strong) UINavigationBar *js_NavigationBar;
 /** 自定义导航条Item */
 @property (nonatomic,strong) UINavigationItem *js_navigationItem;
 
-/** 表格视图 */
-@property (nonatomic,strong) UITableView *tableView;
+
 /** 下拉刷新 */
 @property (nonatomic) JSRefresh *refreshControl;
 /** 上拉刷新指示控件 */ 
 @property (nonatomic) UIActivityIndicatorView *activityIndicatorView;
 
-// 是否登录的标识
-@property (nonatomic,assign,getter=isLogin) BOOL login;
+/** 表格视图 */
+@property (nonatomic,strong) UITableView *tableView;
 // 访客视图View
 @property (nonatomic,strong) JSVistorView *vistorView;
 /** 访客视图参数 */
@@ -39,8 +39,5 @@
 - (void)prepareTableView;
 
 
-//- (void)loadData; ---> 废弃
-/** 是否正在上拉刷新 ---> 废弃 */
-//@property (nonatomic,assign) BOOL isPullingUp;
 
 @end

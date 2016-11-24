@@ -26,7 +26,7 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
 // 展示更新微博条数
 @property (nonatomic) UILabel *pullDownStatusCountsLabel;
 // 上拉刷新记次
-//@property (nonatomic,assign) NSInteger pullUpCount;
+@property (nonatomic,assign) NSInteger pullUpCount;
 
 @end
 
@@ -70,6 +70,7 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
 /** 重写父类方法请求数据 */
 /**  请求首页数据 since_id  若指定此参数 -->下拉  && max_id	 若指定此参数 -->上拉*/
 - (void)loadDataWithIsPulling:(BOOL)isPulling {
+    
     NSInteger sinceId = 0;
     NSInteger maxId = 0;
     
@@ -85,13 +86,15 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
         sinceId = self.homeStatusDatas.firstObject.wb_id.integerValue;
         
     }
-    //    if (self.isPullingUp && self.pullUpCount >= pullUpErrorMaxTimes ) {
-    //        // 上上拉刷新时,请求回数据为0的次数大于等于最大尝试错误次数时,直接返回,不再请求刷新数据
-    //        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2*60 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-    //            self.pullUpCount = 0;
-    //        });
-    //        return;
-    //    }
+    if ( isPulling && self.pullUpCount >= pullUpErrorMaxTimes ) {
+        // 上上拉刷新时,请求回数据为0的次数大于等于最大尝试错误次数时,直接返回,不再请求刷新数据
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2*60 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self pullUpAnimationWithRequestFaild];
+            [self.activityIndicatorView stopAnimating];
+            self.pullUpCount = 0;
+        });
+        return;
+    }
     
     [[JSNetworkTool sharedNetworkTool] loadHomePublicDatawithFinishedBlock:^(id obj, NSError *error) {
         
@@ -103,31 +106,30 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
         }
         
         if (isPulling) {
+            if (statusData.count == 0) {
+                self.pullUpCount ++;
+            }
             // 上拉加载更多
             self.homeStatusDatas = [self.homeStatusDatas arrayByAddingObjectsFromArray:mArr.copy];
-            
+            // 设置应用图标badgeNumber
         } else {
             // 下拉刷新
             self.homeStatusDatas = [mArr.copy arrayByAddingObjectsFromArray:self.homeStatusDatas];
             // 显示更新多少条微博数据
             [self pullDownAnimationWithStatusCounts:statusData.count];
+            dispatch_after(0.1, dispatch_get_main_queue(), ^{
+                [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+                self.tabBarItem.badgeValue = 0;
+            });
         }
         
+        // 停止动画
+        [self.activityIndicatorView stopAnimating];
+        [self.refreshControl endRefresh];
+        // 刷新表格
         [self.tableView reloadData];
-        // 设置应用图标badgeNumber
-        dispatch_after(0.5, dispatch_get_main_queue(), ^{
-            
-            [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-            self.tabBarItem.badgeValue = 0;
-        });
-        
         
     } Since_id:sinceId max_id:maxId];
-    
-    
-    // 停止动画
-    [self.activityIndicatorView stopAnimating];
-    [self.refreshControl endRefresh];
     
     // 检查是否有本地数据,如果没有,请求网络数据
     //    [JSSQLDAL checkLocalCacheWithSinceid:sinceId withMaxid:maxId withFinishedBlock:^(id obj, NSError *error) {
@@ -170,18 +172,34 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
     }
     
     [UIView animateWithDuration:1 animations:^{
-        
         self.pullDownStatusCountsLabel.transform = CGAffineTransformTranslate(self.pullDownStatusCountsLabel.transform, 0, kPullDownLabelHeight);
-        //self.pullDownStatusCountsLabel.transform = CGAffineTransformMakeTranslation(0, kPullDownLabelHeight);
-        
     } completion:^(BOOL finished) {
-        
         [UIView animateWithDuration:1 delay:0.25 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            
             self.pullDownStatusCountsLabel.transform = CGAffineTransformIdentity;
-            
         } completion:^(BOOL finished) {
-            
+            [self.pullDownStatusCountsLabel removeFromSuperview];
+        }];
+        
+    }];
+}
+- (void)pullUpAnimationWithRequestFaild {
+    
+    if (self.pullDownStatusCountsLabel.superview) {
+        return;
+    }
+    
+    if (self.pullDownStatusCountsLabel.superview == nil) {
+        
+        self.pullDownStatusCountsLabel.text = @"上拉刷新多次数据为零,请稍后再试";
+        [self.view insertSubview:self.pullDownStatusCountsLabel belowSubview:self.js_NavigationBar];
+    }
+    
+    [UIView animateWithDuration:1 animations:^{
+        self.pullDownStatusCountsLabel.transform = CGAffineTransformTranslate(self.pullDownStatusCountsLabel.transform, 0, kPullDownLabelHeight);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:1 delay:0.25 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            self.pullDownStatusCountsLabel.transform = CGAffineTransformIdentity;
+        } completion:^(BOOL finished) {
             [self.pullDownStatusCountsLabel removeFromSuperview];
         }];
         
@@ -198,27 +216,28 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
 #pragma mark
 #pragma mark - 重写基类的数据源方法
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
     return 2;
 }
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
     if (section == 0) {
         return [JSNetworkTool sharedNetworkTool].reachabilityManager.reachable ? 0 : 1;
     }
     
     return self.homeStatusDatas.count;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     JSHomeStatusModel *dataModel = self.homeStatusDatas[indexPath.row];
-    
     if (indexPath.section == 0) {
         return [tableView dequeueReusableCellWithIdentifier:homeTableCellTipReusedId forIndexPath:indexPath];
     }
-    
     JSStatusCell *cell = [tableView dequeueReusableCellWithIdentifier:homeTableCellReusedId forIndexPath:indexPath];
-    
+
     cell.statusData = dataModel;
-    
     cell.layer.shouldRasterize = YES;
     cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
     cell.layer.drawsAsynchronously = YES;
@@ -249,7 +268,6 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
 
 // 展示下拉刷新微博条数
 - (UILabel *)pullDownStatusCountsLabel {
-    
     if (_pullDownStatusCountsLabel == nil) {
         _pullDownStatusCountsLabel = [[UILabel alloc] init];
         _pullDownStatusCountsLabel.frame = CGRectMake(0, 64-kPullDownLabelHeight, SCREEN_WIDTH, kPullDownLabelHeight);

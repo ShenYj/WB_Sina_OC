@@ -178,7 +178,6 @@ extern CGFloat const kNavigationBarHeight;   /** 自定义导航条高度 */
         [homeViewController.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionTop animated:YES];
         
         dispatch_after(0.5, dispatch_get_main_queue(), ^{
-            
             // 请求数据
             [homeViewController loadDataWithIsPulling:homeViewController.activityIndicatorView.isAnimating];
         });
