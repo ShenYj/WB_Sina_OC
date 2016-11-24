@@ -33,7 +33,7 @@
     
 }
 
-- (void)loadData {
+- (void)loadDataWithIsPulling:(BOOL)isPulling {
     
 }
 

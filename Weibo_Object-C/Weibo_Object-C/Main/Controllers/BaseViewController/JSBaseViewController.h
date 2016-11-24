@@ -21,9 +21,6 @@
 
 /** 表格视图 */
 @property (nonatomic,strong) UITableView *tableView;
-
-/** 是否正在上拉刷新 */
-@property (nonatomic,assign) BOOL isPullingUp;
 /** 下拉刷新 */
 @property (nonatomic) JSRefresh *refreshControl;
 /** 上拉刷新指示控件 */ 
@@ -33,13 +30,17 @@
 @property (nonatomic,assign,getter=isLogin) BOOL login;
 // 访客视图View
 @property (nonatomic,strong) JSVistorView *vistorView;
-
 /** 访客视图参数 */
 @property (nonatomic,strong) NSDictionary *userInfo;
 
 /** 请求数据 由子类具体实现 */
-- (void)loadData;
+- (void)loadDataWithIsPulling:(BOOL)isPulling;
 /** 设置登录后的表格视图: 在适当的地方重写父类方法或空实现来重新自定义视图 */
 - (void)prepareTableView;
+
+
+//- (void)loadData; ---> 废弃
+/** 是否正在上拉刷新 ---> 废弃 */
+//@property (nonatomic,assign) BOOL isPullingUp;
 
 @end

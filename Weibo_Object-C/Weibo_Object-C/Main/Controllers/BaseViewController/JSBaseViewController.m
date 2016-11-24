@@ -35,7 +35,11 @@ NSInteger const pullUpErrorMaxTimes = 3;     /** 上拉刷新错误最大次数 
 
 #pragma mark
 #pragma mark - 请求数据 子类具体处理
-- (void)loadData {
+//- (void)loadData {
+//    [self.refreshControl endRefresh];
+//}
+
+- (void)loadDataWithIsPulling:(BOOL)isPulling {
     // 细节处理:如果子类不实现,结束刷新
     [self.refreshControl endRefresh];
 }
@@ -80,7 +84,8 @@ NSInteger const pullUpErrorMaxTimes = 3;     /** 上拉刷新错误最大次数 
     
     if ([JSUserAccountTool sharedManager].isLogin) {
         // 请求数据
-        [self loadData];
+        //[self loadData];
+        [self loadDataWithIsPulling:self.activityIndicatorView.isAnimating];
     }
     
     
@@ -105,7 +110,7 @@ NSInteger const pullUpErrorMaxTimes = 3;     /** 上拉刷新错误最大次数 
     // 使用自定义JSRefresh实现下拉刷新
     [self.tableView addSubview:self.refreshControl];
     [self.refreshControl addTarget:self
-                            action:@selector(loadData)
+                            action:@selector(loadDataWithIsPulling:)
                   forControlEvents:UIControlEventValueChanged
      ];
     
@@ -169,11 +174,11 @@ NSInteger const pullUpErrorMaxTimes = 3;     /** 上拉刷新错误最大次数 
     if (row == ([tableView numberOfRowsInSection:section] -1) && !self.activityIndicatorView.isAnimating) {
         
         [self.activityIndicatorView startAnimating];
-        self.isPullingUp = self.activityIndicatorView.isAnimating;
+        //self.isPullingUp = self.activityIndicatorView.isAnimating;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            
             // 上拉加载更多数据
-            [self loadData];
+            //[self loadData];
+            [self loadDataWithIsPulling:self.activityIndicatorView.isAnimating];
         });
     }
     

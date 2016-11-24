@@ -68,43 +68,30 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
 }
 
 /** 重写父类方法请求数据 */
-- (void)loadData {
-    // 准备数据
-    [self loadHomeStatusDataByIsPulling:self.isPullingUp];
-}
-
 /**  请求首页数据 since_id  若指定此参数 -->下拉  && max_id	 若指定此参数 -->上拉*/
-- (void)loadHomeStatusDataByIsPulling:(BOOL)isPulling {
-    
-    // 停止动画
-    [self.activityIndicatorView stopAnimating];
-    [self.refreshControl endRefresh];
-    
+- (void)loadDataWithIsPulling:(BOOL)isPulling {
     NSInteger sinceId = 0;
     NSInteger maxId = 0;
     
     if (isPulling) {
-        
         // 上拉加载更多
         maxId = self.homeStatusDatas.lastObject.wb_id.integerValue;
-        
         if (maxId > 0) {
             // 上拉加载更多,返回ID小于或等于max_id的微博
             maxId -= 1;
         }
-        
     } else {
         //  下拉刷新
         sinceId = self.homeStatusDatas.firstObject.wb_id.integerValue;
         
     }
-//    if (self.isPullingUp && self.pullUpCount >= pullUpErrorMaxTimes ) {
-//        // 上上拉刷新时,请求回数据为0的次数大于等于最大尝试错误次数时,直接返回,不再请求刷新数据
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2*60 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            self.pullUpCount = 0;
-//        });
-//        return;
-//    }
+    //    if (self.isPullingUp && self.pullUpCount >= pullUpErrorMaxTimes ) {
+    //        // 上上拉刷新时,请求回数据为0的次数大于等于最大尝试错误次数时,直接返回,不再请求刷新数据
+    //        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2*60 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    //            self.pullUpCount = 0;
+    //        });
+    //        return;
+    //    }
     
     [[JSNetworkTool sharedNetworkTool] loadHomePublicDatawithFinishedBlock:^(id obj, NSError *error) {
         
@@ -114,7 +101,7 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
             JSHomeStatusModel *model = [JSHomeStatusModel statuWithDict:dict];
             [mArr addObject:model];
         }
-
+        
         if (isPulling) {
             // 上拉加载更多
             self.homeStatusDatas = [self.homeStatusDatas arrayByAddingObjectsFromArray:mArr.copy];
@@ -133,43 +120,40 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
             [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
             self.tabBarItem.badgeValue = 0;
         });
-
+        
         
     } Since_id:sinceId max_id:maxId];
     
-    // 检查是否有本地数据,如果没有,请求网络数据
-//    [JSSQLDAL checkLocalCacheWithSinceid:sinceId withMaxid:maxId withFinishedBlock:^(id obj, NSError *error) {
-//        
-//        NSArray <JSHomeStatusModel *>*statusData = (NSArray <JSHomeStatusModel *>*)obj;
-//        if (isPulling) {
-//            
-//            if (statusData.count == 0) {
-//                self.pullUpCount ++;
-//            }
-//            
-//            // 上拉加载更多
-//            self.homeStatusDatas = [self.homeStatusDatas arrayByAddingObjectsFromArray:statusData];
-//            
-//        } else {
-//            
-//            // 下拉刷新
-//            self.homeStatusDatas = [statusData arrayByAddingObjectsFromArray:self.homeStatusDatas];
-//            
-//            // 显示更新多少条微博数据
-//            [self pullDownAnimationWithStatusCounts:statusData.count];
-//        }
-//        
-//        [self.tableView reloadData];
-//        
-//        // 设置应用图标badgeNumber
-//        dispatch_after(0.5, dispatch_get_main_queue(), ^{
-//            
-//            [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-//            self.tabBarItem.badgeValue = 0;
-//        });
-//        
-//    }];
     
+    // 停止动画
+    [self.activityIndicatorView stopAnimating];
+    [self.refreshControl endRefresh];
+    
+    // 检查是否有本地数据,如果没有,请求网络数据
+    //    [JSSQLDAL checkLocalCacheWithSinceid:sinceId withMaxid:maxId withFinishedBlock:^(id obj, NSError *error) {
+    //        NSArray <JSHomeStatusModel *>*statusData = (NSArray <JSHomeStatusModel *>*)obj;
+    //        if (isPulling) {
+    //
+    //            if (statusData.count == 0) {
+    //                self.pullUpCount ++;
+    //            }
+    //            // 上拉加载更多
+    //            self.homeStatusDatas = [self.homeStatusDatas arrayByAddingObjectsFromArray:statusData];
+    //        } else {
+    //            // 下拉刷新
+    //            self.homeStatusDatas = [statusData arrayByAddingObjectsFromArray:self.homeStatusDatas];
+    //            // 显示更新多少条微博数据
+    //            [self pullDownAnimationWithStatusCounts:statusData.count];
+    //        }
+    //        [self.tableView reloadData];
+    //        // 设置应用图标badgeNumber
+    //        dispatch_after(0.5, dispatch_get_main_queue(), ^{
+    //
+    //            [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    //            self.tabBarItem.badgeValue = 0;
+    //        });
+    //    }];
+
 }
 
 // 下拉刷新动画 (展示更新多少条微博数据)

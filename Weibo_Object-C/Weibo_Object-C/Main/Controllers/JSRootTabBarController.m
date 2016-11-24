@@ -180,7 +180,7 @@ extern CGFloat const kNavigationBarHeight;   /** 自定义导航条高度 */
         dispatch_after(0.5, dispatch_get_main_queue(), ^{
             
             // 请求数据
-            [homeViewController loadData];
+            [homeViewController loadDataWithIsPulling:homeViewController.activityIndicatorView.isAnimating];
         });
        
         
