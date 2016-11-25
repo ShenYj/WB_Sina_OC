@@ -60,11 +60,6 @@ static CGFloat const kMargin = 10;                         // 用户头像与欢
     self.view.backgroundColor = [UIColor whiteColor];
     // Do any additional setup after loading the view.
     // 判断当前软件版本,如果是最新版本,就加载欢迎视图,如果与上一次记录的版本不一致,则加载新特性视图
-//    if ([self isNewVersion]) {
-//        [self prepareView];
-//    } else {
-//        [self prepareNewVersionView];
-//    }
     [self isNewVersion] ? ([self prepareView]) : ([self prepareNewVersionView]);
 
 }

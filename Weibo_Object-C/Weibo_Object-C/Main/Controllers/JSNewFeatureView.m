@@ -103,6 +103,7 @@
         _pageControl.currentPage = 0;
         _pageControl.pageIndicatorTintColor = [UIColor blackColor];
         _pageControl.currentPageIndicatorTintColor = [UIColor orangeColor];
+        _pageControl.userInteractionEnabled = NO;
         [_pageControl sizeToFit];
     }
     return _pageControl;
