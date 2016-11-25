@@ -7,6 +7,7 @@
 //
 
 #import "JSNewFeatureView.h"
+#import "JSUserAccountTool.h"
 
 @interface JSNewFeatureView () <UIScrollViewDelegate>
 
@@ -21,7 +22,6 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        
         [self prepareNewFeatureView];
     }
     return self;
@@ -53,6 +53,12 @@
     }];
 }
 
+#pragma mark 
+#pragma mark - target
+- (void)clickEntranceButton:(UIButton *)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:[JSUserAccountTool sharedManager].kChangeRootViewControllerNotification object:nil userInfo:nil];
+}
+
 #pragma mark
 #pragma mark -  UIScrollViewDelegate
 
@@ -62,9 +68,6 @@
     
     currentPageIndex == 3 ? (self.entranceButton.hidden = NO) : (self.entranceButton.hidden = YES);
     
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
 }
 
 
@@ -115,6 +118,7 @@
         [_entranceButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         UIImage *image = [[UIImage imageNamed:@"tabbar_compose_button"] stretchableImageWithLeftCapWidth:120*0.5 topCapHeight:44*0.5];
         [_entranceButton setBackgroundImage:image forState:UIControlStateNormal];
+        [_entranceButton addTarget:self action:@selector(clickEntranceButton:) forControlEvents:UIControlEventTouchUpInside];
         //[_entranceButton setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
         //[_entranceButton setImage:[UIImage imageNamed:@""] forState:UIControlStateHighlighted];
         
