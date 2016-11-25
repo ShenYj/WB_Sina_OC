@@ -26,7 +26,10 @@ static CGFloat const kMargin = 10;                         // 用户头像与欢
  欢迎信息
  */
 @property (nonatomic,strong) UILabel *messageLabel;
-
+/**
+ 新特性视图
+ */
+@property (nonatomic,strong) JSNewFeatureView *newFeatureView;
 
 @end
 
@@ -45,21 +48,21 @@ static CGFloat const kMargin = 10;                         // 用户头像与欢
         [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:@"localVersion"];
         return NO;
     }
-    
-    return YES;
+    //return YES;
+    return NO;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    // 判断当前软件版本,如果是最新版本,就加载欢迎视图,如果与上一次记录的版本不一致,则加载新特性视图
+    [self isNewVersion] ? ([self prepareView]) : ([self prepareNewVersionView]);
     
-    //[self isNewVersion] ? ([self prepareView]) : ([self prepareNewVersionView]);
-    
-    [self prepareView];
+    //[self prepareView];
 }
 
 - (void)prepareNewVersionView {
-    self.view.backgroundColor = [UIColor orangeColor];
+    self.view = self.newFeatureView;
 }
 
 - (void)prepareView {
@@ -86,40 +89,26 @@ static CGFloat const kMargin = 10;                         // 用户头像与欢
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
-//    if (![self isNewVersion]) {
-//        return;
-//    }
+    if (![self isNewVersion]) {
+        return;
+    }
     
     [UIView animateWithDuration:2 delay:0.8 usingSpringWithDamping:0.7 initialSpringVelocity:0 options:UIViewAnimationOptionLayoutSubviews animations:^{
-        
         [self.headIconImageView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.bottom.mas_equalTo(self.view).mas_offset( -SCREEN_HEIGHT * 0.7);
         }];
-        
         [self.view layoutIfNeeded];
         
-        
     } completion:^(BOOL finished) {
-        
-        
         [UIView animateWithDuration:0.25 animations:^{
-            
             self.messageLabel.alpha = 1;
-            
         } completion:^(BOOL finished) {
-            
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                
-                
                 // 发布通知: 切换控制器
                 [[NSNotificationCenter defaultCenter] postNotificationName:[JSUserAccountTool sharedManager].kChangeRootViewControllerNotification object:nil userInfo:nil];
             });
-            
         }];
-        
-        
     }];
-    
     
 }
 
@@ -127,7 +116,6 @@ static CGFloat const kMargin = 10;                         // 用户头像与欢
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 
 
@@ -142,13 +130,10 @@ static CGFloat const kMargin = 10;                         // 用户头像与欢
         
         
         [_headIconImageView js_imageUrlString:[JSUserAccountTool sharedManager].userAccountModel.avatar_large withPlaceHolderImage:nil WithSize:CGSizeMake(100, 100) fillClolor:[UIColor whiteColor] completion:nil];
-        
-        
+
         
 //        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[JSUserAccountTool sharedManager].userAccountModel.avatar_large]];
-//        [[UIImage imageWithData:imageData] js_cornerImageWithSize:CGSizeMake(100, 100) fillClolor:[UIColor whiteColor] completion:^(UIImage *img) {
-//            
-//            
+//        [[UIImage imageWithData:imageData] js_cornerImageWithSize:CGSizeMake(100, 100) fillClolor:[UIColor whiteColor] completion:^(UIImage *img) {  
 //            
 //        }];
 
@@ -189,6 +174,13 @@ static CGFloat const kMargin = 10;                         // 用户头像与欢
         _messageLabel.textAlignment = NSTextAlignmentCenter;
     }
     return _messageLabel;
+}
+
+- (JSNewFeatureView *)newFeatureView {
+    if (_newFeatureView == nil) {
+        _newFeatureView = [[JSNewFeatureView alloc] init];
+    }
+    return _newFeatureView;
 }
 
 @end
