@@ -13,6 +13,7 @@
 #import "JSStatusCell.h"
 #import "JSStatusTipCell.h"
 #import "JSSQLDAL.h"
+#import <SafariServices/SafariServices.h>
 
 
 static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
@@ -241,6 +242,17 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
     cell.layer.shouldRasterize = YES;
     cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
     cell.layer.drawsAsynchronously = YES;
+    
+#pragma mark - url 点击跳转
+    __weak typeof(self) weakSelf = self;
+    [cell setUrlTextCompeletionHandler:^(NSString *text) {
+        SFSafariViewController *sfViewController = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:text]];
+        [weakSelf presentViewController:sfViewController animated:YES completion:nil];
+    }];
+    [cell setRetweetUrlTextCompeletionHandler:^(NSString *text) {
+        SFSafariViewController *sfViewController = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:text]];
+        [weakSelf presentViewController:sfViewController animated:YES completion:nil];
+    }];
     
     return cell;
 }

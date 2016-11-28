@@ -14,4 +14,6 @@
 
 @property (nonatomic) JSHomeStatusModel *statusData;
 
+@property (nonatomic,copy) void (^urlTextCompeletionHandler)(NSString *text);
+
 @end

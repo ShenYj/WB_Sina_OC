@@ -79,6 +79,18 @@ extern CGFloat const kBottomMargin;
         make.bottom.mas_equalTo(self.toolBarView).mas_offset(kBottomMargin);
     }];
     
+#pragma mark - URL处理
+    __weak typeof(self) weakSelf = self;
+    [self.originalView setUrlTextCompeletionHandler:^(NSString *text) {
+        if (weakSelf.urlTextCompeletionHandler) {
+            weakSelf.urlTextCompeletionHandler(text);
+        }
+    }];
+    [self.retweetView setUrlTextCompeletionHandler:^(NSString *text) {
+        if (weakSelf.RetweetUrlTextCompeletionHandler) {
+            weakSelf.RetweetUrlTextCompeletionHandler(text);
+        }
+    }];
 }
 
 #pragma mark

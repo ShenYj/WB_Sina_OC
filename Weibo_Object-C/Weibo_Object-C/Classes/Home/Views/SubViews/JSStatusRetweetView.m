@@ -9,15 +9,16 @@
 #import "JSStatusRetweetView.h"
 #import "JSHomeStatusModel.h"
 #import "JSPictureView.h"
+#import "JSTextLabel.h"
 
 extern CGFloat kRetweetContentLabelFontSize;
 extern CGFloat kMargin;
 
 
-@interface JSStatusRetweetView ()
+@interface JSStatusRetweetView () <JSTextLabelDelegate>
 
 // 转发微博中的微博内容
-@property (nonatomic) UILabel *contentLabel;
+@property (nonatomic) JSTextLabel *contentLabel;
 // 转发微博中的配图
 @property (nonatomic) JSPictureView *pictureView;
 // 记录转发微博底部约束
@@ -98,14 +99,23 @@ extern CGFloat kMargin;
     
 }
 
+#pragma mark
+#pragma mark - JSTextLabelDelegate
+- (void)textLabel:(JSTextLabel *)textLabel withClickTextStorageString:(NSString *)string {
+    if (self.urlTextCompeletionHandler) {
+        self.urlTextCompeletionHandler(string);
+    }
+}
+
 
 #pragma mark
 #pragma mark - lazy
 
-- (UILabel *)contentLabel {
+- (JSTextLabel *)contentLabel {
     
     if (_contentLabel == nil) {
-        _contentLabel = [[UILabel alloc] init];
+        _contentLabel = [[JSTextLabel alloc] init];
+        _contentLabel.delegate = self;
         _contentLabel.font = [UIFont systemFontOfSize:kRetweetContentLabelFontSize];
         _contentLabel.preferredMaxLayoutWidth = [UIScreen mainScreen].bounds.size.width - 2 * kMargin;
         _contentLabel.numberOfLines = 0;

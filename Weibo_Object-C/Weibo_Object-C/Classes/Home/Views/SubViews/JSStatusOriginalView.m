@@ -10,6 +10,7 @@
 #import "JSHomeStatusModel.h"
 #import "JSHomeStatusUserModel.h"
 #import "JSPictureView.h"
+#import "JSTextLabel.h"
 //#import "RegexKitLite.h"
 //#import "JSEmoticonTool.h"
 //#import "JSEmoticonModel.h"
@@ -24,7 +25,7 @@ extern CGFloat kUserStatusImageViewSize;
 extern CGFloat kOriginalContentLabelFontSize;
 
 
-@interface JSStatusOriginalView ()
+@interface JSStatusOriginalView () <JSTextLabelDelegate>
 
 // 用户头像
 @property (nonatomic) UIImageView *headImageView;
@@ -39,7 +40,7 @@ extern CGFloat kOriginalContentLabelFontSize;
 // 认证图片
 @property (nonatomic) UIImageView *avatarImageView;
 // 微博内容
-@property (nonatomic) UILabel *contentLabel;
+@property (nonatomic) JSTextLabel *contentLabel;
 // 用户在线状态
 @property (nonatomic) UIImageView *userStatusImageView;
 // 配图
@@ -268,6 +269,16 @@ extern CGFloat kOriginalContentLabelFontSize;
 //    
 //}
 
+#pragma mark
+#pragma mark - JSTextLabelDelegate
+
+- (void)textLabel:(JSTextLabel *)textLabel withClickTextStorageString:(NSString *)string {
+    
+    if (self.urlTextCompeletionHandler) {
+        self.urlTextCompeletionHandler(string);
+    }
+}
+
 
 
 #pragma mark
@@ -330,10 +341,11 @@ extern CGFloat kOriginalContentLabelFontSize;
     return _avatarImageView;
 }
 
-- (UILabel *)contentLabel {
+- (JSTextLabel *)contentLabel {
     
     if (_contentLabel == nil) {
-        _contentLabel = [[UILabel alloc] init];
+        _contentLabel = [[JSTextLabel alloc] init];
+        _contentLabel.delegate = self;
         _contentLabel.preferredMaxLayoutWidth = [UIScreen mainScreen].bounds.size.width - 2 * kMargin;
         _contentLabel.numberOfLines = 0;
         _contentLabel.font = [UIFont systemFontOfSize:kOriginalContentLabelFontSize];
