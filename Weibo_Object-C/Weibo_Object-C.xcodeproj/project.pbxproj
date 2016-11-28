@@ -30,6 +30,7 @@
 		F7271A9C1DB9EC9900CF96A0 /* JSStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7271A9B1DB9EC9900CF96A0 /* JSStatusCell.m */; };
 		F7271AA01DB9F5EF00CF96A0 /* JSStatusOriginalView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7271A9F1DB9F5EF00CF96A0 /* JSStatusOriginalView.m */; };
 		F7271AA31DBA26A700CF96A0 /* JSHomeStatusUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7271AA21DBA26A700CF96A0 /* JSHomeStatusUserModel.m */; };
+		F72CFE8A1DEBDBF10040DD58 /* JSTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F72CFE891DEBDBF10040DD58 /* JSTextLabel.m */; };
 		F731D1E51D9AACD9001C7B72 /* JSDownLoadImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F731D1DE1D9AACD9001C7B72 /* JSDownLoadImageOperation.m */; };
 		F731D1E61D9AACD9001C7B72 /* JSDownLoadOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F731D1E01D9AACD9001C7B72 /* JSDownLoadOperationManager.m */; };
 		F731D1E71D9AACD9001C7B72 /* NSString+JSAppendPath.m in Sources */ = {isa = PBXBuildFile; fileRef = F731D1E21D9AACD9001C7B72 /* NSString+JSAppendPath.m */; };
@@ -83,7 +84,6 @@
 		F7AF4CF41DC8B5E400BEA0BE /* JSEmoticonPageViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF4CF31DC8B5E400BEA0BE /* JSEmoticonPageViewCell.m */; };
 		F7AF4CFA1DC8B66900BEA0BE /* JSEmoticonToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF4CF71DC8B66900BEA0BE /* JSEmoticonToolBar.m */; };
 		F7AF4CFB1DC8B66900BEA0BE /* JSEmoticonToolBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF4CF91DC8B66900BEA0BE /* JSEmoticonToolBarButton.m */; };
-		F7C9C8471DE80B02003ABCBB /* JSTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C9C8461DE80B02003ABCBB /* JSTextLabel.m */; };
 		F7DE06E61DC997A30071B429 /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DE06E51DC997A30071B429 /* NSString+Emoji.m */; };
 		F7DE06E81DC997EF0071B429 /* Emoticons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F7DE06E71DC997EF0071B429 /* Emoticons.bundle */; };
 		F7DE06EB1DC99CC40071B429 /* JSEmoticonTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DE06EA1DC99CC40071B429 /* JSEmoticonTool.m */; };
@@ -140,6 +140,8 @@
 		F7271A9F1DB9F5EF00CF96A0 /* JSStatusOriginalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSStatusOriginalView.m; sourceTree = "<group>"; };
 		F7271AA11DBA26A700CF96A0 /* JSHomeStatusUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSHomeStatusUserModel.h; sourceTree = "<group>"; };
 		F7271AA21DBA26A700CF96A0 /* JSHomeStatusUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSHomeStatusUserModel.m; sourceTree = "<group>"; };
+		F72CFE881DEBDBF10040DD58 /* JSTextLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTextLabel.h; sourceTree = "<group>"; };
+		F72CFE891DEBDBF10040DD58 /* JSTextLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTextLabel.m; sourceTree = "<group>"; };
 		F731D1DD1D9AACD9001C7B72 /* JSDownLoadImageOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDownLoadImageOperation.h; sourceTree = "<group>"; };
 		F731D1DE1D9AACD9001C7B72 /* JSDownLoadImageOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDownLoadImageOperation.m; sourceTree = "<group>"; };
 		F731D1DF1D9AACD9001C7B72 /* JSDownLoadOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDownLoadOperationManager.h; sourceTree = "<group>"; };
@@ -246,8 +248,6 @@
 		F7AF4CF71DC8B66900BEA0BE /* JSEmoticonToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSEmoticonToolBar.m; sourceTree = "<group>"; };
 		F7AF4CF81DC8B66900BEA0BE /* JSEmoticonToolBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEmoticonToolBarButton.h; sourceTree = "<group>"; };
 		F7AF4CF91DC8B66900BEA0BE /* JSEmoticonToolBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSEmoticonToolBarButton.m; sourceTree = "<group>"; };
-		F7C9C8451DE80B02003ABCBB /* JSTextLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTextLabel.h; sourceTree = "<group>"; };
-		F7C9C8461DE80B02003ABCBB /* JSTextLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTextLabel.m; sourceTree = "<group>"; };
 		F7DE06E41DC997A30071B429 /* NSString+Emoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Emoji.h"; sourceTree = "<group>"; };
 		F7DE06E51DC997A30071B429 /* NSString+Emoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Emoji.m"; sourceTree = "<group>"; };
 		F7DE06E71DC997EF0071B429 /* Emoticons.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Emoticons.bundle; sourceTree = "<group>"; };
@@ -425,6 +425,8 @@
 		F747F7831D843748000A0C8D /* UIKit+JSExtension */ = {
 			isa = PBXGroup;
 			children = (
+				F72CFE881DEBDBF10040DD58 /* JSTextLabel.h */,
+				F72CFE891DEBDBF10040DD58 /* JSTextLabel.m */,
 				F747F7841D843748000A0C8D /* JSUIkitExtension.h */,
 				F767E2BF1DBE414600254511 /* JSDateFormatter.h */,
 				F767E2C01DBE414600254511 /* JSDateFormatter.m */,
@@ -448,8 +450,6 @@
 				F747F7941D843748000A0C8D /* UINavigationController+JSFullScreenPopGesture.m */,
 				F747F7951D843748000A0C8D /* UIView+JSFrame.h */,
 				F747F7961D843748000A0C8D /* UIView+JSFrame.m */,
-				F7C9C8451DE80B02003ABCBB /* JSTextLabel.h */,
-				F7C9C8461DE80B02003ABCBB /* JSTextLabel.m */,
 				F7DE06E31DC997A30071B429 /* NSStringEmoji */,
 			);
 			path = "UIKit+JSExtension";
@@ -951,7 +951,7 @@
 				F74F57381D84F3DA00E3CC61 /* JSUserAccountTool.m in Sources */,
 				F7A3480D1DD0CC5B00457632 /* JSStatusTipCell.m in Sources */,
 				F767E2BE1DBDD71800254511 /* JSHomeStatusLayout.m in Sources */,
-				F7C9C8471DE80B02003ABCBB /* JSTextLabel.m in Sources */,
+				F72CFE8A1DEBDBF10040DD58 /* JSTextLabel.m in Sources */,
 				F72350641DDF4A63005D0E2E /* JSDescoveryViewController.m in Sources */,
 				F778864A1D1EC9BC00BE4518 /* JSTabBar.m in Sources */,
 				F7DE06F11DC9A2330071B429 /* JSEmoticonModel.m in Sources */,
