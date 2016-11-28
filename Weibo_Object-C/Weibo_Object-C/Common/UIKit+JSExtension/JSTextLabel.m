@@ -40,12 +40,12 @@
     //[super drawTextInRect:rect];
     NSRange range = NSMakeRange(0, self.textStorage.length);
     // Glyphs字形
-    [self.textLayoutManager setLocation:CGPointZero forStartOfGlyphRange:range];
+    [self.textLayoutManager drawGlyphsForGlyphRange:range atPoint:CGPointZero];
 }
 /** 准备文本系统 */
 - (void)prepareTextSystem {
     // 准备文本内容
-    [self prepareTextContent];
+    //[self prepareTextContent];  调用顺序: init --> 设置属性(text/attributeText),所以在调用prepareTextContent时,attributeText和text均为nil
     // 设置对象的关系
     [self.textStorage addLayoutManager:self.textLayoutManager];
     [self.textLayoutManager addTextContainer:self.textLayoutContainer];
@@ -62,6 +62,15 @@
     }
 }
 
+- (void)setText:(NSString *)text {
+    [super setText:text];
+    [self.textStorage setAttributedString:[[NSAttributedString alloc] initWithString:self.text]];
+}
+
+- (void)setAttributedText:(NSAttributedString *)attributedText {
+    [super setAttributedText:attributedText];
+    [self.textStorage setAttributedString:self.attributedText];
+}
 
 #pragma mark 
 #pragma mark - Lazy
