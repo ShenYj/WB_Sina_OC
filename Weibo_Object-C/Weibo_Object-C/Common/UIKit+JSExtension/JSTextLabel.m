@@ -57,6 +57,15 @@
             }
         }
     }
+    // @符号处理
+    for (NSValue *value in [self getAtRanges]) {
+        NSRange range = value.rangeValue;
+        BOOL isInAtRange = NSLocationInRange(index, range);
+        if (isInAtRange) {
+            [self.textStorage addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:range];
+            [self setNeedsDisplay];
+        }
+    }
 }
 
 - (void)setText:(NSString *)text {
@@ -122,6 +131,23 @@
     return rangeArr.copy;
 }
 
+/** 正则表达式匹配@ */
+- (NSArray <NSValue *>*)getAtRanges {
+    // 正则表达式
+    NSString *pattern = @"@[\\u4e00-\\u9fa5a-zA-Z0-9_-]*";
+    // 多重匹配
+    NSRegularExpression *regularExpression = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:NULL];
+    NSMutableArray *rangeArr = [NSMutableArray array];
+    NSArray<NSTextCheckingResult *> *matchResults = [regularExpression matchesInString:self.textStorage.string options:0 range:NSMakeRange(0, self.textStorage.length)];
+    // 遍历数组,生成Range的数组
+    for (NSTextCheckingResult *textCheckingResult in matchResults) {
+        
+        [rangeArr addObject:[NSValue valueWithRange:textCheckingResult.range]];
+    }
+    
+    return rangeArr.copy;
+}
+
 /** 准备文本内容 */
 - (void)prepareTextContent {
     if (self.attributedText.length) {
@@ -136,6 +162,15 @@
         NSRange range = value.rangeValue;
         [self.textStorage addAttributes:@{
                                           NSForegroundColorAttributeName : [UIColor redColor],
+                                          NSBackgroundColorAttributeName : [UIColor colorWithWhite:0.9 alpha:1.0]
+                                          }
+                                  range:range];
+    }
+    // @ 符号
+    for (NSValue *value in [self getAtRanges]) {
+        NSRange range = value.rangeValue;
+        [self.textStorage addAttributes:@{
+                                          NSForegroundColorAttributeName : [UIColor purpleColor],
                                           NSBackgroundColorAttributeName : [UIColor colorWithWhite:0.9 alpha:1.0]
                                           }
                                   range:range];
