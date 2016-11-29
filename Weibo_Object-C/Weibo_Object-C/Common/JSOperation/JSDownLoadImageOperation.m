@@ -13,7 +13,6 @@
 
 - (void)main{
     
-    
     NSAssert(self.completeHandler != nil, @"completeHandler == nil");
     
     NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.urlString]];

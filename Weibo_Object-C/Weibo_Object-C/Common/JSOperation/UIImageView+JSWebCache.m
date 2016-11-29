@@ -38,10 +38,19 @@
     }];
 }
 
+- (void)js_imageUrlString:(NSString *)urlString WithSize:(CGSize)size fillClolor:(UIColor *)fillColor completion:(void(^)(UIImage *img))completion {
+    
+    [self js_imageUrlString:urlString withPlaceHolderImage:nil WithSize:size fillClolor:fillColor completion:completion];
+
+}
+
 
 - (void)js_imageUrlString:(NSString *)urlString withPlaceHolderImage:(NSString *)placeHolderImage WithSize:(CGSize)size fillClolor:(UIColor *)fillColor completion:(void(^)(UIImage *img))completion {
     
-    self.image = [UIImage imageNamed:placeHolderImage];
+    if (placeHolderImage) {
+        
+        self.image = [UIImage imageNamed:placeHolderImage];
+    }
     
     // 取消之前图片的下载操作
     if ( ![urlString isEqualToString:self.currentIconString] ) {
@@ -84,13 +93,10 @@
             
             // 主线程返回圆形图片
             dispatch_async(dispatch_get_main_queue(), ^{
-                
-//                if (completion) {
-//                    completion(image);
-//                }
-                
-                self.image = image;
-                
+                if (completion) {
+                    completion(image);
+                }
+                //self.image = image;
             });
             
         });

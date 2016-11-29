@@ -129,33 +129,18 @@ static CGFloat const kMargin = 10;                         // 用户头像与欢
     
     if (_headIconImageView == nil) {
         _headIconImageView = [[UIImageView alloc] init];
-        [_headIconImageView js_imageUrlString:[JSUserAccountTool sharedManager].userAccountModel.avatar_large withPlaceHolderImage:nil WithSize:CGSizeMake(100, 100) fillClolor:[UIColor whiteColor] completion:nil];
-
-//        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[JSUserAccountTool sharedManager].userAccountModel.avatar_large]];
-//        [[UIImage imageWithData:imageData] js_cornerImageWithSize:CGSizeMake(100, 100) fillClolor:[UIColor whiteColor] completion:^(UIImage *img) {  
-//            
-//        }];
-        
-        // 设置圆角
+        [_headIconImageView js_imageUrlString:[JSUserAccountTool sharedManager].userAccountModel.avatar_large WithSize:CGSizeMake(100, 100) fillClolor:[UIColor whiteColor] completion:^(UIImage *img) {
+            _headIconImageView.image = img;
+        }];
 //        [_headIconImageView yy_setImageWithURL:[NSURL URLWithString:[JSUserAccountTool sharedManager].userAccountModel.avatar_large]
-//         
-//            placeholder:nil
-//            options:YYWebImageOptionSetImageWithFadeAnimation
-//            progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-//                
-//                NSLog(@"%f", (float)receivedSize / expectedSize);
-//            
-//        } transform:^UIImage * _Nullable(UIImage * _Nonnull image, NSURL * _Nonnull url) {
-//            
-//            image = [image yy_imageByResizeToSize:CGSizeMake(100, 100) contentMode:UIViewContentModeCenter];
-//            return [image yy_imageByRoundCornerRadius:50];
-//            
-//        } completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
-//            
-//            if (from == YYWebImageFromDiskCache) {
-//                NSLog(@"load from disk cache");
-//            }
-//        }];
+//                                   placeholder:nil
+//                                       options:0
+//                                       manager:nil
+//                                      progress:nil
+//                                     transform:^UIImage * _Nullable(UIImage * _Nonnull image, NSURL * _Nonnull url) {
+//                                         image = [image yy_imageByResizeToSize:CGSizeMake(200, 200) contentMode:UIViewContentModeCenter];
+//                                         return [image yy_imageByRoundCornerRadius:25];
+//        } completion:nil];
         
     }
     return _headIconImageView;
