@@ -143,9 +143,6 @@ extern CGFloat kOriginalContentLabelFontSize;
     self.userNickNameLabel.text = statusData.user.name;
     
     // 用户头像
-    //[self.headImageView js_imageUrlString:statusData.user.profile_image_url WithSize:CGSizeMake(kHeadImageViewSize, kHeadImageViewSize) fillClolor:[UIColor whiteColor]];
-    [self.headImageView yy_setImageWithURL:[NSURL URLWithString:statusData.user.profile_image_url] options:YYWebImageOptionShowNetworkActivity];
-    
 //    [self.headImageView yy_setImageWithURL:[NSURL URLWithString:statusData.user.profile_image_url]
 //                      placeholder:nil
 //                          options:YYWebImageOptionSetImageWithFadeAnimation
@@ -156,10 +153,10 @@ extern CGFloat kOriginalContentLabelFontSize;
 //                        }
 //                       completion:nil];
     
-//    __weak typeof(self) weakSelf = self;
-//    [self.headImageView js_imageUrlString:statusData.user.profile_image_url withPlaceHolderImage:nil WithSize:CGSizeMake(kHeadImageViewSize, kHeadImageViewSize) fillClolor:[UIColor whiteColor] completion:^(UIImage *img) {
-//        weakSelf.headImageView.image = img;
-//    }];
+    __weak typeof(self) weakSelf = self;
+    [self.headImageView js_imageUrlString:statusData.user.profile_image_url withPlaceHolderImage:nil WithSize:CGSizeMake(kHeadImageViewSize, kHeadImageViewSize) fillClolor:[UIColor whiteColor] completion:^(UIImage *img) {
+        weakSelf.headImageView.image = img;
+    }];
     
     // 微博来源
     self.sourceLabel.attributedText = statusData.sourceString;
