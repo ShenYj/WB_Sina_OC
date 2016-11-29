@@ -108,16 +108,25 @@ CGFloat const kBottomMargin = 5.f;                  // 底部ToolBar视图底部
 - (JSHomeStatusLayout *)homeStatusLayout {
     
     JSHomeStatusLayout *layout = [[JSHomeStatusLayout alloc] init];
-    layout.HomeStatusLayoutTopMargin = 8.f;
-    layout.HomeStatusLayoutMargin = 10.f;
-    layout.HomeStatusLayoutHeadImageViewSize = 35.f;
-    layout.HomeStatusLayoutUserStatusImageViewSize = 15.f;
-    layout.HomeStatusLayoutContentLabelFontSize = 14.f;
-    layout.HomeStatusLayoutRetweetContentLabelFontSize = 13.f;
-    layout.HomeStatusLayoutToolBarHeight = 35.f;
-    layout.HomeStatusLayoutToolBarBottomMargin = 5.f;
+    //layout.HomeStatusLayoutTopMargin = 8.f;
+    //layout.HomeStatusLayoutMargin = 10.f;
+    //layout.HomeStatusLayoutHeadImageViewSize = 35.f;
+    //layout.HomeStatusLayoutUserStatusImageViewSize = 15.f;
+    //layout.HomeStatusLayoutContentLabelFontSize = 14.f;
+    //layout.HomeStatusLayoutRetweetContentLabelFontSize = 13.f;
+    //layout.HomeStatusLayoutToolBarHeight = 35.f;
+    //layout.HomeStatusLayoutToolBarBottomMargin = 5.f;
+    //layout.HomeStatusLayoutPictureViewItemMargin = 5.f;
+    layout.HomeStatusLayoutTopMargin = kTopMargin;
+    layout.HomeStatusLayoutMargin = kMargin;
+    layout.HomeStatusLayoutHeadImageViewSize = kHeadImageViewSize;
+    layout.HomeStatusLayoutUserStatusImageViewSize = kUserStatusImageViewSize;
+    layout.HomeStatusLayoutContentLabelFontSize = kOriginalContentLabelFontSize;
+    layout.HomeStatusLayoutRetweetContentLabelFontSize = kRetweetContentLabelFontSize;
+    layout.HomeStatusLayoutToolBarHeight = kStatusToolBarHeight;
+    layout.HomeStatusLayoutToolBarBottomMargin = kBottomMargin;
     layout.HomeStatusLayoutPictureViewItemSizeWH = itemSizeWH;
-    layout.HomeStatusLayoutPictureViewItemMargin = 5.f;
+    layout.HomeStatusLayoutPictureViewItemMargin = kItemMargin;
     layout.HomeStatusLayoutPictureViewSize = [self getPictureViewSizeWithItemCounts:self.pic_urls.count];
     layout.HomeStatusLayoutPictureViewMaxSize = [self getPictureViewSizeWithItemCounts:9];
     

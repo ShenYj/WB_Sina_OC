@@ -50,6 +50,7 @@ extern CGFloat const kBottomMargin;
     
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.backgroundColor = [UIColor js_colorWithHex:0xE8E8E8];
+    self.contentView.backgroundColor = [UIColor js_colorWithHex:0xE8E8E8];
     
     [self.contentView addSubview:self.originalView];
     [self.contentView addSubview:self.retweetView];
