@@ -162,7 +162,8 @@
         NSRange range = value.rangeValue;
         [self.textStorage addAttributes:@{
                                           NSForegroundColorAttributeName : [UIColor redColor],
-                                          NSBackgroundColorAttributeName : [UIColor colorWithWhite:0.9 alpha:1.0]
+                                          NSBackgroundColorAttributeName : [UIColor colorWithWhite:0.9 alpha:1.0],
+                                          NSUnderlineStyleAttributeName : @(1)
                                           }
                                   range:range];
     }
