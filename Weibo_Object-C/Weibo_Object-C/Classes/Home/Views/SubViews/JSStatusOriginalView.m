@@ -144,14 +144,19 @@ extern CGFloat kOriginalContentLabelFontSize;
     
     // 用户头像
 //    [self.headImageView yy_setImageWithURL:[NSURL URLWithString:statusData.user.profile_image_url]
-//                      placeholder:nil
-//                          options:YYWebImageOptionSetImageWithFadeAnimation
-//                         progress:nil
-//                        transform:^UIImage *(UIImage *image, NSURL *url) {
-//                            image = [image yy_imageByResizeToSize:CGSizeMake(kHeadImageViewSize, kHeadImageViewSize) contentMode:UIViewContentModeCenter];
-//                            return [image yy_imageByRoundCornerRadius:kHeadImageViewSize*0.5];
-//                        }
-//                       completion:nil];
+//                               placeholder:nil
+//                                   options:YYWebImageOptionAvoidSetImage
+//                                  progress:nil
+//                                 transform:^UIImage *(UIImage *image, NSURL *url) {
+//                                     image = [[image yy_imageByResizeToSize:CGSizeMake(kHeadImageViewSize, kHeadImageViewSize) contentMode:UIViewContentModeCenter] yy_imageByRoundCornerRadius:kHeadImageViewSize*0.5];
+//                                     self.headImageView.image = image;
+//                                     return image;
+//                                 }
+//                                completion:^(UIImage *image, NSURL *url, YYWebImageFromType from, YYWebImageStage stage, NSError *error) {
+//                                    if (from == YYWebImageFromDiskCache) {
+//                                        NSLog(@"load from disk cache");
+//                                    }
+//                                }];
     
     __weak typeof(self) weakSelf = self;
     [self.headImageView js_imageUrlString:statusData.user.profile_image_url withPlaceHolderImage:nil WithSize:CGSizeMake(kHeadImageViewSize, kHeadImageViewSize) fillClolor:[UIColor whiteColor] completion:^(UIImage *img) {
