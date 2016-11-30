@@ -51,31 +51,24 @@
     // 异步处理
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
+        //CGRect rect = CGRectMake(0, 0, size.width < self.size.width ? size.width : self.size.width, size.height < self.size.height ? size.height : self.size.height);
         // 开启图形上下文
         UIGraphicsBeginImageContextWithOptions(size, YES, 0.0);
-        
         // 设置rect
         CGRect rect = CGRectMake(0, 0, size.width, size.height);
-        
         // 设置填充色
         [fillColor set];
         UIRectFill(rect);
-        
         // 计算半径
         CGFloat cornerRadius = MIN(size.width, size.height) * 0.5;
-        
         // 设置圆形路径并切割
         [[UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:cornerRadius] addClip];
-        
         // 将原始图片绘制到图形上下文中
         [self drawInRect:rect];
-        
         // 从图形上下获取图片
         UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-        
         // 关闭图形上下文
         UIGraphicsEndImageContext();
-        
         // 主线程返回圆形图片
         dispatch_async(dispatch_get_main_queue(), ^{
             
@@ -120,8 +113,7 @@
     
     CGFloat cornerRadius = MIN(originalImage.size.width, originalImage.size.height) * 0.5;
     
-    [[UIBezierPath bezierPathWithRoundedRect:rect
-                                cornerRadius:cornerRadius] addClip];
+    [[UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:cornerRadius] addClip];
     
     [originalImage drawInRect:rect];
     
@@ -214,7 +206,7 @@
         // 设置动图数组
         animatedImage = [UIImage animatedImageWithImages:images duration:duration];
     }
-    
+
     CFRelease(source);
     
     return animatedImage;

@@ -76,7 +76,6 @@ extern CGFloat kItemMargin;
         
     }
     
-    
     // 获取到数据后,刷新CollectionView
     [self reloadData];
     

@@ -143,20 +143,32 @@ extern CGFloat kOriginalContentLabelFontSize;
     self.userNickNameLabel.text = statusData.user.name;
     
     // 用户头像
+//    [self.headImageView js_setImageWithURL:statusData.user.profile_image_url
+//                               placeholder:nil
+//                              expectedSize:CGSizeMake(kHeadImageViewSize, kHeadImageViewSize)
+//                                 fillColor:self.backgroundColor];
+    
+    
 //    [self.headImageView yy_setImageWithURL:[NSURL URLWithString:statusData.user.profile_image_url]
 //                               placeholder:nil
-//                                   options:YYWebImageOptionAvoidSetImage
+//                                   options:YYWebImageOptionSetImageWithFadeAnimation
+//                                   manager:nil
 //                                  progress:nil
-//                                 transform:^UIImage *(UIImage *image, NSURL *url) {
-//                                     image = [[image yy_imageByResizeToSize:CGSizeMake(kHeadImageViewSize, kHeadImageViewSize) contentMode:UIViewContentModeCenter] yy_imageByRoundCornerRadius:kHeadImageViewSize*0.5];
-//                                     self.headImageView.image = image;
-//                                     return image;
-//                                 }
-//                                completion:^(UIImage *image, NSURL *url, YYWebImageFromType from, YYWebImageStage stage, NSError *error) {
-//                                    if (from == YYWebImageFromDiskCache) {
-//                                        NSLog(@"load from disk cache");
-//                                    }
-//                                }];
+//                                 transform:^UIImage * _Nullable(UIImage * _Nonnull image, NSURL * _Nonnull url) {
+//        image = [[image yy_imageByResizeToSize:CGSizeMake(kHeadImageViewSize, kHeadImageViewSize) contentMode:UIViewContentModeCenter] yy_imageByRoundCornerRadius:kHeadImageViewSize*0.5];
+//        return image;
+//    } completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
+//        __weak typeof(self) weakSelf = self;
+//        if (kHeadImageViewSize > image.size.width || kHeadImageViewSize > image.size.height) {
+//            
+//        } else {
+//            [image js_cornerImageWithSize:CGSizeMake(kHeadImageViewSize, kHeadImageViewSize) fillClolor:[UIColor whiteColor] completion:^(UIImage *img) {
+//                weakSelf.headImageView.image = img;
+//            }];
+//        }
+//    }];
+    
+    
     
     __weak typeof(self) weakSelf = self;
     [self.headImageView js_imageUrlString:statusData.user.profile_image_url withPlaceHolderImage:nil WithSize:CGSizeMake(kHeadImageViewSize, kHeadImageViewSize) fillClolor:[UIColor whiteColor] completion:^(UIImage *img) {

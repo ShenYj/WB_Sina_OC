@@ -10,8 +10,9 @@
 #import "JSHomeStatusModel.h"
 #import "JSHomeStatusPictureModel.h"
 #import "YYAnimatedImageView.h"
-#import "UIImageView+WebCache.h";
+#import "UIImageView+WebCache.h"
 
+extern CGFloat itemSizeWH;                                 // 首页视图配图视图中每个Item的宽高
 
 @implementation JSPictureViewCell
 
@@ -52,8 +53,11 @@
     _pictureModel = pictureModel;
     
     // 设置配图
-    [self.pictureImageView sd_setImageWithURL:[NSURL URLWithString:pictureModel.thumbnail_pic] placeholderImage:nil options:SDWebImageRetryFailed];
+    //[self.pictureImageView sd_setImageWithURL:[NSURL URLWithString:pictureModel.thumbnail_pic] placeholderImage:nil options:SDWebImageRetryFailed];
     //[self.pictureImageView yy_setImageWithURL:[NSURL URLWithString:pictureModel.thumbnail_pic] options:YYWebImageOptionShowNetworkActivity];
+    
+    [self.pictureImageView js_setImagewithOutCornerRadiusWithURL:pictureModel.thumbnail_pic placeholder:nil expectedSize:CGSizeMake(itemSizeWH, itemSizeWH) fillColor:self.backgroundColor];
+
 }
 
 #pragma mark 
