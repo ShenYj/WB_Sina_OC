@@ -104,19 +104,11 @@ CGFloat const kBottomMargin = 5.f;                  // 底部ToolBar视图底部
     return rowHeight;
 
 }
+
 // 记录行高 -> 方式一
 - (JSHomeStatusLayout *)homeStatusLayout {
     
     JSHomeStatusLayout *layout = [[JSHomeStatusLayout alloc] init];
-    //layout.HomeStatusLayoutTopMargin = 8.f;
-    //layout.HomeStatusLayoutMargin = 10.f;
-    //layout.HomeStatusLayoutHeadImageViewSize = 35.f;
-    //layout.HomeStatusLayoutUserStatusImageViewSize = 15.f;
-    //layout.HomeStatusLayoutContentLabelFontSize = 14.f;
-    //layout.HomeStatusLayoutRetweetContentLabelFontSize = 13.f;
-    //layout.HomeStatusLayoutToolBarHeight = 35.f;
-    //layout.HomeStatusLayoutToolBarBottomMargin = 5.f;
-    //layout.HomeStatusLayoutPictureViewItemMargin = 5.f;
     layout.HomeStatusLayoutTopMargin = kTopMargin;
     layout.HomeStatusLayoutMargin = kMargin;
     layout.HomeStatusLayoutHeadImageViewSize = kHeadImageViewSize;
@@ -132,7 +124,6 @@ CGFloat const kBottomMargin = 5.f;                  // 底部ToolBar视图底部
     
     return layout;
 }
-
 // 计算首页Cell的行高 方式一
 - (CGFloat)homeStatusRowHeigh {
     
@@ -173,7 +164,6 @@ CGFloat const kBottomMargin = 5.f;                  // 底部ToolBar视图底部
     return rowHeight;
 }
 
-
 - (instancetype)initWithDict:(NSDictionary *)dict {
     
     self = [super init];
@@ -190,7 +180,6 @@ CGFloat const kBottomMargin = 5.f;                  // 底部ToolBar视图底部
     
     return [[self alloc] initWithDict:dict];
 }
-
 // KVC
 - (void)setValue:(id)value forKey:(NSString *)key {
     
@@ -261,7 +250,6 @@ CGFloat const kBottomMargin = 5.f;                  // 底部ToolBar视图底部
 - (void)setAttitudes_count:(NSNumber *)attitudes_count {
     
     _attitudes_count = attitudes_count;
-    
     self.attitudes_count_string = [self transformDisplayContentByNSNumber:attitudes_count withTitle:@"赞"];
     
 }
@@ -288,14 +276,16 @@ CGFloat const kBottomMargin = 5.f;                  // 底部ToolBar视图底部
     self.attributedString = [self getWeiBoAttributedText:text];
 }
 
-// 微博发布时间 (因为需要实时判断,在SetCreated_at方法中重写,只会记录一次)
+#pragma mark
+#pragma mark - 微博发布时间 (因为需要实时判断,在SetCreated_at方法中重写,只会记录一次)
 - (NSString *)created_at_formatterString {
     
     return [self getWeiBoFormatterDateString:self.created_at];
     
 }
 
-// 根据配图的个数,计算配图视图的宽度和高度
+#pragma mark
+#pragma mark - 根据配图的个数,计算配图视图的宽度和高度
 - (CGSize)getPictureViewSizeWithItemCounts:(NSInteger)itemCount {
     
     // 每张配图(Cell) 的尺寸 (等高等宽)
@@ -315,6 +305,7 @@ CGFloat const kBottomMargin = 5.f;                  // 底部ToolBar视图底部
     
 }
 
+#pragma mark
 #pragma mark - 获取微博来源字符串
 - (NSMutableAttributedString *)getStatusScourceStringWithOriginalInfo:(NSString *)originalInfo {
     
@@ -351,7 +342,7 @@ CGFloat const kBottomMargin = 5.f;                  // 底部ToolBar视图底部
     
 }
 
-
+#pragma mark
 #pragma mark - 获取转发评论赞的字符串
 - (NSString *)transformDisplayContentByNSNumber:(NSNumber *)aNumber withTitle:(NSString *)title {
     
@@ -454,6 +445,7 @@ CGFloat const kBottomMargin = 5.f;                  // 底部ToolBar视图底部
     
 }
 
+#pragma mark
 #pragma mark - 将微博内容转成富文本
 - (NSMutableAttributedString *)getWeiBoAttributedText:(NSString *)originalText {
     

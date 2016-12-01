@@ -126,12 +126,12 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
             });
         }
         // 缓存单张图片 (包含了停止动画&刷新表格)
-        [self cacheSingleImage:self.homeStatusDatas];
-//        // 停止动画
-//        [self.activityIndicatorView stopAnimating];
-//        [self.refreshControl endRefresh];
-//        // 刷新表格
-//        [self.tableView reloadData];
+        //[self cacheSingleImage:self.homeStatusDatas];
+        // 停止动画
+        [self.activityIndicatorView stopAnimating];
+        [self.refreshControl endRefresh];
+        // 刷新表格
+        [self.tableView reloadData];
         
     } Since_id:sinceId max_id:maxId];
     
@@ -181,6 +181,8 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
         [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:singleImgUrlString] options:0 progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
             NSData *imageData = UIImagePNGRepresentation(image);
             length += imageData.length;
+            // 更新
+            [statusModel updateSingleImageSize:image];
             // 出组
             dispatch_group_leave(group);
         }];
@@ -188,7 +190,7 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
     }
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-        NSLog(@"%s",__FUNCTION__);
+        
         // 停止动画
         [self.activityIndicatorView stopAnimating];
         [self.refreshControl endRefresh];
@@ -197,9 +199,7 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
     });
 }
 
-- (void)updateSingleImageSize:(UIImage *)image {
-    
-}
+
 
 // 下拉刷新动画 (展示更新多少条微博数据)
 - (void)pullDownAnimationWithStatusCounts:(NSInteger)counts {

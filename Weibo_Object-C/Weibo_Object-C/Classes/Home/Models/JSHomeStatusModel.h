@@ -85,6 +85,7 @@ typedef struct {
 @property (nonatomic,assign) HomeStatusLayout homeStatusLayoutStruct;
 
 
+- (void)updateSingleImageSize:(UIImage *)image;
 
 #pragma mark
 #pragma mark - methods
