@@ -158,8 +158,8 @@ extern CGFloat kItemMargin;
     
     // 计算行数和列数  (itemCount == 4) ? 2 : (itemCount >= 3 ? 3 : itemCount);
     NSInteger col = (itemCount >= 3) ? (itemCount == 4 ? 2 : 3) : (itemCount == 2 ? 2 : 1);
-    NSInteger row = (itemCount == 4) ? 2 : ((itemCount - 1) / 3 + 1);
-    
+    //NSInteger row = (itemCount == 4) ? 2 : ((itemCount - 1) / 3 + 1);
+     NSInteger row = ((itemCount - 1) / 3 + 1);
     // 计算PictureView的宽度和高度
     CGFloat pictureViewSizeW = col * itemSizeWH + (col - 1) * kItemMargin;
     CGFloat pictureViewSizeH = row * itemSizeWH + (col - 1) * kItemMargin;

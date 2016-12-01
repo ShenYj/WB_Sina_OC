@@ -13,6 +13,8 @@
 #import "JSStatusCell.h"
 #import "JSStatusTipCell.h"
 #import "JSSQLDAL.h"
+#import "JSHomeStatusPictureModel.h"
+#import "SDWebImageManager.h"
 #import <SafariServices/SafariServices.h>
 
 
@@ -123,12 +125,13 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
                 self.tabBarItem.badgeValue = 0;
             });
         }
-        
-        // 停止动画
-        [self.activityIndicatorView stopAnimating];
-        [self.refreshControl endRefresh];
-        // 刷新表格
-        [self.tableView reloadData];
+        // 缓存单张图片 (包含了停止动画&刷新表格)
+        [self cacheSingleImage:self.homeStatusDatas];
+//        // 停止动画
+//        [self.activityIndicatorView stopAnimating];
+//        [self.refreshControl endRefresh];
+//        // 刷新表格
+//        [self.tableView reloadData];
         
     } Since_id:sinceId max_id:maxId];
     
@@ -157,6 +160,45 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
     //        });
     //    }];
 
+}
+// 配图视图中,如果配图为单张,则进行缓存
+- (void)cacheSingleImage:(NSArray  <JSHomeStatusModel *>*)homeStatusData {
+    
+    // 调度组
+    dispatch_group_t group = dispatch_group_create();
+    // 记录图片长度
+    __block CGFloat length = 0.f;
+    // 遍历数组,查找微博中有单张图片的微博,进行缓存
+    for (JSHomeStatusModel *statusModel in homeStatusData) {
+        // 如果配图数量不为1,不做处理
+        if (statusModel.pic_urls.count != 1) {
+            continue;
+        }
+        // 获取URL
+        NSString *singleImgUrlString = statusModel.pic_urls.firstObject.thumbnail_pic;
+        // 入组
+        dispatch_group_enter(group);
+        [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:singleImgUrlString] options:0 progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+            NSData *imageData = UIImagePNGRepresentation(image);
+            length += imageData.length;
+            // 出组
+            dispatch_group_leave(group);
+        }];
+        
+    }
+    
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        NSLog(@"%s",__FUNCTION__);
+        // 停止动画
+        [self.activityIndicatorView stopAnimating];
+        [self.refreshControl endRefresh];
+        // 刷新表格
+        [self.tableView reloadData];
+    });
+}
+
+- (void)updateSingleImageSize:(UIImage *)image {
+    
 }
 
 // 下拉刷新动画 (展示更新多少条微博数据)
