@@ -16,7 +16,7 @@
 #import "JSHomeStatusPictureModel.h"
 #import "SDWebImageManager.h"
 #import <SafariServices/SafariServices.h>
-
+#import <AudioToolbox/AudioToolbox.h>
 
 static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
 static NSString * const homeTableCellTipReusedId = @"homeTableCellTipReusedId";
@@ -131,6 +131,7 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
         [self.activityIndicatorView stopAnimating];
         [self.refreshControl endRefresh];
         // 刷新表格
+        AudioServicesPlaySystemSound(1106);
         [self.tableView reloadData];
         
     } Since_id:sinceId max_id:maxId];
@@ -161,6 +162,7 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
     //    }];
 
 }
+
 // 配图视图中,如果配图为单张,则进行缓存
 - (void)cacheSingleImage:(NSArray  <JSHomeStatusModel *>*)homeStatusData {
     

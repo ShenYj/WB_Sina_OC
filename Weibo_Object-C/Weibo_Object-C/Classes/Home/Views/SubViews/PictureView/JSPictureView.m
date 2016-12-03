@@ -27,6 +27,7 @@ extern CGFloat kItemMargin;
 
 @implementation JSPictureView
 
+
 - (instancetype)init {
     
     self = [super initWithFrame:CGRectZero collectionViewLayout:[[JSFlowLayout alloc] init]];

@@ -24,6 +24,8 @@ extern CGFloat const kBottomMargin;
 @property (nonatomic) JSStatusOriginalView *originalView;
 // 转发微博
 @property (nonatomic) JSStatusRetweetView *retweetView;
+// 转发微博点击处理
+@property (nonatomic) UIButton *retweetViewButton;
 // 底部ToolBar视图
 @property (nonatomic) JSStatusToolBarView *toolBarView;
 // 记录ToolBar顶部约束
@@ -54,6 +56,7 @@ extern CGFloat const kBottomMargin;
     
     [self.contentView addSubview:self.originalView];
     [self.contentView addSubview:self.retweetView];
+    [self.contentView insertSubview:self.retweetViewButton aboveSubview:self.retweetView];
     [self.contentView addSubview:self.toolBarView];
     
     [self.originalView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -66,6 +69,11 @@ extern CGFloat const kBottomMargin;
         make.left.right.mas_equalTo(self.contentView);
         make.top.mas_equalTo(self.originalView.mas_bottom);
         //make.height.mas_equalTo(50); retweetView内部根据文本进行了高度适配
+    }];
+    
+    [self.retweetViewButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.mas_equalTo(self.retweetView);
+        make.height.mas_equalTo(self.retweetView);
     }];
     
     [self.toolBarView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -92,6 +100,14 @@ extern CGFloat const kBottomMargin;
             weakSelf.RetweetUrlTextCompeletionHandler(text);
         }
     }];
+    
+#pragma mark - 转发微博按钮点击处理
+    [self.retweetViewButton addTarget:self action:@selector(clickRetweetViewButton:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+#pragma mark - 点击转发微博
+- (void)clickRetweetViewButton:(UIButton *)sender {
+    NSLog(@"%s",__func__);
 }
 
 #pragma mark
@@ -157,8 +173,18 @@ extern CGFloat const kBottomMargin;
     
     if (_retweetView == nil) {
         _retweetView = [[JSStatusRetweetView alloc] init];
+        _retweetView.userInteractionEnabled = YES;
     }
     return _retweetView;
+}
+
+- (UIButton *)retweetViewButton {
+    
+    if (_retweetViewButton == nil) {
+        _retweetViewButton = [[UIButton alloc] init];
+        [_retweetViewButton setTitle:@"" forState:UIControlStateNormal];
+    }
+    return _retweetViewButton;
 }
 
 - (JSStatusToolBarView *)toolBarView {
