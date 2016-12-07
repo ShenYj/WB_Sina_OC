@@ -31,6 +31,9 @@
 		F7271AA01DB9F5EF00CF96A0 /* JSStatusOriginalView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7271A9F1DB9F5EF00CF96A0 /* JSStatusOriginalView.m */; };
 		F7271AA31DBA26A700CF96A0 /* JSHomeStatusUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7271AA21DBA26A700CF96A0 /* JSHomeStatusUserModel.m */; };
 		F72CFE8A1DEBDBF10040DD58 /* JSTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F72CFE891DEBDBF10040DD58 /* JSTextLabel.m */; };
+		F731B1CD1DF7D0200068E1A4 /* assets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F731B1C81DF7D0200068E1A4 /* assets.bundle */; };
+		F731B1CE1DF7D0200068E1A4 /* JSRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F731B1CA1DF7D0200068E1A4 /* JSRefreshControl.m */; };
+		F731B1CF1DF7D0200068E1A4 /* JSRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = F731B1CC1DF7D0200068E1A4 /* JSRefreshView.m */; };
 		F731D1E51D9AACD9001C7B72 /* JSDownLoadImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F731D1DE1D9AACD9001C7B72 /* JSDownLoadImageOperation.m */; };
 		F731D1E61D9AACD9001C7B72 /* JSDownLoadOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F731D1E01D9AACD9001C7B72 /* JSDownLoadOperationManager.m */; };
 		F731D1E71D9AACD9001C7B72 /* NSString+JSAppendPath.m in Sources */ = {isa = PBXBuildFile; fileRef = F731D1E21D9AACD9001C7B72 /* NSString+JSAppendPath.m */; };
@@ -142,6 +145,11 @@
 		F7271AA21DBA26A700CF96A0 /* JSHomeStatusUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSHomeStatusUserModel.m; sourceTree = "<group>"; };
 		F72CFE881DEBDBF10040DD58 /* JSTextLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTextLabel.h; sourceTree = "<group>"; };
 		F72CFE891DEBDBF10040DD58 /* JSTextLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTextLabel.m; sourceTree = "<group>"; };
+		F731B1C81DF7D0200068E1A4 /* assets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = assets.bundle; sourceTree = "<group>"; };
+		F731B1C91DF7D0200068E1A4 /* JSRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSRefreshControl.h; sourceTree = "<group>"; };
+		F731B1CA1DF7D0200068E1A4 /* JSRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSRefreshControl.m; sourceTree = "<group>"; };
+		F731B1CB1DF7D0200068E1A4 /* JSRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSRefreshView.h; sourceTree = "<group>"; };
+		F731B1CC1DF7D0200068E1A4 /* JSRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSRefreshView.m; sourceTree = "<group>"; };
 		F731D1DD1D9AACD9001C7B72 /* JSDownLoadImageOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDownLoadImageOperation.h; sourceTree = "<group>"; };
 		F731D1DE1D9AACD9001C7B72 /* JSDownLoadImageOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDownLoadImageOperation.m; sourceTree = "<group>"; };
 		F731D1DF1D9AACD9001C7B72 /* JSDownLoadOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDownLoadOperationManager.h; sourceTree = "<group>"; };
@@ -342,6 +350,18 @@
 				F775B1671DBB1511006DAA79 /* JSToolBarButton.m */,
 			);
 			path = SubViews;
+			sourceTree = "<group>";
+		};
+		F731B1C71DF7D0200068E1A4 /* JSRefreshExtension */ = {
+			isa = PBXGroup;
+			children = (
+				F731B1C81DF7D0200068E1A4 /* assets.bundle */,
+				F731B1C91DF7D0200068E1A4 /* JSRefreshControl.h */,
+				F731B1CA1DF7D0200068E1A4 /* JSRefreshControl.m */,
+				F731B1CB1DF7D0200068E1A4 /* JSRefreshView.h */,
+				F731B1CC1DF7D0200068E1A4 /* JSRefreshView.m */,
+			);
+			path = JSRefreshExtension;
 			sourceTree = "<group>";
 		};
 		F731D1DC1D9AACD9001C7B72 /* JSOperation */ = {
@@ -716,6 +736,7 @@
 		F79927C21D1C13FE00E9BA8C /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				F731B1C71DF7D0200068E1A4 /* JSRefreshExtension */,
 				F7A348161DD4037300457632 /* Database */,
 				F72175F31DC080580065D3B8 /* JSRefreshTool */,
 				F731D1DC1D9AACD9001C7B72 /* JSOperation */,
@@ -881,6 +902,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F731B1CD1DF7D0200068E1A4 /* assets.bundle in Resources */,
 				F79927BF1D1C13D500E9BA8C /* Assets.xcassets in Resources */,
 				F7DE06E81DC997EF0071B429 /* Emoticons.bundle in Resources */,
 				F723505B1DDF408B005D0E2E /* v2_goback@2x.png in Resources */,
@@ -957,6 +979,7 @@
 				F7DE06F11DC9A2330071B429 /* JSEmoticonModel.m in Sources */,
 				F7F9DB151D2499BA0029235B /* JSNetworkTool.m in Sources */,
 				F731D1E81D9AACD9001C7B72 /* UIImageView+JSWebCache.m in Sources */,
+				F731B1CF1DF7D0200068E1A4 /* JSRefreshView.m in Sources */,
 				F747F7991D843748000A0C8D /* NSString+Emoji.m in Sources */,
 				F7271A991DB9C3D900CF96A0 /* JSHomeStatusModel.m in Sources */,
 				F74737611DBB2DA4003F9C10 /* JSStatusRetweetView.m in Sources */,
@@ -1012,6 +1035,7 @@
 				F747F79D1D843748000A0C8D /* UIImage+JSExtension.m in Sources */,
 				F7271AA01DB9F5EF00CF96A0 /* JSStatusOriginalView.m in Sources */,
 				F7DE06F41DCB18D00071B429 /* JSEmoticonButton.m in Sources */,
+				F731B1CE1DF7D0200068E1A4 /* JSRefreshControl.m in Sources */,
 				F775B1651DBB0D6A006DAA79 /* JSStatusToolBarView.m in Sources */,
 				F77886561D201CBD00BE4518 /* JSVistorView.m in Sources */,
 				F72350611DDF48C9005D0E2E /* JSNextDemoViewController.m in Sources */,

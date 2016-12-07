@@ -73,6 +73,8 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
 /** 重写父类方法请求数据 */
 /**  请求首页数据 since_id  若指定此参数 -->下拉  && max_id	 若指定此参数 -->上拉*/
 - (void)loadDataWithIsPulling:(BOOL)isPulling {
+    // 开始刷新
+    [self.refreshControl beginRefresh];
     
     NSInteger sinceId = 0;
     NSInteger maxId = 0;

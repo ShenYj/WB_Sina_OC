@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "JSBaseNavBarButtonItem.h"
 #import "JSRefresh.h"
+#import "JSRefreshControl.h"
 #import "JSVistorView.h"
 
 @interface JSBaseViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
@@ -22,7 +23,9 @@
 
 
 /** 下拉刷新 */
-@property (nonatomic) JSRefresh *refreshControl;
+//@property (nonatomic) JSRefresh *refreshControl;
+/** 下拉刷新控件02 */
+@property (nonatomic) JSRefreshControl *refreshControl;
 /** 上拉刷新指示控件 */ 
 @property (nonatomic) UIActivityIndicatorView *activityIndicatorView;
 

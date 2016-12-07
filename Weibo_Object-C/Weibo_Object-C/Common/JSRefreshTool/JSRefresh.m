@@ -115,7 +115,7 @@ static CGFloat const kStatusLabelFontSize = 15.f;   // 下拉刷新控件的状�
 
 // 当前控件将要添加到父控件中时调用
 - (void)willMoveToSuperview:(UIView *)newSuperview {
-    
+    [super willMoveToSuperview:newSuperview];
     if (![newSuperview isKindOfClass:[UIScrollView class]]) {
         return;
     }
@@ -220,11 +220,15 @@ static CGFloat const kStatusLabelFontSize = 15.f;   // 下拉刷新控件的状�
 }
 
 
-- (void)dealloc {
-    // 移除观察者
-    [self.superScrollView removeObserver:self forKeyPath:kKeyPath context:nil];
-}
+//- (void)dealloc {
+//    // 移除观察者
+//    [self.superScrollView removeObserver:self forKeyPath:kKeyPath context:nil];
+//}
 
+- (void)removeFromSuperview {
+    [self.superScrollView removeObserver:self forKeyPath:kKeyPath];
+    [super removeFromSuperview];
+}
 
 #pragma mark 
 #pragma mark - lazy

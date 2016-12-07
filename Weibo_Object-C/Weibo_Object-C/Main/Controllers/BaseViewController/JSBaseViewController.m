@@ -12,6 +12,7 @@
 #import "JSOAuthorizeViewController.h"
 #import "JSUserAccountTool.h"
 
+
 CGFloat const kNavigationBarHeight = 64.f;   /** 自定义导航条高度 */
 NSInteger const pullUpErrorMaxTimes = 3;     /** 上拉刷新错误最大次数 */
 
@@ -36,6 +37,7 @@ NSInteger const pullUpErrorMaxTimes = 3;     /** 上拉刷新错误最大次数 
 #pragma mark
 #pragma mark - 请求数据 子类具体处理
 - (void)loadDataWithIsPulling:(BOOL)isPulling {
+    
     // 细节处理:如果子类不实现,结束刷新
     [self.refreshControl endRefresh];
 }
@@ -215,10 +217,10 @@ NSInteger const pullUpErrorMaxTimes = 3;     /** 上拉刷新错误最大次数 
 }
 
 // 下拉刷新指示条
-- (JSRefresh *)refreshControl {
+- (JSRefreshControl *)refreshControl {
     
     if (_refreshControl == nil) {
-        _refreshControl = [[JSRefresh alloc] init];
+        _refreshControl = [[JSRefreshControl alloc] init];
     }
     return _refreshControl;
 }
