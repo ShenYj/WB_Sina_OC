@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		E6D542BB8EA798826F2569E1 /* libPods-Weibo_Object-C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA89379BD5C259B8114A7F9F /* libPods-Weibo_Object-C.a */; };
+		F70047831E00F11A00C57F48 /* JSComposeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F700477E1E00F11A00C57F48 /* JSComposeButton.m */; };
+		F70047841E00F11A00C57F48 /* JSComposeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F70047801E00F11A00C57F48 /* JSComposeView.m */; };
+		F70047851E00F11A00C57F48 /* JSTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F70047821E00F11A00C57F48 /* JSTextViewController.m */; };
 		F7079FA41D8E5FC60018FDA4 /* JSUserAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7079FA31D8E5FC60018FDA4 /* JSUserAccountModel.m */; };
 		F7079FA71D8ECE260018FDA4 /* JSWelComeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7079FA61D8ECE260018FDA4 /* JSWelComeViewController.m */; };
 		F7209EF61DC4CD1E00767F40 /* JSPictureViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F7209EF51DC4CD1E00767F40 /* JSPictureViewFlowLayout.m */; };
@@ -100,6 +103,12 @@
 		4447C8443927E8DEA9062D5A /* Pods-Weibo_Object-C.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weibo_Object-C.release.xcconfig"; path = "Pods/Target Support Files/Pods-Weibo_Object-C/Pods-Weibo_Object-C.release.xcconfig"; sourceTree = "<group>"; };
 		CA89379BD5C259B8114A7F9F /* libPods-Weibo_Object-C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Weibo_Object-C.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1EE4FF87B8D01357E3CC107 /* Pods-Weibo_Object-C.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weibo_Object-C.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weibo_Object-C/Pods-Weibo_Object-C.debug.xcconfig"; sourceTree = "<group>"; };
+		F700477D1E00F11A00C57F48 /* JSComposeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSComposeButton.h; sourceTree = "<group>"; };
+		F700477E1E00F11A00C57F48 /* JSComposeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSComposeButton.m; sourceTree = "<group>"; };
+		F700477F1E00F11A00C57F48 /* JSComposeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSComposeView.h; sourceTree = "<group>"; };
+		F70047801E00F11A00C57F48 /* JSComposeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSComposeView.m; sourceTree = "<group>"; };
+		F70047811E00F11A00C57F48 /* JSTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTextViewController.h; sourceTree = "<group>"; };
+		F70047821E00F11A00C57F48 /* JSTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTextViewController.m; sourceTree = "<group>"; };
 		F7079FA21D8E5FC60018FDA4 /* JSUserAccountModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSUserAccountModel.h; sourceTree = "<group>"; };
 		F7079FA31D8E5FC60018FDA4 /* JSUserAccountModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSUserAccountModel.m; sourceTree = "<group>"; };
 		F7079FA51D8ECE260018FDA4 /* JSWelComeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSWelComeViewController.h; sourceTree = "<group>"; };
@@ -300,6 +309,19 @@
 				4447C8443927E8DEA9062D5A /* Pods-Weibo_Object-C.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		F700477C1E00F11A00C57F48 /* ComposeView */ = {
+			isa = PBXGroup;
+			children = (
+				F700477D1E00F11A00C57F48 /* JSComposeButton.h */,
+				F700477E1E00F11A00C57F48 /* JSComposeButton.m */,
+				F700477F1E00F11A00C57F48 /* JSComposeView.h */,
+				F70047801E00F11A00C57F48 /* JSComposeView.m */,
+				F70047811E00F11A00C57F48 /* JSTextViewController.h */,
+				F70047821E00F11A00C57F48 /* JSTextViewController.m */,
+			);
+			path = ComposeView;
 			sourceTree = "<group>";
 		};
 		F72175F31DC080580065D3B8 /* JSRefreshTool */ = {
@@ -509,6 +531,7 @@
 		F77886451D1EC97E00BE4518 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F700477C1E00F11A00C57F48 /* ComposeView */,
 				F752EF931DE57CB700F8B01C /* JSNewFeatureView.h */,
 				F752EF941DE57CB700F8B01C /* JSNewFeatureView.m */,
 				F77886481D1EC9BC00BE4518 /* JSTabBar.h */,
@@ -1006,6 +1029,7 @@
 				F723505A1DDF408B005D0E2E /* JSBaseNavigationController.m in Sources */,
 				F72350671DDF4AB4005D0E2E /* JSMessageViewController.m in Sources */,
 				F78A22DD1DC4B976001B7AB3 /* JSComposePictureView.m in Sources */,
+				F70047851E00F11A00C57F48 /* JSTextViewController.m in Sources */,
 				F747F79F1D843748000A0C8D /* UIView+JSFrame.m in Sources */,
 				F72613A51DC2F1B0004FF7F9 /* JSHomeNavButton.m in Sources */,
 				F7A3481D1DD4037300457632 /* JSSQLDAL.m in Sources */,
@@ -1025,6 +1049,7 @@
 				F7A348891DD94E1900457632 /* SDWaitingView.m in Sources */,
 				F731D1E71D9AACD9001C7B72 /* NSString+JSAppendPath.m in Sources */,
 				F775B1681DBB1511006DAA79 /* JSToolBarButton.m in Sources */,
+				F70047841E00F11A00C57F48 /* JSComposeView.m in Sources */,
 				F73BE43F1DBC7DDD00C31595 /* JSHomeStatusPictureModel.m in Sources */,
 				F77886471D1EC97E00BE4518 /* JSRootTabBarController.m in Sources */,
 				F72350581DDF408B005D0E2E /* JSBaseNavBarButtonItem.m in Sources */,
@@ -1041,6 +1066,7 @@
 				F72350611DDF48C9005D0E2E /* JSNextDemoViewController.m in Sources */,
 				F7F9DB121D24979D0029235B /* JSOAuthorizeViewController.m in Sources */,
 				F7969E9A1DD04D2A003D6A38 /* JSEmoticonTextAttachment.m in Sources */,
+				F70047831E00F11A00C57F48 /* JSComposeButton.m in Sources */,
 				F752EF921DE5706B00F8B01C /* JSNetworkTool+JSExtension.m in Sources */,
 				F72613A81DC31B9A004FF7F9 /* JSComposeTextView.m in Sources */,
 				F747F79C1D843748000A0C8D /* UIColor+JSExtension.m in Sources */,
