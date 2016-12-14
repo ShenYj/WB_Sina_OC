@@ -56,7 +56,7 @@ extern CGFloat const kBottomMargin;
     
     [self.contentView addSubview:self.originalView];
     [self.contentView addSubview:self.retweetView];
-    [self.contentView insertSubview:self.retweetViewButton aboveSubview:self.retweetView];
+    [self.contentView insertSubview:self.retweetViewButton belowSubview:self.retweetView];
     [self.contentView addSubview:self.toolBarView];
     
     [self.originalView mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -99,6 +99,12 @@ extern CGFloat kMargin;
     
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+    UITouch *touch = touches.anyObject;
+    
+}
+
 #pragma mark
 #pragma mark - JSTextLabelDelegate
 - (void)textLabel:(JSTextLabel *)textLabel withClickTextStorageString:(NSString *)string {
