@@ -16,6 +16,7 @@
 #import "JSProfileViewController.h"
 #import "JSNetworkTool+JSUnreadExtension.h"
 #import "JSUserAccountTool.h"
+#import "JSComposeView.h"
 
 //#import "JSMessageTableViewController.h"
 //#import "JSHomeTableViewController.h"
@@ -152,10 +153,21 @@ extern CGFloat const kNavigationBarHeight;   /** 自定义导航条高度 */
 - (void)tabBarDelegateWithTabBar:(JSTabBar *)tabBar {
     
     // 弹出发布微博界面
-    JSComposeRootViewController *composeVC = [[JSComposeRootViewController alloc] init];
-    JSBaseNavigationController *navigationController = [[JSBaseNavigationController alloc]initWithRootViewController:composeVC];
+//    JSComposeRootViewController *composeVC = [[JSComposeRootViewController alloc] init];
+//    JSBaseNavigationController *navigationController = [[JSBaseNavigationController alloc]initWithRootViewController:composeVC];
+//    [self presentViewController:navigationController animated:YES completion:nil];
     
-    [self presentViewController:navigationController animated:YES completion:nil];
+    JSComposeView *composeView = [[JSComposeView alloc] init];
+    __weak typeof(self) weakSelf = self;
+    [composeView showComposeViewWithCompeletionHandler:^(NSString *clsName) {
+        
+        Class class = NSClassFromString(clsName);
+        UIViewController *viewController = [[class alloc] init];
+        viewController.title = clsName;
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
+        [weakSelf presentViewController:navController animated:YES completion:nil];
+    }];
+    
     
 }
 

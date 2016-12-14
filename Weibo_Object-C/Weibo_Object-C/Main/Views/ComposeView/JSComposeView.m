@@ -363,7 +363,7 @@ static CGFloat const kComposeButtonVerticalMargin = 24.f;
 - (NSArray *)buttonDatas {
     if (!_buttonDatas) {
         _buttonDatas =  @[
-                          @{@"imageName": @"tabbar_compose_idea", @"title": @"文字", @"clsName": @"JSTextViewController"},
+                          @{@"imageName": @"tabbar_compose_idea", @"title": @"文字", @"clsName": @"JSComposeRootViewController"},
                           @{@"imageName": @"tabbar_compose_photo", @"title": @"照片/视频", @"clsName": @"JSTextViewController"},
                           @{@"imageName": @"tabbar_compose_weibo", @"title": @"长微博", @"clsName": @"JSTextViewController"},
                           @{@"imageName": @"tabbar_compose_lbs", @"title": @"签到", @"clsName": @"JSTextViewController"},
