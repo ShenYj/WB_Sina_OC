@@ -162,9 +162,9 @@ extern CGFloat const kNavigationBarHeight;   /** 自定义导航条高度 */
     [composeView showComposeViewWithCompeletionHandler:^(NSString *clsName) {
         
         Class class = NSClassFromString(clsName);
-        UIViewController *viewController = [[class alloc] init];
+        JSBaseViewController *viewController = [[class alloc] init];
         viewController.title = clsName;
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
+        JSBaseNavigationController *navController = [[JSBaseNavigationController alloc] initWithRootViewController:viewController];
         [weakSelf presentViewController:navController animated:YES completion:nil];
     }];
     
