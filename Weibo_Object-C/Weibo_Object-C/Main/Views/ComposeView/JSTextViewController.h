@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JSBaseViewController.h"
 
-@interface JSTextViewController : UIViewController
+@interface JSTextViewController : JSBaseViewController
 
 @end

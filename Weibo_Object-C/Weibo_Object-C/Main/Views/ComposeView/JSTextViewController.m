@@ -21,6 +21,14 @@
     self.view.backgroundColor = [UIColor greenColor];
 }
 
+- (void)loadDataWithIsPulling:(BOOL)isPulling {
+    
+}
+
+- (void)prepareTableView {
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
