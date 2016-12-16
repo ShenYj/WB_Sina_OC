@@ -35,6 +35,10 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
 
 @implementation JSHomeViewController
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
