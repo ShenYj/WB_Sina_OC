@@ -22,7 +22,7 @@ CGFloat itemSize;                                   // Item的Size
 }
 
 - (void)prepareLayout {
-    
+    [super prepareLayout];
     //CGFloat width = (self.collectionView.bounds.size.width - (kItemsRowMaxTotalCount + 1) * kItemsMargin) / kItemsRowMaxTotalCount;
     self.scrollDirection = UICollectionViewScrollDirectionVertical;
     self.itemSize = CGSizeMake(itemSize, itemSize);

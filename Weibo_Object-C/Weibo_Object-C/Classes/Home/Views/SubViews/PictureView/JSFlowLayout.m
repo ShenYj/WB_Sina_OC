@@ -19,7 +19,7 @@ extern CGFloat itemSizeWH;
 @implementation JSFlowLayout
 
 - (void)prepareLayout {
-    
+    [super prepareLayout];
     self.itemSize = CGSizeMake(itemSizeWH, itemSizeWH);
     self.minimumLineSpacing = kItemMargin;
     self.minimumInteritemSpacing = kItemMargin;

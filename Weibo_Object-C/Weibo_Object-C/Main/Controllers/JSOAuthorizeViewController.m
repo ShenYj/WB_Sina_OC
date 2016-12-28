@@ -69,7 +69,7 @@ static NSString * const kTestPassword = @"请输入你的密码";
     
     //[self.webView stringByEvaluatingJavaScriptFromString:autoFill];
     [self.webView evaluateJavaScript:autoFill completionHandler:^(id _Nullable obj, NSError * _Nullable error) {
-        
+        NSLog(@"%@",obj);
     }];
     
 }
