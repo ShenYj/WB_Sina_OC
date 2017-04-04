@@ -18,7 +18,6 @@
 
 + (UIColor *)js_randomColor{
     
-    
     CGFloat red = random() % 256;
     CGFloat green = random() % 256;
     CGFloat blue = random() % 256;

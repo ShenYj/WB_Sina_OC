@@ -82,7 +82,6 @@ extern CGFloat const kNavigationBarHeight;   /** 自定义导航条高度 */
         [self loadNavigationControllerWithInfo:subVCInfo[i]];
     }
     
-    
     // 更新未读消息
     [self updateUnReadHomeStatus];
     

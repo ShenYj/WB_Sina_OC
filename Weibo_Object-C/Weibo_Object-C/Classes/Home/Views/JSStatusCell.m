@@ -81,11 +81,15 @@ extern CGFloat const kBottomMargin;
         self.toolBarTopConstraint = make.top.mas_equalTo(self.retweetView.mas_bottom);
         make.left.right.mas_equalTo(self.contentView);
         make.height.mas_equalTo(kStatusToolBarHeight);
+        // ios 10 & xcode 8 约束问题
+        make.bottom.mas_equalTo(self.contentView).mas_offset(-kBottomMargin);
     }];
     
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.mas_equalTo(self);
-        make.bottom.mas_equalTo(self.toolBarView).mas_offset(kBottomMargin);
+        // ios 10 & xcode 8 约束问题
+        make.bottom.mas_equalTo(self);
+        //make.bottom.mas_equalTo(self.toolBarView).mas_offset(kBottomMargin);
     }];
     
 #pragma mark - URL处理
