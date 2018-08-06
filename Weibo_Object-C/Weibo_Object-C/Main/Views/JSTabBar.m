@@ -15,56 +15,43 @@
 
 @implementation JSTabBar
 
-- (instancetype)init{
+- (instancetype)init {
     self = [super init];
     if (self) {
-     
         //设置UI
         [self setUI];
-        
     }
-    
     return self;
 }
 
-- (void)setUI{
-    
+- (void)setUI {
     [self addSubview:self.composeButton];
     [self.composeButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.mas_equalTo(self);
+        make.centerX.mas_equalTo(self);
+        make.top.mas_equalTo(self);
     }];
-    
 }
 
-- (void)layoutSubviews{
+- (void)layoutSubviews {
     [super layoutSubviews];
-    
     CGFloat width = [UIScreen mainScreen].bounds.size.width / 5;
     CGFloat index = 0;
-    
     for (UIView *view in self.subviews) {
-        
         if ([view isKindOfClass:NSClassFromString(@"UITabBarButton")]) {
             
-            CGRect frame = view.frame;
+            CGRect frame     = view.frame;
             frame.size.width = width;
-            frame.origin.x = index * width;
-            view.frame = frame;
+            frame.origin.x   = index * width;
+            view.frame       = frame;
             
             index ++;
-            
-            if (index == 2) {
-                index ++;
-            }
-            
+            if (index == 2) index ++;
         }
     }
-
 }
 
 //按钮点击事件中调用代理方法
-- (void)buttonClick:(UIButton *)sender{
-    
+- (void)buttonClick:(UIButton *)sender {
     if ([self.tabBarDelegate respondsToSelector:@selector(tabBarDelegateWithTabBar:)]) {
         [self.tabBarDelegate tabBarDelegateWithTabBar:self];
     }
@@ -75,8 +62,7 @@
  *
  *  @return composeButton
  */
-- (UIButton *)composeButton{
-    
+- (UIButton *)composeButton {
     if (_composeButton == nil) {
         _composeButton = [[UIButton alloc]init];
         [_composeButton setBackgroundImage:[UIImage imageNamed:@"tabbar_compose_button"] forState:UIControlStateNormal];
