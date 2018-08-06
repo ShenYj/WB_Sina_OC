@@ -18,16 +18,16 @@
 #import <SafariServices/SafariServices.h>
 #import <AudioToolbox/AudioToolbox.h>
 
-static NSString * const homeTableCellReusedId = @"homeTableCellReusedId";
+static NSString * const homeTableCellReusedId    = @"homeTableCellReusedId";
 static NSString * const homeTableCellTipReusedId = @"homeTableCellTipReusedId";
-static CGFloat const kPullDownLabelHeight = 34.f; // 下拉刷新展示更新多少条数据Label的高度
-extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大次数
+static CGFloat    const kPullDownLabelHeight     = 34.f; // 下拉刷新展示更新多少条数据Label的高度
+extern NSInteger  const pullUpErrorMaxTimes;             // 上拉刷新错误的最大次数
 
 @interface JSHomeViewController ()
 // 微博数据容器
 @property (nonatomic,strong) NSArray  <JSHomeStatusModel *> *homeStatusDatas;
 // 展示更新微博条数
-@property (nonatomic) UILabel *pullDownStatusCountsLabel;
+@property (nonatomic,strong) UILabel   *pullDownStatusCountsLabel;
 // 上拉刷新记次
 @property (nonatomic,assign) NSInteger pullUpCount;
 
@@ -41,17 +41,13 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     // 监听网络
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkReachablityDidChanged:) name:AFNetworkingReachabilityDidChangeNotification object:nil];
-    
     // 注册cell
     self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
     [self.tableView registerClass:[JSStatusTipCell class] forCellReuseIdentifier:homeTableCellTipReusedId];
     [self.tableView registerClass:[JSStatusCell class] forCellReuseIdentifier:homeTableCellReusedId];
-    
 }
 
 // 网络发生变化
@@ -71,7 +67,6 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
 - (void)prepareNavView {
     self.js_navigationItem.title = @"首页";
     self.js_navigationItem.leftBarButtonItem = [[JSBaseNavBarButtonItem alloc] initWithTitle:@"好友" withFont:16 withTarget:self withAction:@selector(clickLeftBarButtonItem:)];
-    
 }
 
 /** 重写父类方法请求数据 */
@@ -166,12 +161,10 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
     //            self.tabBarItem.badgeValue = 0;
     //        });
     //    }];
-
 }
 
 // 配图视图中,如果配图为单张,则进行缓存
 - (void)cacheSingleImage:(NSArray  <JSHomeStatusModel *>*)homeStatusData {
-    
     // 调度组
     dispatch_group_t group = dispatch_group_create();
     // 记录图片长度
@@ -194,11 +187,9 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
             // 出组
             dispatch_group_leave(group);
         }];
-        
     }
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-        
         // 停止动画
         [self.activityIndicatorView stopAnimating];
         [self.refreshControl endRefresh];
@@ -207,17 +198,10 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
     });
 }
 
-
-
 // 下拉刷新动画 (展示更新多少条微博数据)
 - (void)pullDownAnimationWithStatusCounts:(NSInteger)counts {
-    
-    if (self.pullDownStatusCountsLabel.superview) {
-        return;
-    }
-    
+    if (self.pullDownStatusCountsLabel.superview) return;
     if (self.pullDownStatusCountsLabel.superview == nil) {
-        
         self.pullDownStatusCountsLabel.text = [NSString stringWithFormat:@"本次更新%zd条微博",counts];
         [self.view insertSubview:self.pullDownStatusCountsLabel belowSubview:self.js_NavigationBar];
     }
@@ -233,18 +217,13 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
         
     }];
 }
+
 - (void)pullUpAnimationWithRequestFaild {
-    
-    if (self.pullDownStatusCountsLabel.superview) {
-        return;
-    }
-    
+    if (self.pullDownStatusCountsLabel.superview) return;
     if (self.pullDownStatusCountsLabel.superview == nil) {
-        
         self.pullDownStatusCountsLabel.text = @"上拉刷新多次数据为零,请稍后再试";
         [self.view insertSubview:self.pullDownStatusCountsLabel belowSubview:self.js_NavigationBar];
     }
-    
     [UIView animateWithDuration:1 animations:^{
         self.pullDownStatusCountsLabel.transform = CGAffineTransformTranslate(self.pullDownStatusCountsLabel.transform, 0, kPullDownLabelHeight);
     } completion:^(BOOL finished) {
@@ -267,27 +246,18 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
 #pragma mark
 #pragma mark - 重写基类的数据源方法
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    
     return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    if (section == 0) {
-        return [JSNetworkTool sharedNetworkTool].reachabilityManager.reachable ? 0 : 1;
-    }
-    
+    if (section == 0) return [JSNetworkTool sharedNetworkTool].reachabilityManager.reachable ? 0 : 1;
     return self.homeStatusDatas.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     JSHomeStatusModel *dataModel = self.homeStatusDatas[indexPath.row];
-    if (indexPath.section == 0) {
-        return [tableView dequeueReusableCellWithIdentifier:homeTableCellTipReusedId forIndexPath:indexPath];
-    }
+    if (indexPath.section == 0) return [tableView dequeueReusableCellWithIdentifier:homeTableCellTipReusedId forIndexPath:indexPath];
     JSStatusCell *cell = [tableView dequeueReusableCellWithIdentifier:homeTableCellReusedId forIndexPath:indexPath];
-
     cell.statusData = dataModel;
     cell.layer.shouldRasterize = YES;
     cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
@@ -303,18 +273,12 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
         SFSafariViewController *sfViewController = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:text]];
         [weakSelf presentViewController:sfViewController animated:YES completion:nil];
     }];
-    
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (indexPath.section == 0) {
-        return 44;
-    }
-    
+    if (indexPath.section == 0) return 44;
     JSHomeStatusModel *statusModel = self.homeStatusDatas[indexPath.row];
-    
     return statusModel.homeStatusRowHeigh;
 }
 
@@ -332,7 +296,7 @@ extern NSInteger const pullUpErrorMaxTimes;       // 上拉刷新错误的最大
 - (UILabel *)pullDownStatusCountsLabel {
     if (_pullDownStatusCountsLabel == nil) {
         _pullDownStatusCountsLabel = [[UILabel alloc] init];
-        _pullDownStatusCountsLabel.frame = CGRectMake(0, 64-kPullDownLabelHeight, SCREEN_WIDTH, kPullDownLabelHeight);
+        _pullDownStatusCountsLabel.frame = CGRectMake(0, NAV_STATUS_BAR_Height-kPullDownLabelHeight, SCREEN_WIDTH, kPullDownLabelHeight);
         _pullDownStatusCountsLabel.font = [UIFont systemFontOfSize:16];
         _pullDownStatusCountsLabel.textAlignment = NSTextAlignmentCenter;
         _pullDownStatusCountsLabel.textColor = THEME_COLOR;

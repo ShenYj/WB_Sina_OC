@@ -22,7 +22,6 @@ static CGFloat const kJSRefreshControlCriticalValue = 60.f;
 /** 自定义视图 */
 @property (nonatomic,strong) JSRefreshView *refreshView;
 
-
 @end
 
 @implementation JSRefreshControl
@@ -41,11 +40,8 @@ static CGFloat const kJSRefreshControlCriticalValue = 60.f;
     //self.backgroundColor = [UIColor colorWithRed:255/255.0 green:116/255.0 blue:103/255.0 alpha:1.0];
     self.backgroundColor = [UIColor clearColor];
     self.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 0);
-    
     [self addSubview:self.refreshView];
     self.refreshView.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    
 }
 
 - (void)layoutSubviews {
@@ -61,7 +57,7 @@ static CGFloat const kJSRefreshControlCriticalValue = 60.f;
 }
 
 // 将要被添加到父视图中时进行监听
--(void)willMoveToSuperview:(UIView *)newSuperview {
+- (void)willMoveToSuperview:(UIView *)newSuperview {
     [super willMoveToSuperview:newSuperview];
     if ([newSuperview isKindOfClass:[UIScrollView class]]) {
         self.superScrollView = (UIScrollView *)newSuperview;
@@ -78,7 +74,6 @@ static CGFloat const kJSRefreshControlCriticalValue = 60.f;
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     CGPoint point = [change[@"new"] CGPointValue];
     CGFloat height = -(self.superScrollView.contentInset.top + point.y);
-    
     if(height < 0) return;
     
     self.frame = CGRectMake(0, -height, [UIScreen mainScreen].bounds.size.width, height);
@@ -97,13 +92,9 @@ static CGFloat const kJSRefreshControlCriticalValue = 60.f;
         if (self.refreshView.refreshStatus == JSRefreshStatusPulling ) {
             NSLog(@"准备开始刷新");
             [self beginRefresh];
-            
             [self sendActionsForControlEvents:UIControlEventValueChanged];
         }
     }
-    
-    
-    
 }
 // 开始刷新
 - (void)beginRefresh {
@@ -123,7 +114,6 @@ static CGFloat const kJSRefreshControlCriticalValue = 60.f;
     } completion:^(BOOL finished) {
         
     }];
-    
 }
 // 停止刷新
 - (void)endRefresh {
@@ -141,7 +131,6 @@ static CGFloat const kJSRefreshControlCriticalValue = 60.f;
     } completion:^(BOOL finished) {
         
     }];
-    
 }
 
 - (void)dealloc {

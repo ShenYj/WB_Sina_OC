@@ -6,6 +6,7 @@
 //  Copyright © 2016年 ShenYj. All rights reserved.
 //
 
+
 #import "JSBaseViewController.h"
 #import "JSBaseNavigationController.h"
 #import "JSBaseNavigationController.h"
@@ -13,7 +14,7 @@
 #import "JSUserAccountTool.h"
 
 
-CGFloat const kNavigationBarHeight = 64.f;   /** 自定义导航条高度 */
+//CGFloat const kNavigationBarHeight = 64.f;   /** 自定义导航条高度 */
 NSInteger const pullUpErrorMaxTimes = 3;     /** 上拉刷新错误最大次数 */
 
 
@@ -54,9 +55,6 @@ NSInteger const pullUpErrorMaxTimes = 3;     /** 上拉刷新错误最大次数 
 /** 导航条视图 */
 - (void)prepareCustomNavigationBar {
     
-    // 取消穿透
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    
     [self.view addSubview:self.js_NavigationBar];
     self.js_NavigationBar.items = @[self.js_navigationItem];
     self.js_NavigationBar.barTintColor = [UIColor colorWithRed:245 / 255.0
@@ -68,7 +66,6 @@ NSInteger const pullUpErrorMaxTimes = 3;     /** 上拉刷新错误最大次数 
                                                     NSFontAttributeName: [UIFont systemFontOfSize:18],
                                                     NSForegroundColorAttributeName: [UIColor orangeColor]}
      ];
-    
 }
 
 /** 设置UI */
@@ -91,13 +88,18 @@ NSInteger const pullUpErrorMaxTimes = 3;     /** 上拉刷新错误最大次数 
 /** 主视图相关 */
 - (void)prepareView {
     self.view.backgroundColor = [UIColor whiteColor];
+    if (@available(iOS 11.0, *)) {
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    } else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
 }
 
 /** 设置表格视图 */
 - (void)prepareTableView {
     
     [self.view insertSubview:self.tableView belowSubview:self.js_NavigationBar];
-
+    
     self.tableView.contentInset = UIEdgeInsetsMake(self.js_NavigationBar.bounds.size.height,
                                                    0,
                                                    self.tabBarController.tabBar.bounds.size.height,
@@ -138,8 +140,8 @@ NSInteger const pullUpErrorMaxTimes = 3;     /** 上拉刷新错误最大次数 
 
 
 - (void)buttonClick:(UIButton *)sender{
-    JSOAuthorizeViewController *webVC = [[JSOAuthorizeViewController alloc]init];
-    JSBaseNavigationController *naVc = [[JSBaseNavigationController alloc]initWithRootViewController:webVC];
+    JSOAuthorizeViewController *webVC = [[JSOAuthorizeViewController alloc] init];
+    JSBaseNavigationController *naVc = [[JSBaseNavigationController alloc] initWithRootViewController:webVC];
     [self presentViewController:naVc animated:YES completion:nil];
     
 }
@@ -182,16 +184,14 @@ NSInteger const pullUpErrorMaxTimes = 3;     /** 上拉刷新错误最大次数 
 #pragma mark
 #pragma mark - lazy
 
-- (UINavigationBar *)js_NavigationBar {
-    
+- (JSNavigationBar *)js_NavigationBar {
     if (!_js_NavigationBar) {
-        _js_NavigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, kNavigationBarHeight)];
+        _js_NavigationBar = [[JSNavigationBar alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, NAV_STATUS_BAR_Height)];
     }
     return _js_NavigationBar;
 }
 
 - (UINavigationItem *)js_navigationItem {
-    
     if (!_js_navigationItem) {
         _js_navigationItem = [[UINavigationItem alloc] init];
     }

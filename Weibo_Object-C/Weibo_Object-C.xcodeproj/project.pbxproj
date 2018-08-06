@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		682E9B0B2117FEF1009E76E4 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 682E9B0A2117FEF1009E76E4 /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		682E9B142117FEF8009E76E4 /* SDBrowserImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 682E9B0E2117FEF8009E76E4 /* SDBrowserImageView.m */; };
+		682E9B152117FEF8009E76E4 /* SDPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 682E9B102117FEF8009E76E4 /* SDPhotoBrowser.m */; };
+		682E9B162117FEF8009E76E4 /* SDWaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 682E9B132117FEF8009E76E4 /* SDWaitingView.m */; };
+		682E9B1921181D09009E76E4 /* JSNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 682E9B1821181D09009E76E4 /* JSNavigationBar.m */; };
 		E6D542BB8EA798826F2569E1 /* libPods-Weibo_Object-C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA89379BD5C259B8114A7F9F /* libPods-Weibo_Object-C.a */; };
 		F70047831E00F11A00C57F48 /* JSComposeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F700477E1E00F11A00C57F48 /* JSComposeButton.m */; };
 		F70047841E00F11A00C57F48 /* JSComposeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F70047801E00F11A00C57F48 /* JSComposeView.m */; };
@@ -69,7 +74,6 @@
 		F77886561D201CBD00BE4518 /* JSVistorView.m in Sources */ = {isa = PBXBuildFile; fileRef = F77886551D201CBD00BE4518 /* JSVistorView.m */; };
 		F78A22DD1DC4B976001B7AB3 /* JSComposePictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = F78A22DC1DC4B976001B7AB3 /* JSComposePictureView.m */; };
 		F7969E9A1DD04D2A003D6A38 /* JSEmoticonTextAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = F7969E991DD04D2A003D6A38 /* JSEmoticonTextAttachment.m */; };
-		F7969EA01DD06761003D6A38 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = F7969E9F1DD06761003D6A38 /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F7969EA21DD067F8003D6A38 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F7969EA11DD067F8003D6A38 /* libicucore.tbd */; };
 		F7969EA51DD07BFE003D6A38 /* JSMatchResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7969EA41DD07BFE003D6A38 /* JSMatchResultModel.m */; };
 		F79927BE1D1C13D500E9BA8C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F79927B91D1C13D500E9BA8C /* AppDelegate.m */; };
@@ -80,9 +84,6 @@
 		F7A3481C1DD4037300457632 /* db.sql in Resources */ = {isa = PBXBuildFile; fileRef = F7A348171DD4037300457632 /* db.sql */; };
 		F7A3481D1DD4037300457632 /* JSSQLDAL.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A348191DD4037300457632 /* JSSQLDAL.m */; };
 		F7A3481E1DD4037300457632 /* JSSQLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A3481B1DD4037300457632 /* JSSQLManager.m */; };
-		F7A348871DD94E1900457632 /* SDBrowserImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A348811DD94E1900457632 /* SDBrowserImageView.m */; };
-		F7A348881DD94E1900457632 /* SDPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A348831DD94E1900457632 /* SDPhotoBrowser.m */; };
-		F7A348891DD94E1900457632 /* SDWaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A348861DD94E1900457632 /* SDWaitingView.m */; };
 		F7A94BD91DE2DC0F00336DE2 /* JSNetworkTool+JSUnreadExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A94BD81DE2DC0F00336DE2 /* JSNetworkTool+JSUnreadExtension.m */; };
 		F7AF4CDE1DC8395E00BEA0BE /* JSEmoticonKeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF4CDD1DC8395E00BEA0BE /* JSEmoticonKeyboardView.m */; };
 		F7AF4CF01DC8B4E000BEA0BE /* JSEmoticonPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF4CED1DC8B4E000BEA0BE /* JSEmoticonPageView.m */; };
@@ -101,6 +102,17 @@
 
 /* Begin PBXFileReference section */
 		4447C8443927E8DEA9062D5A /* Pods-Weibo_Object-C.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weibo_Object-C.release.xcconfig"; path = "Pods/Target Support Files/Pods-Weibo_Object-C/Pods-Weibo_Object-C.release.xcconfig"; sourceTree = "<group>"; };
+		682E9B092117FEF1009E76E4 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
+		682E9B0A2117FEF1009E76E4 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
+		682E9B0D2117FEF8009E76E4 /* SDBrowserImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBrowserImageView.h; sourceTree = "<group>"; };
+		682E9B0E2117FEF8009E76E4 /* SDBrowserImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDBrowserImageView.m; sourceTree = "<group>"; };
+		682E9B0F2117FEF8009E76E4 /* SDPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPhotoBrowser.h; sourceTree = "<group>"; };
+		682E9B102117FEF8009E76E4 /* SDPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDPhotoBrowser.m; sourceTree = "<group>"; };
+		682E9B112117FEF8009E76E4 /* SDPhotoBrowserConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPhotoBrowserConfig.h; sourceTree = "<group>"; };
+		682E9B122117FEF8009E76E4 /* SDWaitingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWaitingView.h; sourceTree = "<group>"; };
+		682E9B132117FEF8009E76E4 /* SDWaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWaitingView.m; sourceTree = "<group>"; };
+		682E9B1721181D09009E76E4 /* JSNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSNavigationBar.h; sourceTree = "<group>"; };
+		682E9B1821181D09009E76E4 /* JSNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSNavigationBar.m; sourceTree = "<group>"; };
 		CA89379BD5C259B8114A7F9F /* libPods-Weibo_Object-C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Weibo_Object-C.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1EE4FF87B8D01357E3CC107 /* Pods-Weibo_Object-C.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weibo_Object-C.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weibo_Object-C/Pods-Weibo_Object-C.debug.xcconfig"; sourceTree = "<group>"; };
 		F700477D1E00F11A00C57F48 /* JSComposeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSComposeButton.h; sourceTree = "<group>"; };
@@ -225,8 +237,6 @@
 		F78A22DC1DC4B976001B7AB3 /* JSComposePictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSComposePictureView.m; sourceTree = "<group>"; };
 		F7969E981DD04D2A003D6A38 /* JSEmoticonTextAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEmoticonTextAttachment.h; sourceTree = "<group>"; };
 		F7969E991DD04D2A003D6A38 /* JSEmoticonTextAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSEmoticonTextAttachment.m; sourceTree = "<group>"; };
-		F7969E9E1DD06761003D6A38 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
-		F7969E9F1DD06761003D6A38 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
 		F7969EA11DD067F8003D6A38 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		F7969EA31DD07BFE003D6A38 /* JSMatchResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSMatchResultModel.h; sourceTree = "<group>"; };
 		F7969EA41DD07BFE003D6A38 /* JSMatchResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSMatchResultModel.m; sourceTree = "<group>"; };
@@ -244,13 +254,6 @@
 		F7A348191DD4037300457632 /* JSSQLDAL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSQLDAL.m; sourceTree = "<group>"; };
 		F7A3481A1DD4037300457632 /* JSSQLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSQLManager.h; sourceTree = "<group>"; };
 		F7A3481B1DD4037300457632 /* JSSQLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSQLManager.m; sourceTree = "<group>"; };
-		F7A348801DD94E1900457632 /* SDBrowserImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBrowserImageView.h; sourceTree = "<group>"; };
-		F7A348811DD94E1900457632 /* SDBrowserImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDBrowserImageView.m; sourceTree = "<group>"; };
-		F7A348821DD94E1900457632 /* SDPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPhotoBrowser.h; sourceTree = "<group>"; };
-		F7A348831DD94E1900457632 /* SDPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDPhotoBrowser.m; sourceTree = "<group>"; };
-		F7A348841DD94E1900457632 /* SDPhotoBrowserConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPhotoBrowserConfig.h; sourceTree = "<group>"; };
-		F7A348851DD94E1900457632 /* SDWaitingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWaitingView.h; sourceTree = "<group>"; };
-		F7A348861DD94E1900457632 /* SDWaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWaitingView.m; sourceTree = "<group>"; };
 		F7A94BD71DE2DC0F00336DE2 /* JSNetworkTool+JSUnreadExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JSNetworkTool+JSUnreadExtension.h"; sourceTree = "<group>"; };
 		F7A94BD81DE2DC0F00336DE2 /* JSNetworkTool+JSUnreadExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSNetworkTool+JSUnreadExtension.m"; sourceTree = "<group>"; };
 		F7AF4CDC1DC8395E00BEA0BE /* JSEmoticonKeyboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEmoticonKeyboardView.h; sourceTree = "<group>"; };
@@ -300,6 +303,29 @@
 				CA89379BD5C259B8114A7F9F /* libPods-Weibo_Object-C.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		682E9B082117FEF1009E76E4 /* RegexKitLite */ = {
+			isa = PBXGroup;
+			children = (
+				682E9B092117FEF1009E76E4 /* RegexKitLite.h */,
+				682E9B0A2117FEF1009E76E4 /* RegexKitLite.m */,
+			);
+			path = RegexKitLite;
+			sourceTree = "<group>";
+		};
+		682E9B0C2117FEF8009E76E4 /* SDPhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				682E9B0D2117FEF8009E76E4 /* SDBrowserImageView.h */,
+				682E9B0E2117FEF8009E76E4 /* SDBrowserImageView.m */,
+				682E9B0F2117FEF8009E76E4 /* SDPhotoBrowser.h */,
+				682E9B102117FEF8009E76E4 /* SDPhotoBrowser.m */,
+				682E9B112117FEF8009E76E4 /* SDPhotoBrowserConfig.h */,
+				682E9B122117FEF8009E76E4 /* SDWaitingView.h */,
+				682E9B132117FEF8009E76E4 /* SDWaitingView.m */,
+			);
+			path = SDPhotoBrowser;
 			sourceTree = "<group>";
 		};
 		7EDCC857CC7608C3F5E1C281 /* Pods */ = {
@@ -497,15 +523,6 @@
 			path = "UIKit+JSExtension";
 			sourceTree = "<group>";
 		};
-		F75F0D511D87026900549EC3 /* Libs */ = {
-			isa = PBXGroup;
-			children = (
-				F7A3487F1DD94E1900457632 /* SDPhotoBrowser */,
-				F7969E9D1DD06761003D6A38 /* RegexKitLite */,
-			);
-			path = Libs;
-			sourceTree = "<group>";
-		};
 		F778863F1D1EC97E00BE4518 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -538,18 +555,10 @@
 				F77886491D1EC9BC00BE4518 /* JSTabBar.m */,
 				F77886541D201CBD00BE4518 /* JSVistorView.h */,
 				F77886551D201CBD00BE4518 /* JSVistorView.m */,
+				682E9B1721181D09009E76E4 /* JSNavigationBar.h */,
+				682E9B1821181D09009E76E4 /* JSNavigationBar.m */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		F7969E9D1DD06761003D6A38 /* RegexKitLite */ = {
-			isa = PBXGroup;
-			children = (
-				F7969E9E1DD06761003D6A38 /* RegexKitLite.h */,
-				F7969E9F1DD06761003D6A38 /* RegexKitLite.m */,
-			);
-			name = RegexKitLite;
-			path = ../../Common/RegexKitLite;
 			sourceTree = "<group>";
 		};
 		F79927831D1C11EA00E9BA8C = {
@@ -745,7 +754,6 @@
 		F79927B71D1C13D500E9BA8C /* SupportingFIles */ = {
 			isa = PBXGroup;
 			children = (
-				F75F0D511D87026900549EC3 /* Libs */,
 				F79927A01D1C11EA00E9BA8C /* Info.plist */,
 				F79927B81D1C13D500E9BA8C /* AppDelegate.h */,
 				F79927B91D1C13D500E9BA8C /* AppDelegate.m */,
@@ -759,6 +767,8 @@
 		F79927C21D1C13FE00E9BA8C /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				682E9B0C2117FEF8009E76E4 /* SDPhotoBrowser */,
+				682E9B082117FEF1009E76E4 /* RegexKitLite */,
 				F731B1C71DF7D0200068E1A4 /* JSRefreshExtension */,
 				F7A348161DD4037300457632 /* Database */,
 				F72175F31DC080580065D3B8 /* JSRefreshTool */,
@@ -797,21 +807,6 @@
 				F7A3481B1DD4037300457632 /* JSSQLManager.m */,
 			);
 			path = Database;
-			sourceTree = "<group>";
-		};
-		F7A3487F1DD94E1900457632 /* SDPhotoBrowser */ = {
-			isa = PBXGroup;
-			children = (
-				F7A348801DD94E1900457632 /* SDBrowserImageView.h */,
-				F7A348811DD94E1900457632 /* SDBrowserImageView.m */,
-				F7A348821DD94E1900457632 /* SDPhotoBrowser.h */,
-				F7A348831DD94E1900457632 /* SDPhotoBrowser.m */,
-				F7A348841DD94E1900457632 /* SDPhotoBrowserConfig.h */,
-				F7A348851DD94E1900457632 /* SDWaitingView.h */,
-				F7A348861DD94E1900457632 /* SDWaitingView.m */,
-			);
-			name = SDPhotoBrowser;
-			path = ../../Common/SDPhotoBrowser;
 			sourceTree = "<group>";
 		};
 		F7AF4CDB1DC8391B00BEA0BE /* Emoticon */ = {
@@ -874,7 +869,6 @@
 				F79927881D1C11EA00E9BA8C /* Sources */,
 				F79927891D1C11EA00E9BA8C /* Frameworks */,
 				F799278A1D1C11EA00E9BA8C /* Resources */,
-				F730F1EAA255668DC21E8AA9 /* [CP] Embed Pods Frameworks */,
 				663C1673F0AE04A7286C2F29 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -898,7 +892,7 @@
 				TargetAttributes = {
 					F799278B1D1C11EA00E9BA8C = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = EC2EUS3UQ9;
+						DevelopmentTeam = 3P982ZUUW8;
 					};
 				};
 			};
@@ -943,9 +937,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Weibo_Object-C/Pods-Weibo_Object-C-resources.sh",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -958,28 +955,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Weibo_Object-C-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		F730F1EAA255668DC21E8AA9 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Weibo_Object-C/Pods-Weibo_Object-C-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -991,6 +976,7 @@
 			files = (
 				F731D1EF1D9ABB85001C7B72 /* JSComposeRootViewController.m in Sources */,
 				F731D1E61D9AACD9001C7B72 /* JSDownLoadOperationManager.m in Sources */,
+				682E9B0B2117FEF1009E76E4 /* RegexKitLite.m in Sources */,
 				F7AF4CF41DC8B5E400BEA0BE /* JSEmoticonPageViewCell.m in Sources */,
 				F7A94BD91DE2DC0F00336DE2 /* JSNetworkTool+JSUnreadExtension.m in Sources */,
 				F74F57381D84F3DA00E3CC61 /* JSUserAccountTool.m in Sources */,
@@ -1003,6 +989,7 @@
 				F7F9DB151D2499BA0029235B /* JSNetworkTool.m in Sources */,
 				F731D1E81D9AACD9001C7B72 /* UIImageView+JSWebCache.m in Sources */,
 				F731B1CF1DF7D0200068E1A4 /* JSRefreshView.m in Sources */,
+				682E9B152117FEF8009E76E4 /* SDPhotoBrowser.m in Sources */,
 				F747F7991D843748000A0C8D /* NSString+Emoji.m in Sources */,
 				F7271A991DB9C3D900CF96A0 /* JSHomeStatusModel.m in Sources */,
 				F74737611DBB2DA4003F9C10 /* JSStatusRetweetView.m in Sources */,
@@ -1019,9 +1006,7 @@
 				F7209EFC1DC4DF4600767F40 /* JSComposePictureViewCell.m in Sources */,
 				F723506A1DDF4AE9005D0E2E /* JSProfileViewController.m in Sources */,
 				F72613AB1DC36B54004FF7F9 /* JSComposeToolBar.m in Sources */,
-				F7969EA01DD06761003D6A38 /* RegexKitLite.m in Sources */,
 				F7209EF61DC4CD1E00767F40 /* JSPictureViewFlowLayout.m in Sources */,
-				F7A348881DD94E1900457632 /* SDPhotoBrowser.m in Sources */,
 				F7079FA41D8E5FC60018FDA4 /* JSUserAccountModel.m in Sources */,
 				F7AF4CFB1DC8B66900BEA0BE /* JSEmoticonToolBarButton.m in Sources */,
 				F747F79E1D843748000A0C8D /* UINavigationController+JSFullScreenPopGesture.m in Sources */,
@@ -1031,6 +1016,7 @@
 				F78A22DD1DC4B976001B7AB3 /* JSComposePictureView.m in Sources */,
 				F70047851E00F11A00C57F48 /* JSTextViewController.m in Sources */,
 				F747F79F1D843748000A0C8D /* UIView+JSFrame.m in Sources */,
+				682E9B1921181D09009E76E4 /* JSNavigationBar.m in Sources */,
 				F72613A51DC2F1B0004FF7F9 /* JSHomeNavButton.m in Sources */,
 				F7A3481D1DD4037300457632 /* JSSQLDAL.m in Sources */,
 				F731D1E51D9AACD9001C7B72 /* JSDownLoadImageOperation.m in Sources */,
@@ -1044,10 +1030,9 @@
 				F7AF4CFA1DC8B66900BEA0BE /* JSEmoticonToolBar.m in Sources */,
 				F747F7981D843748000A0C8D /* NSObject+JSObjc.m in Sources */,
 				F723505E1DDF4466005D0E2E /* JSHomeViewController.m in Sources */,
-				F7A348871DD94E1900457632 /* SDBrowserImageView.m in Sources */,
 				F7079FA71D8ECE260018FDA4 /* JSWelComeViewController.m in Sources */,
-				F7A348891DD94E1900457632 /* SDWaitingView.m in Sources */,
 				F731D1E71D9AACD9001C7B72 /* NSString+JSAppendPath.m in Sources */,
+				682E9B142117FEF8009E76E4 /* SDBrowserImageView.m in Sources */,
 				F775B1681DBB1511006DAA79 /* JSToolBarButton.m in Sources */,
 				F70047841E00F11A00C57F48 /* JSComposeView.m in Sources */,
 				F73BE43F1DBC7DDD00C31595 /* JSHomeStatusPictureModel.m in Sources */,
@@ -1067,6 +1052,7 @@
 				F7F9DB121D24979D0029235B /* JSOAuthorizeViewController.m in Sources */,
 				F7969E9A1DD04D2A003D6A38 /* JSEmoticonTextAttachment.m in Sources */,
 				F70047831E00F11A00C57F48 /* JSComposeButton.m in Sources */,
+				682E9B162117FEF8009E76E4 /* SDWaitingView.m in Sources */,
 				F752EF921DE5706B00F8B01C /* JSNetworkTool+JSExtension.m in Sources */,
 				F72613A81DC31B9A004FF7F9 /* JSComposeTextView.m in Sources */,
 				F747F79C1D843748000A0C8D /* UIColor+JSExtension.m in Sources */,
@@ -1180,7 +1166,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = EC2EUS3UQ9;
+				DEVELOPMENT_TEAM = 3P982ZUUW8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Weibo_Object-C/SupportingFIles/Libs",
@@ -1204,7 +1190,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = EC2EUS3UQ9;
+				DEVELOPMENT_TEAM = 3P982ZUUW8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Weibo_Object-C/SupportingFIles/Libs",

@@ -130,8 +130,6 @@ static CGFloat const kRefreshViewHeight = 60.f;
     NSLayoutConstraint *indicatorViewCenterY = [NSLayoutConstraint constraintWithItem:self.indicatorView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.leftImageView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
     [self addConstraint:indicatorViewCenterY];
     
-    
-    
 }
 
 

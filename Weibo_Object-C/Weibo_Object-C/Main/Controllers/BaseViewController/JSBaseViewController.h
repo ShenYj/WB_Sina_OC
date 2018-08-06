@@ -11,13 +11,14 @@
 #import "JSRefresh.h"
 #import "JSRefreshControl.h"
 #import "JSVistorView.h"
+#import "JSNavigationBar.h"
 
 @interface JSBaseViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
 // 是否登录的标识
 @property (nonatomic,assign,getter=isLogin) BOOL login;
 /** 自定义导航条 */
-@property (nonatomic,strong) UINavigationBar *js_NavigationBar;
+@property (nonatomic,strong) JSNavigationBar *js_NavigationBar;
 /** 自定义导航条Item */
 @property (nonatomic,strong) UINavigationItem *js_navigationItem;
 
