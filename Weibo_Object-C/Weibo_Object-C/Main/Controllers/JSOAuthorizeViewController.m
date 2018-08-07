@@ -33,8 +33,8 @@ static NSString * const kTestPassword = @"请输入你的密码";
 - (void)setUpUI{
     [self.view addSubview:self.webView];
     [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.view).mas_offset(NAV_STATUS_BAR_Height);
-        make.left.bottom.right.mas_equalTo(self.view);
+        make.top.mas_equalTo(self.view).mas_offset(NAV_STATUS_BAR_Height).priorityHigh();
+        make.left.bottom.right.mas_equalTo(self.view).priorityHigh();
     }];
 }
 
@@ -117,12 +117,9 @@ static NSString * const kTestPassword = @"请输入你的密码";
     }
 }
 
-
 #pragma mark - UIWebViewDelegate
-//- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
-//    
-//    
-//    
+//- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+//
 //    if ([request.URL.absoluteString hasPrefix:kRedirect_URI]) {
 //        
 //        NSRange range = [request.URL.absoluteString rangeOfString:@"code="];
@@ -174,7 +171,6 @@ static NSString * const kTestPassword = @"请输入你的密码";
 //}
 
 
-
 #pragma mark - 获取用户信息
 - (void)loadUserInfoWithUserAccount:(JSUserAccountModel *)userAccount {
     // 获取用户信息
@@ -193,10 +189,8 @@ static NSString * const kTestPassword = @"请输入你的密码";
         [[JSUserAccountTool sharedManager] saveUserAccount:userAccount];
         
         [self dismissViewControllerAnimated:YES completion:^{
-            
             // 关闭遮罩
             [MBProgressHUD hideHUDForView:self.view animated:YES];
-            
             [[NSNotificationCenter defaultCenter] postNotificationName:[JSUserAccountTool sharedManager].kChangeRootViewControllerNotification object:@"OAuth" userInfo:nil];
         }];
     }];
@@ -205,7 +199,7 @@ static NSString * const kTestPassword = @"请输入你的密码";
 
 #pragma mark - lazy
 
-- (WKWebView *)webView{
+- (WKWebView *)webView {
     
     if (_webView == nil) {
         _webView = [[WKWebView alloc] init];
@@ -223,7 +217,6 @@ static NSString * const kTestPassword = @"请输入你的密码";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 
 @end

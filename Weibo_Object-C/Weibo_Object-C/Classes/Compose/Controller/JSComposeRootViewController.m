@@ -113,7 +113,6 @@ extern CGFloat itemSize;
     [self.pictureView setInserImageHandler:^{
         [weakSelf selectPicture];
     }];
-    
 }
 
 
@@ -166,7 +165,6 @@ extern CGFloat itemSize;
     [self.textView resignFirstResponder];
     // 释放控制器
     [self dismissViewControllerAnimated:YES completion:nil];
-
 }
 
 // 发布微博
@@ -211,10 +209,8 @@ extern CGFloat itemSize;
         }];
         
     }
-    
     // 辞去第一响应者&dismiss控制器
     [self clickLeftBarButtonItem:nil];
-    
 }
 
 #pragma mark - ToolBar区 按钮点击事件
@@ -275,7 +271,6 @@ extern CGFloat itemSize;
     UIGraphicsEndImageContext();
     
     return image;
-    
 }
 
 // 切换键盘
@@ -286,7 +281,6 @@ extern CGFloat itemSize;
         self.textView.inputView = self.keyboardView;
         self.composeToolBar.emoticon = YES;
     } else {
-        
         self.textView.inputView = nil;
         self.composeToolBar.emoticon = NO;
     }
@@ -299,7 +293,6 @@ extern CGFloat itemSize;
 
 // 删除按钮通知的实现
 - (void)deleteEmoticonButtonNotification:(NSNotification *)notification {
-    
     [self.textView deleteBackward];
 }
 
@@ -310,11 +303,8 @@ extern CGFloat itemSize;
     if (emoticonModel.isEmoji) {
         // emoji表情
         [self.textView insertText:[emoticonModel.code emoji]];
-        
-        
     } else {
         // 图片表情
-        
         // 记录textView当前的富文本
         NSMutableAttributedString *oldAttributedString = [[NSMutableAttributedString alloc] initWithAttributedString:self.textView.attributedText];
         
@@ -350,11 +340,7 @@ extern CGFloat itemSize;
         // 设置右侧导航按钮的可选
         [self.textView.delegate textViewDidChange:self.textView];
     }
-    
 }
-
-
-
 
 
 #pragma mark
@@ -372,8 +358,6 @@ extern CGFloat itemSize;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
-
 #pragma mark
 #pragma mark - UITextViewDelegate
 
@@ -388,8 +372,6 @@ extern CGFloat itemSize;
     // 辞去第一响应者
     [self.textView resignFirstResponder];
 }
-
-
 
 #pragma mark
 #pragma mark - lazy
@@ -428,17 +410,13 @@ extern CGFloat itemSize;
 }
 
 - (JSComposeToolBar *)composeToolBar {
-    
     if (_composeToolBar == nil) {
         _composeToolBar = [[JSComposeToolBar alloc] init];
-        
-        
     }
     return _composeToolBar;
 }
 
 - (JSComposePictureView *)pictureView {
-    
     if (_pictureView == nil) {
         _pictureView = [[JSComposePictureView alloc] init];
     }
@@ -446,7 +424,6 @@ extern CGFloat itemSize;
 }
 
 - (JSEmoticonKeyboardView *)keyboardView {
-    
     if (_keyboardView == nil) {
         _keyboardView = [[JSEmoticonKeyboardView alloc] init];
         _keyboardView.frame = CGRectMake(0, 0, SCREEN_WIDTH, kKeyboardViewHeigth);
