@@ -21,7 +21,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
     [[JSNetworkTool sharedNetworkTool] loadHomeStatusCompeletionHandler:^(NSArray *datas, BOOL isSuccess) {
        
         if (!isSuccess) {
@@ -30,7 +29,6 @@
         }
         
     }];
-    
 }
 
 - (void)loadDataWithIsPulling:(BOOL)isPulling {

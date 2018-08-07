@@ -57,7 +57,6 @@ extern CGFloat itemSize;
 }
 
 - (void)dealloc {
-    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -79,7 +78,6 @@ extern CGFloat itemSize;
     //[self.view insertSubview:self.textView belowSubview:self.js_NavigationBar];
     [self.view addSubview:self.composeToolBar];
     [self.textView addSubview:self.pictureView];
-    
     
     [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.view).mas_offset(64);

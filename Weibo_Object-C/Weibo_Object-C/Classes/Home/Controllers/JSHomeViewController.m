@@ -35,9 +35,27 @@ extern NSInteger  const pullUpErrorMaxTimes;             // 上拉刷新错误�
 
 @implementation JSHomeViewController
 
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
+//- (void)viewDidAppear:(BOOL)animated {
+//    [super viewDidAppear:animated];
+//    [[ALBBMANPageHitHelper getInstance] pageAppear:self];
+////    NSString *className = NSStringFromClass(self.class);
+////    NSDictionary *dict = [NSDictionary dictionaryWithObject:className forKey:className];
+////    [[ALBBMANPageHitHelper getInstance] updatePageProperties:self properties:dict];
+//
+//}
+//
+//- (void)my_viewDidDisappear:(BOOL)animated {
+//    [super viewDidDisappear:animated];
+//    // 事件埋点
+//    [[ALBBMANPageHitHelper getInstance] pageDisAppear:self];
+//    // 删除全局字段
+//    [[[ALBBMANAnalytics getInstance] getDefaultTracker] removeGlobalProperty:@"loadDataWithIsPulling"];
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -61,7 +79,6 @@ extern NSInteger  const pullUpErrorMaxTimes;             // 上拉刷新错误�
     [super prepareTableView];
     [self prepareNavView];
 }
-
 
 /** 设置导航栏视图 */
 - (void)prepareNavView {
@@ -132,7 +149,7 @@ extern NSInteger  const pullUpErrorMaxTimes;             // 上拉刷新错误�
         [self.activityIndicatorView stopAnimating];
         [self.refreshControl endRefresh];
         // 刷新表格
-        AudioServicesPlaySystemSound(1106);
+        //AudioServicesPlaySystemSound(1106);
         [self.tableView reloadData];
         
     } Since_id:sinceId max_id:maxId];
@@ -232,7 +249,6 @@ extern NSInteger  const pullUpErrorMaxTimes;             // 上拉刷新错误�
         } completion:^(BOOL finished) {
             [self.pullDownStatusCountsLabel removeFromSuperview];
         }];
-        
     }];
 }
 
@@ -258,9 +274,9 @@ extern NSInteger  const pullUpErrorMaxTimes;             // 上拉刷新错误�
     JSHomeStatusModel *dataModel = self.homeStatusDatas[indexPath.row];
     if (indexPath.section == 0) return [tableView dequeueReusableCellWithIdentifier:homeTableCellTipReusedId forIndexPath:indexPath];
     JSStatusCell *cell = [tableView dequeueReusableCellWithIdentifier:homeTableCellReusedId forIndexPath:indexPath];
-    cell.statusData = dataModel;
-    cell.layer.shouldRasterize = YES;
-    cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    cell.statusData    = dataModel;
+    cell.layer.shouldRasterize     = YES;
+    cell.layer.rasterizationScale  = [UIScreen mainScreen].scale;
     cell.layer.drawsAsynchronously = YES;
     
 #pragma mark - url 点击跳转
@@ -295,11 +311,11 @@ extern NSInteger  const pullUpErrorMaxTimes;             // 上拉刷新错误�
 // 展示下拉刷新微博条数
 - (UILabel *)pullDownStatusCountsLabel {
     if (_pullDownStatusCountsLabel == nil) {
-        _pullDownStatusCountsLabel = [[UILabel alloc] init];
-        _pullDownStatusCountsLabel.frame = CGRectMake(0, NAV_STATUS_BAR_Height-kPullDownLabelHeight, SCREEN_WIDTH, kPullDownLabelHeight);
-        _pullDownStatusCountsLabel.font = [UIFont systemFontOfSize:16];
-        _pullDownStatusCountsLabel.textAlignment = NSTextAlignmentCenter;
-        _pullDownStatusCountsLabel.textColor = THEME_COLOR;
+        _pullDownStatusCountsLabel                 = [[UILabel alloc] init];
+        _pullDownStatusCountsLabel.frame           = CGRectMake(0, NAV_STATUS_BAR_Height-kPullDownLabelHeight, SCREEN_WIDTH, kPullDownLabelHeight);
+        _pullDownStatusCountsLabel.font            = [UIFont systemFontOfSize:16];
+        _pullDownStatusCountsLabel.textAlignment   = NSTextAlignmentCenter;
+        _pullDownStatusCountsLabel.textColor       = THEME_COLOR;
         _pullDownStatusCountsLabel.backgroundColor = [UIColor orangeColor];
     }
     return _pullDownStatusCountsLabel;

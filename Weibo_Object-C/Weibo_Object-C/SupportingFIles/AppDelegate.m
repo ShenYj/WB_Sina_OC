@@ -10,7 +10,7 @@
 #import "JSRootTabBarController.h"
 #import "JSWelComeViewController.h"
 #import "JSUserAccountTool.h"
-#import <Bugly/Bugly.h>
+//#import <Bugly/Bugly.h>
 #import "AFNetworkActivityIndicatorManager.h"
 #import "AFNetworkReachabilityManager.h"
 #import "JSSQLDAL.h"
@@ -26,91 +26,66 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
     // Bugly
-    [Bugly startWithAppId:@"02fe94de4d"];
+    //[Bugly startWithAppId:@"02fe94de4d"];
+    
+    // 获取MAN服务
+    ALBBMANAnalytics *man = [ALBBMANAnalytics getInstance];
+    // 打开调试日志，线上版本建议关闭
+    [man turnOnDebug];
+    // 初始化MAN，无需输入配置信息
+    [man autoInit];
+    // appVersion默认从Info.list的CFBundleShortVersionString字段获取，如果没有指定，可在此调用setAppversion设定
+    // 如果上述两个地方都没有设定，appVersion为"-"
+    [man setAppVersion:@"2.3.1"];
+    // 设置渠道（用以标记该app的分发渠道名称），如果不关心可以不设置即不调用该接口，渠道设置将影响控制台【渠道分析】栏目的报表展现。
+    [man setChannel:@"50"];
     
     sleep(2);
-    
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    
     // 用户授权
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories:nil];
     [application registerUserNotificationSettings:settings];
-        
     // 监听kChangeRootViewControllerNotification通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeRootViewController:) name:[JSUserAccountTool sharedManager].kChangeRootViewControllerNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(changeRootViewController:)
+                                                 name:[JSUserAccountTool sharedManager].kChangeRootViewControllerNotification
+                                               object:nil];
     
     //application.networkActivityIndicatorVisible = YES;
     //[AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     // 监听网络状态
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
-    
-//    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-//        
-//        switch (status) {
-//            case AFNetworkReachabilityStatusUnknown:
-//                NSLog(@"AFNetworkReachabilityStatusUnknown");
-//                break;
-//            case AFNetworkReachabilityStatusNotReachable:
-//                NSLog(@"AFNetworkReachabilityStatusNotReachable");
-//                break;
-//            case AFNetworkReachabilityStatusReachableViaWWAN:
-//                NSLog(@"AFNetworkReachabilityStatusReachableViaWWAN");
-//                break;
-//            case AFNetworkReachabilityStatusReachableViaWiFi:
-//                NSLog(@"AFNetworkReachabilityStatusReachableViaWiFi");
-//                break;
-//            default:
-//                break;
-//        }
-//    }];
-    
     // 设置根控制器
     [self setupRootViewController];
-    
     [self.window makeKeyAndVisible];
-    
     return YES;
 }
 
 - (void)setupRootViewController{
-    
     if ( [JSUserAccountTool sharedManager].isLogin ) {
-        
         self.window.rootViewController = [[JSWelComeViewController alloc] init];
-        
     } else {
-        
         self.window.rootViewController = [[JSRootTabBarController alloc]init];
     }
 }
 
 - (void)changeRootViewController:(NSNotification *)notification {
-    
     if (notification.object) {
-        
         self.window.rootViewController = [[JSWelComeViewController alloc] init];
-        
     } else {
-        
         self.window.rootViewController = [[JSRootTabBarController alloc] init];
     }
-    
 }
 
 - (void)getLocalData {
-    
     NSString *uid = [JSUserAccountTool sharedManager].userAccountModel.uid;
     if (!uid) {
         return;
     }
-    
-    
 }
 
 - (void)dealloc {
-    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

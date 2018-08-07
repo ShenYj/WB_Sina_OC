@@ -61,7 +61,6 @@ static CGFloat const kMargin = 10.f;                         // 用户头像与�
     // Do any additional setup after loading the view.
     // 判断当前软件版本,如果是最新版本,就加载欢迎视图,如果与上一次记录的版本不一致,则加载新特性视图
     [self isNewVersion] ? ([self prepareView]) : ([self prepareNewVersionView]);
-
 }
 
 - (void)prepareNewVersionView {
@@ -69,10 +68,12 @@ static CGFloat const kMargin = 10.f;                         // 用户头像与�
     [self.newFeatureView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(self.view);
     }];
-
 }
 
 - (void)prepareView {
+    
+    [[ALBBMANAnalytics getInstance] updateUserAccount:[JSUserAccountTool sharedManager].getUerAccount.screen_name
+                                               userid:[JSUserAccountTool sharedManager].getUerAccount.uid];
     
     [self.view addSubview:self.headIconImageView];
     [self.view addSubview:self.messageLabel];
@@ -96,7 +97,6 @@ static CGFloat const kMargin = 10.f;                         // 用户头像与�
     if (self.headIconImageView.superview && self.messageLabel.superview ) {
         
         [UIView animateWithDuration:2 delay:0.8 usingSpringWithDamping:0.7 initialSpringVelocity:0 options:UIViewAnimationOptionLayoutSubviews animations:^{
-
             [self.headIconImageView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.bottom.mas_equalTo(self.view).mas_offset( -SCREEN_HEIGHT * 0.7);
             }];
@@ -113,8 +113,6 @@ static CGFloat const kMargin = 10.f;                         // 用户头像与�
             }];
         }];
     }
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -126,27 +124,23 @@ static CGFloat const kMargin = 10.f;                         // 用户头像与�
 #pragma mark - lazy
 
 - (UIImageView *)headIconImageView {
-    
     if (_headIconImageView == nil) {
-        _headIconImageView = [[UIImageView alloc] init];
+        _headIconImageView            = [[UIImageView alloc] init];
         __weak UIImageView *imageView = _headIconImageView;
         [_headIconImageView js_imageUrlString:[JSUserAccountTool sharedManager].userAccountModel.avatar_large WithSize:CGSizeMake(kHeadIconImageViewSize, kHeadIconImageViewSize) fillClolor:[UIColor whiteColor] completion:^(UIImage *img) {
             imageView.image = img;
         }];
-
-        
     }
     return _headIconImageView;
 }
 
 - (UILabel *)messageLabel {
-    
     if (_messageLabel == nil) {
-        _messageLabel = [[UILabel alloc] init];
-        _messageLabel.text = @"欢迎回来";
+        _messageLabel       = [[UILabel alloc] init];
+        _messageLabel.text  = @"欢迎回来";
         _messageLabel.alpha = 0.01;
-        _messageLabel.font = [UIFont systemFontOfSize:18];
-        _messageLabel.textColor = THEME_COLOR;
+        _messageLabel.font  = [UIFont systemFontOfSize:18];
+        _messageLabel.textColor     = THEME_COLOR;
         _messageLabel.textAlignment = NSTextAlignmentCenter;
     }
     return _messageLabel;

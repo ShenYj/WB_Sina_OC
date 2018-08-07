@@ -167,7 +167,6 @@ extern CGFloat const kNavigationBarHeight;   /** 自定义导航条高度 */
         [weakSelf presentViewController:navController animated:YES completion:nil];
     }];
     
-    
 }
 
 #pragma mark
@@ -192,10 +191,7 @@ extern CGFloat const kNavigationBarHeight;   /** 自定义导航条高度 */
             // 请求数据
             [homeViewController loadDataWithIsPulling:homeViewController.activityIndicatorView.isAnimating];
         });
-       
-        
     }
-    
     return YES;
 }
 

@@ -1,4 +1,7 @@
 source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/aliyun/aliyun-specs.git'
+
 platform :ios, '8.0'
 target ‘Weibo_Object-C’ do
 
@@ -10,7 +13,10 @@ pod 'MJRefresh'
 pod 'MBProgressHUD'
 pod 'YYModel'
 #pod 'Reveal-iOS-SDK', :configurations => ['Debug']
-pod 'Bugly'
+#pod 'Bugly'
 pod 'SDWebImage'
 pod 'pop'
+pod 'AlicloudMAN', '~> 1.0.12'
+
+
 end

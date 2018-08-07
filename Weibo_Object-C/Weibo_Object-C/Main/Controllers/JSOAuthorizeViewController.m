@@ -86,7 +86,6 @@ static NSString * const kTestPassword = @"请输入你的密码";
             }
             // 将用户信息转模型
             JSUserAccountModel *model = [JSUserAccountModel yy_modelWithDictionary:obj];
-
             [weakSelf loadUserInfoWithUserAccount:model];
 
         }];

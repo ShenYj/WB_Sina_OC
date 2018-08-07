@@ -7,23 +7,19 @@
 //
 
 
+#import "JSUserAccountTool.h"
 #import "JSBaseViewController.h"
 #import "JSBaseNavigationController.h"
 #import "JSBaseNavigationController.h"
 #import "JSOAuthorizeViewController.h"
-#import "JSUserAccountTool.h"
 
-
-//CGFloat const kNavigationBarHeight = 64.f;   /** 自定义导航条高度 */
 NSInteger const pullUpErrorMaxTimes = 3;     /** 上拉刷新错误最大次数 */
-
 
 @interface JSBaseViewController ()
 
 @end
+
 @implementation JSBaseViewController
-
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,12 +28,14 @@ NSInteger const pullUpErrorMaxTimes = 3;     /** 上拉刷新错误最大次数 
     [self prepareCustomNavigationBar];
     // 设置其他视图
     [self setUpUI];
-    
 }
 
 #pragma mark
 #pragma mark - 请求数据 子类具体处理
 - (void)loadDataWithIsPulling:(BOOL)isPulling {
+    
+    ALBBMANTracker *tracker = [[ALBBMANAnalytics getInstance] getDefaultTracker];
+    [tracker setGlobalProperty:@"loadDataWithIsPulling" value:NSStringFromClass(self.class)];
     
     // 细节处理:如果子类不实现,结束刷新
     [self.refreshControl endRefresh];
@@ -82,7 +80,6 @@ NSInteger const pullUpErrorMaxTimes = 3;     /** 上拉刷新错误最大次数 
         //[self loadData];
         [self loadDataWithIsPulling:self.activityIndicatorView.isAnimating];
     }
-    
 }
 
 /** 主视图相关 */

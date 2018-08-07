@@ -74,11 +74,15 @@
             NSHTTPURLResponse *urlResponse = (NSHTTPURLResponse *)task.response;
             if (urlResponse.statusCode == 403) {
                 NSLog(@"Token过期");
-                
+                JSUserAccountModel *userAccount = [[JSUserAccountTool sharedManager] getUerAccount];
+                userAccount.access_token = nil;
+                [[JSUserAccountTool sharedManager] saveUserAccount:userAccount];
                 // 发送通知 切换到登录视图
                 
+                [[NSNotificationCenter defaultCenter] postNotificationName:[JSUserAccountTool sharedManager].kChangeRootViewControllerNotification
+                                                                    object:nil
+                                                                  userInfo:nil];
             }
-            
             failure(error);
             
         }];

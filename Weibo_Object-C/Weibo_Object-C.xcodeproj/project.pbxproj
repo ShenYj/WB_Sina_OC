@@ -12,6 +12,8 @@
 		682E9B152117FEF8009E76E4 /* SDPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 682E9B102117FEF8009E76E4 /* SDPhotoBrowser.m */; };
 		682E9B162117FEF8009E76E4 /* SDWaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 682E9B132117FEF8009E76E4 /* SDWaitingView.m */; };
 		682E9B1921181D09009E76E4 /* JSNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 682E9B1821181D09009E76E4 /* JSNavigationBar.m */; };
+		6892739D21193B4D0011687C /* AliyunEmasServices-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6892739C21193B4C0011687C /* AliyunEmasServices-Info.plist */; };
+		689273A3211946290011687C /* UIViewController+JSALiAnalitics.m in Sources */ = {isa = PBXBuildFile; fileRef = 689273A2211946290011687C /* UIViewController+JSALiAnalitics.m */; };
 		E6D542BB8EA798826F2569E1 /* libPods-Weibo_Object-C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA89379BD5C259B8114A7F9F /* libPods-Weibo_Object-C.a */; };
 		F70047831E00F11A00C57F48 /* JSComposeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F700477E1E00F11A00C57F48 /* JSComposeButton.m */; };
 		F70047841E00F11A00C57F48 /* JSComposeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F70047801E00F11A00C57F48 /* JSComposeView.m */; };
@@ -113,6 +115,9 @@
 		682E9B132117FEF8009E76E4 /* SDWaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWaitingView.m; sourceTree = "<group>"; };
 		682E9B1721181D09009E76E4 /* JSNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSNavigationBar.h; sourceTree = "<group>"; };
 		682E9B1821181D09009E76E4 /* JSNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSNavigationBar.m; sourceTree = "<group>"; };
+		6892739C21193B4C0011687C /* AliyunEmasServices-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AliyunEmasServices-Info.plist"; sourceTree = "<group>"; };
+		689273A1211946290011687C /* UIViewController+JSALiAnalitics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JSALiAnalitics.h"; sourceTree = "<group>"; };
+		689273A2211946290011687C /* UIViewController+JSALiAnalitics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JSALiAnalitics.m"; sourceTree = "<group>"; };
 		CA89379BD5C259B8114A7F9F /* libPods-Weibo_Object-C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Weibo_Object-C.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1EE4FF87B8D01357E3CC107 /* Pods-Weibo_Object-C.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weibo_Object-C.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weibo_Object-C/Pods-Weibo_Object-C.debug.xcconfig"; sourceTree = "<group>"; };
 		F700477D1E00F11A00C57F48 /* JSComposeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSComposeButton.h; sourceTree = "<group>"; };
@@ -754,6 +759,7 @@
 		F79927B71D1C13D500E9BA8C /* SupportingFIles */ = {
 			isa = PBXGroup;
 			children = (
+				6892739C21193B4C0011687C /* AliyunEmasServices-Info.plist */,
 				F79927A01D1C11EA00E9BA8C /* Info.plist */,
 				F79927B81D1C13D500E9BA8C /* AppDelegate.h */,
 				F79927B91D1C13D500E9BA8C /* AppDelegate.m */,
@@ -783,6 +789,8 @@
 				F752EF911DE5706B00F8B01C /* JSNetworkTool+JSExtension.m */,
 				F7A94BD71DE2DC0F00336DE2 /* JSNetworkTool+JSUnreadExtension.h */,
 				F7A94BD81DE2DC0F00336DE2 /* JSNetworkTool+JSUnreadExtension.m */,
+				689273A1211946290011687C /* UIViewController+JSALiAnalitics.h */,
+				689273A2211946290011687C /* UIViewController+JSALiAnalitics.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -925,6 +933,7 @@
 				F723505B1DDF408B005D0E2E /* v2_goback@2x.png in Resources */,
 				F7A3481C1DD4037300457632 /* db.sql in Resources */,
 				F79927C01D1C13D500E9BA8C /* LaunchScreen.storyboard in Resources */,
+				6892739D21193B4D0011687C /* AliyunEmasServices-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1051,6 +1060,7 @@
 				F72350611DDF48C9005D0E2E /* JSNextDemoViewController.m in Sources */,
 				F7F9DB121D24979D0029235B /* JSOAuthorizeViewController.m in Sources */,
 				F7969E9A1DD04D2A003D6A38 /* JSEmoticonTextAttachment.m in Sources */,
+				689273A3211946290011687C /* UIViewController+JSALiAnalitics.m in Sources */,
 				F70047831E00F11A00C57F48 /* JSComposeButton.m in Sources */,
 				682E9B162117FEF8009E76E4 /* SDWaitingView.m in Sources */,
 				F752EF921DE5706B00F8B01C /* JSNetworkTool+JSExtension.m in Sources */,

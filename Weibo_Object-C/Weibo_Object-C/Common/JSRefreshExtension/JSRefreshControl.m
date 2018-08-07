@@ -39,7 +39,7 @@ static CGFloat const kJSRefreshControlCriticalValue = 60.f;
     //self.clipsToBounds = YES;
     //self.backgroundColor = [UIColor colorWithRed:255/255.0 green:116/255.0 blue:103/255.0 alpha:1.0];
     self.backgroundColor = [UIColor clearColor];
-    self.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 0);
+    self.frame           = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 0);
     [self addSubview:self.refreshView];
     self.refreshView.translatesAutoresizingMaskIntoConstraints = NO;
 }
@@ -62,7 +62,6 @@ static CGFloat const kJSRefreshControlCriticalValue = 60.f;
     if ([newSuperview isKindOfClass:[UIScrollView class]]) {
         self.superScrollView = (UIScrollView *)newSuperview;
         [self.superScrollView addObserver:self forKeyPath:kKeyPath options:NSKeyValueObservingOptionNew context:nil];
-        
     }
 }
 // 从父视图移除时移除监听
@@ -72,7 +71,7 @@ static CGFloat const kJSRefreshControlCriticalValue = 60.f;
 }
 // KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
-    CGPoint point = [change[@"new"] CGPointValue];
+    CGPoint point  = [change[@"new"] CGPointValue];
     CGFloat height = -(self.superScrollView.contentInset.top + point.y);
     if(height < 0) return;
     

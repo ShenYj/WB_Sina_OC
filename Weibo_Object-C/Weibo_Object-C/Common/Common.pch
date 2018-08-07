@@ -30,8 +30,8 @@
 #import "MBProgressHUD.h"
 #import "YYModel.h"
 #import "YYWebImage.h"
-
-
+#import <AlicloudMobileAnalitics/ALBBMAN.h>
+#import "UIViewController+JSALiAnalitics.h"
 
 #pragma mark = 宏定义
 

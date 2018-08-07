@@ -14,7 +14,14 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - Bugly (2.4.2)
+  - AlicloudMAN (1.0.13):
+    - AlicloudUT
+    - AlicloudUtils
+  - AlicloudUT (5.2.0.5):
+    - AlicloudUTDID
+  - AlicloudUTDID (1.1.0.16)
+  - AlicloudUtils (1.3.2):
+    - AlicloudUTDID
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
@@ -36,7 +43,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
-  - Bugly
+  - AlicloudMAN (~> 1.0.12)
   - FMDB
   - Masonry
   - MBProgressHUD
@@ -47,9 +54,13 @@ DEPENDENCIES:
   - YYWebImage
 
 SPEC REPOS:
+  https://github.com/aliyun/aliyun-specs.git:
+    - AlicloudMAN
+    - AlicloudUT
+    - AlicloudUTDID
+    - AlicloudUtils
   https://github.com/cocoapods/specs.git:
     - AFNetworking
-    - Bugly
     - FMDB
     - Masonry
     - MBProgressHUD
@@ -63,7 +74,10 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  Bugly: b09cd3c7e54048a0e079be88a7a99610f14eab8f
+  AlicloudMAN: 8ebec919ab884a1918d7533c1f85fe0325532a3c
+  AlicloudUT: 1b52965b97c5fc0b630901ce184391fbe1ef8479
+  AlicloudUTDID: f5a7bc1420c5f83e3bd40296e5ab2e5a804a12f8
+  AlicloudUtils: 8cd82af3a3131b5c1ac6873f9d8208ff9207ffdb
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
@@ -75,6 +89,6 @@ SPEC CHECKSUMS:
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 4bb27a08a19f814e99408e439877dc75071e0c54
+PODFILE CHECKSUM: 110d1052382f5589fd95620bb1ddeb7380424d0d
 
 COCOAPODS: 1.5.3

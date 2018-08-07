@@ -42,7 +42,6 @@ static JSUserAccountTool *_instanceType = nil;
 }
 
 - (JSUserAccountModel *)getUerAccount {
-    
     // 解档
     //JSUserAccountModel *userAccountModel = [NSKeyedUnarchiver unarchiveObjectWithFile:[self getDocumentDirectoryPath]];
     return [NSKeyedUnarchiver unarchiveObjectWithFile:[self getDocumentDirectoryPath]];
@@ -63,34 +62,25 @@ static JSUserAccountTool *_instanceType = nil;
 - (NSString *)access_token {
     
     if (self.userAccountModel.access_token == nil) {
-        
         return nil;
-        
-    }else {
+    } else {
         
         // 已登录
         if ( [self.userAccountModel.expires_Date compare:[NSDate date]] == NSOrderedDescending ) {
-            
             return self.userAccountModel.access_token;
-            
-        }else {
+        } else {
             // 清除数据
             [[NSFileManager defaultManager] removeItemAtPath:[self getDocumentDirectoryPath] error:NULL];
-            
             return nil;
         }
-        
     }
-    
 }
 
 - (NSString *)kChangeRootViewControllerNotification {
-    
     return @"changeRootViewControllerNotification";
 }
 
 - (BOOL)isLogin {
-    
     return self.access_token != nil;
 }
 

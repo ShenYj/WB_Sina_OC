@@ -147,11 +147,8 @@
 }
 
 
-
-
 // 请求首页数据
 - (void)loadHomeStatusCompeletionHandler:(void (^)(NSArray *, BOOL))compeletionHandler {
-    
     
     NSString *urlString = @"https://api.weibo.com/2/statuses/home_timeline.json";
     

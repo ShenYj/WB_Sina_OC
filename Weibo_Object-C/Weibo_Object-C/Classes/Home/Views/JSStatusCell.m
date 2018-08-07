@@ -60,20 +60,20 @@ extern CGFloat const kBottomMargin;
     [self.contentView addSubview:self.toolBarView];
     
     [self.originalView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.contentView).mas_offset(kTopMargin);
+        make.top.mas_equalTo(self.contentView).mas_offset(kTopMargin).priorityHigh();
         make.left.right.mas_equalTo(self.contentView);
         //make.height.mas_equalTo(kStatusOriginalViewHeight); 在JSStatusOriginalView中设置自身底边约束
     }];
     
     [self.retweetView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(self.contentView);
-        make.top.mas_equalTo(self.originalView.mas_bottom);
+        make.top.mas_equalTo(self.originalView.mas_bottom).priorityHigh();
         //make.height.mas_equalTo(50); retweetView内部根据文本进行了高度适配
     }];
     
     [self.retweetViewButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.mas_equalTo(self.retweetView);
-        make.height.mas_equalTo(self.retweetView);
+        make.height.mas_equalTo(self.retweetView).priorityHigh();
     }];
     
     [self.toolBarView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -82,13 +82,13 @@ extern CGFloat const kBottomMargin;
         make.left.right.mas_equalTo(self.contentView);
         make.height.mas_equalTo(kStatusToolBarHeight);
         // ios 10 & xcode 8 约束问题
-        make.bottom.mas_equalTo(self.contentView).mas_offset(-kBottomMargin);
+        make.bottom.mas_equalTo(self.contentView).mas_offset(-kBottomMargin).priorityHigh();
     }];
     
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.mas_equalTo(self);
         // ios 10 & xcode 8 约束问题
-        make.bottom.mas_equalTo(self);
+        make.bottom.mas_equalTo(self).priorityHigh();
         //make.bottom.mas_equalTo(self.toolBarView).mas_offset(kBottomMargin);
     }];
     
